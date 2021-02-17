@@ -12,6 +12,7 @@ module.exports = {
       },
     },
   },
+
   configureWebpack: {
     resolve: {
       alias: {
@@ -22,6 +23,7 @@ module.exports = {
       },
     },
   },
+
   chainWebpack: config => {
     config.module
       .rule('vue')
@@ -44,5 +46,29 @@ module.exports = {
         return options
       })
   },
+
   transpileDependencies: ['vue-echarts', 'resize-detector'],
+
+  pluginOptions: {
+    s3Deploy: {
+      registry: undefined,
+      awsProfile: 'default',
+      overrideEndpoint: true,
+      endpoint: 'aws',
+      region: 'us-east-1',
+      bucket: 'kbSproutVueDev',
+      createBucket: true,
+      staticHosting: true,
+      staticIndexPage: 'index.html',
+      staticErrorPage: 'index.html',
+      assetPath: 'dist',
+      assetMatch: '**',
+      deployPath: '/',
+      acl: 'public-read',
+      pwa: false,
+      enableCloudfront: false,
+      pluginVersion: '4.0.0-rc3',
+      uploadConcurrency: 5,
+    },
+  },
 }
