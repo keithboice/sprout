@@ -1,0 +1,58 @@
+/*================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+.nav-logo-container {
+  width: 275px;
+  min-width: 275px;
+  max-width: 275px;
+  white-space: nowrap;
+}
+
+.nav-logo {
+  min-height: 25px;
+  max-height: 45px;
+  max-width: 150px;
+  font-size: inherit;
+}
+
+.nav-logo-link.btn-flat {
+  color: rgba(0,0,0, 0.1);
+}
+.nav-logo-link.btn-flat svg {
+  margin-right: 5px;
+}
+
+.nav-item a svg {
+  width: 25px;
+  height: 15px;
+  font-size: 25pt;
+}
+
+.nav-item a svg, .nav-item a span {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.nav-item:hover {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+
+.nav-item:active, .sidebar-group-active {
+  color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+.nav-item.nav-search, .nav-item.dropdown-notification {
+  margin-top: 10px;
+}
+
+.nav-item.badge-pill {
+  color: #fff;
+  font-color: white;
+  font-size: 10pt;
+}
