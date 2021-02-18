@@ -1,57 +1,57 @@
 {
-	"name": "sprout",
-	"version": "0.0.1",
-	"private": true,
-	"description": "Sprout messaging (Twilio) app/add-on",
-	"homepage": "https://github.com/keithboice/sprout",
-	"bugs": "https://github.com/keithboice/sprout/issues",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/keithboice/sprout.git",
-		"directory": "/"
-	},
-	"license": "MIT",
-	"author": "Keith Boice <keithboice@github.com> (https://github.com/keithboice)",
-	"type": "commonjs",
-	"main": "main.js",
-	"module": "backend/main.mjs",
-	"browser": "frontend/main.js",
-	"bin": "tooling/cli.js",
-	"files": [
-		"dist/**"
-	],
-	"workspaces": [
-		"./tooling/src/*"
-	],
-	"scripts": {
-		"build": "vercel-build",
-		"lint": "eslint",
-		"prepare": "node ./hydrate.js",
-		"test": "jest",
-		"vercel-build": "node ./build.js"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged",
-			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-		}
-	},
-	"lint-staged": {
-		"*.{json,yaml,yml,md}": "lint"
-	},
-	"dependencies": {},
-	"devDependencies": {
-		"@commitlint/cli": "*",
-		"@commitlint/config-conventional": "*",
-		"eslint": "*",
-		"husky": "*",
-		"jest": "*",
-		"prettier": "*"
-	},
-	"engines": {
-		"node": "14.x"
-	},
-	"eslint": {
-		"extends": "@kb/lint"
-	}
+  "name": "sprout",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Sprout messaging (Twilio) app/add-on",
+  "homepage": "https://github.com/keithboice/sprout",
+  "bugs": "https://github.com/keithboice/sprout/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keithboice/sprout.git",
+    "directory": "/"
+  },
+  "license": "MIT",
+  "author": "Keith Boice <keithboice@github.com> (https://github.com/keithboice)",
+  "type": "commonjs",
+  "main": "main.js",
+  "module": "backend/main.mjs",
+  "browser": "frontend/main.js",
+  "bin": "tooling/cli.js",
+  "files": [
+    "dist/**"
+  ],
+  "workspaces": [
+    "./tooling/src/*"
+  ],
+  "scripts": {
+    "build": "vercel-build",
+    "lint": "eslint",
+    "prepare": "node ./hydrate.js",
+    "test": "jest",
+    "vercel-build": "node ./build.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{json,yaml,yml,md}": "lint"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "*",
+    "eslint": "*",
+    "husky": "*",
+    "jest": "*",
+    "prettier": "*"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "eslint": {
+    "extends": "@kb/lint"
+  }
 }
