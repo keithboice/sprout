@@ -28,7 +28,7 @@
 		"@vuepress/plugin-medium-zoom": "^1.7.1",
 		"@vueuse/core": "4.0.0",
 		"animate.css": "4.1.1",
-		"apexcharts": "3.23.0",
+		"apexcharts": "3.24.0",
 		"autoprefixer": "^9.8.6",
 		"axios": "0.21.1",
 		"axios-mock-adapter": "1.19.0",
