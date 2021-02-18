@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="IssueNavigationConfiguration">
+    <option name="links">
+      <list>
+        <IssueNavigationLink>
+          <option name="issueRegexp" value="Task_([A-Za-z]+)\((\d+)\)" />
+          <option name="linkRegexp" value="https://github.com/keithboice/kb/issues/$2" />
+        </IssueNavigationLink>
+      </list>
+    </option>
+  </component>
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tooling/src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tooling/src/docs/sources/templates" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tooling/src/docs/sources/templates/jsdoc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tooling/src/docs/sources/wiki" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tooling/src/docusaurus" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tooling/src/docusaurus2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tooling/src/templates" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tooling/src/version/workflows" vcs="Git" />
+  </component>
+</project>

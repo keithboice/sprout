@@ -1,0 +1,27 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths":   {
+			"~/*": [
+				"./*"
+			],
+			"@/*": [
+				"./*"
+			],
+			"~~/*": [
+				"./*"
+			],
+			"@@/*": [
+				"./*"
+			]
+		}
+	},
+	"exclude":         [
+		"node_modules",
+		".nuxt",
+		"dist",
+		".pnpm-store",
+		".nuxt-storybook",
+		"storybook-static"
+	]
+}

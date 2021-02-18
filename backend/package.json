@@ -1,0 +1,44 @@
+{
+	"author":          "Keith Boice <keithboice@github.com> (https://github.com/keithboice)",
+	"bugs":            "https://github.com/keithboice/sprout/issues",
+	"dependencies":    { },
+	"description":     "Sprout messaging (Twilio) app/add-on",
+	"devDependencies": {
+		"@vercel/node": "^1.9.0"
+	},
+	"eslint":          {
+		"extends": "@kb/lint-node"
+	},
+	"files":           [
+		"dist/**"
+	],
+	"homepage":        "https://github.com/keithboice/sprout/backend",
+	"husky":           {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+			"pre-commit": "lint-staged"
+		}
+	},
+	"language":        "node",
+	"license":         "MIT",
+	"lint-staged":     {
+		"*.{js,vue}":  "lint",
+		"*.{css,vue}": "stylelint"
+	},
+	"main":            "main.js",
+	"module":          "main.mjs",
+	"name":            "sprout-backend",
+	"private":         true,
+	"repository":      {
+		"type":      "git",
+		"url":       "https://github.com/keithboice/sprout.git",
+		"directory": "/backend"
+	},
+	"scripts":         {
+		"build":                  "echo 'need build scripts for sprout backend'",
+		"deploy:serverless:gql":  "cd src/gql && npx serverless deploy",
+		"deploy:serverless:node": "cd api && npx serverless deploy"
+	},
+	"type":            "commonjs",
+	"version":         "0.0.1"
+}

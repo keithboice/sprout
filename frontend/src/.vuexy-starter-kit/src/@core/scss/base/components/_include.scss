@@ -1,0 +1,15 @@
+// ================================================================================================
+//  File Name: include.scss
+//  Description: Common components file to includ all theme specific custom components.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Sprout  - Vuejs, HTML & Laravel Admin Dashboard Template
+//  Author: PIXINVENT
+//  Author URL: http://www.themeforest.net/user/pixinvent
+// ================================================================================================
+
+// Overrides contacts variable
+@import 'scss/variables/_variables-components';
+// Component custom variable override (for contacts purpose)
+@import 'variables';
+// Component variable
+@import 'variables-dark'; // Dark variable

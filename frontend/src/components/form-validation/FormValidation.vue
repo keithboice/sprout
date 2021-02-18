@@ -1,0 +1,47 @@
+<template>
+  <b-row>
+    <b-col cols="12">
+      <form-validation-simple />
+      <form-validation-multiple />
+      <b-row>
+        <b-col md="6">
+          <form-validation-placeholder />
+        </b-col>
+        <b-col md="6">
+          <form-validation-placeholder-arguments />
+        </b-col>
+      </b-row>
+      <form-validation-types />
+      <form-validation-locale />
+      <form-validation-extend />
+    </b-col>
+  </b-row>
+</template>
+
+<script>
+import { BCol, BRow }                     from "bootstrap-vue";
+import FormValidationExtend               from "./FormValidationExtend.vue";
+import FormValidationLocale               from "./FormValidationLocale.vue";
+import FormValidationMultiple             from "./FormValidationMultiple.vue";
+import FormValidationPlaceholder          from "./FormValidationPlaceholder.vue";
+import FormValidationPlaceholderArguments from "./FormValidationPlaceholderArguments.vue";
+
+import FormValidationSimple from "./FormValidationSimple.vue";
+import FormValidationTypes  from "./FormValidationTypes.vue";
+
+
+export default {
+  components: {
+    BRow,
+    BCol,
+    
+    FormValidationSimple,
+    FormValidationMultiple,
+    FormValidationTypes,
+    FormValidationPlaceholder,
+    FormValidationPlaceholderArguments,
+    FormValidationLocale,
+    FormValidationExtend
+  }
+};
+</script>

@@ -1,0 +1,274 @@
+<template>
+  <b-card-code title="Custom Content">
+    <app-timeline>
+      
+      <!-- 12 INVOICES HAVE BEEN PAID -->
+      <app-timeline-item icon="DollarSignIcon">
+        <div class="d-flex flex-sm-row flex-column flex-wrap justify-content-between mb-1 mb-sm-0">
+          <h6>12 Invoices have been paid</h6>
+          <small class="text-muted">12 min ago</small>
+        </div>
+        <p>Invoices have been paid to the company.</p>
+        <p>
+          <b-img
+            :src="require('@/assets/images/icons/pdf.png')"
+            class="mr-1"
+            height="auto"
+            width="20"
+          />
+          <span class="align-bottom">invoice.pdf</span>
+        </p>
+      </app-timeline-item>
+      
+      <app-timeline-item
+        icon="UserIcon"
+        variant="secondary"
+      >
+        
+        <div class="d-flex flex-sm-row flex-column flex-wrap justify-content-between mb-1 mb-sm-0">
+          <h6>Client Meeting</h6>
+          <small class="text-muted">45 min ago</small>
+        </div>
+        <p>Project meeting with john @10:15am.</p>
+        <b-media>
+          <template #aside>
+            <b-avatar :src="require('@/assets/images/avatars/12-small.png')" />
+          </template>
+          <h6>John Doe (Client)</h6>
+          <p>CEO of Infibeam</p>
+        </b-media>
+      </app-timeline-item>
+      
+      <!-- FINANCIAL REPORT -->
+      <app-timeline-item
+        icon="FileTextIcon"
+        variant="success"
+      >
+        
+        <div class="d-flex flex-sm-row flex-column flex-wrap justify-content-between mb-1 mb-sm-0">
+          <h6>Financial Report</h6>
+          <small class="text-muted">2 hours ago</small>
+        </div>
+        <p>Click the button below to read financial reports</p>
+        <b-button
+          v-b-toggle.report-list-with-icon
+          v-ripple.400="'rgba(113, 102, 240, 0.15)'"
+          size="sm"
+          variant="outline-primary"
+        >
+          Show Report
+        </b-button>
+        <b-collapse id="report-list-with-icon">
+          <b-list-group
+            class="mt-1"
+            flush
+          >
+            <b-list-group-item
+              class="d-flex justify-content-between align-items-center bg-transparent"
+              href="#"
+            >
+              <span>Last Year's Profit: $20,000</span>
+              <feather-icon icon="Share2Icon" />
+            </b-list-group-item>
+            <b-list-group-item
+              class="d-flex justify-content-between align-items-center bg-transparent"
+              href="#"
+            >
+              <span>This Year's Profit: $25,000</span>
+              <feather-icon icon="Share2Icon" />
+            </b-list-group-item>
+            <b-list-group-item
+              class="d-flex justify-content-between align-items-center bg-transparent"
+              href="#"
+            >
+              <span>Last Year's Commision: $5,000</span>
+              <feather-icon icon="Share2Icon" />
+            </b-list-group-item>
+            <b-list-group-item
+              class="d-flex justify-content-between align-items-center bg-transparent"
+              href="#"
+            >
+              <span>This Year's Commision: $7,000</span>
+              <feather-icon icon="Share2Icon" />
+            </b-list-group-item>
+            <b-list-group-item
+              class="d-flex justify-content-between align-items-center bg-transparent"
+              href="#"
+            >
+              <span>This Year's Total Balance: $70,000</span>
+              <feather-icon icon="Share2Icon" />
+            </b-list-group-item>
+          </b-list-group>
+        </b-collapse>
+      </app-timeline-item>
+      
+      <!-- INTERVIEW SCHEDULE -->
+      <app-timeline-item
+        icon="MapPinIcon"
+        variant="warning"
+      >
+        <div class="d-flex flex-sm-row flex-column flex-wrap justify-content-between mb-1 mb-sm-0">
+          <h6>Interview Schedule</h6>
+          <small class="text-muted">03:00 PM</small>
+        </div>
+        <p>Have to interview Katy Turner for the developer job.</p>
+        <div class="d-flex flex-sm-row flex-column justify-content-between align-items-start">
+          <b-media>
+            <template #aside>
+              <b-avatar :src="require('@/assets/images/avatars/1-small.png')" />
+            </template>
+            <h6>Katy Turner</h6>
+            <span class="text-muted">Javascript Developer</span>
+          </b-media>
+          <div>
+            <feather-icon
+              class="mr-1"
+              icon="MessageSquareIcon"
+            />
+            <feather-icon icon="PhoneCallIcon" />
+          </div>
+        </div>
+      </app-timeline-item>
+      
+      <!-- ONLINE STORE -->
+      <app-timeline-item
+        icon="ShoppingBagIcon"
+        variant="danger"
+      >
+        
+        <div class="d-flex flex-sm-row flex-column flex-wrap justify-content-between mb-1 mb-sm-0">
+          <h6>Online Store</h6>
+          <small class="text-muted">03:00 PM</small>
+        </div>
+        <p>Develop an online store of electronic devices for the provided layout, as well as develop a mobile version of it. The must be compatible with any CMS.</p>
+        <div class="d-flex flex-sm-row flex-column justify-content-between align-items-start">
+          <!-- 1st Col -->
+          <div class="mb-1 mb-sm-0">
+            <span class="text-muted mb-50">Developers</span>
+            
+            <div>
+              <b-avatar
+                class="mr-50"
+                size="24"
+                text="A"
+                variant="light-primary"
+              />
+              <b-avatar
+                class="mr-50"
+                size="24"
+                text="B"
+                variant="light-success"
+              />
+              <b-avatar
+                class="mr-50"
+                size="24"
+                text="C"
+                variant="light-danger"
+              />
+            </div>
+          </div>
+          <!-- 2nd Col -->
+          <div class="mb-1 mb-sm-0">
+            <span class="text-muted mb-50 d-block">Deadline</span>
+            <span>20 Dec 2077</span>
+          </div>
+          <!-- 3rd Col -->
+          <div>
+            <span class="text-muted mb-50 d-block">Budget</span>
+            <span>$50,000</span>
+          </div>
+        </div>
+      </app-timeline-item>
+      
+      <!-- DESIGNING UI -->
+      <app-timeline-item
+        icon="GridIcon"
+        variant="info"
+      >
+        
+        <div class="d-flex align-items-start flex-sm-row flex-column flex-wrap justify-content-between mb-1 mb-sm-50">
+          <h6>Designing UI</h6>
+          <b-badge
+            pill
+            variant="light-primary"
+          >
+            Design
+          </b-badge>
+        </div>
+        <p>Our main goal is to design a new mobile application for our client. The customer wants a clean &amp; flat design.</p>
+        <div>
+          <span class="text-muted">
+            Participants
+          </span>
+          <b-avatar-group
+            class="mt-50"
+            size="32px"
+          >
+            <b-avatar
+              v-b-tooltip.hover
+              :src="require('@/assets/images/portrait/small/avatar-s-5.jpg')"
+              class="pull-up"
+              title="Jenny Looper"
+            />
+            <b-avatar
+              v-b-tooltip.hover
+              :src="require('@/assets/images/portrait/small/avatar-s-6.jpg')"
+              class="pull-up"
+              title="Jennifer Lopez"
+            />
+            <b-avatar
+              v-b-tooltip.hover
+              :src="require('@/assets/images/portrait/small/avatar-s-7.jpg')"
+              class="pull-up"
+              title="Arya Stark"
+            />
+          </b-avatar-group>
+        </div>
+      </app-timeline-item>
+    </app-timeline>
+    
+    <template #code>
+      {{ codeCustomContentWithIcon }}
+    </template>
+  </b-card-code>
+</template>
+
+<script>
+import AppTimeline                                                                                                          from "@core/components/app-timeline/AppTimeline.vue";
+import AppTimelineItem
+                                                                                                                            from "@core/components/app-timeline/AppTimelineItem.vue";
+import BCardCode
+                                                                                                                            from "@core/components/b-card-code";
+import { BAvatar, BAvatarGroup, BBadge, BButton, BCollapse, BImg, BListGroup, BListGroupItem, BMedia, VBToggle, VBTooltip } from "bootstrap-vue";
+import Ripple
+                                                                                                                            from "vue-ripple-directive";
+import { codeCustomContentWithIcon }                                                                                        from "./code";
+
+
+export default {
+  components: {
+    AppTimeline,
+    AppTimelineItem,
+    BCardCode,
+    BImg,
+    BMedia,
+    BAvatar,
+    BButton,
+    BCollapse,
+    BListGroup,
+    BListGroupItem,
+    BAvatarGroup,
+    BBadge
+  },
+  directives: {
+    "b-toggle":  VBToggle,
+    "b-tooltip": VBTooltip,
+    Ripple
+  },
+  data () {
+    return {
+      codeCustomContentWithIcon
+    };
+  }
+};
+</script>

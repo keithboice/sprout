@@ -1,0 +1,7 @@
+org: keithboicework
+app: sprout-backend-node
+component: express
+name: express-starter
+
+inputs:
+  src: ./

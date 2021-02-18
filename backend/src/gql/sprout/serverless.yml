@@ -1,0 +1,7 @@
+org: keithboicework
+app: sprout
+component: graphql
+name: graphql-starter
+
+inputs:
+  src: ./

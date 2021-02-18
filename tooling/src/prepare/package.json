@@ -1,0 +1,48 @@
+{
+	"name": "@kb/prepare",
+	"author": "Keith Boice <keithboice@github.com> (https://github.com/keithboice)",
+	"description": "Hydrates repository with core docs using dynamic values from package.json and jsdocs comments",
+	"version": "0.0.1",
+	"homepage": "https://github.com/keithboice/kb",
+	"bugs": "https://github.com/keithboice/kb/issues",
+	"license": "MIT",
+	"private": false,
+	"scripts": {
+		"prepare": "echo 'dev prepare --run-the-hydrate-etc-stuff-here'",
+		"build": "npx rollup ./index.js",
+		"lint": "yarn lint:js && yarn lint:style",
+		"lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+		"lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore"
+	},
+	"main": "index.js",
+	"browser": "index.js",
+	"module": "index.mjs",
+	"bin": "cli.js",
+	"dependencies": {},
+	"devDependencies": {
+		"@kb/lint": "/Users/dkb/repos/kb/packages/lint",
+		"app-root-path": "^3.0.0",
+		"handlebars": "^4.7.7",
+		"https": "^1.0.0",
+		"fs": "^0.0.2",
+		"path": "^0.12.7"
+	},
+	"eslint": {
+		"extends": "@kb/lint"
+	},
+	"engines": {
+		"node": ">=12.0.0",
+		"npm": ">=5.0.0",
+		"yarn": ">=1.22.0"
+	},
+	"files": [
+		"dist/**"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/keithboice/kb.git",
+		"directory": "/packages/prepare"
+	},
+	"language": "node",
+	"type": "commonjs"
+}

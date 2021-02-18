@@ -1,0 +1,46 @@
+{
+	"name":                "@kb/test",
+	"version":             "0.0.1",
+	"description":         "Nodejs test script for kb projects",
+	"main":                "index.js",
+	"module":              "index.mjs",
+	"engines":             {
+		"node": ">=14.0.0",
+		"pnpm": ">=5"
+	},
+	"files":               [
+		"dist/main.js",
+		"cli.js",
+		"index.js"
+	],
+	"types":               "commonjs",
+	"repository":          {
+		"type": "git",
+		"url":  "https://github.com/keithboice/kb.git"
+	},
+	"homepage":            "https://github.com/keithboice/kb",
+	"languageName":        "node",
+	"scripts":             {
+		"build":            "npx rollup index.js --file dist/main.js",
+		"test":             "jest --config conf/jest.config.js",
+		"lint":             "lint ./",
+		"commit:":          "commit ./",
+		"deploy":           "deploy ./",
+		"release":          "release ./",
+		"generate:docs":    "docs ./",
+		"generate:reports": "reports ./"
+	},
+	"author":              "Keith Boice <69816300+keithboice@users.noreply.github.com>",
+	"license":             "MIT",
+	"dependencies":        {
+		"jest":                   "^26.6.3",
+		"jest-watch-directories": "^1.1.0",
+		"path":                   "^0.12.7"
+	},
+	"bundledDependencies": [
+		"jest"
+	],
+	"devDependencies":     {
+		"app-root-path": "^3.0.0"
+	}
+}

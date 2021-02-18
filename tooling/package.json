@@ -1,0 +1,45 @@
+{
+	"author":          "Keith Boice <keithboice@github.com> (https://github.com/keithboice)",
+	"bin":             "cli.js",
+	"bugs":            "https://github.com/keithboice/kb/issues",
+	"dependencies":    { },
+	"description":     "KB standard shared tooling configs",
+	"devDependencies": {
+		"lerna":      "^3.22.1",
+		"builder":    "^5.0.0",
+		"commitlint": "^11.0.0"
+	},
+	"engines":         {
+		"node": "14.x"
+	},
+	"homepage":        "https://github.com/keithboice/kb",
+	"husky":           {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+			"pre-commit": "lint-staged"
+		}
+	},
+	"language":        "node",
+	"license":         "MIT",
+	"lint-staged":     {
+		"*.{js,mjs,cjs}": "lint"
+	},
+	"main":            "main.js",
+	"module":          "main.mjs",
+	"name":            "kb",
+	"private":         true,
+	"repository":      {
+		"type":      "git",
+		"url":       "https://github.com/keithboice/kb.git",
+		"directory": "/"
+	},
+	"scripts":         {
+		"prepare": "node ./hydrate.js",
+		"build":   "echo 'need build scripts for tooling'"
+	},
+	"type":            "commonjs",
+	"version":         "0.0.1",
+	"workspaces":      [
+		"./src/*"
+	]
+}
