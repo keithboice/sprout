@@ -1,40 +1,40 @@
 <template>
   <div
-    class="horizontal-layout"
     :class="[layoutClasses]"
     :data-col="isNavMenuHidden ? '1-column' : null"
+    class="horizontal-layout"
     style="height:inherit"
   >
-
+    
     <!-- NAVBAR -->
     <b-navbar
+      :class="{'fixed-top': $store.getters['app/currentBreakPoint'] !== 'xl'}"
       :style="{
         backgroundColor: navbarType === 'static' && scrolledTo && skin === 'light' ? 'white' : null,
         boxShadow: navbarType === 'static' && scrolledTo ? 'rgba(0, 0, 0, 0.05) 0px 4px 20px 0px' : null,
       }"
       :toggleable="false"
       class="header-navbar navbar-shadow align-items-center navbar-brand-center navbar-fixed"
-      :class="{'fixed-top': $store.getters['app/currentBreakPoint'] !== 'xl'}"
     >
       <slot
-        name="navbar"
         :toggleVerticalMenuActive="toggleVerticalMenuActive"
+        name="navbar"
       >
         <app-navbar-horizontal-layout-brand />
         <app-navbar-horizontal-layout :toggle-vertical-menu-active="toggleVerticalMenuActive" />
       </slot>
     </b-navbar>
     <!--/ NAVBAR -->
-
+    
     <div class="horizontal-menu-wrapper">
       <div
         v-if="!isNavMenuHidden"
-        class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-light navbar-shadow menu-border d-none d-xl-block"
         :class="[navbarMenuTypeClass]"
+        class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-light navbar-shadow menu-border d-none d-xl-block"
       >
         <horizontal-nav-menu />
       </div>
-
+      
       <!-- Vertical Nav Menu -->
       <vertical-nav-menu
         :is-vertical-menu-active="isVerticalMenuActive"
@@ -43,22 +43,22 @@
       >
         <template #header="slotProps">
           <slot
-            name="vertical-menu-header"
             v-bind="slotProps"
+            name="vertical-menu-header"
           />
         </template>
       </vertical-nav-menu>
-    <!-- /Vertical Nav Menu -->
+      <!-- /Vertical Nav Menu -->
     </div>
-
+    
     <!-- Vertical Nav Menu Overlay -->
     <div
-      class="sidenav-overlay"
       :class="overlayClasses"
+      class="sidenav-overlay"
       @click="isVerticalMenuActive = false"
     />
     <!-- /Vertical Nav Menu Overlay -->
-
+    
     <!-- CONTENT -->
     <!-- CONTENT TYPE: Left -->
     <transition
@@ -74,53 +74,52 @@
           v-slot:[name]="data"
         >
           <slot
-            :name="name"
             v-bind="data"
+            :name="name"
           />
         </template>
       </component>
     </transition>
     <!--/ Content -->
     <!--/ CONTENT -->
-
+    
     <!-- Footer -->
     <footer
-      class="footer footer-light"
       :class="[footerTypeClass]"
+      class="footer footer-light"
     >
       <slot name="footer">
         <app-footer />
       </slot>
     </footer>
-
+    
     <slot name="customizer" />
   </div>
 </template>
 
 <script>
-import AppBreadcrumb from '@core/layouts/components/AppBreadcrumb.vue'
-import AppNavbarHorizontalLayout from '@core/layouts/components/app-navbar/AppNavbarHorizontalLayout.vue'
-import AppNavbarHorizontalLayoutBrand from '@core/layouts/components/app-navbar/AppNavbarHorizontalLayoutBrand.vue'
-import AppFooter from '@core/layouts/components/AppFooter.vue'
-import useAppConfig from '@core/app-config/useAppConfig'
-import { BNavbar } from 'bootstrap-vue'
-import { useScrollListener } from '@core/comp-functions/misc/event-listeners'
+import AppBreadcrumb                  from "@core/layouts/components/AppBreadcrumb.vue"
+import AppNavbarHorizontalLayout      from "@core/layouts/components/app-navbar/AppNavbarHorizontalLayout.vue"
+import AppNavbarHorizontalLayoutBrand from "@core/layouts/components/app-navbar/AppNavbarHorizontalLayoutBrand.vue"
+import AppFooter                      from "@core/layouts/components/AppFooter.vue"
+import useAppConfig                   from "@core/app-config/useAppConfig"
+import { BNavbar }                    from "bootstrap-vue"
+import { useScrollListener }          from "@core/comp-functions/misc/event-listeners"
 
-import { onUnmounted } from '@vue/composition-api'
+import { onUnmounted } from "@vue/composition-api"
 
 // Content Renderer
-import LayoutContentRendererDefault from '@core/layouts/components/layout-content-renderer/LayoutContentRendererDefault.vue'
-import LayoutContentRendererLeft from '@core/layouts/components/layout-content-renderer/LayoutContentRendererLeft.vue'
-import LayoutContentRendererLeftDetached from '@core/layouts/components/layout-content-renderer/LayoutContentRendererLeftDetached.vue'
-import useLayoutHorizontal from './useLayoutHorizontal'
-import HorizontalNavMenu from './components/horizontal-nav-menu/HorizontalNavMenu.vue'
+import LayoutContentRendererDefault      from "@core/layouts/components/layout-content-renderer/LayoutContentRendererDefault.vue"
+import LayoutContentRendererLeft         from "@core/layouts/components/layout-content-renderer/LayoutContentRendererLeft.vue"
+import LayoutContentRendererLeftDetached from "@core/layouts/components/layout-content-renderer/LayoutContentRendererLeftDetached.vue"
+import useLayoutHorizontal               from "./useLayoutHorizontal"
+import HorizontalNavMenu                 from "./components/horizontal-nav-menu/HorizontalNavMenu.vue"
 
 // Vertical Menu
-/* eslint-disable import/order */
-import VerticalNavMenu from '@core/layouts/layout-vertical/components/vertical-nav-menu/VerticalNavMenu.vue'
-import useVerticalLayout from '@core/layouts/layout-vertical/useVerticalLayout'
-import mixinLayoutHorizontal from './mixinLayoutHorizontal'
-/* eslint-enable import/order */
+import VerticalNavMenu       from "@core/layouts/layout-vertical/components/vertical-nav-menu/VerticalNavMenu.vue"
+import useVerticalLayout     from "@core/layouts/layout-vertical/useVerticalLayout"
+import mixinLayoutHorizontal from "./mixinLayoutHorizontal"
+
 
 export default {
   components: {
@@ -129,85 +128,92 @@ export default {
     AppNavbarHorizontalLayoutBrand,
     AppFooter,
     HorizontalNavMenu,
-
+    
     BNavbar,
-
+    
     // Content Renderer
     LayoutContentRendererDefault,
     LayoutContentRendererLeft,
     LayoutContentRendererLeftDetached,
-
+    
     // Vertical Menu
-    VerticalNavMenu,
+    VerticalNavMenu
   },
-  mixins: [mixinLayoutHorizontal],
-  computed: {
-    layoutContentRenderer() {
+  mixins:     [ mixinLayoutHorizontal ],
+  computed:   {
+    layoutContentRenderer () {
       const rendererType = this.$route.meta.contentRenderer
-      if (rendererType === 'sidebar-left') return 'layout-content-renderer-left'
-      if (rendererType === 'sidebar-left-detached') return 'layout-content-renderer-left-detached'
-      return 'layout-content-renderer-default'
-    },
+      if ( rendererType === "sidebar-left" ) {
+        return "layout-content-renderer-left"
+      }
+      if ( rendererType === "sidebar-left-detached" ) {
+        return "layout-content-renderer-left-detached"
+      }
+      return "layout-content-renderer-default"
+    }
   },
-  setup() {
+  setup () {
     const {
-      skin,
-      navbarType,
-      footerType,
-      routerTransition,
-      isNavMenuHidden,
-    } = useAppConfig()
-
+            skin,
+            navbarType,
+            footerType,
+            routerTransition,
+            isNavMenuHidden
+          } = useAppConfig()
+    
     // Vertical Menu
     const {
-      isVerticalMenuActive, toggleVerticalMenuActive, overlayClasses, resizeHandler,
-    } = useVerticalLayout(navbarType, footerType)
-
+            isVerticalMenuActive,
+            toggleVerticalMenuActive,
+            overlayClasses,
+            resizeHandler
+          } = useVerticalLayout( navbarType, footerType )
+    
     // Resize handler
     resizeHandler()
-    window.addEventListener('resize', resizeHandler)
-    onUnmounted(() => {
-      window.removeEventListener('resize', resizeHandler)
-    })
-
+    window.addEventListener( "resize", resizeHandler )
+    onUnmounted( () => {
+      window.removeEventListener( "resize", resizeHandler )
+    } )
+    
     const {
-      navbarMenuTypeClass,
-      layoutClasses,
-      footerTypeClass,
-    } = useLayoutHorizontal(navbarType, footerType, isVerticalMenuActive)
-
+            navbarMenuTypeClass,
+            layoutClasses,
+            footerTypeClass
+          } = useLayoutHorizontal( navbarType, footerType, isVerticalMenuActive )
+    
     // Scroll Listener
     const { scrolledTo } = useScrollListener()
-
+    
     return {
       // skin
       skin,
-
+      
       // Layout
       layoutClasses,
-
+      
       // Navbar
       navbarType,
       navbarMenuTypeClass,
-
+      
       // Menu Hidden
       isNavMenuHidden,
-
+      
       // Router Transition
       routerTransition,
-
+      
       // Footer
       footerTypeClass,
-
+      
       // Scroll Listeners
       scrolledTo,
-
+      
       // Vertical Menu
       isVerticalMenuActive,
       toggleVerticalMenuActive,
-      overlayClasses,
+      overlayClasses
     }
-  },
+  }
 }
 </script>
 
