@@ -1,5 +1,4 @@
-import { isToday } from "./utils";
-
+import { isToday } from './utils'
 
 export const kFormatter = num => (num > 999 ? `${(num / 1000).toFixed(1)}k` : num)
 
@@ -24,10 +23,8 @@ export const avatarText = value => {
 
 /**
  * Format and return date in Humanize format
- * Intl docs:
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format Intl
- * Constructor:
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
+ * Intl docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/format
+ * Intl Constructor: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat
  * @param {String} value date to format
  * @param {Object} formatting Intl object to format with
  */

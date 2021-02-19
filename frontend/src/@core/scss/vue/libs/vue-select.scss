@@ -2,7 +2,7 @@ $options-padding-x: 20px;
 $options-padding-y: 7px;
 
 @import '~@core/scss/base/bootstrap-extended/include';
-// Overrides contacts variable
+// Overrides user variable
 @import '~@core/scss/base/components/include';
 @import 'vue-select/src/scss/global/_variables.scss';
 
@@ -47,7 +47,6 @@ $vs-dropdown-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);
   &.vs__dropdown-option--selected {
     background: $primary !important;
   }
-
   opacity: 0.5;
 }
 
@@ -55,7 +54,6 @@ $vs-dropdown-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);
 .vs__dropdown-option {
   color: $body-color;
 }
-
 .vs__dropdown-option,
 .vs__no-options {
   // We have only update Y padding
@@ -98,7 +96,6 @@ $vs-dropdown-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);
     background-color: $primary !important;
   }
 }
-
 /* rtl:end:ignore */
 
 // Update color of clear icon
@@ -233,7 +230,6 @@ $vs-dropdown-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);
 
     padding: 1px;
   }
-
   &.vs--single .vs__dropdown-toggle {
     padding: 2px;
   }
@@ -295,26 +291,21 @@ $vs-dropdown-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.1);
     color: $theme-dark-body-color;
     border-color: $theme-dark-input-border-color;
   }
-
   .vs__selected-options {
     input {
       color: $theme-dark-body-color;
-
       &::placeholder {
         color: $theme-dark-input-placeholder-color;
       }
     }
   }
-
   .vs__actions {
     svg {
       fill: $theme-dark-input-border-color;
     }
   }
-
   .vs__dropdown-menu {
     background: $theme-dark-input-bg;
-
     li {
       color: $theme-dark-body-color;
     }

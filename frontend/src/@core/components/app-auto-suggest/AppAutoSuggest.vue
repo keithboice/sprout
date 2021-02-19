@@ -2,8 +2,8 @@
   <div class="app-auto-suggest">
     <input
       v-model="searchQuery"
-      v-bind="inputProps"
       type="text"
+      v-bind="inputProps"
     >
     <ul class="auto-suggest-suggestions-list">
       <li
@@ -15,8 +15,8 @@
         <!-- Group Header -->
         <p class="suggestion-group-title">
           <slot
-            :group_name="grp_name"
             name="group"
+            :group_name="grp_name"
           >
             <span>
               {{ grp_name }}
@@ -36,7 +36,7 @@
               :name="grp_name"
               :suggestion="suggestion"
             >
-              <span>{{ suggestion[ data[ grp_name ].key ] }}</span>
+              <span>{{ suggestion[data[grp_name].key] }}</span>
             </slot>
           </li>
 
@@ -45,8 +45,8 @@
             class="suggestion-group-suggestion no-results"
           >
             <slot
-              :group_name="grp_name"
               name="noResult"
+              :group_name="grp_name"
             >
               <p>No Results Found.</p>
             </slot>
@@ -79,11 +79,7 @@ export default {
     // eslint-disable-next-line no-console
     console.warn('This component is still in Development. Please do not use it.')
 
-    const {
-      searchQuery,
-      filteredData,
-      resetsearchQuery,
-    } = useAutoSuggest(props)
+    const { searchQuery, filteredData, resetsearchQuery } = useAutoSuggest(props)
 
     const suggestionSelected = suggestion => {
       resetsearchQuery()
@@ -91,21 +87,19 @@ export default {
     }
 
     return {
-      searchQuery,
-      filteredData,
-      suggestionSelected,
+      searchQuery, filteredData, suggestionSelected,
     }
   },
 }
 </script>
 
 <style scoped>
-ul {
+ul
+{
   list-style: none;
-  margin:     0;
-  padding:    0;
+  padding: 0;
+  margin: 0;
 }
-
 p {
   margin: 0;
 }
@@ -115,17 +109,17 @@ p {
 }
 
 .auto-suggest-suggestions-list {
+  box-shadow: 0 4px 24px 0 rgba(34, 41, 47, 0.1);
+  border-radius: 6px;
+  position: absolute;
+  top: calc(100% + 1rem);
   background-color: white;
-  border-radius:    6px;
-  box-shadow:       0 4px 24px 0 rgba(34, 41, 47, 0.1);
-  position:         absolute;
-  top:              calc(100% + 1rem);
-  width:            100%;
+  width: 100%;
 }
 
 .suggestion-group-title {
   font-weight: 500;
-  padding:     .75rem 1rem .25rem;
+  padding: .75rem 1rem .25rem;
 }
 
 .suggestion-group-suggestion {

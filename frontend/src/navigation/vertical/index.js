@@ -30,15 +30,24 @@ tag
 tagVariant
 
 */
-/*
-import dashboard from './dashboard'
-import appsAndPages from './apps-and-pages'
-import others from './others'
-import chartsAndMaps from './charts-and-maps'
-import uiElements from './ui-elements'
-import formAndTable from './forms-and-table' */
 
-import inbox from './inbox'
+const menu = [
+  {
+    icon: 'ChatIcon',
+    title: 'chat active',
+    route: 'apps/chat',
+    tag: 'active',
+  }, {
+    title: 'chat new',
+    route: 'apps-chat-new',
+  }, {
+    title: 'chat started',
+    route: 'apps-chat-started',
+  }, {
+    title: 'chat closed',
+    route: 'apps-chat-closed',
+  },
+]
 
 // Array of sections
-export default [...inbox]
+export default [menu]

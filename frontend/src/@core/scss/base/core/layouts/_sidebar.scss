@@ -1,10 +1,6 @@
 /*=========================================================================================
     File Name: sidebar.scss
     Description: content sidebar specific scss.
-    ----------------------------------------------------------------------------------------
-    Item Name: Sprout  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: PIXINVENT
-    Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 
 // Sidebar base
@@ -24,7 +20,7 @@
 .sidebar-fixed {
   position: fixed;
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .sidenav-overlay {

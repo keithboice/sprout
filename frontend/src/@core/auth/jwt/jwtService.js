@@ -1,5 +1,4 @@
-import jwtDefaultConfig from "./jwtDefaultConfig";
-
+import jwtDefaultConfig from './jwtDefaultConfig'
 
 export default class JwtService {
   // Will be used by this service for making API calls

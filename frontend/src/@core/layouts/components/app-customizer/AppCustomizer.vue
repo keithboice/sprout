@@ -1,7 +1,7 @@
 <template>
   <div
-    :class="{'open': isCustomizerOpen}"
     class="customizer d-none d-md-block"
+    :class="{'open': isCustomizerOpen}"
   >
     <!-- Toggler -->
     <b-link
@@ -9,9 +9,9 @@
       @click="isCustomizerOpen = !isCustomizerOpen"
     >
       <feather-icon
-        class="spinner"
         icon="SettingsIcon"
         size="15"
+        class="spinner"
       />
     </b-link>
     <!-- /Toggler -->
@@ -25,9 +25,9 @@
         <small>Customize &amp; Preview in Real Time</small>
       </div>
       <feather-icon
-        class="cursor-pointer"
         icon="XIcon"
         size="18"
+        class="cursor-pointer"
         @click="isCustomizerOpen = !isCustomizerOpen"
       />
     </div>
@@ -45,8 +45,8 @@
           <b-form-radio-group
             id="skin-radio-group"
             v-model="skin"
-            :options="skinOptions"
             name="skin"
+            :options="skinOptions"
           />
         </b-form-group>
 
@@ -55,8 +55,8 @@
           <b-form-radio-group
             id="content-width-radio-group"
             v-model="contentWidth"
-            :options="contentWidthOptions"
             name="content-width"
+            :options="contentWidthOptions"
           />
         </b-form-group>
 
@@ -68,9 +68,9 @@
           <b-form-checkbox
             v-model="isRTL"
             class="mr-0 mt-50"
-            inline
             name="is-rtl"
             switch
+            inline
           />
         </b-form-group>
 
@@ -81,11 +81,11 @@
         >
           <v-select
             v-model="routerTransition"
-            :clearable="false"
             :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+            :clearable="false"
+            label="title"
             :options="routerTransitionOptions"
             :reduce="option => option.value"
-            label="title"
           />
         </b-form-group>
       </div>
@@ -100,8 +100,8 @@
         >
           <b-form-radio-group
             v-model="layoutType"
-            :options="layoutTypeOptions"
             name="layout-type"
+            :options="layoutTypeOptions"
           />
         </b-form-group>
 
@@ -113,10 +113,10 @@
           <span class="font-weight-bold">Menu Collapsed</span>
           <b-form-checkbox
             v-model="isVerticalMenuCollapsed"
-            class="mr-0"
-            inline
             name="is-vertical-menu-collapsed"
+            class="mr-0"
             switch
+            inline
           />
         </div>
 
@@ -125,10 +125,10 @@
           <span class="font-weight-bold">Menu Hidden</span>
           <b-form-checkbox
             v-model="isNavMenuHidden"
-            class="mr-0"
-            inline
             name="is-menu-visible"
+            class="mr-0"
             switch
+            inline
           />
         </div>
 
@@ -145,8 +145,8 @@
           <div
             v-for="(color, index) in navbarColors"
             :key="color"
-            :class="[`bg-${color}`, {'border border-light': !index}, {'mark-active': navbarBackgroundColor === color}]"
             class="p-1 d-inline-block rounded mr-1 cursor-pointer"
+            :class="[`bg-${color}`, {'border border-light': !index}, {'mark-active': navbarBackgroundColor === color}]"
             @click="navbarBackgroundColor = color"
           />
         </b-form-group>
@@ -155,8 +155,8 @@
         <b-form-group :label="layoutType === 'vertical' ? 'Navbar Type' : 'Menu Type'">
           <b-form-radio-group
             v-model="navbarType"
-            :options="navbarTypes"
             name="navbar-type"
+            :options="navbarTypes"
           />
         </b-form-group>
       </div>
@@ -168,8 +168,8 @@
         <b-form-group label="Footer Type">
           <b-form-radio-group
             v-model="footerType"
-            :options="footerTypes"
             name="footer-type"
+            :options="footerTypes"
           />
         </b-form-group>
       </div>
@@ -178,11 +178,12 @@
 </template>
 
 <script>
-import { BFormCheckbox, BFormGroup, BFormRadioGroup, BLink } from "bootstrap-vue";
-import VuePerfectScrollbar                                   from "vue-perfect-scrollbar";
-import vSelect                                               from "vue-select";
-import useAppCustomizer                                      from "./useAppCustomizer";
-
+import {
+  BLink, BFormRadioGroup, BFormGroup, BFormCheckbox,
+} from 'bootstrap-vue'
+import vSelect from 'vue-select'
+import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+import useAppCustomizer from './useAppCustomizer'
 
 export default {
   components: {
@@ -309,8 +310,8 @@ export default {
 @import '~@core/scss/base/components/variables-dark';
 
 .customizer-section {
-  border-bottom: 1px solid #ebe9f1;
   padding: 1.5rem;
+    border-bottom: 1px solid #ebe9f1;
 
   .dark-layout & {
     border-color: $theme-dark-border-color;
@@ -324,11 +325,9 @@ export default {
 
   .form-group {
     margin-bottom: 1.5rem;;
-
     &:last-of-type {
-      margin-bottom: 0;
+    margin-bottom: 0;
     }
-
     ::v-deep legend {
       font-weight: 500;
     }
@@ -336,7 +335,7 @@ export default {
 }
 
 .mark-active {
-  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, .5);
+  box-shadow: 0 0 0 0.2rem rgba(38,143,255,.5);
 }
 
 .ps-customizer-area {

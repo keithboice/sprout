@@ -1,7 +1,7 @@
-// axios
-import axios from "axios";
-import Vue   from "vue";
+import Vue from 'vue'
 
+// axios
+import axios from 'axios'
 
 const axiosIns = axios.create({
   // You can add your headers here

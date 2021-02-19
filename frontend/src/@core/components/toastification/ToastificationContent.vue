@@ -3,8 +3,8 @@
     <div class="d-flex align-items-start">
       <b-avatar
         :variant="variant"
-        class="mr-75 flex-shrink-0"
         size="1.8rem"
+        class="mr-75 flex-shrink-0"
       >
         <feather-icon
           :icon="icon"
@@ -15,8 +15,8 @@
         <div>
           <h5
             v-if="title"
-            :class="`text-${variant}`"
             class="mb-0 font-weight-bolder toastification-title"
+            :class="`text-${variant}`"
             v-text="title"
           />
           <small
@@ -31,8 +31,8 @@
         >
           <feather-icon
             v-if="!hideClose"
-            class="text-body"
             icon="XIcon"
+            class="text-body"
           />
         </span>
       </div>
@@ -41,8 +41,7 @@
 </template>
 
 <script>
-import { BAvatar } from "bootstrap-vue";
-
+import { BAvatar } from 'bootstrap-vue'
 
 export default {
   components: {

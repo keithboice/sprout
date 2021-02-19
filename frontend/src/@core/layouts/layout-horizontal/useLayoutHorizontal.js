@@ -1,6 +1,5 @@
-import store        from "@/store";
-import { computed } from "@vue/composition-api";
-
+import { computed } from '@vue/composition-api'
+import store from '@/store'
 
 export default function useLayoutHorizontal(navbarMenuType, footerType, isVerticalMenuActive) {
   const currentBreakpoint = computed(() => store.getters['app/currentBreakPoint'])

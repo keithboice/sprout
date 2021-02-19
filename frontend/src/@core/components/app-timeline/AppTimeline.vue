@@ -5,15 +5,17 @@
 </template>
 
 <script>
-export default {}
+export default {
+
+}
 </script>
 
 <style lang="scss" scoped>
 .app-timeline {
   list-style: none;
-  margin: 0;
-  margin-left: 1rem;
   padding: 0;
+  margin: 0;
   position: relative;
+  margin-left: 1rem;
 }
 </style>

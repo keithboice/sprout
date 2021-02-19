@@ -1,16 +1,15 @@
 <template>
   <div
-    :class="collapseClasses"
-    class="collapse-icon"
     role="tablist"
+    class="collapse-icon"
+    :class="collapseClasses"
   >
     <slot />
   </div>
 </template>
 
 <script>
-import { v4 as uuidv4 } from "uuid";
-
+import { v4 as uuidv4 } from 'uuid'
 
 export default {
   props: {

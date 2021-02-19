@@ -1,7 +1,6 @@
-import router       from "@/router";
-import { isObject } from "@core/utils/utils";
-import { computed } from "@vue/composition-api";
-
+import router from '@/router'
+import { isObject } from '@core/utils/utils'
+import { computed } from '@vue/composition-api'
 
 /**
  * Return which component to render based on it's data/context
@@ -29,11 +28,12 @@ export const resolveHorizontalNavMenuItemComponent = item => {
  * @param {Object, String} link navigation link object/string
  */
 export const resolveNavDataRouteName = link => {
-  if (isObject(link.route)) {
-    const { route } = router.resolve(link.route)
+  const { route: route1 } = link
+  if (isObject(route1)) {
+    const { route } = router.resolve(route1)
     return route.name
   }
-  return link.route
+  return route1
 }
 
 /**

@@ -1,20 +1,20 @@
 <template>
   <li
     v-if="canViewVerticalNavMenuGroup(item)"
+    class="dropdown dropdown-submenu"
     :class="{
       'show': isOpen,
       'disabled': item.disabled,
       'sidebar-group-active active open': isActive,
       'openLeft': openChildDropdownOnLeft
     }"
-    class="dropdown dropdown-submenu"
     @mouseenter="() => updateGroupOpen(true)"
     @mouseleave="() => updateGroupOpen(false)"
   >
     <b-link
-      :class="{'dropdown-toggle': item.children}"
       class="dropdown-item"
       href="#"
+      :class="{'dropdown-toggle': item.children}"
       @click="() => updateGroupOpen(!isOpen)"
     >
       <feather-icon :icon="item.icon || 'CircleIcon'" />
@@ -36,16 +36,15 @@
 </template>
 
 <script>
-import { resolveHorizontalNavMenuItemComponent as resolveNavItemComponent } from "@core/layouts/utils";
-import { useUtils as useAclUtils }                                          from "@core/libs/acl";
-import { useUtils as useI18nUtils }                                         from "@core/libs/i18n";
-import { BLink }                                                            from "bootstrap-vue";
-import HorizontalNavMenuLink                                                from "../horizontal-nav-menu-link/HorizontalNavMenuLink.vue";
-import mixinHorizontalNavMenuGroup                                          from "./mixinHorizontalNavMenuGroup";
+import { BLink } from 'bootstrap-vue'
+import { resolveHorizontalNavMenuItemComponent as resolveNavItemComponent } from '@core/layouts/utils'
+import { useUtils as useI18nUtils } from '@core/libs/i18n'
+import { useUtils as useAclUtils } from '@core/libs/acl'
+import HorizontalNavMenuLink from '../horizontal-nav-menu-link/HorizontalNavMenuLink.vue'
 
 // Composition Function
-import useHorizontalNavMenuGroup from "./useHorizontalNavMenuGroup";
-
+import useHorizontalNavMenuGroup from './useHorizontalNavMenuGroup'
+import mixinHorizontalNavMenuGroup from './mixinHorizontalNavMenuGroup'
 
 export default {
   name: 'HorizontalNavMenuGroup',

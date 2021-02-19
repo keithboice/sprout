@@ -1,24 +1,20 @@
 <template>
-
-  <div
+  <ul
     id="main-menu-navigation"
-    class="nav navbar-navw-100 d-flex flex-row flex-grow-1 justify-content-center align-items-center"
+    class="nav navbar-nav"
   >
-
-    <div
+    <component
       :is="resolveNavComponent(item)"
       v-for="item in items"
       :key="item.header || item.title"
       :item="item"
-      class="nav-link btn-flat btn-lg"
     />
-  </div>
+  </ul>
 </template>
 
 <script>
-import HorizontalNavMenuHeaderGroup from "../horizontal-nav-menu-header-group/HorizontalNavMenuHeaderGroup.vue";
-import HorizontalNavMenuHeaderLink  from "../horizontal-nav-menu-header-link/HorizontalNavMenuHeaderLink.vue";
-
+import HorizontalNavMenuHeaderLink from '../horizontal-nav-menu-header-link/HorizontalNavMenuHeaderLink.vue'
+import HorizontalNavMenuHeaderGroup from '../horizontal-nav-menu-header-group/HorizontalNavMenuHeaderGroup.vue'
 
 export default {
   components: {

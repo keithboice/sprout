@@ -1,51 +1,52 @@
 <template>
   <svg
-    height="24"
-    version="1.1"
     viewBox="0 0 139 95"
+    version="1.1"
     xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    height="24"
   >
     <defs>
       <linearGradient
         id="linearGradient-1"
         x1="100%"
-        x2="50%"
         y1="10.5120544%"
+        x2="50%"
         y2="89.4879456%"
       >
         <stop
-          offset="0%"
           stop-color="#000000"
+          offset="0%"
         />
         <stop
-          offset="100%"
           stop-color="#FFFFFF"
+          offset="100%"
         />
       </linearGradient>
       <linearGradient
         id="linearGradient-2"
         x1="64.0437835%"
-        x2="37.373316%"
         y1="46.3276743%"
+        x2="37.373316%"
         y2="100%"
       >
         <stop
-          offset="0%"
           stop-color="#EEEEEE"
           stop-opacity="0"
+          offset="0%"
         />
         <stop
-          offset="100%"
           stop-color="#FFFFFF"
+          offset="100%"
         />
       </linearGradient>
     </defs>
     <g
       id="Page-1"
-      fill="none"
-      fill-rule="evenodd"
       stroke="none"
       stroke-width="1"
+      fill="none"
+      fill-rule="evenodd"
     >
       <g
         id="Artboard"

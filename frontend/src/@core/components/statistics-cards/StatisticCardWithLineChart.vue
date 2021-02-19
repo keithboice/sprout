@@ -12,27 +12,27 @@
         size="45"
       >
         <feather-icon
-          :icon="icon"
           size="21"
+          :icon="icon"
         />
       </b-avatar>
     </b-card-body>
 
     <vue-apex-charts
+      type="line"
+      height="100"
+      width="100%"
       :options="chartOptionsComputed"
       :series="chartData"
-      height="100"
-      type="line"
-      width="100%"
     />
 
   </b-card>
 </template>
 
 <script>
-import { $themeColors } from '@themeConfig'
-import { BAvatar, BCard, BCardBody } from 'bootstrap-vue'
+import { BCard, BCardBody, BAvatar } from 'bootstrap-vue'
 import VueApexCharts from 'vue-apexcharts'
+import { $themeColors } from '@themeConfig'
 import { lineChartOptions } from './chartOptions'
 
 export default {

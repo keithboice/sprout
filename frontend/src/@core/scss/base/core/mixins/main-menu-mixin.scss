@@ -1,10 +1,6 @@
 //  =========================================================================================
 // File Name: main-menu-mixin.scss
 // Description: Common mixin for menus, contain dark and light version scss.
-// ----------------------------------------------------------------------------------------
-// Item Name: Sprout  - Vuejs, HTML & Laravel Admin Dashboard Template
-// Author: PIXINVENT
-// Author URL: http://www.themeforest.net/user/pixinvent
 //==========================================================================================
 
 // Header navbar content and brand expanded & collapsed stats
@@ -34,7 +30,7 @@
   &.has-sub {
     > a:after {
       content: '';
-      background-image: url(str-replace(str-replace($chevron-right, 'currentColor', rgba(0, 0, 0, 0.2)), '#', '%23'));
+      background-image: url(str-replace(str-replace($chevron-right, 'currentColor', $body-color), '#', '%23'));
       background-repeat: no-repeat;
       background-position: center;
       background-size: $arrow-font-size;
@@ -112,7 +108,7 @@
 // $theme-bg    : Menu background color
 // ================================================
 @mixin menu-theme($theme-color, $theme-bg) {
-  $main-menu-top-open-color: darken($theme-bg, 10%);
+  $main-menu-top-open-color: darken($theme-color, 10%);
   $main-menu-top-open-hover-bg: darken($theme-bg, 6%);
   $main-menu-top-open-head-bg: darken($theme-bg, 4%);
 
@@ -145,7 +141,8 @@
         }
       }
       a {
-        color: darken($theme-color, 4.9%);
+        color: #727272;
+        background-color: #EFF1F3;
         padding: $menu-padding;
         line-height: 1.45;
 
@@ -154,7 +151,7 @@
         }
 
         & > * {
-          transition: transform 0.5s ease;
+          transition: transform 0.25s ease;
         }
       }
     }
@@ -162,15 +159,16 @@
     // Menu Item Hover Animation
     li.nav-item {
       a:hover > * {
-        transition: transform 0.5s ease;
-        filter: brightness(0.8);
+        transition: transform 0.25s ease;
+        /*transform: translateX(5px);*/
+        background-color: #E4E5E6;
       }
       ul.menu-content {
         li {
           a:hover > * {
-            transition: transform 0.5s ease;
-            /*transform: translateX(1px);*/
-            filter: brightness(0.8);
+            transition: transform 0.25s ease;
+            /*transform: translateX(5px);*/
+            background-color: #e4e5e6;
           }
         }
       }
@@ -210,8 +208,8 @@
       &.open:not(.menu-item-closing),
       &.sidebar-group-active {
         > a {
-          //color: $main-menu-top-open-color;
-          background: rgba(0,0,0,0.2);
+          color: $main-menu-top-open-color;
+          background: $main-menu-top-open-head-bg;
           border-radius: 6px;
         }
       }
@@ -228,28 +226,26 @@
       &.active {
         z-index: 1;
         > a {
-          /*background: linear-gradient(118deg, rgba($primary, 1), rgba($primary, 0.7));
-          box-shadow: 0 0 10px 1px rgba($primary, 0.7);*/
-          /*color: $white;*/
-          background: rgba(0, 0, 0, 0.05);
-          font-weight: 400;
+          background-color: #e4e5e6;
+          /*box-shadow: 0 0 10px 1px rgba($primary, 0.7);*/
+          color: #5EA68C;
+          /*font-weight: 400;*/
           border-radius: 4px;
         }
       }
 
       .active {
-        /*background: $main-menu-top-open-hover-bg;*/
-        background: rgba(0, 0, 0, 0.05);
+        background-color: #e4e5e6;
+
         > a {
-          color: $black;
+          color: #5ea68c;
           margin-bottom: 0;
         }
 
         .hover,
         :hover {
           > a {
-            /*background: $main-menu-top-active-head-bg;*/
-            background: rgba(0, 0, 0, 0.05);
+            background-color: #e4e5e6;
           }
         }
       }
@@ -284,9 +280,8 @@
         .open,
         .sidebar-group-active {
           > a {
-            color: $main-menu-sub-open-color;
-            /*background: $main-menu-top-active-head-bg;*/
-            background: rgba(0, 0, 0, 0.05);
+            color: #727272;
+            background: $main-menu-top-active-head-bg;
             border-radius: 6px;
           }
           //for 2rd level menu
@@ -304,18 +299,17 @@
         .hover,
         &:hover {
           > a {
-            color: $main-menu-sub-hover-color;
+            color: #727272;
           }
         }
 
         .active {
-          background: rgba(0, 0, 0, 0.05);
-          /*background: linear-gradient(118deg, rgba($primary, 1), rgba($primary, 0.7));
-          box-shadow: 0 0 10px 1px rgba($primary, 0.7);*/
+          background-color: #e4e5e6;
+          /*box-shadow: 0 0 10px 1px rgba($primary, 0.7);*/
           border-radius: 4px;
           z-index: 1;
           > a {
-            color: $dark;
+            color: #727272;
           }
         }
       }
@@ -333,11 +327,10 @@
       right: -($menu-expanded-width);
       width: $menu-expanded-width;
       font-weight: 600;
-      color: #fff;
+      color: #727272;
       text-transform: uppercase;
       text-align: left;
-      background-color: $dark;
-      border-color: $dark;
+      background-color: #e4e5e6;
       padding: 13px 20px;
     }
     > ul.menu-content {

@@ -1,27 +1,27 @@
 <template>
   <div
+    class="horizontal-layout"
     :class="[layoutClasses]"
     :data-col="isNavMenuHidden ? '1-column' : null"
-    class="horizontal-layout"
     style="height:inherit"
   >
 
     <!-- NAVBAR -->
     <b-navbar
-      :class="{'fixed-top': $store.getters['app/currentBreakPoint'] !== 'xl'}"
       :style="{
         backgroundColor: navbarType === 'static' && scrolledTo && skin === 'light' ? 'white' : null,
         boxShadow: navbarType === 'static' && scrolledTo ? 'rgba(0, 0, 0, 0.05) 0px 4px 20px 0px' : null,
       }"
-      :toggleable="true"
+      :toggleable="false"
       class="header-navbar navbar-shadow align-items-center navbar-brand-center navbar-fixed"
+      :class="{'fixed-top': $store.getters['app/currentBreakPoint'] !== 'xl'}"
     >
       <slot
-        :toggleVerticalMenuActive="toggleVerticalMenuActive"
         name="navbar"
+        :toggleVerticalMenuActive="toggleVerticalMenuActive"
       >
-        <span class="align-self-start mr-auto"><app-navbar-horizontal-layout-brand /></span>
-        <app-navbar-horizontal-layout :toggle-vertical-menu-active="true" />
+        <app-navbar-horizontal-layout-brand />
+        <app-navbar-horizontal-layout :toggle-vertical-menu-active="toggleVerticalMenuActive" />
       </slot>
     </b-navbar>
     <!--/ NAVBAR -->
@@ -29,8 +29,8 @@
     <div class="horizontal-menu-wrapper">
       <div
         v-if="!isNavMenuHidden"
-        :class="[navbarMenuTypeClass]"
         class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-light navbar-shadow menu-border d-none d-xl-block"
+        :class="[navbarMenuTypeClass]"
       >
         <horizontal-nav-menu />
       </div>
@@ -43,18 +43,18 @@
       >
         <template #header="slotProps">
           <slot
-            v-bind="slotProps"
             name="vertical-menu-header"
+            v-bind="slotProps"
           />
         </template>
       </vertical-nav-menu>
-      <!-- /Vertical Nav Menu -->
+    <!-- /Vertical Nav Menu -->
     </div>
 
     <!-- Vertical Nav Menu Overlay -->
     <div
-      :class="overlayClasses"
       class="sidenav-overlay"
+      :class="overlayClasses"
       @click="isVerticalMenuActive = false"
     />
     <!-- /Vertical Nav Menu Overlay -->
@@ -74,8 +74,8 @@
           v-slot:[name]="data"
         >
           <slot
-            v-bind="data"
             :name="name"
+            v-bind="data"
           />
         </template>
       </component>
@@ -85,8 +85,8 @@
 
     <!-- Footer -->
     <footer
-      :class="[footerTypeClass]"
       class="footer footer-light"
+      :class="[footerTypeClass]"
     >
       <slot name="footer">
         <app-footer />
@@ -98,28 +98,28 @@
 </template>
 
 <script>
-import useAppConfig                   from "@core/app-config/useAppConfig";
-import { useScrollListener }          from "@core/comp-functions/misc/event-listeners";
-import AppNavbarHorizontalLayout      from "@core/layouts/components/app-navbar/AppNavbarHorizontalLayout.vue";
-import AppNavbarHorizontalLayoutBrand from "@core/layouts/components/app-navbar/AppNavbarHorizontalLayoutBrand.vue";
-import AppBreadcrumb                  from "@core/layouts/components/AppBreadcrumb.vue";
-import AppFooter                      from "@core/layouts/components/AppFooter.vue";
+import AppBreadcrumb from '@core/layouts/components/AppBreadcrumb.vue'
+import AppNavbarHorizontalLayout from '@core/layouts/components/app-navbar/AppNavbarHorizontalLayout.vue'
+import AppNavbarHorizontalLayoutBrand from '@core/layouts/components/app-navbar/AppNavbarHorizontalLayoutBrand.vue'
+import AppFooter from '@core/layouts/components/AppFooter.vue'
+import useAppConfig from '@core/app-config/useAppConfig'
+import { BNavbar } from 'bootstrap-vue'
+import { useScrollListener } from '@core/comp-functions/misc/event-listeners'
+
+import { onUnmounted } from '@vue/composition-api'
 
 // Content Renderer
-import LayoutContentRendererDefault      from "@core/layouts/components/layout-content-renderer/LayoutContentRendererDefault.vue";
-import LayoutContentRendererLeft         from "@core/layouts/components/layout-content-renderer/LayoutContentRendererLeft.vue";
-import LayoutContentRendererLeftDetached from "@core/layouts/components/layout-content-renderer/LayoutContentRendererLeftDetached.vue";
+import LayoutContentRendererDefault from '@core/layouts/components/layout-content-renderer/LayoutContentRendererDefault.vue'
+import LayoutContentRendererLeft from '@core/layouts/components/layout-content-renderer/LayoutContentRendererLeft.vue'
+import LayoutContentRendererLeftDetached from '@core/layouts/components/layout-content-renderer/LayoutContentRendererLeftDetached.vue'
+import useLayoutHorizontal from './useLayoutHorizontal'
+import HorizontalNavMenu from './components/horizontal-nav-menu/HorizontalNavMenu.vue'
 
 // Vertical Menu
 /* eslint-disable import/order */
-import VerticalNavMenu                   from "@core/layouts/layout-vertical/components/vertical-nav-menu/VerticalNavMenu.vue";
-import useVerticalLayout                 from "@core/layouts/layout-vertical/useVerticalLayout";
-
-import { onUnmounted }       from "@vue/composition-api";
-import { BNavbar }           from "bootstrap-vue";
-import HorizontalNavMenu     from "./components/horizontal-nav-menu/HorizontalNavMenu.vue";
-import mixinLayoutHorizontal from "./mixinLayoutHorizontal";
-import useLayoutHorizontal   from "./useLayoutHorizontal";
+import VerticalNavMenu from '@core/layouts/layout-vertical/components/vertical-nav-menu/VerticalNavMenu.vue'
+import useVerticalLayout from '@core/layouts/layout-vertical/useVerticalLayout'
+import mixinLayoutHorizontal from './mixinLayoutHorizontal'
 /* eslint-enable import/order */
 
 export default {
@@ -160,10 +160,7 @@ export default {
 
     // Vertical Menu
     const {
-      isVerticalMenuActive,
-      toggleVerticalMenuActive,
-      overlayClasses,
-      resizeHandler,
+      isVerticalMenuActive, toggleVerticalMenuActive, overlayClasses, resizeHandler,
     } = useVerticalLayout(navbarType, footerType)
 
     // Resize handler
@@ -215,5 +212,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@core/scss/base/themes/bordered-layout.scss';
+@import "~@core/scss/base/themes/bordered-layout.scss";
 </style>

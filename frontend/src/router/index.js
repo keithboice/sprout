@@ -1,52 +1,86 @@
-import { getHomeRouteForLoggedInUser, getUserData, isUserLoggedIn } from "@/auth/utils";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
 
 // Routes
-import { canNavigate } from "@/libs/acl/routeProtection";
-import Vue             from "vue";
-import VueRouter       from "vue-router";
-import pages           from "./routes/views";
+const routes = [
 
+  // *===============================================---*
+  // *--------- CHAT  ---------------------------------------*
+  // *===============================================---*
+  {
+    path: '/apps/chat',
+    name: 'apps-chat-active',
+    component: () => import('@/views/apps/chat/Chat.vue'),
+    meta: {
+      contentRenderer: 'sidebar-left',
+      contentClass: 'chat-application',
+      navActiveLink: 'apps-chat-active',
+    },
+  }, {
+    path: '/apps/chat/new',
+    name: 'apps-chat-new',
+    component: () => import('@/views/apps/chat/Chat.vue'),
+    meta: {
+      contentRenderer: 'open-chat',
+      contactId: '1',
+      contentClass: 'chat-application',
+      navActiveLink: 'apps-chat-new',
+    },
+  }, {
+    path: '/apps/chat/started',
+    name: 'apps-chat-started',
+    component: () => import('@/views/apps/chat/Chat.vue'),
+    meta: {
+      contentRenderer: 'sidebar-left',
+      contentClass: 'chat-application',
+      navActiveLink: 'apps-chat-started',
+    },
+  }, {
+    path: '/apps/chat/closed',
+    name: 'apps-chat-closed',
+    component: () => import('@/views/apps/chat/Chat.vue'),
+    meta: {
+      contentRenderer: 'sidebar-left',
+      contentClass: 'chat-application',
+      navActiveLink: 'apps-chat-closed',
+    },
+  },
 
-Vue.use( VueRouter );
+]
 
-const router = new VueRouter( {
-                                mode: "history",
-                                base: process.env.BASE_URL,
-                                scrollBehavior () {
-                                  return {
-                                    x: 0,
-                                    y: 0
-                                  };
-                                },
-                                routes: [
-                                  {
-                                    path:     "/",
-                                    redirect: { name: "dashboard-dashboard-ecomm" }
-                                  }, ...pages, {
-                                    path:     "*",
-                                    redirect: "error-404"
-                                  }
-                                ]
-                              } );
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  scrollBehavior() {
+    return { x: 0, y: 0 }
+  },
+  routes: [
+    { path: '/', redirect: { name: 'apps-chat' } },
+    ...routes,
+    {
+      path: '*',
+      redirect: 'error-404',
+    },
+  ],
+})
 
-router.beforeEach( ( to, _, next ) => {
-  const isLoggedIn = isUserLoggedIn();
-  
-  if ( !canNavigate( to ) ) {
+router.beforeEach((to, _, next) => next())
+/* const isLoggedIn = isUserLoggedIn()
+
+  if (!canNavigate(to)) {
     // Redirect to login if not logged in
-    if ( !isLoggedIn ) return next( { name: "auth-login" } );
-    
-    // If logged in => not authorized
-    return next( { name: "misc-not-authorized" } );
-  }
-  
-  // Redirect if logged in
-  if ( to.meta.redirectIfLoggedIn && isLoggedIn ) {
-    const userData = getUserData();
-    next( getHomeRouteForLoggedInUser( userData ? userData.role : null ) );
-  }
-  
-  return next();
-} );
+    if (!isLoggedIn) return next({ name: 'auth-login' })
 
-export default router;
+    // If logged in => not authorized
+    return next({ name: 'misc-not-authorized' })
+  }
+
+  // Redirect if logged in
+  if (to.meta.redirectIfLoggedIn && isLoggedIn) {
+    const userData = getUserData()
+    next(getHomeRouteForLoggedInUser(userData ? userData.role : null))
+  } */
+
+export default router

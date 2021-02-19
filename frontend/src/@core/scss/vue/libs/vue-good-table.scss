@@ -1,6 +1,6 @@
 // Core variables and mixins
 @import '~@core/scss/base/bootstrap-extended/include';
-// Overrides contacts variable
+// Overrides user variable
 @import '~@core/scss/base/components/include';
 // good table variable override to change the color of table
 $text-color: $body-color;
@@ -14,12 +14,10 @@ $thead-bg-color-2: transparent;
       &:before {
         border-top-color: $border-color;
       }
-
       &:after {
         border-bottom-color: $border-color;
       }
     }
-
     thead {
       th {
         &.sorting-desc {
@@ -27,7 +25,6 @@ $thead-bg-color-2: transparent;
             border-top-color: $primary;
           }
         }
-
         &.sorting-asc {
           &::after {
             border-bottom-color: $primary;
@@ -48,7 +45,6 @@ $thead-bg-color-2: transparent;
       }
     }
   }
-
   .pagination {
     .page-item:last-child:not(.next-item) {
       .page-link {
@@ -58,7 +54,6 @@ $thead-bg-color-2: transparent;
         border-bottom-left-radius: 1.428rem;
       }
     }
-
     .page-item:first-child:not(.prev-item) {
       .page-link {
         border-top-left-radius: 0;
@@ -77,42 +72,34 @@ body {
       .vgt-table {
         background-color: $theme-dark-card-bg;
         border-color: $theme-dark-border-color;
-
         th,
         td,
         tr {
           border-color: $theme-dark-border-color;
           background-color: $theme-dark-card-bg;
-
           span {
             color: $theme-dark-body-color;
           }
-
           input {
             background-color: $theme-dark-input-bg;
             color: $theme-dark-body-color;
             border-color: $theme-dark-input-border-color;
-
             &::placeholder {
               color: $theme-dark-body-color;
             }
           }
         }
-
         th.sortable {
           &::after {
             border-bottom-color: $theme-dark-body-color;
           }
-
           &::before {
             border-top-color: $theme-dark-body-color;
           }
         }
-
         thead th.sorting-desc::before {
           border-top-color: $primary;
         }
-
         thead th.sorting-asc::after {
           border-bottom-color: $primary;
         }
@@ -131,13 +118,11 @@ html[dir='rtl'] {
       &.prev-item {
         margin-right: 0.3571rem;
         margin-left: 0;
-
         .page-link {
           svg {
             transform: rotate(360deg);
           }
         }
-
         ~ .page-item:nth-child(2):not(.active) {
           .page-link {
             border-top-right-radius: 0 !important;
@@ -146,7 +131,6 @@ html[dir='rtl'] {
             border-bottom-left-radius: 5rem;
           }
         }
-
         ~ .page-item:nth-last-child(2):not(.active) {
           .page-link {
             border-top-left-radius: 0 !important;
@@ -155,14 +139,12 @@ html[dir='rtl'] {
             border-bottom-right-radius: 5rem;
           }
         }
-
         ~ .page-item:nth-child(2) {
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
           border-top-left-radius: 5rem;
           border-bottom-left-radius: 5rem;
         }
-
         ~ .page-item:nth-last-child(2) {
           border-top-left-radius: 0;
           border-bottom-left-radius: 0;
@@ -170,18 +152,15 @@ html[dir='rtl'] {
           border-bottom-right-radius: 5rem;
         }
       }
-
       &.next-item {
         margin-right: 0;
         margin-left: 0.3571rem;
-
         .page-link {
           svg {
             transform: rotate(360deg);
           }
         }
       }
-
       &.active {
         .page-link {
           border-top-right-radius: 5rem !important;
@@ -191,5 +170,4 @@ html[dir='rtl'] {
     }
   }
 }
-
 @import '~vue-good-table/src/styles/style.scss';

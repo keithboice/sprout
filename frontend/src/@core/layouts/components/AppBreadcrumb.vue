@@ -19,9 +19,9 @@
             <b-breadcrumb>
               <b-breadcrumb-item to="/">
                 <feather-icon
-                  class="align-text-top"
                   icon="HomeIcon"
                   size="16"
+                  class="align-text-top"
                 />
               </b-breadcrumb-item>
               <b-breadcrumb-item
@@ -41,21 +41,21 @@
     <!-- Content Right -->
     <b-col
       class="content-header-right text-md-right d-md-block d-none mb-1"
-      cols="12"
       md="3"
+      cols="12"
     >
       <b-dropdown
-        no-caret
-        right
-        toggle-class="p-0"
         variant="link"
+        no-caret
+        toggle-class="p-0"
+        right
       >
 
         <template #button-content>
           <b-button
             v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-            class="btn-icon"
             variant="primary"
+            class="btn-icon"
           >
             <feather-icon icon="SettingsIcon" />
           </b-button>
@@ -98,9 +98,10 @@
 </template>
 
 <script>
-import { BBreadcrumb, BBreadcrumbItem, BButton, BCol, BDropdown, BDropdownItem, BRow } from "bootstrap-vue";
-import Ripple                                                                          from "vue-ripple-directive";
-
+import {
+  BBreadcrumb, BBreadcrumbItem, BRow, BCol, BDropdown, BDropdownItem, BButton,
+} from 'bootstrap-vue'
+import Ripple from 'vue-ripple-directive'
 
 export default {
   directives: {

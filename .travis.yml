@@ -1,0 +1,11 @@
+language: node_js
+script:
+  - set -e
+
+  - echo 'Installing...' && echo -en 'travis_fold:start:install\\r'
+  - npm install
+  - echo -en 'travis_fold:end:install\\r'
+
+  #- echo 'Building...' && echo -en 'travis_fold:start:build\\r'
+  #- node common/scripts/install-run-rush.js rebuild --verbose
+  #- echo -en 'travis_fold:end:build\\r'

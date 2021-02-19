@@ -1,13 +1,13 @@
 <template>
   <b-card class="text-center">
     <b-avatar
-      :variant="`light-${color}`"
       class="mb-1"
+      :variant="`light-${color}`"
       size="45"
     >
       <feather-icon
-        :icon="icon"
         size="21"
+        :icon="icon"
       />
     </b-avatar>
     <div class="truncate">
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { BAvatar, BCard } from 'bootstrap-vue'
+import { BCard, BAvatar } from 'bootstrap-vue'
 
 export default {
   components: {

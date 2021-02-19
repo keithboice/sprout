@@ -1,5 +1,5 @@
-import Vue     from "vue";
-import vSelect from "vue-select";
+import Vue from 'vue'
+import vSelect from 'vue-select'
 
 // Set the components prop default to return our fresh components
 vSelect.props.components.default = () => ({

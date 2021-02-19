@@ -2,15 +2,15 @@
     File Name: VxTour.vue
     Description: Tour Component
     ----------------------------------------------------------------------------------------
-    Item Name: Sprout - Vuejs, HTML & Laravel Admin Dashboard Template
+    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
       Author: Pixinvent
     Author URL: http://www.themeforest.net/user/pixinvent
 ========================================================================================== -->
 
 <template>
   <v-tour
-    :steps="steps"
     name="vuexyTour"
+    :steps="steps"
   >
     <template slot-scope="tour">
       <transition name="fade">
@@ -19,13 +19,13 @@
           v-for="(step, index) of tour.steps"
           v-if="tour.currentStep === index"
           :key="index"
+          :step="step"
+          :previous-step="tour.previousStep"
+          :next-step="tour.nextStep"
+          :stop="tour.stop"
           :is-first="tour.isFirst"
           :is-last="tour.isLast"
           :labels="tour.labels"
-          :next-step="tour.nextStep"
-          :previous-step="tour.previousStep"
-          :step="step"
-          :stop="tour.stop"
         >
 
           <div
@@ -35,9 +35,9 @@
             <!-- Skip Button -->
             <b-button
               v-if="tour.currentStep != tour.steps.length - 1"
-              class="btn-tour-skip mr-1"
               size="sm"
               variant="outline-primary"
+              class="btn-tour-skip mr-1"
               @click="tour.stop"
             >
               <span class="mr-25 align-middle">Skip</span>
@@ -64,9 +64,9 @@
             <!-- Next Button -->
             <b-button
               v-if="tour.currentStep != tour.steps.length - 1"
-              class="btn-tour-next"
               size="sm"
               variant="primary"
+              class="btn-tour-next"
               @click="tour.nextStep"
             >
               <span class="mr-25 align-middle">Next</span>
@@ -79,9 +79,9 @@
             <!-- Finish Button -->
             <b-button
               v-if="tour.currentStep == tour.steps.length - 1"
-              class="btn-tour-finish"
               size="sm"
               variant="primary"
+              class="btn-tour-finish"
               @click="tour.stop"
             >
               <span class="mr-25 align-middle">Finish</span>
@@ -100,8 +100,7 @@
 </template>
 
 <script>
-import { BButton } from "bootstrap-vue";
-
+import { BButton } from 'bootstrap-vue'
 
 export default {
   name: 'VxTour',

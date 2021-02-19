@@ -12,8 +12,8 @@
         size="45"
       >
         <feather-icon
-          :icon="icon"
           size="21"
+          :icon="icon"
         />
       </b-avatar>
     </b-card-body>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { BAvatar, BCard, BCardBody } from 'bootstrap-vue'
+import { BCard, BCardBody, BAvatar } from 'bootstrap-vue'
 
 export default {
   components: {

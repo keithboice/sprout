@@ -1,14 +1,23 @@
-import { extend, localize } from "vee-validate";
-import ar                   from "vee-validate/dist/locale/ar.json";
-import en                   from "vee-validate/dist/locale/en.json";
+import { extend, localize } from 'vee-validate'
 import {
-  alpha as rule_alpha, alpha_dash as rule_alpha_dash, alpha_num as rule_alpha_num, between as rule_between,
-  confirmed as rule_confirmed, digits as rule_digits, email as rule_email, integer as rule_integer,
-  length as rule_length, min as rule_min, regex as rule_regex, required as rule_required
-}                           from "vee-validate/dist/rules";
+  required as rule_required,
+  email as rule_email,
+  min as rule_min,
+  confirmed as rule_confirmed,
+  regex as rule_regex,
+  between as rule_between,
+  alpha as rule_alpha,
+  integer as rule_integer,
+  digits as rule_digits,
+  alpha_dash as rule_alpha_dash,
+  alpha_num as rule_alpha_num,
+  length as rule_length,
+} from 'vee-validate/dist/rules'
+import ar from 'vee-validate/dist/locale/ar.json'
+import en from 'vee-validate/dist/locale/en.json'
 
 // eslint-disable-next-line object-curly-newline
-import { validatorCreditCard, validatorPassword, validatorPositive, validatorUrlValidator } from "./validators";
+import { validatorPositive, validatorUrlValidator, validatorPassword, validatorCreditCard } from './validators'
 
 // ////////////////////////////////////////////////////////
 // General

@@ -1,6 +1,5 @@
-import store             from "@/store";
-import { computed, ref } from "@vue/composition-api";
-
+import { ref, computed } from '@vue/composition-api'
+import store from '@/store'
 
 export default function useVerticalNavMenu(props) {
   // ------------------------------------------------

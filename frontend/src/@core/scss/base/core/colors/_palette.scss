@@ -1,17 +1,6 @@
 // ================================================================================================
-//   File Name: pallette.scss
+//   File Name: palette.scss
 //   Description: Custom color system styles, includes background, border and text colors
-//   ----------------------------------------------------------------------------------------------
-//   Item Name: Sprout  - Vuejs, HTML & Laravel Admin Dashboard Template
-//   Author: PIXINVENT
-//   Author URL: http://www.themeforest.net/user/pixinvent
-// ================================================================================================
-
-//  ================================================================================================
-//  WARNING: PLEASE DO NOT CHANGE THIS VARIABLE FILE.
-//  THIS FILE WILL GET OVERWRITTEN WITH EACH Sprout HTML TEMPLATE RELEASE.
-//  TIP:
-//  We suggest you to use this (assets/scss/colors/palette.scss) file for overriding color variables.
 //  ================================================================================================
 
 // usage: theme-color("name_of_color", "type_of_color")
@@ -223,7 +212,6 @@
               background-color: color-function($color_name, 'lighten-1');
             }
           }
-
           &:active,
           &.active,
           &:focus {
@@ -233,7 +221,6 @@
           &:hover {
             color: $white;
           }
-
           &:active,
           &.active {
             outline: none;
@@ -254,11 +241,9 @@
             background-color: rgba($color: $color_value, $alpha: 0.04);
             color: $color_value;
           }
-
           &:not(:disabled):not(.disabled):active:focus {
             box-shadow: none;
           }
-
           &:not(:disabled):not(.disabled):active,
           &:not(:disabled):not(.disabled).active,
           &:not(:disabled):not(.disabled):focus {
@@ -269,7 +254,6 @@
           &.dropdown-toggle::after {
             background-image: url(str-replace(str-replace($chevron-down, 'currentColor', $color_value), '#', '%23'));
           }
-
           // split toggle have show class
           .show > &.dropdown-toggle {
             background-color: rgba($color: $color_value, $alpha: 0.2);
@@ -285,18 +269,18 @@
           &.waves-effect {
             .waves-ripple {
               background: radial-gradient(
-                              rgba($color_value, 0.2) 0,
-                              rgba($color_value, 0.3) 40%,
-                              rgba($color_value, 0.4) 50%,
-                              rgba($color_value, 0.5) 60%,
-                              rgba($white, 0) 70%
+                rgba($color_value, 0.2) 0,
+                rgba($color_value, 0.3) 40%,
+                rgba($color_value, 0.4) 50%,
+                rgba($color_value, 0.5) 60%,
+                rgba($white, 0) 70%
               );
             }
           }
         }
       }
 
-      // Bullet colors for email styles
+      // Bullet colors for email app
       @if ($color_name != 'light' and $color_name != 'black' and $color_name != 'white') {
         .bullet {
           &.bullet-#{$color_name} {
@@ -313,7 +297,6 @@
               .modal-title {
                 color: $color_value;
               }
-
               .close {
                 color: $color_value !important;
               }
@@ -350,7 +333,6 @@
                 color: $white;
               }
             }
-
             &.next-item,
             &.next {
               .page-link {
@@ -358,15 +340,14 @@
                 &:hover {
                   &:after {
                     background-image: url(str-replace(
-                                    str-replace($chevron-right, 'currentColor', $color_value),
-                                    '#',
-                                    '%23'
+                      str-replace($chevron-right, 'currentColor', $color_value),
+                      '#',
+                      '%23'
                     )) !important;
                   }
                 }
               }
             }
-
             &.prev-item,
             &.prev {
               .page-link {
@@ -374,9 +355,9 @@
                 &:hover {
                   &:before {
                     background-image: url(str-replace(
-                                    str-replace($chevron-left, 'currentColor', $color_value),
-                                    '#',
-                                    '%23'
+                      str-replace($chevron-left, 'currentColor', $color_value),
+                      '#',
+                      '%23'
                     )) !important;
                   }
                 }
@@ -426,7 +407,6 @@
 
             &.timeline-point-indicator {
               background-color: $color_value !important;
-
               &:before {
                 background: rgba($color: $color_value, $alpha: 0.12) !important;
               }
@@ -463,7 +443,6 @@
             border-color: $color_value;
             background-color: $color_value;
           }
-
           &.custom-checkbox,
           &.custom-radio {
             .custom-control-input:checked ~ .custom-control-label::before,
@@ -472,13 +451,11 @@
               box-shadow: 0 2px 4px 0 rgba($color_value, 0.4) !important;
             }
           }
-
           .custom-control-input:disabled:checked ~ .custom-control-label::before {
             background-color: rgba($color_value, 0.65) !important;
             border: none;
             box-shadow: none !important;
           }
-
           .custom-control-input:focus ~ .custom-control-label::before {
             border-color: $color_value;
           }

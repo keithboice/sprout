@@ -2,13 +2,13 @@
   <b-card no-body>
     <b-card-body class="pb-0">
       <b-avatar
-        :variant="`light-${color}`"
         class="mb-1"
+        :variant="`light-${color}`"
         size="45"
       >
         <feather-icon
-          :icon="icon"
           size="21"
+          :icon="icon"
         />
       </b-avatar>
       <div class="truncate">
@@ -20,20 +20,20 @@
     </b-card-body>
 
     <vue-apex-charts
+      type="area"
+      height="100"
+      width="100%"
       :options="chartOptionsComputed"
       :series="chartData"
-      height="100"
-      type="area"
-      width="100%"
     />
 
   </b-card>
 </template>
 
 <script>
-import { $themeColors } from '@themeConfig'
-import { BAvatar, BCard, BCardBody } from 'bootstrap-vue'
+import { BCard, BCardBody, BAvatar } from 'bootstrap-vue'
 import VueApexCharts from 'vue-apexcharts'
+import { $themeColors } from '@themeConfig'
 import { areaChartOptions } from './chartOptions'
 
 export default {

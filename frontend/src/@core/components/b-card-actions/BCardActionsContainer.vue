@@ -3,8 +3,8 @@
     <ul class="list-inline mb-0">
       <li v-if="availableActions.includes('collapse')">
         <a
-          :class="{ rotate: isCollapsed }"
           data-action="collapse"
+          :class="{ rotate: isCollapsed }"
           @click="$emit('collapse')"
         >
           <feather-icon

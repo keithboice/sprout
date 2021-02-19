@@ -1,20 +1,20 @@
 <template>
   <b-overlay
     v-if="!cardClosed"
+    variant="white"
     :show="showLoading"
+    spinner-variant="primary"
     blur="0"
     opacity=".75"
     rounded="sm"
-    spinner-variant="primary"
-    variant="white"
   >
     <b-card
       ref="bCard"
       v-bind="cardAttrs"
-      :aria-controls="parentID"
-      :aria-expanded="!content_visible ? 'true' : 'false'"
-      :style="cardStyles"
       no-body
+      :aria-expanded="!content_visible ? 'true' : 'false'"
+      :aria-controls="parentID"
+      :style="cardStyles"
       v-on="$listeners"
     >
       <div
@@ -25,7 +25,7 @@
         <div>
           <b-card-title>{{ $attrs.title }}</b-card-title>
           <b-card-sub-title v-if="$attrs['sub-title']">
-            {{ $attrs[ 'sub-title' ] }}
+            {{ $attrs['sub-title'] }}
           </b-card-sub-title>
         </div>
 
@@ -34,9 +34,9 @@
           v-if="showActions"
           :available-actions="availableActions"
           :is-collapsed="!content_visible"
-          @close="triggerClose"
           @collapse="triggerCollapse"
           @refresh="triggerRefresh"
+          @close="triggerClose"
         />
       </div>
 
@@ -58,9 +58,10 @@
 </template>
 
 <script>
-import { BCard, BCardBody, BCardSubTitle, BCardTitle, BCollapse, BOverlay } from "bootstrap-vue";
-import BCardActionsContainer                                                from "./BCardActionsContainer.vue";
-
+import {
+  BCard, BCardTitle, BCardSubTitle, BCardBody, BCollapse, BOverlay,
+} from 'bootstrap-vue'
+import BCardActionsContainer from './BCardActionsContainer.vue'
 
 export default {
   components: {
@@ -120,9 +121,7 @@ export default {
     },
     availableActions() {
       const actions = []
-      const allFalse = (
-        this.actionCollapse || this.actionRefresh || this.actionClose
-      ) === false
+      const allFalse = (this.actionCollapse || this.actionRefresh || this.actionClose) === false
 
       if (this.actionCollapse || allFalse) actions.push('collapse')
       if (this.actionRefresh || allFalse) actions.push('refresh')
@@ -165,8 +164,8 @@ export default {
 .card {
   ::v-deep .card-header {
     .heading-elements {
-      cursor: inherit;
       position: static;
+      cursor: inherit;
 
       .list-inline {
         display: block;

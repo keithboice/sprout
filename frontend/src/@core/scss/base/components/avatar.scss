@@ -1,11 +1,6 @@
 // =========================================================================================
 //   File Name: avatar.scss
 //   Description: Avatar style.
-//   ----------------------------------------------------------------------------------------
-//   Item Name: Sprout  - Vuejs, HTML & Laravel Admin Dashboard Template
-//   Author: PIXINVENT
-//   Author URL: http://www.themeforest.net/user/pixinvent
-// ==========================================================================================
 
 // Component: Avatar
 // ========================================================================
@@ -46,7 +41,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    border: 1px solid $white;
+    border: 1px solid rgba(0,0,0,0.25);
     &.avatar-status-lg,
     &.avatar-status-xl {
       width: $avatar-status-size-lg;

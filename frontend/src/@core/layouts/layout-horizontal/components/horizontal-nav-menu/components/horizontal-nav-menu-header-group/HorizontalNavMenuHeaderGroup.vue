@@ -1,18 +1,18 @@
 <template>
   <li
     v-if="canViewHorizontalNavMenuHeaderGroup(item)"
+    class="dropdown nav-item"
     :class="{
       'sidebar-group-active active open': isActive,
       'show': isOpen,
     }"
-    class="dropdown nav-item"
     @mouseenter="() => updateGroupOpen(true)"
     @mouseleave="() => updateGroupOpen(false)"
   >
     <b-link class="nav-link dropdown-toggle d-flex align-items-center">
       <feather-icon
-        :icon="item.icon"
         size="14"
+        :icon="item.icon"
       />
       <span>{{ t(item.header) }}</span>
     </b-link>
@@ -28,16 +28,15 @@
 </template>
 
 <script>
-import { resolveHorizontalNavMenuItemComponent } from "@core/layouts/utils";
-import { useUtils as useAclUtils }               from "@core/libs/acl";
-import { useUtils as useI18nUtils }              from "@core/libs/i18n";
-import { BLink }                                 from "bootstrap-vue";
+import { BLink } from 'bootstrap-vue'
+import { resolveHorizontalNavMenuItemComponent } from '@core/layouts/utils'
+import { useUtils as useAclUtils } from '@core/libs/acl'
+import { useUtils as useI18nUtils } from '@core/libs/i18n'
+import useHorizontalNavMenuHeaderGroup from './useHorizontalNavMenuHeaderGroup'
+import mixinHorizontalNavMenuHeaderGroup from './mixinHorizontalNavMenuHeaderGroup'
 
-import HorizontalNavMenuGroup            from "../horizontal-nav-menu-group/HorizontalNavMenuGroup.vue";
-import HorizontalNavMenuLink             from "../horizontal-nav-menu-link/HorizontalNavMenuLink.vue";
-import mixinHorizontalNavMenuHeaderGroup from "./mixinHorizontalNavMenuHeaderGroup";
-import useHorizontalNavMenuHeaderGroup   from "./useHorizontalNavMenuHeaderGroup";
-
+import HorizontalNavMenuGroup from '../horizontal-nav-menu-group/HorizontalNavMenuGroup.vue'
+import HorizontalNavMenuLink from '../horizontal-nav-menu-link/HorizontalNavMenuLink.vue'
 
 export default {
   components: {

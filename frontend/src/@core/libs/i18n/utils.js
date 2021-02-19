@@ -1,5 +1,4 @@
-import { getCurrentInstance } from "@vue/composition-api";
-
+import { getCurrentInstance } from '@vue/composition-api'
 
 /**
  * Returns translated string if i18n package is available to Vue

@@ -1,21 +1,21 @@
 <template>
   <div
+    class="vertical-layout h-100"
     :class="[layoutClasses]"
     :data-col="isNavMenuHidden ? '1-column' : null"
-    class="vertical-layout h-100"
   >
     <!-- Navbar -->
     <b-navbar
-      :class="[navbarTypeClass]"
       :toggleable="false"
       :variant="navbarBackgroundColor"
       class="header-navbar navbar navbar-shadow align-items-center"
+      :class="[navbarTypeClass]"
     >
       <slot
+        name="navbar"
+        :toggleVerticalMenuActive="toggleVerticalMenuActive"
         :navbarBackgroundColor="navbarBackgroundColor"
         :navbarTypeClass="[...navbarTypeClass, 'header-navbar navbar navbar-shadow align-items-center']"
-        :toggleVerticalMenuActive="toggleVerticalMenuActive"
-        name="navbar"
       >
         <app-navbar-vertical-layout :toggle-vertical-menu-active="toggleVerticalMenuActive" />
       </slot>
@@ -30,8 +30,8 @@
     >
       <template #header="slotProps">
         <slot
-          v-bind="slotProps"
           name="vertical-menu-header"
+          v-bind="slotProps"
         />
       </template>
     </vertical-nav-menu>
@@ -39,8 +39,8 @@
 
     <!-- Vertical Nav Menu Overlay -->
     <div
-      :class="overlayClasses"
       class="sidenav-overlay"
+      :class="overlayClasses"
       @click="isVerticalMenuActive = false"
     />
     <!-- /Vertical Nav Menu Overlay -->
@@ -56,23 +56,26 @@
         :is="layoutContentRenderer"
         :key="layoutContentRenderer === 'layout-content-renderer-left' ? $route.meta.navActiveLink || $route.name : null"
       >
+
         <template
           v-for="(index, name) in $scopedSlots"
           v-slot:[name]="data"
         >
           <slot
-            v-bind="data"
             :name="name"
+            v-bind="data"
           />
         </template>
+
       </component>
     </transition>
+
     <!--/ Content -->
 
     <!-- Footer -->
     <footer
-      :class="[footerTypeClass]"
       class="footer footer-light"
+      :class="[footerTypeClass]"
     >
       <slot name="footer">
         <app-footer />
@@ -85,18 +88,17 @@
 </template>
 
 <script>
-import useAppConfig                      from "@core/app-config/useAppConfig";
-import AppNavbarVerticalLayout           from "@core/layouts/components/app-navbar/AppNavbarVerticalLayout.vue";
-import AppFooter                         from "@core/layouts/components/AppFooter.vue";
-import LayoutContentRendererDefault      from "@core/layouts/components/layout-content-renderer/LayoutContentRendererDefault.vue";
-import LayoutContentRendererLeft         from "@core/layouts/components/layout-content-renderer/LayoutContentRendererLeft.vue";
-import LayoutContentRendererLeftDetached from "@core/layouts/components/layout-content-renderer/LayoutContentRendererLeftDetached.vue";
-import { onUnmounted }                   from "@vue/composition-api";
-import { BNavbar }                       from "bootstrap-vue";
-import VerticalNavMenu                   from "./components/vertical-nav-menu/VerticalNavMenu.vue";
-import mixinVerticalLayout               from "./mixinVerticalLayout";
-import useVerticalLayout                 from "./useVerticalLayout";
-
+import { onUnmounted } from '@vue/composition-api'
+import AppNavbarVerticalLayout from '@core/layouts/components/app-navbar/AppNavbarVerticalLayout.vue'
+import AppFooter from '@core/layouts/components/AppFooter.vue'
+import useAppConfig from '@core/app-config/useAppConfig'
+import { BNavbar } from 'bootstrap-vue'
+import LayoutContentRendererDefault from '@core/layouts/components/layout-content-renderer/LayoutContentRendererDefault.vue'
+import LayoutContentRendererLeft from '@core/layouts/components/layout-content-renderer/LayoutContentRendererLeft.vue'
+import LayoutContentRendererLeftDetached from '@core/layouts/components/layout-content-renderer/LayoutContentRendererLeftDetached.vue'
+import VerticalNavMenu from './components/vertical-nav-menu/VerticalNavMenu.vue'
+import useVerticalLayout from './useVerticalLayout'
+import mixinVerticalLayout from './mixinVerticalLayout'
 
 export default {
   components: {
@@ -120,11 +122,7 @@ export default {
   },
   setup() {
     const {
-      routerTransition,
-      navbarBackgroundColor,
-      navbarType,
-      footerType,
-      isNavMenuHidden,
+      routerTransition, navbarBackgroundColor, navbarType, footerType, isNavMenuHidden,
     } = useAppConfig()
 
     const {

@@ -1,15 +1,18 @@
 export default [
   {
-    title:    "Dashboards",
-    icon:     "PieChartIcon",
+    title: 'Dashboards',
+    icon: 'HomeIcon',
+    tag: '2',
+    tagVariant: 'light-warning',
     children: [
       {
-        title: "Analytics",
-        route: "dashboard-dashboard"
-      }, {
-        title: "eCommerce",
-        route: "dashboard-dashboard-ecomm"
-      }
-    ]
-  }
-];
+        title: 'eCommerce',
+        route: 'dashboard-ecommerce',
+      },
+      {
+        title: 'Analytics',
+        route: 'dashboard-analytics',
+      },
+    ],
+  },
+]

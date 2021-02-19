@@ -14,7 +14,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+
+}
 </script>
 
 <style lang="scss">
@@ -35,10 +37,10 @@ $gap: 2rem;
   }
 
   .cws-sidebar {
+    width: 260px;
     position: absolute;
     right: 0;
     top: 0;
-    width: 260px;
 
     @media (max-width: (map-get($grid-breakpoints, lg))) {
       margin-top: $gap;

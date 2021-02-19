@@ -1,20 +1,19 @@
 <template>
   <e-charts
     ref="line"
-    :options="option"
-    auto-resize
     autoresize
+    :options="option"
     theme="theme-color"
+    auto-resize
   />
 </template>
 
 <script>
-import "echarts/lib/chart/bar";
-import "echarts/lib/component/legend";
-import "echarts/lib/component/tooltip";
-import ECharts from "vue-echarts";
-import theme   from "./theme.json";
-
+import ECharts from 'vue-echarts'
+import 'echarts/lib/component/tooltip'
+import 'echarts/lib/component/legend'
+import 'echarts/lib/chart/bar'
+import theme from './theme.json'
 
 ECharts.registerTheme('theme-color', theme)
 

@@ -1,14 +1,13 @@
 @import '~vue-tree-halower/dist/halower-tree.min.css';
 
 @import '~@core/scss/base/bootstrap-extended/include';
-// Overrides contacts variable
+// Overrides user variable
 @import '~@core/scss/base/components/include';
 
 .tree-container {
   .tag-box-container {
     .tag {
       background-color: transparent;
-
       .rmNode {
         color: $danger;
         background-color: rgba($danger, 0.15);
@@ -84,12 +83,10 @@
   .node-selected {
     background-color: #f8f8f8;
   }
-
   .node-title {
     &:hover {
       background-color: #f8f8f8;
     }
-
     padding: 3px 6px;
     margin: 0 4px;
   }
@@ -101,7 +98,6 @@
     border-radius: 4px;
     font-size: 12px;
   }
-
   button.btn-async {
     background: rgba($warning, 0.15);
   }
@@ -127,7 +123,6 @@
         border-color: $theme-dark-input-disabled-border-color;
       }
     }
-
     .tag-box {
       .tag {
         background-color: $theme-dark-body-bg !important;
@@ -139,7 +134,6 @@
     .node-title:hover {
       background-color: transparent;
     }
-
     .node-title {
       &.node-selected {
         background-color: $theme-dark-body-bg;

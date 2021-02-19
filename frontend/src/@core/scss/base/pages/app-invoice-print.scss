@@ -1,8 +1,8 @@
 // ================================================================================================
-//  File Name: styles-invoice-print.scss
+//  File Name: app-invoice-print.scss
 //  Description: Invoice Layout page layouts SCSS.
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Sprout HTML Admin Template
+//  Item Name: Vuexy HTML Admin Template
 //  Version: 1.0
 //  Author: PIXINVENT
 //  Author URL: http://www.themeforest.net/user/pixinvent
@@ -36,17 +36,14 @@ body {
   .invoice-total-wrapper {
     width: 100%;
     max-width: 12rem;
-
     .invoice-total-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       .invoice-total-title {
         // width: 92px;
         margin-bottom: 0.35rem;
       }
-
       .invoice-total-amount {
         margin-bottom: 0.35rem;
         font-weight: 600;

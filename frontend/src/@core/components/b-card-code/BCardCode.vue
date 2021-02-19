@@ -9,14 +9,14 @@
       <div>
         <b-card-title>{{ $attrs.title }}</b-card-title>
         <b-card-sub-title v-if="$attrs['sub-title']">
-          {{ $attrs[ 'sub-title' ] }}
+          {{ $attrs['sub-title'] }}
         </b-card-sub-title>
       </div>
 
       <i
-        :aria-controls="parentID"
-        :aria-expanded="!code_visible ? 'true' : 'false'"
         class="code-toggler feather icon-code cursor-pointer"
+        :aria-expanded="!code_visible ? 'true' : 'false'"
+        :aria-controls="parentID"
         @click="code_visible = !code_visible"
       />
     </div>
@@ -28,8 +28,8 @@
       <b-collapse
         :id="parentID"
         v-model="code_visible"
-        :visible="code_visible"
         class="card-code"
+        :visible="code_visible"
       >
         <b-card-body>
           <prism :language="codeLanguage">
@@ -47,8 +47,8 @@
       <b-collapse
         :id="parentID"
         v-model="code_visible"
-        :visible="code_visible"
         class="card-code"
+        :visible="code_visible"
       >
         <div class="p-1" />
         <prism :language="codeLanguage">
@@ -60,11 +60,12 @@
 </template>
 
 <script>
-import { BCard, BCardBody, BCardSubTitle, BCardTitle, BCollapse } from "bootstrap-vue";
-import "prismjs";
-import "prismjs/themes/prism-tomorrow.css";
-import Prism                                                      from "vue-prism-component";
-
+import {
+  BCard, BCardTitle, BCardSubTitle, BCardBody, BCollapse,
+} from 'bootstrap-vue'
+import 'prismjs'
+import 'prismjs/themes/prism-tomorrow.css'
+import Prism from 'vue-prism-component'
 
 export default {
   components: {
@@ -110,41 +111,41 @@ export default {
 
 .card-code {
   pre[class*='language-'] {
-    border-radius: 0.5rem;
     margin: 0;
     max-height: 350px;
-  }
-
-  /* width */
-  ::-webkit-scrollbar {
-    background: #2d2d2d;
-    border-radius: 100%;
-    height: 8px;
-    width: 8px;
-
-    .dark-layout & {
-      background-color: $theme-dark-body-bg !important;
-    }
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: rgba(241, 241, 241, .4);
     border-radius: 0.5rem;
   }
 
-  /* Handle on hover */
-  // ::-webkit-scrollbar-thumb:hover {
-  // }
+    /* width */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+      background: #2d2d2d;
+      border-radius: 100%;
 
-  ::-webkit-scrollbar-corner {
-    display: none;
-  }
+      .dark-layout & {
+        background-color: $theme-dark-body-bg !important;
+      }
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      border-radius: 0.5rem;
+      background: rgba(241,241,241,.4);
+    }
+
+    /* Handle on hover */
+    // ::-webkit-scrollbar-thumb:hover {
+    // }
+
+    ::-webkit-scrollbar-corner {
+      display: none;
+    }
 }
 
 .code-toggler {
@@ -158,8 +159,8 @@ export default {
 // HTML
 .card {
   .card-header .heading-elements {
-    background: red;
     position: static;
+    background: red;
   }
 }
 </style>

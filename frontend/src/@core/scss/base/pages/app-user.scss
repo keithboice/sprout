@@ -1,8 +1,8 @@
 // ================================================================================================
-//  File Name: styles-users.scss
+//  File Name: app-users.scss
 //  Description: Invoice Layout page layouts SCSS.
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Sprout HTML Admin Template
+//  Item Name: Vuexy HTML Admin Template
 //  Version: 1.0
 //  Author: PIXINVENT
 //  Author URL: http://www.themeforest.net/user/pixinvent
@@ -28,7 +28,6 @@ $color-box-size: 2.714rem;
       .dataTables_length {
         text-align: left;
       }
-
       & > div[class^='col-']:last-child {
         padding-left: 0;
       }
@@ -43,10 +42,8 @@ $color-box-size: 2.714rem;
       width: 11.785rem;
     }
   }
-
   .user-total-numbers {
     margin-top: 2.428rem;
-
     .color-box {
       display: flex;
       align-items: center;
@@ -69,7 +66,6 @@ $color-box-size: 2.714rem;
 .app-user-edit {
   .nav-pills {
     margin-bottom: 2.3rem;
-
     .nav-link {
       i,
       svg {

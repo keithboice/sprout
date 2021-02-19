@@ -1,7 +1,7 @@
 <template>
   <li
-    :class="[`timeline-variant-${variant}`, fillBorder ? `timeline-item-fill-border-${variant}` : null]"
     class="timeline-item"
+    :class="[`timeline-variant-${variant}`, fillBorder ? `timeline-item-fill-border-${variant}` : null]"
   >
     <div
       v-if="!icon"
@@ -62,10 +62,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~@core/scss/base/bootstrap-extended/include';
-// Bootstrap includes
-@import '~@core/scss/base/components/include';
-// Components includes
+@import '~@core/scss/base/bootstrap-extended/include'; // Bootstrap includes
+@import '~@core/scss/base/components/include'; // Components includes
 
 // Color palettes
 @import '~@core/scss/base/core/colors/palette-variables.scss';
@@ -81,14 +79,12 @@ $timeline-border-color: $border-color;
       .timeline-variant-#{$color_name} {
         &.timeline-item-fill-border-#{$color_name} {
           border-color: $color_value !important;
-
           &:last-of-type {
             &:after {
               background: linear-gradient($color_value, $white);
             }
           }
         }
-
         .timeline-item-point {
           background-color: $color_value;
 
@@ -109,55 +105,54 @@ $timeline-border-color: $border-color;
 .timeline-item {
   padding-left: 2.5rem;
   position: relative;
-
   &:not(:last-of-type) {
-    border-left: 1px solid $timeline-border-color;
     padding-bottom: 2rem;
+    border-left: 1px solid $timeline-border-color;
   }
 
   // This gives shade to last timeline-item but isn't that revolutionary
   &:last-of-type {
     &:after {
-      background: linear-gradient($timeline-border-color, $white);
-      bottom: 0;
       content: '';
-      height: 100%;
-      left: 0;
       position: absolute;
+      left: 0;
+      bottom: 0;
       width: 1px;
+      height: 100%;
+      background: linear-gradient($timeline-border-color, $white);
     }
   }
 
   .timeline-item-point {
-    border-radius: 50%;
-    height: 12px;
-    left: -6px;
     position: absolute;
-    top: 0;
+    left: -6px;
     width: 12px;
+    height: 12px;
+    top: 0;
+    border-radius: 50%;
     z-index: 1;
 
     &:before {
-      border-radius: 50%;
-      bottom: 0;
       content: '';
-      height: 20px;
-      left: -4px;
-      position: absolute;
-      right: 0;
-      top: -4px;
-      width: 20px;
       z-index: 1;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      bottom: 0;
+      right: 0;
     }
   }
 
   .timeline-item-icon {
-    background-color: $white;
-    height: 24px;
-    left: -12px;
     position: absolute;
+    left: -12px;
     top: 0;
     width: 24px;
+    height: 24px;
+    background-color: $white;
     z-index: 1;
   }
 }
@@ -173,7 +168,6 @@ $timeline-border-color: $border-color;
         background: linear-gradient($theme-dark-border-color, $theme-dark-card-bg);
       }
     }
-
     &:not(:last-of-type) {
       border-left-color: $theme-dark-border-color;
     }

@@ -4,7 +4,7 @@
 	It support light & dark version, filpped layout, right side icons, borders menu for
 	item seperation.
 	----------------------------------------------------------------------------------------
-	Item Name: Sprout  - Vuejs, HTML & Laravel Admin Dashboard TemplateTheme
+	Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard TemplateTheme
 	Author: PIXINVENT
 	Author URL: http://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
@@ -50,7 +50,7 @@
   //---------------//
   .horizontal-menu-wrapper {
     position: fixed;
-    top: 1px;
+    top: 62px;
     z-index: 990;
     width: 100%;
 
@@ -83,27 +83,27 @@
     }
     &.navbar-brand-center {
       .navbar-header {
-        /*position: absolute;
-        left: 30px; // left 50% - branding width
+        position: absolute;
+        left: calc(50% - 56px); // left 50% - branding width
         padding: 0;
-        z-index: 1000;*/
+        z-index: 1000;
         .navbar-brand {
-          /*display: flex;
-          align-items: flex-start;
-          margin-right: auto;
-          font-size: inherit;*/
+          display: flex;
+          align-items: center;
+          margin-right: 0;
+          font-size: inherit;
           .brand-logo img {
-          /*  max-width: 150px;*/
+            max-width: 36px;
           }
 
           // Brand Text Scss
           .brand-text {
-            /*color: $primary;
+            color: $primary;
             padding-left: 1rem;
             margin-bottom: 0;
             font-weight: 600;
             letter-spacing: 0.01rem;
-            font-size: 1.45rem;*/
+            font-size: 1.45rem;
           }
         }
       }
@@ -121,7 +121,7 @@
       .sidebar-group-active {
         .dropdown-toggle {
           &::after {
-            background-image: url(str-replace(str-replace($chevron-down, 'currentColor', $gray-600), '#', '%23'));
+            background-image: url(str-replace(str-replace($chevron-down, 'currentColor', $white), '#', '%23'));
           }
         }
       }
@@ -234,10 +234,9 @@
         }
         &.active {
           > a {
-            /*background: linear-gradient(118deg, rgba($primary, 1), rgba($primary, 0.7));*/
-            background: rgba(0,0,0, 0.03);
-            /*box-shadow: 0px 0px 6px 1px rgba($primary, 0.6);*/
-            color: rgba(55, 71, 79, 0.75);
+            background: linear-gradient(118deg, rgba($primary, 1), rgba($primary, 0.7));
+            box-shadow: 0px 0px 6px 1px rgba($primary, 0.6);
+            color: $white;
             border-radius: 4px;
           }
         }
@@ -278,7 +277,7 @@
     &:not(.blank-page) {
       .app-content {
         // padding-top: 9.75rem;
-        padding: calc(#{$content-padding} + #{$navbar-height} + #{$floating-nav-margin}) #{$content-padding} 0 #{$content-padding};
+        padding: calc(#{$content-padding} + #{$navbar-height}* 2 + #{$floating-nav-margin}) #{$content-padding} 0 #{$content-padding}; // * 2  as we have 2 navbar (menu + navbar)  in horizontal layout.
       }
     }
     .horizontal-menu-wrapper {
