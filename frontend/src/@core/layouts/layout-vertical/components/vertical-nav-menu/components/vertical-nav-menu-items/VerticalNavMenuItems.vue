@@ -9,68 +9,68 @@
     <div class="my-1 w-100">
       <button
         class="btn btn-flat btn-light btn-block"
-        type="button"
         href="/apps/chat/active"
+        type="button"
       >
-        Active Conversations 89
+        <span class="py-1 text-muted">Active Conversations 89</span>
       </button>
     </div>
-
+    
     <div class="my-1 w-100">
       <button
         class="btn btn-light w-100"
-        type="button"
         href="/apps/chat/new"
+        type="button"
       >
-        New Conversations 25
+        <span class="py-1 text-muted">New Conversations 25</span>
       </button>
     </div>
     <div class="my-1 w-100">
       <button
         class="btn btn-light btn-block"
-        type="button"
         href="/apps/chat/started"
+        type="button"
       >
-        Started Conversations 12
+        <span class="py-1 text-muted">Started Conversations 12</span>
       </button>
     </div>
     <div class="my-1 w-100">
       <button
         class="btn btn-light btn-block"
-        type="button"
         href="apps/chat/closed"
+        type="button"
       >
-        Closed Conversations 15
+        <span class="py-1 text-muted">Closed Conversations 15</span>
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import { resolveVerticalNavMenuItemComponent as resolveNavItemComponent } from '@core/layouts/utils'
-import { provide, ref } from '@vue/composition-api'
+import { resolveVerticalNavMenuItemComponent as resolveNavItemComponent } from "@core/layouts/utils"
+import { provide, ref }                                                   from "@vue/composition-api"
 /* import VerticalNavMenuHeader from '../vertical-nav-menu-header'
-import VerticalNavMenuLink from '../vertical-nav-menu-link/VerticalNavMenuLink.vue'
-import VerticalNavMenuGroup from '../vertical-nav-menu-group/VerticalNavMenuGroup.vue' */
+ import VerticalNavMenuLink from '../vertical-nav-menu-link/VerticalNavMenuLink.vue'
+ import VerticalNavMenuGroup from '../vertical-nav-menu-group/VerticalNavMenuGroup.vue' */
 
 export default {
   /* components: {
-    VerticalNavMenuHeader,
-    VerticalNavMenuLink,
-    VerticalNavMenuGroup,
-  }, */
+   VerticalNavMenuHeader,
+   VerticalNavMenuLink,
+   VerticalNavMenuGroup,
+   }, */
   props: {
     items: {
-      type: Array,
-      required: true,
-    },
-  },
-  setup() {
-    provide('openGroups', ref([]))
-
-    return {
-      resolveNavItemComponent,
+      type:     Array,
+      required: true
     }
   },
+  setup () {
+    provide( "openGroups", ref( [] ) )
+    
+    return {
+      resolveNavItemComponent
+    }
+  }
 }
 </script>

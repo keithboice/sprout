@@ -7,13 +7,15 @@
 //   Author URL: http://www.themeforest.net/user/pixinvent
 // ================================================================================================
 
-@import '../bootstrap-extended/include'; // Bootstrap includes
-@import '../components/include'; // Components includes
+@import '../bootstrap-extended/include';
+// Bootstrap includes
+@import '../components/include';
+// Components includes
 
 @import '../core/colors/palette-variables';
 
-@import '/node_modules/bootstrap/scss/mixins/_gradients';
-@import '/node_modules/bootstrap/scss/mixins/gradients';
+@import '../../../node_modules/bootstrap/scss/mixins/_gradients';
+@import '../../../node_modules/bootstrap/scss/mixins/gradients';
 
 //Variables
 $chat-image-back-color: #f2f0f7;
@@ -30,14 +32,17 @@ $chat-widget-height: 390px;
     padding: 2rem;
     position: relative;
     height: calc(100% - #{$chat-head-footer-height} - #{$chat-head-footer-height});
+
     .avatar {
       img {
         border: 1px solid #EFF1F3;
       }
     }
   }
+
   .active-chat {
     height: inherit;
+
     .chat-header {
       display: flex;
       justify-content: space-between;
@@ -54,10 +59,12 @@ $chat-widget-height: 390px;
     .chat-avatar {
       float: right;
     }
+
     .chat-body {
       display: block;
       margin: 10px 30px 0 0;
       overflow: hidden;
+
       .chat-content {
         float: right;
         padding: 2rem 2rem;
@@ -69,16 +76,19 @@ $chat-widget-height: 390px;
         border-radius: $border-radius;
         box-shadow: 0 4px 8px 0 rgba($black, 0.12);
         max-width: 75%;
+
         p {
           margin: 0;
         }
       }
     }
+
     // Chat area left css
     .chat-left {
       .chat-avatar {
         float: left;
       }
+
       .chat-body {
         .chat-content {
           float: left;
@@ -90,6 +100,7 @@ $chat-widget-height: 390px;
       }
     }
   }
+
   // Chat form of user area
   .chat-app-form {
     height: $chat-head-footer-height;
@@ -107,22 +118,26 @@ $chat-widget-height: 390px;
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
   }
+
   .chat-app-window {
     // User chats
     .user-chats {
       background-color: $white;
       height: $chat-widget-height;
     }
+
     .chat-app-form {
       border-top: 0;
       border-bottom-left-radius: $border-radius;
       border-bottom-right-radius: $border-radius;
       height: $chat-widget-head-footer-height;
+
       .input-group-text,
       .message {
         border: 0;
         padding-left: 0;
       }
+
       .input-group:not(.bootstrap-touchspin):focus-within {
         box-shadow: none;
       }
