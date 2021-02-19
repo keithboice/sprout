@@ -61,6 +61,7 @@ $chat-profile-sidebar-head-height: 200px;
       height: calc(100% - #{$chat-profile-sidebar-head-height});
       position: relative;
       padding: 0 2rem 1.5rem;
+      border-left: 1px solid $border-color;
     }
   }
 
@@ -92,6 +93,7 @@ $chat-profile-sidebar-head-height: 200px;
   // Main Sidebar Content
   .sidebar-content {
     border-right: 1px solid $border-color;
+    border-left: 1px solid rgba(52, 52, 52, 0.05);
     height: inherit;
     width: $chat-sidebar-width;
     color: rgba(52, 52, 52, 0.75);
