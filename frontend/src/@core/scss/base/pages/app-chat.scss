@@ -10,8 +10,8 @@
 
 @import '../core/colors/palette-variables';
 
-@import '../../../node_modules/bootstrap/scss/mixins/_gradients';
-@import '../../../node_modules/bootstrap/scss/mixins/gradients';
+@import '../../../../../node_modules/bootstrap/scss/mixins/_gradients';
+@import '../../../../../node_modules/bootstrap/scss/mixins/gradients';
 
 $chat-image-back-color: $white;
 $chat-head-footer-height: 65px;
