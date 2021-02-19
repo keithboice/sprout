@@ -20,13 +20,9 @@
   "files": [
     "dist/**"
   ],
-  "workspaces": [
-    "./tooling/src/*"
-  ],
   "scripts": {
     "build": "vercel-build",
     "lint": "eslint",
-    "prepare": "node ./hydrate.js",
     "test": "jest",
     "vercel-build": "node ./build.js"
   },
@@ -43,10 +39,13 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "*",
+    "app-root-path": "^3.0.0",
     "eslint": "*",
+    "handlebars": "^4.7.7",
     "husky": "*",
     "jest": "*",
-    "prettier": "*"
+    "prettier": "*",
+    "shelljs": "^0.8.4"
   },
   "engines": {
     "node": ">=14.0.0"
