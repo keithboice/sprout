@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    
     <!-- Media -->
     <b-media class="mb-2">
       <template #aside>
@@ -9,13 +9,12 @@
           :src="userData.avatar"
           :text="avatarText(userData.fullName)"
           :variant="`light-${resolveUserRoleVariant(userData.role)}`"
-          size="90px"
           rounded
+          size="90px"
         />
       </template>
       <h4 class="mb-1">
-        {{ userData.fullName }}
-      </h4>
+        {{ userData.fullName }} </h4>
       <div class="d-flex flex-wrap">
         <b-button
           variant="primary"
@@ -23,33 +22,32 @@
         >
           <input
             ref="refInputEl"
-            type="file"
             class="d-none"
+            type="file"
             @input="inputImageRenderer"
-          >
-          <span class="d-none d-sm-inline">Update</span>
+          > <span class="d-none d-sm-inline">Update</span>
           <feather-icon
-            icon="EditIcon"
             class="d-inline d-sm-none"
+            icon="EditIcon"
           />
         </b-button>
         <b-button
-          variant="outline-secondary"
           class="ml-1"
+          variant="outline-secondary"
         >
           <span class="d-none d-sm-inline">Remove</span>
           <feather-icon
-            icon="TrashIcon"
             class="d-inline d-sm-none"
+            icon="TrashIcon"
           />
         </b-button>
       </div>
     </b-media>
-
+    
     <!-- User Info: Input Fields -->
     <b-form>
       <b-row>
-
+        
         <!-- Field: Username -->
         <b-col
           cols="12"
@@ -65,7 +63,7 @@
             />
           </b-form-group>
         </b-col>
-
+        
         <!-- Field: Full Name -->
         <b-col
           cols="12"
@@ -81,7 +79,7 @@
             />
           </b-form-group>
         </b-col>
-
+        
         <!-- Field: Email -->
         <b-col
           cols="12"
@@ -98,7 +96,7 @@
             />
           </b-form-group>
         </b-col>
-
+        
         <!-- Field: Status -->
         <b-col
           cols="12"
@@ -110,15 +108,15 @@
           >
             <v-select
               v-model="userData.status"
-              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+              :clearable="false"
+              :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
               :options="statusOptions"
               :reduce="val => val.value"
-              :clearable="false"
               input-id="user-status"
             />
           </b-form-group>
         </b-col>
-
+        
         <!-- Field: Role -->
         <b-col
           cols="12"
@@ -130,15 +128,15 @@
           >
             <v-select
               v-model="userData.role"
-              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+              :clearable="false"
+              :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
               :options="roleOptions"
               :reduce="val => val.value"
-              :clearable="false"
               input-id="user-role"
             />
           </b-form-group>
         </b-col>
-
+        
         <!-- Field: Email -->
         <b-col
           cols="12"
@@ -154,14 +152,14 @@
             />
           </b-form-group>
         </b-col>
-
+      
       </b-row>
     </b-form>
-
+    
     <!-- PERMISSION TABLE -->
     <b-card
-      no-body
       class="border mt-1"
+      no-body
     >
       <b-card-header class="p-1">
         <b-card-title class="font-medium-2">
@@ -173,10 +171,10 @@
         </b-card-title>
       </b-card-header>
       <b-table
-        striped
-        responsive
-        class="mb-0"
         :items="permissionsData"
+        class="mb-0"
+        responsive
+        striped
       >
         <template #cell(module)="data">
           {{ data.value }}
@@ -186,19 +184,19 @@
         </template>
       </b-table>
     </b-card>
-
+    
     <!-- Action Buttons -->
     <b-button
-      variant="primary"
-      class="mb-1 mb-sm-0 mr-0 mr-sm-1"
       :block="$store.getters['app/currentBreakPoint'] === 'xs'"
+      class="mb-1 mb-sm-0 mr-0 mr-sm-1"
+      variant="primary"
     >
       Save Changes
     </b-button>
     <b-button
-      variant="outline-secondary"
-      type="reset"
       :block="$store.getters['app/currentBreakPoint'] === 'xs'"
+      type="reset"
+      variant="outline-secondary"
     >
       Reset
     </b-button>
@@ -207,13 +205,14 @@
 
 <script>
 import {
-  BButton, BMedia, BAvatar, BRow, BCol, BFormGroup, BFormInput, BForm, BTable, BCard, BCardHeader, BCardTitle, BFormCheckbox,
-} from 'bootstrap-vue'
-import { avatarText } from '@core/utils/filter'
-import vSelect from 'vue-select'
-import { useInputImageRenderer } from '@core/comp-functions/forms/form-utils'
-import { ref } from '@vue/composition-api'
-import useUsersList from '../users-list/useUsersList'
+  BButton, BMedia, BAvatar, BRow, BCol, BFormGroup, BFormInput, BForm, BTable, BCard, BCardHeader, BCardTitle, BFormCheckbox
+}                                from "bootstrap-vue"
+import { avatarText }            from "@/utils/filter"
+import vSelect                   from "vue-select"
+import { useInputImageRenderer } from "@/utils/comp-functions/forms/form-utils"
+import { ref }                   from "@vue/composition-api"
+import useUsersList              from "@/views/apps/user/users-list/useUsersList"
+
 
 export default {
   components: {
@@ -230,94 +229,108 @@ export default {
     BCardHeader,
     BCardTitle,
     BFormCheckbox,
-    vSelect,
+    vSelect
   },
-  props: {
+  props:      {
     userData: {
-      type: Object,
-      required: true,
-    },
+      type:     Object,
+      required: true
+    }
   },
-  setup(props) {
+  setup ( props ) {
     const { resolveUserRoleVariant } = useUsersList()
-
+    
     const roleOptions = [
-      { label: 'Admin', value: 'admin' },
-      { label: 'Author', value: 'author' },
-      { label: 'Editor', value: 'editor' },
-      { label: 'Maintainer', value: 'maintainer' },
-      { label: 'Subscriber', value: 'subscriber' },
+      {
+        label: "Admin",
+        value: "admin"
+      }, {
+        label: "Author",
+        value: "author"
+      }, {
+        label: "Editor",
+        value: "editor"
+      }, {
+        label: "Maintainer",
+        value: "maintainer"
+      }, {
+        label: "Subscriber",
+        value: "subscriber"
+      }
     ]
-
+    
     const statusOptions = [
-      { label: 'Pending', value: 'pending' },
-      { label: 'Active', value: 'active' },
-      { label: 'Inactive', value: 'inactive' },
+      {
+        label: "Pending",
+        value: "pending"
+      }, {
+        label: "Active",
+        value: "active"
+      }, {
+        label: "Inactive",
+        value: "inactive"
+      }
     ]
-
+    
     const permissionsData = [
       {
-        module: 'Admin',
-        read: true,
-        write: false,
+        module: "Admin",
+        read:   true,
+        write:  false,
         create: false,
-        delete: false,
-      },
-      {
-        module: 'Staff',
-        read: false,
-        write: true,
+        delete: false
+      }, {
+        module: "Staff",
+        read:   false,
+        write:  true,
         create: false,
-        delete: false,
-      },
-      {
-        module: 'Author',
-        read: true,
-        write: false,
+        delete: false
+      }, {
+        module: "Author",
+        read:   true,
+        write:  false,
         create: true,
-        delete: false,
-      },
-      {
-        module: 'Contributor',
-        read: false,
-        write: false,
+        delete: false
+      }, {
+        module: "Contributor",
+        read:   false,
+        write:  false,
         create: false,
-        delete: false,
-      },
-      {
-        module: 'User',
-        read: false,
-        write: false,
+        delete: false
+      }, {
+        module: "User",
+        read:   false,
+        write:  false,
         create: false,
-        delete: true,
-      },
+        delete: true
+      }
     ]
-
+    
     // ? Demo Purpose => Update image on click of update
-    const refInputEl = ref(null)
-    const previewEl = ref(null)
-
-    const { inputImageRenderer } = useInputImageRenderer(refInputEl, base64 => {
+    const refInputEl = ref( null )
+    const previewEl = ref( null )
+    
+    const { inputImageRenderer } = useInputImageRenderer( refInputEl, base64 => {
       // eslint-disable-next-line no-param-reassign
       props.userData.avatar = base64
-    })
-
+    } )
+    
     return {
       resolveUserRoleVariant,
       avatarText,
       roleOptions,
       statusOptions,
       permissionsData,
-
+      
       //  ? Demo - Update Image on click of update button
       refInputEl,
       previewEl,
-      inputImageRenderer,
+      inputImageRenderer
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-@import '@core/scss/vue/libs/vue-select.scss';
+@import '~@/assets/scss/vue/libs/vue-select.scss';
 </style>

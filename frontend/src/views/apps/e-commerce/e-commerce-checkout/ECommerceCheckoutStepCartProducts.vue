@@ -1,5 +1,5 @@
 <template>
-
+  
   <div class="checkout-items">
     <b-card
       v-for="product in products"
@@ -7,17 +7,17 @@
       class="ecommerce-card"
       no-body
     >
-
+      
       <!-- Product Image -->
       <div class="item-img">
         <b-link>
           <b-img
-            :src="product.image"
             :alt="`${product.name}-${product.id}`"
+            :src="product.image"
           />
         </b-link>
       </div>
-
+      
       <!-- Product Details: Card Body -->
       <b-card-body>
         <div class="item-name">
@@ -32,13 +32,13 @@
               <li
                 v-for="star in 5"
                 :key="star"
-                class="ratings-list-item"
                 :class="{'ml-25': star-1}"
+                class="ratings-list-item"
               >
                 <feather-icon
+                  :class="[{'fill-current': star <= product.rating}, star <= product.rating ? 'text-warning' : 'text-muted']"
                   icon="StarIcon"
                   size="16"
-                  :class="[{'fill-current': star <= product.rating}, star <= product.rating ? 'text-warning' : 'text-muted']"
                 />
               </li>
             </ul>
@@ -49,22 +49,24 @@
           <span class="quantity-title">Qty:</span>
           <b-form-spinbutton
             v-model="product.qty"
-            size="sm"
             class="ml-75"
             inline
+            size="sm"
           />
         </div>
-        <span class="delivery-date text-muted">Delivery by {{ formatDate(product.shippingDate, { month: 'short', day: 'numeric', weekday: 'short' }) }}</span>
-        <span class="text-success">{{ product.discountPercentage }}% off {{ product.offers }} offers Available</span>
+        <span class="delivery-date text-muted">Delivery by {{ formatDate( product.shippingDate, {
+          month: "short",
+          day: "numeric",
+          weekday: "short"
+        } ) }}</span> <span class="text-success">{{ product.discountPercentage }}% off {{ product.offers }} offers Available</span>
       </b-card-body>
-
+      
       <!-- Product Options/Actions -->
       <div class="item-options text-center">
         <div class="item-wrapper">
           <div class="item-cost">
             <h4 class="item-price">
-              ${{ product.price }}
-            </h4>
+              ${{ product.price }} </h4>
             <p
               v-if="product.hasFreeShipping"
               class="card-text shipping"
@@ -79,25 +81,25 @@
           </div>
         </div>
         <b-button
-          variant="light"
           class="mt-1 remove-wishlist"
+          variant="light"
           @click="removeProductFromCartClick(product)"
         >
           <feather-icon
-            icon="XIcon"
             class="mr-50"
+            icon="XIcon"
           />
           <span>Remove</span>
         </b-button>
         <b-button
-          variant="primary"
           class="btn-cart move-cart"
+          variant="primary"
           @click="toggleProductInWishlist(product)"
         >
           <feather-icon
-            icon="HeartIcon"
-            class="mr-50"
             :class="{'fill-current': product.isInWishlist}"
+            class="mr-50"
+            icon="HeartIcon"
           />
           <span class="text-nowrap">Wishlist</span>
         </b-button>
@@ -108,52 +110,57 @@
 </template>
 
 <script>
-import {
-  BCard, BCardBody, BLink, BImg, BButton, BBadge, BFormSpinbutton,
-} from 'bootstrap-vue'
-import store from '@/store'
-import { ref } from '@vue/composition-api'
-import { formatDate } from '@core/utils/filter'
-import { useEcommerce, useEcommerceUi } from '../useEcommerce'
+import { BCard, BCardBody, BLink, BImg, BButton, BBadge, BFormSpinbutton } from "bootstrap-vue"
+import store                                                               from "@/store"
+import { ref }                                                             from "@vue/composition-api"
+import { formatDate }                                                      from "@core/../../../../utils/filter"
+import { useEcommerce, useEcommerceUi }                                    from "../useEcommerce"
+
 
 export default {
   components: {
-    BCard, BCardBody, BLink, BImg, BButton, BBadge, BFormSpinbutton,
+    BCard,
+    BCardBody,
+    BLink,
+    BImg,
+    BButton,
+    BBadge,
+    BFormSpinbutton
   },
-  setup() {
-    const products = ref([])
-
+  setup () {
+    const products = ref( [] )
+    
     const { toggleProductInWishlist } = useEcommerceUi()
     const { removeProductFromCart } = useEcommerce()
     const removeProductFromCartClick = product => {
-      removeProductFromCart(product.id)
-        .then(() => {
-          const productIndex = products.value.findIndex(p => p.id === product.id)
-          products.value.splice(productIndex, 1)
-
-          store.commit('app-ecommerce/UPDATE_CART_ITEMS_COUNT', products.value.length)
-        })
+      removeProductFromCart( product.id )
+        .then( () => {
+          const productIndex = products.value.findIndex( p => p.id === product.id )
+          products.value.splice( productIndex, 1 )
+          
+          store.commit( "app-ecommerce/UPDATE_CART_ITEMS_COUNT", products.value.length )
+        } )
     }
-
+    
     const fetchCartProducts = () => {
-      store.dispatch('app-ecommerce/fetchCartProducts')
-        .then(response => {
+      store.dispatch( "app-ecommerce/fetchCartProducts" )
+        .then( response => {
           products.value = response.data.products
-        })
+        } )
     }
     fetchCartProducts()
-
+    
     return {
       products,
-
+      
       // UI
       toggleProductInWishlist,
       removeProductFromCartClick,
-
+      
       // Filter
-      formatDate,
+      formatDate
     }
-  },
+  }
 }
 </script>
 

@@ -1,18 +1,19 @@
 <template>
   <div>
     <b-alert
-      variant="primary"
       show
+      variant="primary"
     >
       <div class="alert-body">
         <p>
-          <strong>Info: </strong>
-          <span>Please check the </span>
+          <strong>Info: </strong> <span>Please check the </span>
           <b-link
             class="alert-link"
             href="#thisisdocslink"
             target="blank"
-          >Boxed Layout documentation</b-link>
+          >
+            Boxed Layout documentation
+          </b-link>
           <span> for more details.</span>
         </p>
       </div>
@@ -22,25 +23,26 @@
 </template>
 
 <script>
-import Ecommerce from '@/views/dashboard/ecommerce/Ecommerce.vue'
-import { BAlert, BLink } from 'bootstrap-vue'
+import Ecommerce         from "@/views/dashboard/ecommerce/Ecommerce.vue"
+import { BAlert, BLink } from "bootstrap-vue"
+
 
 export default {
   components: {
     BAlert,
     BLink,
-    Ecommerce,
+    Ecommerce
   },
-  data() {
+  data () {
     return {
-      contentWidth: this.$store.state.appConfig.layout.contentWidth,
+      contentWidth: this.$store.state.chat.layout.contentWidth
     }
   },
-  created() {
-    this.$store.commit('appConfig/UPDATE_CONTENT_WIDTH', 'boxed')
+  created () {
+    this.$store.commit( "appConfig/UPDATE_CONTENT_WIDTH", "boxed" )
   },
-  destroyed() {
-    this.$store.commit('appConfig/UPDATE_CONTENT_WIDTH', this.contentWidth)
-  },
+  destroyed () {
+    this.$store.commit( "appConfig/UPDATE_CONTENT_WIDTH", this.contentWidth )
+  }
 }
 </script>

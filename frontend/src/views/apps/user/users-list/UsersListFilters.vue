@@ -2,53 +2,52 @@
   <b-card no-body>
     <b-card-header class="pb-50">
       <h5>
-        Filters
-      </h5>
+        Filters </h5>
     </b-card-header>
     <b-card-body>
       <b-row>
         <b-col
+          class="mb-md-0 mb-2"
           cols="12"
           md="4"
-          class="mb-md-0 mb-2"
         >
           <label>Role</label>
           <v-select
-            :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-            :value="roleFilter"
+            :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
             :options="roleOptions"
-            class="w-100"
             :reduce="val => val.value"
+            :value="roleFilter"
+            class="w-100"
             @input="(val) => $emit('update:roleFilter', val)"
           />
         </b-col>
         <b-col
+          class="mb-md-0 mb-2"
           cols="12"
           md="4"
-          class="mb-md-0 mb-2"
         >
           <label>Plan</label>
           <v-select
-            :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-            :value="planFilter"
+            :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
             :options="planOptions"
-            class="w-100"
             :reduce="val => val.value"
+            :value="planFilter"
+            class="w-100"
             @input="(val) => $emit('update:planFilter', val)"
           />
         </b-col>
         <b-col
+          class="mb-md-0 mb-2"
           cols="12"
           md="4"
-          class="mb-md-0 mb-2"
         >
           <label>Status</label>
           <v-select
-            :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-            :value="statusFilter"
+            :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
             :options="statusOptions"
-            class="w-100"
             :reduce="val => val.value"
+            :value="statusFilter"
+            class="w-100"
             @input="(val) => $emit('update:statusFilter', val)"
           />
         </b-col>
@@ -58,10 +57,9 @@
 </template>
 
 <script>
-import {
-  BCard, BCardHeader, BCardBody, BRow, BCol,
-} from 'bootstrap-vue'
-import vSelect from 'vue-select'
+import { BCard, BCardHeader, BCardBody, BRow, BCol } from "bootstrap-vue"
+import vSelect                                       from "vue-select"
+
 
 export default {
   components: {
@@ -70,34 +68,34 @@ export default {
     BCard,
     BCardHeader,
     BCardBody,
-    vSelect,
+    vSelect
   },
-  props: {
-    roleFilter: {
-      type: [String, null],
-      default: null,
+  props:      {
+    roleFilter:    {
+      type:    [ String, null ],
+      default: null
     },
-    planFilter: {
-      type: [String, null],
-      default: null,
+    planFilter:    {
+      type:    [ String, null ],
+      default: null
     },
-    statusFilter: {
-      type: [String, null],
-      default: null,
+    statusFilter:  {
+      type:    [ String, null ],
+      default: null
     },
-    roleOptions: {
-      type: Array,
-      required: true,
+    roleOptions:   {
+      type:     Array,
+      required: true
     },
-    planOptions: {
-      type: Array,
-      required: true,
+    planOptions:   {
+      type:     Array,
+      required: true
     },
     statusOptions: {
-      type: Array,
-      required: true,
-    },
-  },
+      type:     Array,
+      required: true
+    }
+  }
 }
 </script>
 

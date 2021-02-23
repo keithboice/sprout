@@ -1,27 +1,27 @@
 <template>
   <b-card>
-
+    
     <!-- media -->
     <b-media no-body>
       <b-media-aside>
         <b-link>
           <b-img
             ref="previewEl"
-            rounded
             :src="optionsLocal.avatar"
             height="80"
+            rounded
           />
         </b-link>
         <!--/ avatar -->
       </b-media-aside>
-
+      
       <b-media-body class="mt-75 ml-75">
         <!-- upload button -->
         <b-button
           v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-          variant="primary"
-          size="sm"
           class="mb-75 mr-75"
+          size="sm"
+          variant="primary"
           @click="$refs.refInputEl.$el.click()"
         >
           Upload
@@ -29,19 +29,19 @@
         <b-form-file
           ref="refInputEl"
           v-model="profileFile"
-          accept=".jpg, .png, .gif"
           :hidden="true"
+          accept=".jpg, .png, .gif"
           plain
           @input="inputImageRenderer"
         />
         <!--/ upload button -->
-
+        
         <!-- reset -->
         <b-button
           v-ripple.400="'rgba(186, 191, 199, 0.15)'"
-          variant="outline-secondary"
-          size="sm"
           class="mb-75 mr-75"
+          size="sm"
+          variant="outline-secondary"
         >
           Reset
         </b-button>
@@ -50,7 +50,7 @@
       </b-media-body>
     </b-media>
     <!--/ media -->
-
+    
     <!-- form -->
     <b-form class="mt-2">
       <b-row>
@@ -61,8 +61,8 @@
           >
             <b-form-input
               v-model="optionsLocal.username"
-              placeholder="Username"
               name="username"
+              placeholder="Username"
             />
           </b-form-group>
         </b-col>
@@ -88,7 +88,7 @@
               name="email"
               placeholder="Email"
             />
-
+          
           </b-form-group>
         </b-col>
         <b-col sm="6">
@@ -103,20 +103,19 @@
             />
           </b-form-group>
         </b-col>
-
+        
         <!-- alert -->
         <b-col
-          cols="12"
           class="mt-75"
+          cols="12"
         >
           <b-alert
+            class="mb-50"
             show
             variant="warning"
-            class="mb-50"
           >
             <h4 class="alert-heading">
-              Your email is not confirmed. Please check your inbox.
-            </h4>
+              Your email is not confirmed. Please check your inbox. </h4>
             <div class="alert-body">
               <b-link class="alert-link">
                 Resend confirmation
@@ -125,20 +124,20 @@
           </b-alert>
         </b-col>
         <!--/ alert -->
-
+        
         <b-col cols="12">
           <b-button
             v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-            variant="primary"
             class="mt-2 mr-1"
+            variant="primary"
           >
             Save changes
           </b-button>
           <b-button
             v-ripple.400="'rgba(186, 191, 199, 0.15)'"
-            variant="outline-secondary"
-            type="reset"
             class="mt-2"
+            type="reset"
+            variant="outline-secondary"
             @click.prevent="resetForm"
           >
             Reset
@@ -151,11 +150,12 @@
 
 <script>
 import {
-  BFormFile, BButton, BForm, BFormGroup, BFormInput, BRow, BCol, BAlert, BCard, BCardText, BMedia, BMediaAside, BMediaBody, BLink, BImg,
-} from 'bootstrap-vue'
-import Ripple from 'vue-ripple-directive'
-import { useInputImageRenderer } from '@core/comp-functions/forms/form-utils'
-import { ref } from '@vue/composition-api'
+  BFormFile, BButton, BForm, BFormGroup, BFormInput, BRow, BCol, BAlert, BCard, BCardText, BMedia, BMediaAside, BMediaBody, BLink, BImg
+}                                from "bootstrap-vue"
+import Ripple                    from "vue-ripple-directive"
+import { useInputImageRenderer } from "@/utils/comp-functions/forms/form-utils"
+import { ref }                   from "@vue/composition-api"
+
 
 export default {
   components: {
@@ -173,39 +173,39 @@ export default {
     BMedia,
     BMediaAside,
     BMediaBody,
-    BLink,
+    BLink
   },
   directives: {
-    Ripple,
+    Ripple
   },
-  props: {
+  props:      {
     generalData: {
-      type: Object,
-      default: () => {},
-    },
+      type:    Object,
+      default: () => {}
+    }
   },
-  data() {
+  data () {
     return {
-      optionsLocal: JSON.parse(JSON.stringify(this.generalData)),
-      profileFile: null,
+      optionsLocal: JSON.parse( JSON.stringify( this.generalData ) ),
+      profileFile:  null
     }
   },
   methods: {
-    resetForm() {
-      this.optionsLocal = JSON.parse(JSON.stringify(this.generalData))
-    },
+    resetForm () {
+      this.optionsLocal = JSON.parse( JSON.stringify( this.generalData ) )
+    }
   },
-  setup() {
-    const refInputEl = ref(null)
-    const previewEl = ref(null)
-
-    const { inputImageRenderer } = useInputImageRenderer(refInputEl, previewEl)
-
+  setup () {
+    const refInputEl = ref( null )
+    const previewEl = ref( null )
+    
+    const { inputImageRenderer } = useInputImageRenderer( refInputEl, previewEl )
+    
     return {
       refInputEl,
       previewEl,
-      inputImageRenderer,
+      inputImageRenderer
     }
-  },
+  }
 }
 </script>

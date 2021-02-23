@@ -1,23 +1,24 @@
 <template>
   <layout-vertical>
-
+    
     <router-view />
-
+  
   </layout-vertical>
 </template>
 
 <script>
-import LayoutVertical from '@core/layouts/layout-vertical/LayoutVertical.vue'
-import { $themeConfig } from '@themeConfig'
+import LayoutVertical   from "@/layouts/layout-vertical/LayoutVertical.vue"
+import { $themeConfig } from "@/conf/theme"
+
 
 export default {
   components: {
-    LayoutVertical,
+    LayoutVertical
   },
-  data() {
+  data () {
     return {
-      showCustomizer: $themeConfig.layout.customizer,
+      showCustomizer: $themeConfig.layout.customizer
     }
-  },
+  }
 }
 </script>

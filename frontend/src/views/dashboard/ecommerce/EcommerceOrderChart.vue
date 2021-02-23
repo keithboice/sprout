@@ -5,96 +5,96 @@
   >
     <h6>Orders</h6>
     <h2 class="font-weight-bolder mb-1">
-      2,76k
-    </h2>
+      2,76k </h2>
     <!-- chart -->
     <vue-apex-charts
-      height="70"
       :options="statisticsOrder.chartOptions"
       :series="data.series"
+      height="70"
     />
   </b-card>
 </template>
 
 <script>
-import { BCard } from 'bootstrap-vue'
-import VueApexCharts from 'vue-apexcharts'
-import { $themeColors } from '@themeConfig'
+import { BCard }        from "bootstrap-vue"
+import VueApexCharts    from "vue-apexcharts"
+import { $themeColors } from "@/conf/theme"
 
-const $barColor = '#f3f3f3'
+
+const $barColor = "#f3f3f3"
 
 export default {
   components: {
     BCard,
-    VueApexCharts,
+    VueApexCharts
   },
-  props: {
+  props:      {
     data: {
-      type: Object,
-      default: () => {},
-    },
+      type:    Object,
+      default: () => {}
+    }
   },
-  data() {
+  data () {
     return {
       statisticsOrder: {
         chartOptions: {
-          chart: {
-            type: 'bar',
+          chart:       {
+            type:    "bar",
             stacked: true,
             toolbar: {
-              show: false,
-            },
+              show: false
+            }
           },
-          grid: {
-            show: false,
+          grid:        {
+            show:    false,
             padding: {
-              left: 0,
-              right: 0,
-              top: -15,
-              bottom: -15,
-            },
+              left:   0,
+              right:  0,
+              top:    -15,
+              bottom: -15
+            }
           },
           plotOptions: {
             bar: {
-              horizontal: false,
-              columnWidth: '20%',
-              startingShape: 'rounded',
-              colors: {
-                backgroundBarColors: [$barColor, $barColor, $barColor, $barColor, $barColor],
-                backgroundBarRadius: 5,
-              },
-            },
+              horizontal:    false,
+              columnWidth:   "20%",
+              startingShape: "rounded",
+              colors:        {
+                backgroundBarColors: [ $barColor, $barColor, $barColor, $barColor, $barColor ],
+                backgroundBarRadius: 5
+              }
+            }
           },
-          legend: {
-            show: false,
+          legend:      {
+            show: false
           },
-          dataLabels: {
-            enabled: false,
+          dataLabels:  {
+            enabled: false
           },
-          colors: [$themeColors.warning],
-
-          xaxis: {
-            labels: {
-              show: false,
+          colors:      [ $themeColors.warning ],
+          
+          xaxis:   {
+            labels:     {
+              show: false
             },
             axisBorder: {
-              show: false,
+              show: false
             },
-            axisTicks: {
-              show: false,
-            },
+            axisTicks:  {
+              show: false
+            }
           },
-          yaxis: {
-            show: false,
+          yaxis:   {
+            show: false
           },
           tooltip: {
             x: {
-              show: false,
-            },
-          },
-        },
-      },
+              show: false
+            }
+          }
+        }
+      }
     }
-  },
+  }
 }
 </script>

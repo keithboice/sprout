@@ -1,5 +1,5 @@
 // Overrides user _variables-components
-@import '../../@core/scss/base/bootstrap-extended/_include.scss';
+@import '~/src/assets/scss/base/bootstrap-extended/_include.scss';
 
 .chat-navbar .feather, .chat-navbar button, .chat-navbar button .text-body.feather, {
   color: rgba(0, 0, 0, 0.1)
@@ -13,8 +13,14 @@
   margin: 1px;
 }
 
-.bg-secondary .btn.btn-light:Hover, .bg-secondary .btn.btn-light:Active {
+.bg-secondary .btn.btn-light:Hover {
   color: rgba(114, 114, 114, 0.75);
+  background: rgba(0, 0, 0, .025);
+  border: rgba(0, 0, 0, .025);
+}
+
+.bg-secondary .btn.btn-light:Active, .bg-secondary .btn.btn-light.active {
+  color: rgba(94, 166, 140, 1.0);
   background: rgba(0, 0, 0, .025);
   border: rgba(0, 0, 0, .025);
 }

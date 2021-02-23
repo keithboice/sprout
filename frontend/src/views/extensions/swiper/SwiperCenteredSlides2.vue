@@ -1,11 +1,9 @@
 <template>
-  <b-card-code
-    title="Centered Slides  Option-2"
-  >
+  <b-card-code title="Centered Slides  Option-2">
     <swiper
-      class="swiper-centered-slides-2 p-1"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
       :options="swiperOptions"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      class="swiper-centered-slides-2 p-1"
     >
       <swiper-slide
         v-for="(data,index) in swiperData"
@@ -14,15 +12,15 @@
       >
         <feather-icon
           :icon="data.icon"
-          size="18"
           class="mr-50"
+          size="18"
         />
         <div class="swiper-text">
           {{ data.text }}
         </div>
       </swiper-slide>
     </swiper>
-
+    
     <template #code>
       {{ codeCenterSlides2 }}
     </template>
@@ -30,33 +28,49 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/css/swiper.css'
-import { codeCenterSlides2 } from './code'
+import BCardCode               from "@core/components/b-card-code/BCardCode.vue"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import "swiper/css/swiper.css"
+import { codeCenterSlides2 }   from "./code"
+
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
-    BCardCode,
+    BCardCode
   },
-  data() {
+  data () {
     return {
       codeCenterSlides2,
-      swiperData: [
-        { icon: 'GithubIcon', text: 'Getting Started' },
-        { icon: 'FacebookIcon', text: 'Pricing & Plans' },
-        { icon: 'TwitterIcon', text: 'Sales Question' },
-        { icon: 'InstagramIcon', text: 'Usage Guides' },
-        { icon: 'FacebookIcon', text: 'Pricing & Plans' },
+      swiperData:    [
+        {
+          icon: "GithubIcon",
+          text: "Getting Started"
+        },
+        {
+          icon: "FacebookIcon",
+          text: "Pricing & Plans"
+        },
+        {
+          icon: "TwitterIcon",
+          text: "Sales Question"
+        },
+        {
+          icon: "InstagramIcon",
+          text: "Usage Guides"
+        },
+        {
+          icon: "FacebookIcon",
+          text: "Pricing & Plans"
+        }
       ],
       swiperOptions: {
-        slidesPerView: 'auto',
+        slidesPerView:  "auto",
         centeredSlides: true,
-        spaceBetween: 30,
-      },
+        spaceBetween:   30
+      }
     }
-  },
+  }
 }
 </script>

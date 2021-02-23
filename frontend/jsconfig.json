@@ -1,9 +1,28 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "@/*": ["src/*"],
-            "@core/*": ["src/@core/*"],
-        }
-    }
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths":   {
+			"@/*":        [
+				"src/*"
+			],
+			"@core/*":    [
+				"src/core/*"
+			],
+			"@conf/*":    [
+				"src/conf/*"
+			],
+			"@layouts/*": [
+				"src/layouts/*"
+			],
+			"@utils/*":   [
+				"src/utils/*"
+			],
+			"@scss/*":    [
+				"src/assets/scss/*"
+			],
+			"@images/*":  [
+				"src/assets/images/*"
+			]
+		}
+	}
 }

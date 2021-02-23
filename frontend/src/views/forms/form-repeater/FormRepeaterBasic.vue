@@ -7,7 +7,7 @@
         class="repeater-form"
         @submit.prevent="repeateAgain"
       >
-
+        
         <!-- Row Loop -->
         <b-row
           v-for="(item, index) in items"
@@ -15,7 +15,7 @@
           :key="item.id"
           ref="row"
         >
-
+          
           <!-- Item Name -->
           <b-col md="4">
             <b-form-group
@@ -24,12 +24,12 @@
             >
               <b-form-input
                 id="item-name"
+                placeholder="Sprout Admin Template"
                 type="text"
-                placeholder="Vuexy Admin Template"
               />
             </b-form-group>
           </b-col>
-
+          
           <!-- Cost -->
           <b-col md="2">
             <b-form-group
@@ -38,12 +38,12 @@
             >
               <b-form-input
                 id="cost"
-                type="number"
                 placeholder="32"
+                type="number"
               />
             </b-form-group>
           </b-col>
-
+          
           <!-- Quantity -->
           <b-col md="2">
             <b-form-group
@@ -52,12 +52,12 @@
             >
               <b-form-input
                 id="quantity"
-                type="number"
                 placeholder="1"
+                type="number"
               />
             </b-form-group>
           </b-col>
-
+          
           <!-- Profession -->
           <b-col
             lg="2"
@@ -69,27 +69,27 @@
             >
               <b-form-input
                 id="pzrice"
-                value="32$"
                 plaintext
+                value="32$"
               />
             </b-form-group>
           </b-col>
-
+          
           <!-- Remove Button -->
           <b-col
+            class="mb-50"
             lg="2"
             md="3"
-            class="mb-50"
           >
             <b-button
               v-ripple.400="'rgba(234, 84, 85, 0.15)'"
-              variant="outline-danger"
               class="mt-0 mt-md-2"
+              variant="outline-danger"
               @click="removeItem(index)"
             >
               <feather-icon
-                icon="XIcon"
                 class="mr-25"
+                icon="XIcon"
               />
               <span>Delete</span>
             </b-button>
@@ -98,7 +98,7 @@
             <hr>
           </b-col>
         </b-row>
-
+      
       </b-form>
     </div>
     <b-button
@@ -107,12 +107,12 @@
       @click="repeateAgain"
     >
       <feather-icon
-        icon="PlusIcon"
         class="mr-25"
+        icon="PlusIcon"
       />
       <span>Add New</span>
     </b-button>
-
+    
     <template #code>
       {{ codeBasic }}
     </template>
@@ -120,13 +120,12 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code'
-import {
-  BForm, BFormGroup, BFormInput, BRow, BCol, BButton,
-} from 'bootstrap-vue'
-import { heightTransition } from '@core/mixins/ui/transition'
-import Ripple from 'vue-ripple-directive'
-import { codeBasic } from './code'
+import BCardCode                                              from "@core/components/b-card-code"
+import { BForm, BFormGroup, BFormInput, BRow, BCol, BButton } from "bootstrap-vue"
+import { heightTransition }                                   from "@/utils/mixins/ui/transition"
+import Ripple                                                 from "vue-ripple-directive"
+import { codeBasic }                                          from "./code"
+
 
 export default {
   components: {
@@ -136,54 +135,56 @@ export default {
     BCol,
     BButton,
     BFormGroup,
-    BFormInput,
+    BFormInput
   },
   directives: {
-    Ripple,
+    Ripple
   },
-  mixins: [heightTransition],
-  data() {
+  mixins:     [ heightTransition ],
+  data () {
     return {
-      items: [{
-        id: 1,
-        selected: 'male',
-        selected1: 'designer',
-        prevHeight: 0,
-      }],
+      items:      [
+        {
+          id:         1,
+          selected:   "male",
+          selected1:  "designer",
+          prevHeight: 0
+        }
+      ],
       nextTodoId: 2,
-      codeBasic,
+      codeBasic
     }
   },
-  mounted() {
+  mounted () {
     this.initTrHeight()
   },
-  created() {
-    window.addEventListener('resize', this.initTrHeight)
+  created () {
+    window.addEventListener( "resize", this.initTrHeight )
   },
-  destroyed() {
-    window.removeEventListener('resize', this.initTrHeight)
+  destroyed () {
+    window.removeEventListener( "resize", this.initTrHeight )
   },
   methods: {
-    repeateAgain() {
-      this.items.push({
-        id: this.nextTodoId += this.nextTodoId,
-      })
-
-      this.$nextTick(() => {
-        this.trAddHeight(this.$refs.row[0].offsetHeight)
-      })
+    repeateAgain () {
+      this.items.push( {
+                         id: this.nextTodoId += this.nextTodoId
+                       } )
+      
+      this.$nextTick( () => {
+        this.trAddHeight( this.$refs.row[ 0 ].offsetHeight )
+      } )
     },
-    removeItem(index) {
-      this.items.splice(index, 1)
-      this.trTrimHeight(this.$refs.row[0].offsetHeight)
+    removeItem ( index ) {
+      this.items.splice( index, 1 )
+      this.trTrimHeight( this.$refs.row[ 0 ].offsetHeight )
     },
-    initTrHeight() {
-      this.trSetHeight(null)
-      this.$nextTick(() => {
-        this.trSetHeight(this.$refs.form.scrollHeight)
-      })
-    },
-  },
+    initTrHeight () {
+      this.trSetHeight( null )
+      this.$nextTick( () => {
+        this.trSetHeight( this.$refs.form.scrollHeight )
+      } )
+    }
+  }
 }
 </script>
 

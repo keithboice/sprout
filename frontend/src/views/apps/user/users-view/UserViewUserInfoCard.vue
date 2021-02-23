@@ -1,13 +1,13 @@
 <template>
   <b-card>
-
+    
     <b-row>
-
+      
       <!-- User Info: Left col -->
       <b-col
+        class="d-flex justify-content-between flex-column"
         cols="21"
         xl="6"
-        class="d-flex justify-content-between flex-column"
       >
         <!-- User Avatar & Action Buttons -->
         <div class="d-flex justify-content-start">
@@ -15,14 +15,13 @@
             :src="userData.avatar"
             :text="avatarText(userData.fullName)"
             :variant="`light-${resolveUserRoleVariant(userData.role)}`"
-            size="104px"
             rounded
+            size="104px"
           />
           <div class="d-flex flex-column ml-1">
             <div class="mb-1">
               <h4 class="mb-0">
-                {{ userData.fullName }}
-              </h4>
+                {{ userData.fullName }} </h4>
               <span class="card-text">{{ userData.email }}</span>
             </div>
             <div class="d-flex flex-wrap">
@@ -33,21 +32,21 @@
                 Edit
               </b-button>
               <b-button
-                variant="outline-danger"
                 class="ml-1"
+                variant="outline-danger"
               >
                 Delete
               </b-button>
             </div>
           </div>
         </div>
-
+        
         <!-- User Stats -->
         <div class="d-flex align-items-center mt-2">
           <div class="d-flex align-items-center mr-2">
             <b-avatar
-              variant="light-primary"
               rounded
+              variant="light-primary"
             >
               <feather-icon
                 icon="DollarSignIcon"
@@ -56,16 +55,15 @@
             </b-avatar>
             <div class="ml-1">
               <h5 class="mb-0">
-                23.3k
-              </h5>
+                23.3k </h5>
               <small>Monthly Sales</small>
             </div>
           </div>
-
+          
           <div class="d-flex align-items-center">
             <b-avatar
-              variant="light-success"
               rounded
+              variant="light-success"
             >
               <feather-icon
                 icon="TrendingUpIcon"
@@ -74,14 +72,13 @@
             </b-avatar>
             <div class="ml-1">
               <h5 class="mb-0">
-                $99.87k
-              </h5>
+                $99.87k </h5>
               <small>Annual Profit</small>
             </div>
           </div>
         </div>
       </b-col>
-
+      
       <!-- Right Col: Table -->
       <b-col
         cols="12"
@@ -91,8 +88,8 @@
           <tr>
             <th class="pb-50">
               <feather-icon
-                icon="UserIcon"
                 class="mr-75"
+                icon="UserIcon"
               />
               <span class="font-weight-bold">Username</span>
             </th>
@@ -103,8 +100,8 @@
           <tr>
             <th class="pb-50">
               <feather-icon
-                icon="CheckIcon"
                 class="mr-75"
+                icon="CheckIcon"
               />
               <span class="font-weight-bold">Status</span>
             </th>
@@ -115,8 +112,8 @@
           <tr>
             <th class="pb-50">
               <feather-icon
-                icon="StarIcon"
                 class="mr-75"
+                icon="StarIcon"
               />
               <span class="font-weight-bold">Role</span>
             </th>
@@ -127,8 +124,8 @@
           <tr>
             <th class="pb-50">
               <feather-icon
-                icon="FlagIcon"
                 class="mr-75"
+                icon="FlagIcon"
               />
               <span class="font-weight-bold">Country</span>
             </th>
@@ -139,8 +136,8 @@
           <tr>
             <th>
               <feather-icon
-                icon="PhoneIcon"
                 class="mr-75"
+                icon="PhoneIcon"
               />
               <span class="font-weight-bold">Contact</span>
             </th>
@@ -155,29 +152,32 @@
 </template>
 
 <script>
-import {
-  BCard, BButton, BAvatar, BRow, BCol,
-} from 'bootstrap-vue'
-import { avatarText } from '@core/utils/filter'
-import useUsersList from '../users-list/useUsersList'
+import { BCard, BButton, BAvatar, BRow, BCol } from "bootstrap-vue"
+import { avatarText }                          from "@core/../../../../utils/filter"
+import useUsersList                            from "../users-list/useUsersList"
+
 
 export default {
   components: {
-    BCard, BButton, BRow, BCol, BAvatar,
+    BCard,
+    BButton,
+    BRow,
+    BCol,
+    BAvatar
   },
-  props: {
+  props:      {
     userData: {
-      type: Object,
-      required: true,
-    },
+      type:     Object,
+      required: true
+    }
   },
-  setup() {
+  setup () {
     const { resolveUserRoleVariant } = useUsersList()
     return {
       avatarText,
-      resolveUserRoleVariant,
+      resolveUserRoleVariant
     }
-  },
+  }
 }
 </script>
 

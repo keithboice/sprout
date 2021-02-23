@@ -4,13 +4,13 @@
     <b-card-header class="pb-0">
       <b-card-title>{{ trackerData.title }}</b-card-title>
       <b-dropdown
+        class="chart-dropdown"
         no-caret
         right
-        text="Last 7 Days"
-        variant="transparent"
-        class="chart-dropdown"
-        toggle-class="p-50"
         size="sm"
+        text="Last 7 Days"
+        toggle-class="p-50"
+        variant="transparent"
       >
         <b-dropdown-item
           v-for="day in trackerData.lastDays"
@@ -21,36 +21,35 @@
       </b-dropdown>
     </b-card-header>
     <!--/ title and dropdown -->
-
+    
     <b-card-body>
       <b-row>
         <b-col
-          sm="2"
           class="d-flex flex-column flex-wrap text-center"
+          sm="2"
         >
           <h1 class="font-large-2 font-weight-bolder mt-2 mb-0">
-            {{ trackerData.totalTicket }}
-          </h1>
+            {{ trackerData.totalTicket }} </h1>
           <b-card-text>Tickets</b-card-text>
         </b-col>
-
+        
         <!-- chart -->
         <b-col
-          sm="10"
           class="d-flex justify-content-center"
+          sm="10"
         >
-
+          
           <!-- apex chart -->
           <vue-apex-charts
-            type="radialBar"
-            height="270"
             :options="supportTrackerRadialBar.chartOptions"
             :series="supportTrackerRadialBar.series"
+            height="270"
+            type="radialBar"
           />
         </b-col>
         <!--/ chart -->
       </b-row>
-
+      
       <!-- chart info -->
       <div class="d-flex justify-content-between">
         <div class="text-center">
@@ -77,11 +76,10 @@
 </template>
 
 <script>
-import {
-  BCard, BCardHeader, BCardTitle, BDropdown, BDropdownItem, BCardBody, BRow, BCol, BCardText,
-} from 'bootstrap-vue'
-import VueApexCharts from 'vue-apexcharts'
-import { $themeColors } from '@themeConfig'
+import { BCard, BCardHeader, BCardTitle, BDropdown, BDropdownItem, BCardBody, BRow, BCol, BCardText } from "bootstrap-vue"
+import VueApexCharts                                                                                  from "vue-apexcharts"
+import { $themeColors }                                                                               from "@/conf/theme"
+
 
 export default {
   components: {
@@ -94,65 +92,66 @@ export default {
     BCardText,
     BCardBody,
     BRow,
-    BCol,
+    BCol
   },
-  data() {
+  data () {
     return {
-      trackerData: {},
+      trackerData:             {},
       supportTrackerRadialBar: {
-        series: [83],
+        series:       [ 83 ],
         chartOptions: {
           plotOptions: {
             radialBar: {
-              size: 150,
-              offsetY: 20,
+              size:       150,
+              offsetY:    20,
               startAngle: -150,
-              endAngle: 150,
-              hollow: {
-                size: '65%',
+              endAngle:   150,
+              hollow:     {
+                size: "65%"
               },
-              track: {
-                background: '#fff',
-                strokeWidth: '100%',
+              track:      {
+                background:  "#fff",
+                strokeWidth: "100%"
               },
               dataLabels: {
-                name: {
-                  offsetY: -5,
-                  color: '#5e5873',
-                  fontSize: '1rem',
+                name:  {
+                  offsetY:  -5,
+                  color:    "#5e5873",
+                  fontSize: "1rem"
                 },
                 value: {
-                  offsetY: 15,
-                  color: '#5e5873',
-                  fontSize: '1.714rem',
-                },
-              },
-            },
+                  offsetY:  15,
+                  color:    "#5e5873",
+                  fontSize: "1.714rem"
+                }
+              }
+            }
           },
-          colors: [$themeColors.danger],
-          fill: {
-            type: 'gradient',
+          colors:      [ $themeColors.danger ],
+          fill:        {
+            type:     "gradient",
             gradient: {
-              shade: 'dark',
-              type: 'horizontal',
-              shadeIntensity: 0.5,
-              gradientToColors: [$themeColors.primary],
-              inverseColors: true,
-              opacityFrom: 1,
-              opacityTo: 1,
-              stops: [0, 100],
-            },
+              shade:            "dark",
+              type:             "horizontal",
+              shadeIntensity:   0.5,
+              gradientToColors: [ $themeColors.primary ],
+              inverseColors:    true,
+              opacityFrom:      1,
+              opacityTo:        1,
+              stops:            [ 0, 100 ]
+            }
           },
-          stroke: {
-            dashArray: 8,
+          stroke:      {
+            dashArray: 8
           },
-          labels: ['Completed Tickets'],
-        },
-      },
+          labels:      [ "Completed Tickets" ]
+        }
+      }
     }
   },
-  created() {
-    this.$http.get('/card/card-analytics/support-tracker').then(res => { this.trackerData = res.data })
-  },
+  created () {
+    this.$http.get( "/card/card-analytics/support-tracker" )
+      .then( res => { this.trackerData = res.data } )
+  }
 }
 </script>

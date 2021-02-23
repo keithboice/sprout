@@ -1,35 +1,34 @@
 <template>
   <b-sidebar
     id="sidebar-invoice-add-payment"
-    sidebar-class="sidebar-lg"
-    bg-variant="white"
-    shadow
     backdrop
+    bg-variant="white"
     no-header
     right
+    shadow
+    sidebar-class="sidebar-lg"
   >
     <template #default="{ hide }">
       <!-- Header -->
       <div class="d-flex justify-content-between align-items-center content-sidebar-header px-2 py-1">
         <h5 class="mb-0">
-          Add Payment
-        </h5>
-
+          Add Payment </h5>
+        
         <feather-icon
           class="ml-1 cursor-pointer"
           icon="XIcon"
           size="16"
           @click="hide"
         />
-
+      
       </div>
-
+      
       <!-- Body -->
       <b-form
         class="p-2"
         @submit.prevent
       >
-
+        
         <!-- Invoice Balance -->
         <b-form-group
           label="Invoice Balance"
@@ -38,11 +37,11 @@
           <b-form-input
             id="invoice-balance"
             v-model="addPaymentData.invoiceBalance"
-            trim
             disabled
+            trim
           />
         </b-form-group>
-
+        
         <!-- Payment Amount -->
         <b-form-group
           label="Payment Amount"
@@ -56,7 +55,7 @@
             type="number"
           />
         </b-form-group>
-
+        
         <!-- Payment Date -->
         <b-form-group
           label="Payment Date"
@@ -67,22 +66,22 @@
             class="form-control"
           />
         </b-form-group>
-
+        
         <b-form-group
           label="Payment Method"
           label-for="payment-method"
         >
           <v-select
             v-model="addPaymentData.paymentMethod"
-            :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+            :clearable="false"
+            :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
             :options="paymentMethods"
+            input-id="payment-method"
             label="Payment Method"
             placeholder="Select Payment Method"
-            input-id="payment-method"
-            :clearable="false"
           />
         </b-form-group>
-
+        
         <!-- Internal Payment Note -->
         <b-form-group
           label="Internal Payment Note"
@@ -96,14 +95,14 @@
             trim
           />
         </b-form-group>
-
+        
         <!-- Form Actions -->
         <div class="d-flex mt-2">
           <b-button
             v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-            variant="primary"
             class="mr-2"
             type="submit"
+            variant="primary"
             @click="hide"
           >
             Send
@@ -122,13 +121,12 @@
 </template>
 
 <script>
-import {
-  BSidebar, BForm, BFormGroup, BFormInput, BFormTextarea, BButton,
-} from 'bootstrap-vue'
-import { ref } from '@vue/composition-api'
-import Ripple from 'vue-ripple-directive'
-import flatPickr from 'vue-flatpickr-component'
-import vSelect from 'vue-select'
+import { BSidebar, BForm, BFormGroup, BFormInput, BFormTextarea, BButton } from "bootstrap-vue"
+import { ref }                                                             from "@vue/composition-api"
+import Ripple                                                              from "vue-ripple-directive"
+import flatPickr                                                           from "vue-flatpickr-component"
+import vSelect                                                             from "vue-select"
+
 
 export default {
   components: {
@@ -138,35 +136,31 @@ export default {
     BFormInput,
     BFormTextarea,
     BButton,
-
+    
     flatPickr,
-    vSelect,
+    vSelect
   },
   directives: {
-    Ripple,
+    Ripple
   },
-  setup() {
+  setup () {
     const paymentMethods = [
-      'Cash',
-      'Bank Transfer',
-      'Debit',
-      'Credit',
-      'Paypal',
+      "Cash", "Bank Transfer", "Debit", "Credit", "Paypal"
     ]
-
-    const addPaymentData = ref({
-      invoiceBalance: 5000,
-      paymentAmount: '',
-      paymentDate: '2020-11-11',
-      paymentMethod: null,
-      internalPaymentNote: '',
-    })
-
+    
+    const addPaymentData = ref( {
+                                  invoiceBalance:      5000,
+                                  paymentAmount:       "",
+                                  paymentDate:         "2020-11-11",
+                                  paymentMethod:       null,
+                                  internalPaymentNote: ""
+                                } )
+    
     return {
       paymentMethods,
-      addPaymentData,
+      addPaymentData
     }
-  },
+  }
 }
 </script>
 

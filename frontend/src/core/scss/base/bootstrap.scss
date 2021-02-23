@@ -1,0 +1,12 @@
+// ================================================================================================
+//  File Name: bootstrap.scss
+//  Description: Include bootstrap core from node_modules
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Sprout  - Vuejs
+//  Author: PIXINVENT
+//  Author URL: http://www.themeforest.net/user/pixinvent
+// ================================================================================================
+
+@import 'bootstrap-extended/include';
+// Bootstrap includes
+@import '/node_modules/bootstrap/scss/bootstrap'; // Bootstrap core

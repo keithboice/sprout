@@ -13,10 +13,10 @@
       >
         <statistic-card-with-area-chart
           v-if="data.subscribersGained"
-          icon="UsersIcon"
-          :statistic="kFormatter(data.subscribersGained.analyticsData.subscribers)"
-          statistic-title="Subscribers Gained"
           :chart-data="data.subscribersGained.series"
+          :statistic="kFormatter(data.subscribersGained.analyticsData.subscribers)"
+          icon="UsersIcon"
+          statistic-title="Subscribers Gained"
         />
       </b-col>
       <b-col
@@ -25,15 +25,15 @@
       >
         <statistic-card-with-area-chart
           v-if="data.ordersRecevied"
-          icon="PackageIcon"
-          color="warning"
-          :statistic="kFormatter(data.ordersRecevied.analyticsData.orders)"
-          statistic-title="Orders Received"
           :chart-data="data.ordersRecevied.series"
+          :statistic="kFormatter(data.ordersRecevied.analyticsData.orders)"
+          color="warning"
+          icon="PackageIcon"
+          statistic-title="Orders Received"
         />
       </b-col>
     </b-row>
-
+    
     <b-row class="match-height">
       <b-col lg="6">
         <analytics-avg-sessions :data="data.avgSessions" />
@@ -42,7 +42,7 @@
         <analytics-support-tracker :data="data.supportTracker" />
       </b-col>
     </b-row>
-
+    
     <b-row class="match-height">
       <b-col lg="4">
         <analytics-timeline :data="data.timeline" />
@@ -54,7 +54,7 @@
         <analytics-app-design :data="data.appDesign" />
       </b-col>
     </b-row>
-
+    
     <b-row>
       <b-col cols="12">
         <invoice-list />
@@ -64,17 +64,18 @@
 </template>
 
 <script>
-import { BRow, BCol } from 'bootstrap-vue'
+import { BRow, BCol } from "bootstrap-vue"
 
-import StatisticCardWithAreaChart from '@core/components/statistics-cards/StatisticCardWithAreaChart.vue'
-import { kFormatter } from '@core/utils/filter'
-import InvoiceList from '@/views/apps/invoice/invoice-list/InvoiceList.vue'
-import AnalyticsCongratulation from './AnalyticsCongratulation.vue'
-import AnalyticsAvgSessions from './AnalyticsAvgSessions.vue'
-import AnalyticsSupportTracker from './AnalyticsSupportTracker.vue'
-import AnalyticsTimeline from './AnalyticsTimeline.vue'
-import AnalyticsSalesRadarChart from './AnalyticsSalesRadarChart.vue'
-import AnalyticsAppDesign from './AnalyticsAppDesign.vue'
+import StatisticCardWithAreaChart from "@core/components/statistics-cards/StatisticCardWithAreaChart.vue"
+import { kFormatter }             from "@core/../../../utils/filter"
+import InvoiceList                from "@/views/apps/invoice/invoice-list/InvoiceList.vue"
+import AnalyticsCongratulation    from "./AnalyticsCongratulation.vue"
+import AnalyticsAvgSessions       from "./AnalyticsAvgSessions.vue"
+import AnalyticsSupportTracker    from "./AnalyticsSupportTracker.vue"
+import AnalyticsTimeline          from "./AnalyticsTimeline.vue"
+import AnalyticsSalesRadarChart   from "./AnalyticsSalesRadarChart.vue"
+import AnalyticsAppDesign         from "./AnalyticsAppDesign.vue"
+
 
 export default {
   components: {
@@ -87,20 +88,20 @@ export default {
     AnalyticsTimeline,
     AnalyticsSalesRadarChart,
     AnalyticsAppDesign,
-    InvoiceList,
+    InvoiceList
   },
-  data() {
+  data () {
     return {
-      data: {},
+      data: {}
     }
   },
-  created() {
+  created () {
     // data
-    this.$http.get('/analytics/data')
-      .then(response => { this.data = response.data })
+    this.$http.get( "/analytics/data" )
+      .then( response => { this.data = response.data } )
   },
   methods: {
-    kFormatter,
-  },
+    kFormatter
+  }
 }
 </script>

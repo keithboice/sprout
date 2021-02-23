@@ -1,14 +1,14 @@
 <template>
   <b-card-code
-    title="Centered Slides Option-1"
     class="bg-transparent shadow-none"
+    title="Centered Slides Option-1"
   >
     <swiper
-      class="swiper-centered-slides p-1"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
       :options="swiperOptions"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      class="swiper-centered-slides p-1"
     >
-
+      
       <!-- slides -->
       <swiper-slide
         v-for="data in swiperData"
@@ -23,7 +23,7 @@
           {{ data.text }}
         </div>
       </swiper-slide>
-
+      
       <!-- Add Arrows -->
       <div
         slot="button-next"
@@ -34,7 +34,7 @@
         class="swiper-button-prev"
       />
     </swiper>
-
+    
     <template #code>
       {{ codeCenterSlides }}
     </template>
@@ -42,37 +42,53 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/css/swiper.css'
-import { codeCenterSlides } from './code'
+import BCardCode               from "@core/components/b-card-code/BCardCode.vue"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import "swiper/css/swiper.css"
+import { codeCenterSlides }    from "./code"
+
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
-    BCardCode,
+    BCardCode
   },
-  data() {
+  data () {
     return {
       codeCenterSlides,
-      swiperData: [
-        { icon: 'GithubIcon', text: 'Getting Started' },
-        { icon: 'FacebookIcon', text: 'Pricing & Plans' },
-        { icon: 'TwitterIcon', text: 'Sales Question' },
-        { icon: 'InstagramIcon', text: 'Usage Guides' },
-        { icon: 'GitlabIcon', text: 'General Guide' },
+      swiperData:    [
+        {
+          icon: "GithubIcon",
+          text: "Getting Started"
+        },
+        {
+          icon: "FacebookIcon",
+          text: "Pricing & Plans"
+        },
+        {
+          icon: "TwitterIcon",
+          text: "Sales Question"
+        },
+        {
+          icon: "InstagramIcon",
+          text: "Usage Guides"
+        },
+        {
+          icon: "GitlabIcon",
+          text: "General Guide"
+        }
       ],
       swiperOptions: {
-        slidesPerView: 'auto',
+        slidesPerView:  "auto",
         centeredSlides: true,
-        spaceBetween: 30,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      },
+        spaceBetween:   30,
+        navigation:     {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        }
+      }
     }
-  },
+  }
 }
 </script>

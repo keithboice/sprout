@@ -1,13 +1,13 @@
 <template>
   <validation-observer
-    #default="{ handleSubmit }"
     ref="refFormObserver"
+    #default="{ handleSubmit }"
   >
     <b-form
       class="list-view product-checkout"
       @submit.prevent="handleSubmit(onSubmit)"
     >
-
+      
       <!-- Left Form -->
       <b-card no-body>
         <b-card-header class="flex-column align-items-start">
@@ -18,7 +18,7 @@
         </b-card-header>
         <b-card-body>
           <b-row>
-
+            
             <!-- Full Name -->
             <b-col
               cols="12"
@@ -30,9 +30,9 @@
                 rules="required"
               >
                 <b-form-group
+                  class="mb-2"
                   label="Full Name"
                   label-for="full-name"
-                  class="mb-2"
                 >
                   <b-form-input
                     id="full-name"
@@ -41,17 +41,17 @@
                     trim
                   />
                   <b-form-invalid-feedback>
-                    {{ validationContext.errors[0] }}
+                    {{ validationContext.errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
             </b-col>
-
+            
             <!-- Mobile Number -->
             <b-col
+              class="mb-2"
               cols="12"
               md="6"
-              class="mb-2"
             >
               <validation-provider
                 #default="validationContext"
@@ -65,17 +65,17 @@
                   <b-form-input
                     id="mobile-number"
                     v-model="addressDetails.mobile"
-                    type="number"
                     :state="getValidationState(validationContext)"
                     trim
+                    type="number"
                   />
                   <b-form-invalid-feedback>
-                    {{ validationContext.errors[0] }}
+                    {{ validationContext.errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
             </b-col>
-
+            
             <!-- Flat House No -->
             <b-col
               cols="12"
@@ -87,9 +87,9 @@
                 rules="required"
               >
                 <b-form-group
+                  class="mb-2"
                   label="Flat, House No"
                   label-for="flat-house-no"
-                  class="mb-2"
                 >
                   <b-form-input
                     id="flat-house-no"
@@ -98,12 +98,12 @@
                     trim
                   />
                   <b-form-invalid-feedback>
-                    {{ validationContext.errors[0] }}
+                    {{ validationContext.errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
             </b-col>
-
+            
             <!-- Landmark -->
             <b-col
               cols="12"
@@ -115,9 +115,9 @@
                 rules="required"
               >
                 <b-form-group
+                  class="mb-2"
                   label="Landmark"
                   label-for="landmark"
-                  class="mb-2"
                 >
                   <b-form-input
                     id="landmark"
@@ -126,12 +126,12 @@
                     trim
                   />
                   <b-form-invalid-feedback>
-                    {{ validationContext.errors[0] }}
+                    {{ validationContext.errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
             </b-col>
-
+            
             <!-- City -->
             <b-col
               cols="12"
@@ -143,9 +143,9 @@
                 rules="required"
               >
                 <b-form-group
+                  class="mb-2"
                   label="Town/City"
                   label-for="city"
-                  class="mb-2"
                 >
                   <b-form-input
                     id="city"
@@ -154,12 +154,12 @@
                     trim
                   />
                   <b-form-invalid-feedback>
-                    {{ validationContext.errors[0] }}
+                    {{ validationContext.errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
             </b-col>
-
+            
             <!-- pincode -->
             <b-col
               cols="12"
@@ -171,24 +171,24 @@
                 rules="required|integer"
               >
                 <b-form-group
+                  class="mb-2"
                   label="Pincode"
                   label-for="pincode"
-                  class="mb-2"
                 >
                   <b-form-input
                     id="pincode"
                     v-model="addressDetails.pincode"
-                    type="number"
                     :state="getValidationState(validationContext)"
                     trim
+                    type="number"
                   />
                   <b-form-invalid-feedback>
-                    {{ validationContext.errors[0] }}
+                    {{ validationContext.errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
             </b-col>
-
+            
             <!-- state -->
             <b-col
               cols="12"
@@ -200,9 +200,9 @@
                 rules="required"
               >
                 <b-form-group
+                  class="mb-2"
                   label="State"
                   label-for="state"
-                  class="mb-2"
                 >
                   <b-form-input
                     id="state"
@@ -211,12 +211,12 @@
                     trim
                   />
                   <b-form-invalid-feedback>
-                    {{ validationContext.errors[0] }}
+                    {{ validationContext.errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
             </b-col>
-
+            
             <!-- Address Type -->
             <b-col
               cols="12"
@@ -227,32 +227,32 @@
                 name="Address Type"
                 rules="required"
               >
-
+                
                 <b-form-group
+                  :state="getValidationState(validationContext)"
                   label="Address Type"
                   label-for="address-type"
-                  :state="getValidationState(validationContext)"
                 >
                   <v-select
                     v-model="addressDetails.addressType"
-                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :clearable="false"
+                    :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
                     :options="['Home', 'Work']"
                     input-id="address-type"
-                    :clearable="false"
                   />
-
+                  
                   <b-form-invalid-feedback :state="getValidationState(validationContext)">
-                    {{ validationContext.errors[0] }}
+                    {{ validationContext.errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
             </b-col>
-
+            
             <!-- Submit Button -->
             <b-col cols="12">
               <b-button
-                variant="primary"
                 type="submit"
+                variant="primary"
               >
                 Save and Deliver Here
               </b-button>
@@ -260,7 +260,7 @@
           </b-row>
         </b-card-body>
       </b-card>
-
+      
       <!-- Right Col -->
       <div class="customer-card">
         <b-card title="John Doe">
@@ -271,8 +271,8 @@
           <b-card-text>UTC-5: Eastern Standard Time (EST)</b-card-text>
           <b-card-text>202-555-0140</b-card-text>
           <b-button
-            variant="primary"
             block
+            variant="primary"
             @click="$emit('next-step')"
           >
             Deliver To This Address
@@ -285,12 +285,13 @@
 
 <script>
 import {
-  BForm, BCard, BCardHeader, BCardTitle, BCardText, BCardBody, BRow, BCol, BFormGroup, BFormInput, BButton, BFormInvalidFeedback,
-} from 'bootstrap-vue'
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
-import vSelect from 'vue-select'
-import { required, integer } from '@validations'
-import formValidation from '@core/comp-functions/forms/form-validation'
+  BForm, BCard, BCardHeader, BCardTitle, BCardText, BCardBody, BRow, BCol, BFormGroup, BFormInput, BButton, BFormInvalidFeedback
+}                                                 from "bootstrap-vue"
+import { ValidationProvider, ValidationObserver } from "vee-validate"
+import vSelect                                    from "vue-select"
+import { required, integer }                      from "@/utils/validations"
+import formValidation                             from "@/utils/comp-functions/forms/form-validation"
+
 
 export default {
   components: {
@@ -307,49 +308,49 @@ export default {
     BFormInput,
     BButton,
     BFormInvalidFeedback,
-
+    
     // Form Validation
     ValidationProvider,
     ValidationObserver,
-
+    
     // 3rd party
-    vSelect,
+    vSelect
   },
-  props: {
+  props:      {
     addressDetails: {
-      type: Object,
-      required: true,
-    },
-  },
-  setup(_, { emit }) {
-    const {
-      refFormObserver,
-      getValidationState,
-      resetForm,
-    } = formValidation(() => {})
-
-    const onSubmit = () => {
-      emit('next-step')
+      type:     Object,
+      required: true
     }
-
+  },
+  setup ( _, { emit } ) {
+    const {
+            refFormObserver,
+            getValidationState,
+            resetForm
+          } = formValidation( () => {} )
+    
+    const onSubmit = () => {
+      emit( "next-step" )
+    }
+    
     return {
-
+      
       // Form
       onSubmit,
-
+      
       // Form Validation
       refFormObserver,
       getValidationState,
       resetForm,
-
+      
       // FOrm Validators
       required,
-      integer,
+      integer
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-@import '@core/scss/vue/libs/vue-select.scss';
+@import '~@/assets/scss/vue/libs/vue-select.scss';
 </style>

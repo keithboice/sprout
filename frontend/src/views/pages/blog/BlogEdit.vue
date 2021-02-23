@@ -10,27 +10,26 @@
     >
       <b-media-aside class="mr-75">
         <b-avatar
-          size="38"
           :src="blogEdit.avatar"
+          size="38"
         />
       </b-media-aside>
       <b-media-body>
         <h6 class="mb-25">
-          {{ blogEdit.userFullName }}
-        </h6>
+          {{ blogEdit.userFullName }} </h6>
         <b-card-text>{{ blogEdit.createdTime }}</b-card-text>
       </b-media-body>
     </b-media>
     <!--/ media -->
-
+    
     <!-- form -->
     <b-form class="mt-2">
       <b-row>
         <b-col md="6">
           <b-form-group
+            class="mb-2"
             label="Title"
             label-for="blog-edit-title"
-            class="mb-2"
           >
             <b-form-input
               id="blog-edit-title"
@@ -40,24 +39,24 @@
         </b-col>
         <b-col md="6">
           <b-form-group
+            class="mb-2"
             label="Category"
             label-for="blog-edit-category"
-            class="mb-2"
           >
             <v-select
               id="blog-edit-category"
               v-model="blogEdit.blogCategories"
-              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-              multiple
+              :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
               :options="categoryOption"
+              multiple
             />
           </b-form-group>
         </b-col>
         <b-col md="6">
           <b-form-group
+            class="mb-2"
             label="Slug"
             label-for="blog-edit-slug"
-            class="mb-2"
           >
             <b-form-input
               id="blog-edit-slug"
@@ -67,23 +66,23 @@
         </b-col>
         <b-col md="6">
           <b-form-group
+            class="mb-2"
             label="Status"
             label-for="blog-edit-category"
-            class="mb-2"
           >
             <v-select
               id="blog-edit-category"
               v-model="blogEdit.status"
-              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+              :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
               :options="statusOption"
             />
           </b-form-group>
         </b-col>
         <b-col cols="12">
           <b-form-group
+            class="mb-2"
             label="Content"
             label-for="blog-content"
-            class="mb-2"
           >
             <quill-editor
               id="blog-content"
@@ -93,32 +92,31 @@
           </b-form-group>
         </b-col>
         <b-col
-          cols="12"
           class="mb-2"
+          cols="12"
         >
           <div class="border rounded p-2">
             <h4 class="mb-1">
-              Featured Image
-            </h4>
+              Featured Image </h4>
             <b-media
+              class="flex-column flex-md-row"
               no-body
               vertical-align="center"
-              class="flex-column flex-md-row"
             >
               <b-media-aside>
                 <b-img
                   ref="refPreviewEl"
                   :src="blogEdit.featuredImage"
+                  class="rounded mr-2 mb-1 mb-md-0"
                   height="110"
                   width="170"
-                  class="rounded mr-2 mb-1 mb-md-0"
                 />
               </b-media-aside>
               <b-media-body>
                 <small class="text-muted">Required image resolution 800x400, image size 10mb.</small>
                 <b-card-text class="my-50">
                   <b-link id="blog-image-text">
-                    C:\fakepath\{{ blogFile ? blogFile.name : 'banner.jpg' }}
+                    C:\fakepath\{{ blogFile ? blogFile.name : "banner.jpg" }}
                   </b-link>
                 </b-card-text>
                 <div class="d-inline-block">
@@ -135,13 +133,13 @@
           </div>
         </b-col>
         <b-col
-          cols="12"
           class="mt-50"
+          cols="12"
         >
           <b-button
             v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-            variant="primary"
             class="mr-1"
+            variant="primary"
           >
             Save Changes
           </b-button>
@@ -160,13 +158,14 @@
 
 <script>
 import {
-  BCard, BMedia, BAvatar, BCardText, BMediaAside, BMediaBody, BForm, BRow, BCol, BFormGroup, BFormInput, BImg, BFormFile, BLink, BButton,
-} from 'bootstrap-vue'
-import vSelect from 'vue-select'
-import { quillEditor } from 'vue-quill-editor'
-import Ripple from 'vue-ripple-directive'
-import { useInputImageRenderer } from '@core/comp-functions/forms/form-utils'
-import { ref } from '@vue/composition-api'
+  BCard, BMedia, BAvatar, BCardText, BMediaAside, BMediaBody, BForm, BRow, BCol, BFormGroup, BFormInput, BImg, BFormFile, BLink, BButton
+}                                from "bootstrap-vue"
+import vSelect                   from "vue-select"
+import { quillEditor }           from "vue-quill-editor"
+import Ripple                    from "vue-ripple-directive"
+import { useInputImageRenderer } from "@/utils/comp-functions/forms/form-utils"
+import { ref }                   from "@vue/composition-api"
+
 
 export default {
   components: {
@@ -186,42 +185,43 @@ export default {
     BFormInput,
     BFormFile,
     vSelect,
-    quillEditor,
+    quillEditor
   },
   directives: {
-    Ripple,
+    Ripple
   },
-  data() {
+  data () {
     return {
-      blogEdit: {},
-      blogFile: null,
-      categoryOption: ['Fashion', 'Food', 'Gaming', 'Quote', 'Video'],
-      statusOption: ['Published', 'Pending', 'Draft'],
-      snowOption: {
-        theme: 'snow',
-      },
+      blogEdit:       {},
+      blogFile:       null,
+      categoryOption: [ "Fashion", "Food", "Gaming", "Quote", "Video" ],
+      statusOption:   [ "Published", "Pending", "Draft" ],
+      snowOption:     {
+        theme: "snow"
+      }
     }
   },
-  created() {
-    this.$http.get('/blog/list/data/edit').then(res => { this.blogEdit = res.data })
+  created () {
+    this.$http.get( "/blog/list/data/edit" )
+      .then( res => { this.blogEdit = res.data } )
   },
-  setup() {
-    const refInputEl = ref(null)
-    const refPreviewEl = ref(null)
-
-    const { inputImageRenderer } = useInputImageRenderer(refInputEl, base64 => { refPreviewEl.value.src = base64 })
-
+  setup () {
+    const refInputEl = ref( null )
+    const refPreviewEl = ref( null )
+    
+    const { inputImageRenderer } = useInputImageRenderer( refInputEl, base64 => { refPreviewEl.value.src = base64 } )
+    
     return {
       refInputEl,
       refPreviewEl,
-      inputImageRenderer,
+      inputImageRenderer
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-@import '@core/scss/vue/libs/vue-select.scss';
-@import '@core/scss/vue/libs/quill.scss';
-@import '@core/scss/vue/pages/page-blog.scss';
+@import '~@/assets/scss/vue/libs/vue-select.scss';
+@import '~@/assets/scss/vue/libs/quill.scss';
+@import '~@/assets/scss/vue/pages/page-blog.scss';
 </style>

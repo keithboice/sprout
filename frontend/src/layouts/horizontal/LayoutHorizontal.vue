@@ -1,30 +1,31 @@
 <template>
   <layout-horizontal>
-
+    
     <router-view />
-
-    <app-customizer
-      v-if="showCustomizer"
-      slot="customizer"
-    />
+    
+    <!--    <app-customizer
+          v-if="showCustomizer"
+          slot="customizer"
+        />-->
   </layout-horizontal>
 
 </template>
 
 <script>
-import LayoutHorizontal from '@core/layouts/layout-horizontal/LayoutHorizontal.vue'
-import AppCustomizer from '@core/layouts/components/app-customizer/AppCustomizer.vue'
-import { $themeConfig } from '@themeConfig'
+import LayoutHorizontal from "@/layouts/layout-horizontal/LayoutHorizontal.vue"
+/*import AppCustomizer    from "@/layouts/components/app-customizer/AppCustomizer.vue"*/
+import { $themeConfig } from "@/conf/theme"
+
 
 export default {
   components: {
-    LayoutHorizontal,
-    AppCustomizer,
+    LayoutHorizontal/*,
+     AppCustomizer*/
   },
-  data() {
+  data () {
     return {
-      showCustomizer: $themeConfig.layout.customizer,
+      showCustomizer: $themeConfig.layout.customizer
     }
-  },
+  }
 }
 </script>

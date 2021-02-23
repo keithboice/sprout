@@ -1,6 +1,6 @@
 <template>
   <b-card-code title="Basic Table">
-
+    
     <!-- search input -->
     <div class="custom-search d-flex justify-content-end">
       <b-form-group>
@@ -8,17 +8,21 @@
           <label class="mr-1">Search</label>
           <b-form-input
             v-model="searchTerm"
+            class="d-inline-block"
             placeholder="Search"
             type="text"
-            class="d-inline-block"
           />
         </div>
       </b-form-group>
     </div>
-
+    
     <!-- table -->
     <vue-good-table
       :columns="columns"
+      :pagination-options="{
+        enabled: true,
+        perPage:pageLength
+      }"
       :rows="rows"
       :rtl="direction"
       :search-options="{
@@ -33,16 +37,12 @@
         disableSelectInfo: true, // disable the select info panel on top
         selectAllByGroup: true, // when used in combination with a grouped table, add a checkbox in the header row to check/uncheck the entire group
       }"
-      :pagination-options="{
-        enabled: true,
-        perPage:pageLength
-      }"
     >
       <template
         slot="table-row"
         slot-scope="props"
       >
-
+        
         <!-- Column: Name -->
         <span
           v-if="props.column.field === 'fullName'"
@@ -54,53 +54,53 @@
           />
           <span class="text-nowrap">{{ props.row.fullName }}</span>
         </span>
-
+        
         <!-- Column: Status -->
         <span v-else-if="props.column.field === 'status'">
           <b-badge :variant="statusVariant(props.row.status)">
             {{ props.row.status }}
           </b-badge>
         </span>
-
+        
         <!-- Column: Action -->
         <span v-else-if="props.column.field === 'action'">
           <span>
             <b-dropdown
-              variant="link"
-              toggle-class="text-decoration-none"
               no-caret
+              toggle-class="text-decoration-none"
+              variant="link"
             >
               <template v-slot:button-content>
                 <feather-icon
+                  class="text-body align-middle mr-25"
                   icon="MoreVerticalIcon"
                   size="16"
-                  class="text-body align-middle mr-25"
                 />
               </template>
               <b-dropdown-item>
                 <feather-icon
-                  icon="Edit2Icon"
                   class="mr-50"
+                  icon="Edit2Icon"
                 />
                 <span>Edit</span>
               </b-dropdown-item>
               <b-dropdown-item>
                 <feather-icon
-                  icon="TrashIcon"
                   class="mr-50"
+                  icon="TrashIcon"
                 />
                 <span>Delete</span>
               </b-dropdown-item>
             </b-dropdown>
           </span>
         </span>
-
+        
         <!-- Column: Common -->
         <span v-else>
-          {{ props.formattedRow[props.column.field] }}
+          {{ props.formattedRow[ props.column.field ] }}
         </span>
       </template>
-
+      
       <!-- pagination -->
       <template
         slot="pagination-bottom"
@@ -121,15 +121,15 @@
           </div>
           <div>
             <b-pagination
-              :value="1"
-              :total-rows="props.total"
               :per-page="pageLength"
+              :total-rows="props.total"
+              :value="1"
+              align="right"
+              class="mt-1 mb-0"
               first-number
               last-number
-              align="right"
-              prev-class="prev-item"
               next-class="next-item"
-              class="mt-1 mb-0"
+              prev-class="prev-item"
               @input="(value)=>props.pageChanged({currentPage:value})"
             >
               <template #prev-text>
@@ -149,7 +149,7 @@
         </div>
       </template>
     </vue-good-table>
-
+    
     <template #code>
       {{ codeBasic }}
     </template>
@@ -157,13 +157,12 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import {
-  BAvatar, BBadge, BPagination, BFormGroup, BFormInput, BFormSelect, BDropdown, BDropdownItem,
-} from 'bootstrap-vue'
-import { VueGoodTable } from 'vue-good-table'
-import store from '@/store/index'
-import { codeBasic } from './code'
+import BCardCode                                                                                       from "@core/components/b-card-code/BCardCode.vue"
+import { BAvatar, BBadge, BPagination, BFormGroup, BFormInput, BFormSelect, BDropdown, BDropdownItem } from "bootstrap-vue"
+import { VueGoodTable }                                                                                from "vue-good-table"
+import store                                                                                           from "@/store/index"
+import { codeBasic }                                                                                   from "./code"
+
 
 export default {
   components: {
@@ -176,73 +175,68 @@ export default {
     BFormInput,
     BFormSelect,
     BDropdown,
-    BDropdownItem,
+    BDropdownItem
   },
-  data() {
+  data () {
     return {
       pageLength: 3,
-      dir: false,
+      dir:        false,
       codeBasic,
-      columns: [
+      columns:    [
         {
-          label: 'Name',
-          field: 'fullName',
-        },
-        {
-          label: 'Email',
-          field: 'email',
-        },
-        {
-          label: 'Date',
-          field: 'startDate',
-        },
-        {
-          label: 'Salary',
-          field: 'salary',
-        },
-        {
-          label: 'Status',
-          field: 'status',
-        },
-        {
-          label: 'Action',
-          field: 'action',
-        },
+          label: "Name",
+          field: "fullName"
+        }, {
+          label: "Email",
+          field: "email"
+        }, {
+          label: "Date",
+          field: "startDate"
+        }, {
+          label: "Salary",
+          field: "salary"
+        }, {
+          label: "Status",
+          field: "status"
+        }, {
+          label: "Action",
+          field: "action"
+        }
       ],
-      rows: [],
-      searchTerm: '',
-      status: [{
-        1: 'Current',
-        2: 'Professional',
-        3: 'Rejected',
-        4: 'Resigned',
-        5: 'Applied',
-      },
-      {
-        1: 'light-primary',
-        2: 'light-success',
-        3: 'light-danger',
-        4: 'light-warning',
-        5: 'light-info',
-      }],
+      rows:       [],
+      searchTerm: "",
+      status:     [
+        {
+          1: "Current",
+          2: "Professional",
+          3: "Rejected",
+          4: "Resigned",
+          5: "Applied"
+        }, {
+          1: "light-primary",
+          2: "light-success",
+          3: "light-danger",
+          4: "light-warning",
+          5: "light-info"
+        }
+      ]
     }
   },
   computed: {
-    statusVariant() {
+    statusVariant () {
       const statusColor = {
         /* eslint-disable key-spacing */
-        Current      : 'light-primary',
-        Professional : 'light-success',
-        Rejected     : 'light-danger',
-        Resigned     : 'light-warning',
-        Applied      : 'light-info',
-        /* eslint-enable key-spacing */
+        Current:      "light-primary",
+        Professional: "light-success",
+        Rejected:     "light-danger",
+        Resigned:     "light-warning",
+        Applied:      "light-info" /* eslint-enable key-spacing */
       }
-
-      return status => statusColor[status]
+      
+      return status => statusColor[ status ]
     },
-    direction() {
-      if (store.state.appConfig.isRTL) {
+    direction () {
+      if ( store.state.chat.isRTL ) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.dir = true
         return this.dir
@@ -250,11 +244,11 @@ export default {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.dir = false
       return this.dir
-    },
+    }
   },
-  created() {
-    this.$http.get('/good-table/basic')
-      .then(res => { this.rows = res.data })
-  },
+  created () {
+    this.$http.get( "/good-table/basic" )
+      .then( res => { this.rows = res.data } )
+  }
 }
 </script>

@@ -1,16 +1,16 @@
 <template>
   <b-card-code title="Advance Search Table">
     <div class="custom-search">
-
+      
       <!-- advance search input -->
       <b-row>
         <b-col md="4">
           <b-form-group>
             <label>Name:</label>
             <b-form-input
+              class="d-inline-block"
               placeholder="Search"
               type="text"
-              class="d-inline-block"
               @input="advanceSearch"
             />
           </b-form-group>
@@ -19,9 +19,9 @@
           <b-form-group>
             <label>Email:</label>
             <b-form-input
+              class="d-inline-block"
               placeholder="Search"
               type="text"
-              class="d-inline-block"
               @input="advanceSearch"
             />
           </b-form-group>
@@ -30,9 +30,9 @@
           <b-form-group>
             <label>Post:</label>
             <b-form-input
+              class="d-inline-block"
               placeholder="Search"
               type="text"
-              class="d-inline-block"
               @input="advanceSearch"
             />
           </b-form-group>
@@ -41,9 +41,9 @@
           <b-form-group>
             <label>City:</label>
             <b-form-input
+              class="d-inline-block"
               placeholder="Search"
               type="text"
-              class="d-inline-block"
               @input="advanceSearch"
             />
           </b-form-group>
@@ -52,9 +52,9 @@
           <b-form-group>
             <label>Date:</label>
             <b-form-input
+              class="d-inline-block"
               placeholder="Search"
               type="text"
-              class="d-inline-block"
               @input="advanceSearch"
             />
           </b-form-group>
@@ -63,19 +63,23 @@
           <b-form-group>
             <label>Salary:</label>
             <b-form-input
+              class="d-inline-block"
               placeholder="Search"
               type="text"
-              class="d-inline-block"
               @input="advanceSearch"
             />
           </b-form-group>
         </b-col>
       </b-row>
     </div>
-
+    
     <!-- table -->
     <vue-good-table
       :columns="columns"
+      :pagination-options="{
+        enabled: true,
+        perPage:pageLength
+      }"
       :rows="rows"
       :rtl="direction"
       :search-options="{
@@ -89,10 +93,6 @@
         clearSelectionText: 'clear',
         disableSelectInfo: true, // disable the select info panel on top
         selectAllByGroup: true, // when used in combination with a grouped table, add a checkbox in the header row to check/uncheck the entire group
-      }"
-      :pagination-options="{
-        enabled: true,
-        perPage:pageLength
       }"
       theme="my-theme"
       @on-row-click="onRowClick"
@@ -110,12 +110,11 @@
             class="mx-1"
           />
           <span>{{ props.row.fullName }}</span>
-        </span>
-        <span v-else>
-          {{ props.formattedRow[props.column.field] }}
+        </span> <span v-else>
+          {{ props.formattedRow[ props.column.field ] }}
         </span>
       </template>
-
+      
       <!-- pagination -->
       <template
         slot="pagination-bottom"
@@ -136,15 +135,15 @@
           </div>
           <div>
             <b-pagination
-              :value="1"
-              :total-rows="props.total"
               :per-page="pageLength"
+              :total-rows="props.total"
+              :value="1"
+              align="right"
+              class="mt-1 mb-0"
               first-number
               last-number
-              align="right"
-              prev-class="prev-item"
               next-class="next-item"
-              class="mt-1 mb-0"
+              prev-class="prev-item"
               @input="(value)=>props.pageChanged({currentPage:value})"
             >
               <template #prev-text>
@@ -164,7 +163,7 @@
         </div>
       </template>
     </vue-good-table>
-
+    
     <template #code>
       {{ codeAdvance }}
     </template>
@@ -172,14 +171,13 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import {
-  BAvatar, BPagination, BFormGroup, BFormInput, BFormSelect, BRow, BCol,
-} from 'bootstrap-vue'
-import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
-import { VueGoodTable } from 'vue-good-table'
-import store from '@/store/index'
-import { codeAdvance } from './code'
+import BCardCode                                                                 from "@core/components/b-card-code/BCardCode.vue"
+import { BAvatar, BPagination, BFormGroup, BFormInput, BFormSelect, BRow, BCol } from "bootstrap-vue"
+import ToastificationContent                                                     from "@core/components/toastification/ToastificationContent.vue"
+import { VueGoodTable }                                                          from "vue-good-table"
+import store                                                                     from "@/store/index"
+import { codeAdvance }                                                           from "./code"
+
 
 export default {
   components: {
@@ -191,48 +189,42 @@ export default {
     BFormInput,
     BFormSelect,
     BRow,
-    BCol,
-    // eslint-disable-next-line vue/no-unused-components
-    ToastificationContent,
+    BCol, // eslint-disable-next-line vue/no-unused-components
+    ToastificationContent
   },
-  data() {
+  data () {
     return {
       pageLength: 5,
-      dir: false,
+      dir:        false,
       codeAdvance,
-      columns: [
+      columns:    [
         {
-          label: 'Name',
-          field: 'fullName',
-        },
-        {
-          label: 'Email',
-          field: 'email',
-        },
-        {
-          label: 'Post',
-          field: 'post',
-        },
-        {
-          label: 'City',
-          field: 'city',
-        },
-        {
-          label: 'Date',
-          field: 'startDate',
-        },
-        {
-          label: 'Salary',
-          field: 'salary',
-        },
+          label: "Name",
+          field: "fullName"
+        }, {
+          label: "Email",
+          field: "email"
+        }, {
+          label: "Post",
+          field: "post"
+        }, {
+          label: "City",
+          field: "city"
+        }, {
+          label: "Date",
+          field: "startDate"
+        }, {
+          label: "Salary",
+          field: "salary"
+        }
       ],
-      rows: [],
-      searchTerm: '',
+      rows:       [],
+      searchTerm: ""
     }
   },
   computed: {
-    direction() {
-      if (store.state.appConfig.isRTL) {
+    direction () {
+      if ( store.state.chat.isRTL ) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
         this.dir = true
         return this.dir
@@ -240,26 +232,26 @@ export default {
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
       this.dir = false
       return this.dir
-    },
+    }
   },
-  created() {
-    this.$http.get('/good-table/advanced-search')
-      .then(res => { this.rows = res.data })
+  created () {
+    this.$http.get( "/good-table/advanced-search" )
+      .then( res => { this.rows = res.data } )
   },
   methods: {
-    advanceSearch(val) {
+    advanceSearch ( val ) {
       this.searchTerm = val
     },
-    onRowClick(params) {
-      this.$toast({
-        component: ToastificationContent,
-        props: {
-          title: `Hello user! You have clicked on row ${params.row.id}`,
-          icon: 'UserIcon',
-          variant: 'success',
-        },
-      })
-    },
-  },
+    onRowClick ( params ) {
+      this.$toast( {
+                     component: ToastificationContent,
+                     props:     {
+                       title:   `Hello user! You have clicked on row ${ params.row.id }`,
+                       icon:    "UserIcon",
+                       variant: "success"
+                     }
+                   } )
+    }
+  }
 }
 </script>

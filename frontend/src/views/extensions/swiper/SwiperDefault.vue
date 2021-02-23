@@ -2,7 +2,7 @@
   <b-card-code title="Default">
     <swiper
       ref="mySwiper"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
     >
       <swiper-slide
         v-for="data in swiperData"
@@ -14,7 +14,7 @@
         />
       </swiper-slide>
     </swiper>
-
+    
     <template #code>
       {{ codeDefault }}
     </template>
@@ -22,33 +22,33 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { BImg } from 'bootstrap-vue'
-import 'swiper/css/swiper.css'
-import { codeDefault } from './code'
+import BCardCode               from "@core/components/b-card-code/BCardCode.vue"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import { BImg }                from "bootstrap-vue"
+import "swiper/css/swiper.css"
+import { codeDefault }         from "./code"
+
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
     BCardCode,
-    BImg,
+    BImg
   },
-  data() {
+  data () {
     return {
       codeDefault,
-
+      
       /* eslint-disable global-require */
       swiperData: [
-        { img: require('@/assets/images/banner/banner-13.jpg') },
-        { img: require('@/assets/images/banner/banner-7.jpg') },
-        { img: require('@/assets/images/banner/banner-4.jpg') },
-        { img: require('@/assets/images/banner/banner-2.jpg') },
-        { img: require('@/assets/images/banner/banner-1.jpg') },
-      ],
-      /* eslint-disable global-require */
+        { img: require( "@/assets/images/banner/banner-13.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-7.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-4.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-2.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-1.jpg" ) }
+      ] /* eslint-disable global-require */
     }
-  },
+  }
 }
 </script>

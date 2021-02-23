@@ -26,7 +26,7 @@ export const codeBasic = `
               <b-form-input
                 id="item-name"
                 type="text"
-                placeholder="Vuexy Admin Template"
+                placeholder="Sprout Admin Template"
               />
             </b-form-group>
           </b-col>
@@ -188,4 +188,4 @@ export default {
 </style>
 `
 
-export const codeInfo = 'default'
+export const codeInfo = "default"

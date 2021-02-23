@@ -1,11 +1,9 @@
 <template>
-  <b-card-code
-    title="3-D Cube Effect"
-  >
+  <b-card-code title="3-D Cube Effect">
     <swiper
-      class="swiper-cube-effect"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
       :options="swiperOptions"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      class="swiper-cube-effect"
     >
       <swiper-slide
         v-for="(data,index) in swiperData"
@@ -21,7 +19,7 @@
         class="swiper-pagination swiper-pagination-white"
       />
     </swiper>
-
+    
     <template #code>
       {{ codeCube }}
     </template>
@@ -29,46 +27,46 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { BImg } from 'bootstrap-vue'
-import 'swiper/css/swiper.css'
-import { codeCube } from './code'
+import BCardCode               from "@core/components/b-card-code/BCardCode.vue"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import { BImg }                from "bootstrap-vue"
+import "swiper/css/swiper.css"
+import { codeCube }            from "./code"
+
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
     BCardCode,
-    BImg,
+    BImg
   },
-  data() {
+  data () {
     return {
       codeCube,
-
+      
       /* eslint-disable global-require */
       swiperData: [
-        { img: require('@/assets/images/banner/banner-21.jpg') },
-        { img: require('@/assets/images/banner/banner-22.jpg') },
-        { img: require('@/assets/images/banner/banner-23.jpg') },
-        { img: require('@/assets/images/banner/banner-24.jpg') },
-      ],
-      /* eslint-disable global-require */
-
+        { img: require( "@/assets/images/banner/banner-21.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-22.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-23.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-24.jpg" ) }
+      ], /* eslint-disable global-require */
+      
       swiperOptions: {
-        effect: 'cube',
+        effect:     "cube",
         grabCursor: true,
         cubeEffect: {
-          shadow: true,
+          shadow:       true,
           slideShadows: true,
           shadowOffset: 20,
-          shadowScale: 0.94,
+          shadowScale:  0.94
         },
         pagination: {
-          el: '.swiper-pagination',
-        },
-      },
+          el: ".swiper-pagination"
+        }
+      }
     }
-  },
+  }
 }
 </script>

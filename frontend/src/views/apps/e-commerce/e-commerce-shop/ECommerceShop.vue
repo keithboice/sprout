@@ -1,6 +1,6 @@
 <template>
   <div style="height: inherit">
-
+    
     <!-- ECommerce Header -->
     <section id="ecommerce-header">
       <div class="row">
@@ -8,8 +8,8 @@
           <div class="ecommerce-header-items">
             <div class="result-toggler">
               <feather-icon
-                icon="MenuIcon"
                 class="d-block d-lg-none"
+                icon="MenuIcon"
                 size="21"
                 @click="mqShallShowLeftSidebar = true"
               />
@@ -18,7 +18,7 @@
               </div>
             </div>
             <div class="view-options d-flex">
-
+              
               <!-- Sort Button -->
               <b-dropdown
                 v-ripple.400="'rgba(113, 102, 240, 0.15)'"
@@ -34,14 +34,14 @@
                   {{ sortOption.text }}
                 </b-dropdown-item>
               </b-dropdown>
-
+              
               <!-- Item View Radio Button Group  -->
               <b-form-radio-group
                 v-model="itemView"
-                class="ml-1 list item-view-radio-group"
-                buttons
-                size="sm"
                 button-variant="outline-primary"
+                buttons
+                class="ml-1 list item-view-radio-group"
+                size="sm"
               >
                 <b-form-radio
                   v-for="option in itemViewOptions"
@@ -59,10 +59,10 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Overlay -->
     <div class="body-content-overlay" />
-
+    
     <!-- Searchbar -->
     <div class="ecommerce-searchbar mt-1">
       <b-row>
@@ -70,20 +70,20 @@
           <b-input-group class="input-group-merge">
             <b-form-input
               v-model="filters.q"
-              placeholder="Search Product"
               class="search-product"
+              placeholder="Search Product"
             />
             <b-input-group-append is-text>
               <feather-icon
-                icon="SearchIcon"
                 class="text-muted"
+                icon="SearchIcon"
               />
             </b-input-group-append>
           </b-input-group>
         </b-col>
       </b-row>
     </div>
-
+    
     <!-- Prodcuts -->
     <section :class="itemView">
       <b-card
@@ -96,13 +96,13 @@
           <b-link :to="{ name: 'apps-e-commerce-product-details', params: { slug: product.slug } }">
             <b-img
               :alt="`${product.name}-${product.id}`"
-              fluid
-              class="card-img-top"
               :src="product.image"
+              class="card-img-top"
+              fluid
             />
           </b-link>
         </div>
-
+        
         <!-- Product Details -->
         <b-card-body>
           <div class="item-wrapper">
@@ -111,32 +111,32 @@
                 <li
                   v-for="star in 5"
                   :key="star"
-                  class="ratings-list-item"
                   :class="{'ml-25': star-1}"
+                  class="ratings-list-item"
                 >
                   <feather-icon
+                    :class="[{'fill-current': star <= product.rating}, star <= product.rating ? 'text-warning' : 'text-muted']"
                     icon="StarIcon"
                     size="16"
-                    :class="[{'fill-current': star <= product.rating}, star <= product.rating ? 'text-warning' : 'text-muted']"
                   />
                 </li>
               </ul>
             </div>
             <div>
               <h6 class="item-price">
-                ${{ product.price }}
-              </h6>
+                ${{ product.price }} </h6>
             </div>
           </div>
           <h6 class="item-name">
             <b-link
-              class="text-body"
               :to="{ name: 'apps-e-commerce-product-details', params: { slug: product.slug } }"
+              class="text-body"
             >
               {{ product.name }}
             </b-link>
             <b-card-text class="item-company">
-              By <b-link class="ml-25">
+              By
+              <b-link class="ml-25">
                 {{ product.brand }}
               </b-link>
             </b-card-text>
@@ -145,58 +145,57 @@
             {{ product.description }}
           </b-card-text>
         </b-card-body>
-
+        
         <!-- Product Actions -->
         <div class="item-options text-center">
           <div class="item-wrapper">
             <div class="item-cost">
               <h4 class="item-price">
-                ${{ product.price }}
-              </h4>
+                ${{ product.price }} </h4>
             </div>
           </div>
           <b-button
-            variant="light"
-            tag="a"
             class="btn-wishlist"
+            tag="a"
+            variant="light"
             @click="toggleProductInWishlist(product)"
           >
             <feather-icon
-              icon="HeartIcon"
-              class="mr-50"
               :class="{'text-danger': product.isInWishlist}"
+              class="mr-50"
+              icon="HeartIcon"
             />
             <span>Wishlist</span>
           </b-button>
           <b-button
-            variant="primary"
-            tag="a"
             class="btn-cart"
+            tag="a"
+            variant="primary"
             @click="handleCartActionClick(product)"
           >
             <feather-icon
-              icon="ShoppingCartIcon"
               class="mr-50"
+              icon="ShoppingCartIcon"
             />
-            <span>{{ product.isInCart ? 'View In Cart' : 'Add to Cart' }}</span>
+            <span>{{ product.isInCart ? "View In Cart" : "Add to Cart" }}</span>
           </b-button>
         </div>
       </b-card>
     </section>
-
+    
     <!-- Pagination -->
     <section>
       <b-row>
         <b-col cols="12">
           <b-pagination
             v-model="filters.page"
-            :total-rows="totalProducts"
             :per-page="filters.perPage"
-            first-number
+            :total-rows="totalProducts"
             align="center"
+            first-number
             last-number
-            prev-class="prev-item"
             next-class="next-item"
+            prev-class="prev-item"
           >
             <template #prev-text>
               <feather-icon
@@ -214,12 +213,12 @@
         </b-col>
       </b-row>
     </section>
-
+    
     <!-- Sidebar -->
     <portal to="content-renderer-sidebar-detached-left">
       <shop-left-filter-sidebar
-        :filters="filters"
         :filter-options="filterOptions"
+        :filters="filters"
         :mq-shall-show-left-sidebar.sync="mqShallShowLeftSidebar"
       />
     </portal>
@@ -228,18 +227,20 @@
 
 <script>
 import {
-  BDropdown, BDropdownItem, BFormRadioGroup, BFormRadio, BRow, BCol, BInputGroup, BInputGroupAppend, BFormInput, BCard, BCardBody, BLink, BImg, BCardText, BButton, BPagination,
-} from 'bootstrap-vue'
-import Ripple from 'vue-ripple-directive'
-import { watch } from '@vue/composition-api'
-import { useResponsiveAppLeftSidebarVisibility } from '@core/comp-functions/ui/app'
-import ShopLeftFilterSidebar from './ECommerceShopLeftFilterSidebar.vue'
-import { useShopFiltersSortingAndPagination, useShopUi, useShopRemoteData } from './useECommerceShop'
-import { useEcommerceUi } from '../useEcommerce'
+  BDropdown, BDropdownItem, BFormRadioGroup, BFormRadio, BRow, BCol, BInputGroup, BInputGroupAppend, BFormInput, BCard, BCardBody, BLink, BImg,
+  BCardText, BButton, BPagination
+}                                                                           from "bootstrap-vue"
+import Ripple                                                               from "vue-ripple-directive"
+import { watch }                                                            from "@vue/composition-api"
+import { useResponsiveAppLeftSidebarVisibility }                            from "@/utils/comp-functions/ui/app"
+import ShopLeftFilterSidebar                                                from "./ECommerceShopLeftFilterSidebar.vue"
+import { useShopFiltersSortingAndPagination, useShopUi, useShopRemoteData } from "./useECommerceShop"
+import { useEcommerceUi }                                                   from "../useEcommerce"
+
 
 export default {
   directives: {
-    Ripple,
+    Ripple
   },
   components: {
     // BSV
@@ -259,73 +260,84 @@ export default {
     BCardText,
     BButton,
     BPagination,
-
+    
     // SFC
-    ShopLeftFilterSidebar,
+    ShopLeftFilterSidebar
   },
-  setup() {
+  setup () {
     const {
-      filters, filterOptions, sortBy, sortByOptions,
-    } = useShopFiltersSortingAndPagination()
-
-    const { handleCartActionClick, toggleProductInWishlist } = useEcommerceUi()
-
+            filters,
+            filterOptions,
+            sortBy,
+            sortByOptions
+          } = useShopFiltersSortingAndPagination()
+    
     const {
-      itemView, itemViewOptions, totalProducts,
-    } = useShopUi()
-
-    const { products, fetchProducts } = useShopRemoteData()
-
+            handleCartActionClick,
+            toggleProductInWishlist
+          } = useEcommerceUi()
+    
+    const {
+            itemView,
+            itemViewOptions,
+            totalProducts
+          } = useShopUi()
+    
+    const {
+            products,
+            fetchProducts
+          } = useShopRemoteData()
+    
     const { mqShallShowLeftSidebar } = useResponsiveAppLeftSidebarVisibility()
-
+    
     // Wrapper Function for `fetchProducts` which can be triggered initially and upon changes of filters
     const fetchShopProducts = () => {
-      fetchProducts({
-        q: filters.value.q,
-        sortBy: sortBy.value.value,
-        page: filters.value.page,
-        perPage: filters.value.perPage,
-      })
-        .then(response => {
+      fetchProducts( {
+                       q:       filters.value.q,
+                       sortBy:  sortBy.value.value,
+                       page:    filters.value.page,
+                       perPage: filters.value.perPage
+                     } )
+        .then( response => {
           products.value = response.data.products
           totalProducts.value = response.data.total
-        })
+        } )
     }
-
+    
     fetchShopProducts()
-
-    watch([filters, sortBy], () => {
+    
+    watch( [ filters, sortBy ], () => {
       fetchShopProducts()
     }, {
-      deep: true,
-    })
-
+             deep: true
+           } )
+    
     return {
       // useShopFiltersSortingAndPagination
       filters,
       filterOptions,
       sortBy,
       sortByOptions,
-
+      
       // useShopUi
       itemView,
       itemViewOptions,
       totalProducts,
       toggleProductInWishlist,
       handleCartActionClick,
-
+      
       // useShopRemoteData
       products,
-
+      
       // mqShallShowLeftSidebar
-      mqShallShowLeftSidebar,
+      mqShallShowLeftSidebar
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-@import "~@core/scss/base/pages/app-ecommerce.scss";
+@import "~@/assets/scss/base/pages/app-ecommerce.scss";
 </style>
 
 <style lang="scss" scoped>

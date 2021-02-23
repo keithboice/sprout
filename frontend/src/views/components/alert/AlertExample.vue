@@ -1,14 +1,10 @@
 <template>
   <b-card-code title="Example">
     <b-card-text>
-      <span>Use the </span>
-      <code>show</code>
-      <span> prop to control the visibility state of the alert.
-        By default alerts are not shown. Set the prop </span>
-      <code>show</code>
-      <span> to explicitly display them.</span>
+      <span>Use the </span> <code>show</code> <span> prop to control the visibility state of the alert.
+        By default alerts are not shown. Set the prop </span> <code>show</code> <span> to explicitly display them.</span>
     </b-card-text>
-
+    
     <b-form-group>
       <label>Enter only numbers</label>
       <b-form-input
@@ -18,23 +14,23 @@
         @keyup="validateInput"
       />
     </b-form-group>
-
+    
     <!-- alert -->
     <b-alert
       v-height-fade.appear
-      variant="danger"
       :show="show"
       class="mb-0"
+      variant="danger"
     >
       <div class="alert-body">
         <feather-icon
-          icon="InfoIcon"
           class="mr-50"
+          icon="InfoIcon"
         />
         the value is invalid you can only enter numbers
       </div>
     </b-alert>
-
+    
     <template #code>
       {{ codeExample }}
     </template>
@@ -42,12 +38,11 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code'
-import {
-  BAlert, BFormGroup, BFormInput, BCardText,
-} from 'bootstrap-vue'
-import { heightFade } from '@core/directives/animations'
-import { codeExample } from './code'
+import BCardCode                                     from "@core/components/b-card-code"
+import { BAlert, BFormGroup, BFormInput, BCardText } from "bootstrap-vue"
+import { heightFade }                                from "@core/../../../utils/directives/animations"
+import { codeExample }                               from "./code"
+
 
 export default {
   components: {
@@ -55,26 +50,27 @@ export default {
     BAlert,
     BFormGroup,
     BFormInput,
-    BCardText,
+    BCardText
   },
   directives: {
-    'height-fade': heightFade,
+    "height-fade": heightFade
   },
-  data() {
+  data () {
     return {
-      value: '',
-      show: true,
-      codeExample,
+      value: "",
+      show:  true,
+      codeExample
     }
   },
   methods: {
-    validateInput() {
-      if (/^\d+$/.test(this.value)) {
+    validateInput () {
+      if ( /^\d+$/.test( this.value ) ) {
         this.show = false
-      } else {
+      }
+      else {
         this.show = true
       }
-    },
-  },
+    }
+  }
 }
 </script>

@@ -1,11 +1,9 @@
 <template>
-  <b-card-code
-    title="Fade Effect"
-  >
+  <b-card-code title="Fade Effect">
     <swiper
-      class="swiper-navigations"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
       :options="swiperOptions"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      class="swiper-navigations"
     >
       <swiper-slide
         v-for="(data,index) in swiperData"
@@ -16,7 +14,7 @@
           fluid
         />
       </swiper-slide>
-
+      
       <!-- Add Arrows -->
       <div
         slot="button-next"
@@ -31,7 +29,7 @@
         class="swiper-pagination"
       />
     </swiper>
-
+    
     <template #code>
       {{ codeFadeEffect }}
     </template>
@@ -39,45 +37,45 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { BImg } from 'bootstrap-vue'
-import 'swiper/css/swiper.css'
-import { codeFadeEffect } from './code'
+import BCardCode               from "@/components/b-card-code/BCardCode.vue"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import { BImg }                from "bootstrap-vue"
+import "swiper/css/swiper.css"
+import { codeFadeEffect }      from "./code"
+
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
     BCardCode,
-    BImg,
+    BImg
   },
-  data() {
+  data () {
     return {
       codeFadeEffect,
-
+      
       /* eslint-disable global-require */
       swiperData: [
-        { img: require('@/assets/images/banner/banner-20.jpg') },
-        { img: require('@/assets/images/banner/banner-19.jpg') },
-        { img: require('@/assets/images/banner/banner-18.jpg') },
-        { img: require('@/assets/images/banner/banner-17.jpg') },
-        { img: require('@/assets/images/banner/banner-16.jpg') },
-      ],
-      /* eslint-disable global-require */
-
+        { img: require( "@/assets/images/banner/banner-20.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-19.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-18.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-17.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-16.jpg" ) }
+      ], /* eslint-disable global-require */
+      
       swiperOptions: {
         spaceBetween: 30,
-        effect: 'fade',
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+        effect:       "fade",
+        navigation:   {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
         },
-        pagination: {
-          el: '.swiper-pagination',
-        },
-      },
+        pagination:   {
+          el: ".swiper-pagination"
+        }
+      }
     }
-  },
+  }
 }
 </script>

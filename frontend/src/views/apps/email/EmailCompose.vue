@@ -2,49 +2,48 @@
   <b-modal
     id="compose-mail"
     :visible="shallShowEmailComposeModal"
-    title="Compose Email"
-    modal-class="modal-sticky"
-    footer-class="d-flex justify-content-between"
     body-class="p-0"
-    size="lg"
-    no-fade
+    footer-class="d-flex justify-content-between"
     hide-backdrop
+    modal-class="modal-sticky"
+    no-fade
+    size="lg"
     static
-    @change="(val) => $emit('update:shall-show-email-compose-modal', val)"
+    title="Compose Email"
+@change="(val) => $emit('update:shall-show-email-compose-modal', val)"
   >
     <!-- Modal Header -->
     <template #modal-header>
       <h5 class="modal-title">
-        Compose Mail
-      </h5>
+        Compose Mail </h5>
       <div class="modal-actions">
         <feather-icon
-          icon="MinusIcon"
           class="cursor-pointer"
+          icon="MinusIcon"
           @click="$emit('update:shall-show-email-compose-modal', false)"
         />
         <feather-icon
-          icon="Maximize2Icon"
           class="ml-1 cursor-pointer"
+          icon="Maximize2Icon"
         />
         <feather-icon
-          icon="XIcon"
           class="ml-1 cursor-pointer"
+          icon="XIcon"
           @click="discardEmail"
         />
       </div>
     </template>
-
+    
     <!-- Modal Footer -->
     <template #modal-footer>
       <!-- Footer: Left Content -->
       <div>
         <b-dropdown
           v-ripple.400="'rgba(255, 255, 255, 0.15)'"
+          right
           split
           text="Send"
           variant="primary"
-          right
           @click="sendEmail"
         >
           <b-dropdown-item>
@@ -52,40 +51,40 @@
           </b-dropdown-item>
         </b-dropdown>
         <feather-icon
+          class="ml-2 cursor-pointer"
           icon="PaperclipIcon"
           size="17"
-          class="ml-2 cursor-pointer"
         />
       </div>
-
+      
       <!-- Footer: Right Content -->
       <div>
-
+        
         <!-- Dropdown: More Actions -->
         <b-dropdown
-          variant="link"
           no-caret
-          toggle-class="p-0"
           right
+          toggle-class="p-0"
+          variant="link"
         >
           <template #button-content>
             <feather-icon
+              class="text-body"
               icon="MoreVerticalIcon"
               size="17"
-              class="text-body"
             />
           </template>
-
+          
           <b-dropdown-item>
             Add Label
           </b-dropdown-item>
-
+          
           <b-dropdown-item>
             Plain Text Mode
           </b-dropdown-item>
-
+          
           <b-dropdown-divider />
-
+          
           <b-dropdown-item>
             Print
           </b-dropdown-item>
@@ -93,50 +92,50 @@
             Check Spelling
           </b-dropdown-item>
         </b-dropdown>
-
+        
         <!-- Discard Compose -->
         <feather-icon
+          class="ml-75 cursor-pointer"
           icon="TrashIcon"
           size="17"
-          class="ml-75 cursor-pointer"
           @click="discardEmail"
         />
       </div>
     </template>
-
+    
     <!-- Modal: Body -->
     <b-form>
-
+      
       <!-- Field: To -->
       <div class="compose-mail-form-field">
         <label
-          for="email-to"
           class="form-label"
+          for="email-to"
         >To: </label>
         <v-select
           v-model="composeData.to"
-          :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-          multiple
-          label="name"
-          class="flex-grow-1 email-to-selector"
           :close-on-select="false"
+          :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
           :options="emailToOptions"
+          class="flex-grow-1 email-to-selector"
           input-id="email-to"
+          label="name"
+          multiple
         >
-
+          
           <template #option="{ avatar, name }">
             <b-avatar
-              size="sm"
               :src="avatar"
+              size="sm"
             />
             <span class="ml-50"> {{ name }}</span>
           </template>
-
+          
           <template #selected-option="{ avatar, name }">
             <b-avatar
-              size="sm"
-              class="border border-white"
               :src="avatar"
+              class="border border-white"
+              size="sm"
             />
             <span class="ml-50"> {{ name }}</span>
           </template>
@@ -150,7 +149,7 @@
           @click="showBccField=!showBccField"
         >Bcc</span>
       </div>
-
+      
       <!-- Field: Cc (Hidden Initially) -->
       <div
         v-show="showCcField"
@@ -159,34 +158,34 @@
         <label for="email-cc">CC: </label>
         <v-select
           v-model="composeData.cc"
-          :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-          multiple
-          label="name"
-          class="flex-grow-1 email-cc-selector"
           :close-on-select="false"
+          :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
           :options="emailToOptions"
+          class="flex-grow-1 email-cc-selector"
           input-id="email-cc"
+          label="name"
+          multiple
         >
-
+          
           <template #option="{ avatar, name }">
             <b-avatar
-              size="sm"
               :src="avatar"
+              size="sm"
             />
             <span class="ml-50"> {{ name }}</span>
           </template>
-
+          
           <template #selected-option="{ avatar, name }">
             <b-avatar
-              size="sm"
-              class="border border-white"
               :src="avatar"
+              class="border border-white"
+              size="sm"
             />
             <span class="ml-50"> {{ name }}</span>
           </template>
         </v-select>
       </div>
-
+      
       <!-- Field: Bcc (Hidden Initially) -->
       <div
         v-show="showBccField"
@@ -195,34 +194,34 @@
         <label for="email-bcc">Bcc </label>
         <v-select
           v-model="composeData.bcc"
-          :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-          multiple
-          label="name"
-          class="flex-grow-1 email-bcc-selector"
           :close-on-select="false"
+          :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
           :options="emailToOptions"
+          class="flex-grow-1 email-bcc-selector"
           input-id="email-bcc"
+          label="name"
+          multiple
         >
-
+          
           <template #option="{ avatar, name }">
             <b-avatar
-              size="sm"
               :src="avatar"
+              size="sm"
             />
             <span class="ml-50"> {{ name }}</span>
           </template>
-
+          
           <template #selected-option="{ avatar, name }">
             <b-avatar
-              size="sm"
-              class="border border-white"
               :src="avatar"
+              class="border border-white"
+              size="sm"
             />
             <span class="ml-50"> {{ name }}</span>
           </template>
         </v-select>
       </div>
-
+      
       <!-- Field: Subject -->
       <div class="compose-mail-form-field">
         <label for="email-subject">Subject: </label>
@@ -231,7 +230,7 @@
           v-model="composeData.subject"
         />
       </div>
-
+      
       <!-- Field: Message - Quill Editor -->
       <div class="message-editor">
         <quill-editor
@@ -252,25 +251,24 @@
         </div>
       </div>
     </b-form>
-
+  
   </b-modal>
 </template>
 
 <script>
-import {
-  BDropdown, BDropdownItem, BForm, BFormInput, BAvatar, BDropdownDivider,
-} from 'bootstrap-vue'
-import Ripple from 'vue-ripple-directive'
-import { ref } from '@vue/composition-api'
-import { quillEditor } from 'vue-quill-editor'
-import vSelect from 'vue-select'
+import { BDropdown, BDropdownItem, BForm, BFormInput, BAvatar, BDropdownDivider } from "bootstrap-vue"
+import Ripple                                                                     from "vue-ripple-directive"
+import { ref }                                                                    from "@vue/composition-api"
+import { quillEditor }                                                            from "vue-quill-editor"
+import vSelect                                                                    from "vue-select"
+
 
 export default {
   directives: {
-    Ripple,
+    Ripple
   },
   components: {
-
+    
     // BSV
     BDropdown,
     BDropdownItem,
@@ -278,68 +276,86 @@ export default {
     BFormInput,
     BAvatar,
     BDropdownDivider,
-
+    
     // 3rd Party
     quillEditor,
-    vSelect,
+    vSelect
   },
-  model: {
-    prop: 'shallShowEmailComposeModal',
-    event: 'update:shall-show-email-compose-modal',
+  model:      {
+    prop:  "shallShowEmailComposeModal",
+    event: "update:shall-show-email-compose-modal"
   },
-  props: {
+  props:      {
     shallShowEmailComposeModal: {
-      type: Boolean,
-      required: true,
-    },
-  },
-  setup(_, { emit }) {
-    const composeData = ref({})
-    const showCcField = ref(false)
-    const showBccField = ref(false)
-
-    const editorOption = {
-      modules: {
-        toolbar: '#quill-toolbar',
-      },
-      placeholder: 'Message',
+      type:     Boolean,
+      required: true
     }
-
+  },
+  setup ( _, { emit } ) {
+    const composeData = ref( {} )
+    const showCcField = ref( false )
+    const showBccField = ref( false )
+    
+    const editorOption = {
+      modules:     {
+        toolbar: "#quill-toolbar"
+      },
+      placeholder: "Message"
+    }
+    
     /* eslint-disable global-require */
     const emailToOptions = [
-      { avatar: require('@/assets/images/avatars/1-small.png'), name: 'Jane Foster' },
-      { avatar: require('@/assets/images/avatars/3-small.png'), name: 'Donna Frank' },
-      { avatar: require('@/assets/images/avatars/5-small.png'), name: 'Gabrielle Robertson' },
-      { avatar: require('@/assets/images/avatars/7-small.png'), name: 'Lori Spears' },
-      { avatar: require('@/assets/images/avatars/9-small.png'), name: 'Sandy Vega' },
-      { avatar: require('@/assets/images/avatars/11-small.png'), name: 'Cheryl May' },
+      {
+        avatar: require( "@/assets/images/avatars/1-small.png" ),
+        name:   "Jane Foster"
+      },
+      {
+        avatar: require( "@/assets/images/avatars/3-small.png" ),
+        name:   "Donna Frank"
+      },
+      {
+        avatar: require( "@/assets/images/avatars/5-small.png" ),
+        name:   "Gabrielle Robertson"
+      },
+      {
+        avatar: require( "@/assets/images/avatars/7-small.png" ),
+        name:   "Lori Spears"
+      },
+      {
+        avatar: require( "@/assets/images/avatars/9-small.png" ),
+        name:   "Sandy Vega"
+      },
+      {
+        avatar: require( "@/assets/images/avatars/11-small.png" ),
+        name:   "Cheryl May"
+      }
     ]
     /* eslint-enable global-require */
-
+    
     const sendEmail = () => {
       composeData.value = {}
-      emit('update:shall-show-email-compose-modal', false)
-
+      emit( "update:shall-show-email-compose-modal", false )
+      
       // ? Send your Email
     }
-
+    
     const discardEmail = () => {
       composeData.value = {}
-      emit('update:shall-show-email-compose-modal', false)
+      emit( "update:shall-show-email-compose-modal", false )
     }
-
+    
     return {
       composeData,
       editorOption,
       emailToOptions,
       showCcField,
       showBccField,
-
+      
       // Email actions
       sendEmail,
-      discardEmail,
+      discardEmail
     }
-  },
+  }
 }
 </script>
 
@@ -350,18 +366,19 @@ export default {
 
 <style lang="scss" scoped>
 form ::v-deep {
-
+  
   // Mail To vue-select style
   .v-select {
     .vs__dropdown-toggle {
       border: 0;
       box-shadow: none;
     }
+    
     .vs__open-indicator {
       display: none;
     }
   }
-
+  
   // Quill Editor Style
   .quill-editor {
     .ql-container.ql-snow {

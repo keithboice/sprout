@@ -1,20 +1,20 @@
 <template>
   <div>
     <form-wizard
-      color="#7367F0"
-      :title="null"
       :subtitle="null"
-      shape="square"
-      finish-button-text="Submit"
+      :title="null"
       back-button-text="Previous"
       class="mb-3"
+      color="#7367F0"
+      finish-button-text="Submit"
+      shape="square"
       @on-complete="formSubmitted"
     >
-
+      
       <!-- accoint details tab -->
       <tab-content
-        title="Account Details"
         :before-change="validationForm"
+        title="Account Details"
       >
         <validation-observer
           ref="accountRules"
@@ -22,15 +22,12 @@
         >
           <b-row>
             <b-col
-              cols="12"
               class="mb-2"
+              cols="12"
             >
               <h5 class="mb-0">
-                Account Details
-              </h5>
-              <small class="text-muted">
-                Enter Your Account Details.
-              </small>
+                Account Details </h5>
+              <small class="text-muted"> Enter Your Account Details. </small>
             </b-col>
             <b-col md="6">
               <b-form-group
@@ -48,7 +45,7 @@
                     :state="errors.length > 0 ? false:null"
                     placeholder="johndoe"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -65,11 +62,11 @@
                   <b-form-input
                     id="email"
                     v-model="emailValue"
-                    type="email"
                     :state="errors.length > 0 ? false:null"
                     placeholder="john.doe@email.com"
+                    type="email"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -81,17 +78,17 @@
                 <validation-provider
                   #default="{ errors }"
                   name="Password"
-                  vid="Password"
                   rules="required|password"
+                  vid="Password"
                 >
                   <b-form-input
                     id="password"
                     v-model="PasswordValue"
-                    type="password"
                     :state="errors.length > 0 ? false:null"
                     placeholder="Password"
+                    type="password"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -108,22 +105,22 @@
                   <b-form-input
                     id="c-password"
                     v-model="passwordCon"
-                    type="password"
                     :state="errors.length > 0 ? false:null"
                     placeholder="Re-type Password"
+                    type="password"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
           </b-row>
         </validation-observer>
       </tab-content>
-
+      
       <!-- personal details tab -->
       <tab-content
-        title="Personal Info"
         :before-change="validationFormInfo"
+        title="Personal Info"
       >
         <validation-observer
           ref="infoRules"
@@ -131,12 +128,11 @@
         >
           <b-row>
             <b-col
-              cols="12"
               class="mb-2"
+              cols="12"
             >
               <h5 class="mb-0">
-                Personal Info
-              </h5>
+                Personal Info </h5>
               <small class="text-muted">Enter Your Personal Info.</small>
             </b-col>
             <b-col md="6">
@@ -152,10 +148,10 @@
                   <b-form-input
                     id="first-name"
                     v-model="first_name"
-                    placeholder="John"
                     :state="errors.length > 0 ? false:null"
+                    placeholder="John"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -175,7 +171,7 @@
                     :state="errors.length > 0 ? false:null"
                     placeholder="Doe"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -186,20 +182,20 @@
                 rules="required"
               >
                 <b-form-group
+                  :state="errors.length > 0 ? false:null"
                   label="Country"
                   label-for="country"
-                  :state="errors.length > 0 ? false:null"
                 >
                   <v-select
                     id="country"
                     v-model="selectedContry"
-                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
                     :options="countryName"
                     :selectable="option => ! option.value.includes('select_value')"
                     label="text"
                   />
                   <b-form-invalid-feedback :state="errors.length > 0 ? false:null">
-                    {{ errors[0] }}
+                    {{ errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
@@ -211,20 +207,20 @@
                 rules="required"
               >
                 <b-form-group
+                  :state="errors.length > 0 ? false:null"
                   label="Language"
                   label-for="language"
-                  :state="errors.length > 0 ? false:null"
                 >
                   <v-select
                     id="language"
                     v-model="selectedLanguage"
-                    :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
                     :options="languageName"
                     :selectable="option => ! option.value.includes('nothing_selected')"
                     label="text"
                   />
                   <b-form-invalid-feedback :state="errors.length > 0 ? false:null">
-                    {{ errors[0] }}
+                    {{ errors[ 0 ] }}
                   </b-form-invalid-feedback>
                 </b-form-group>
               </validation-provider>
@@ -232,11 +228,11 @@
           </b-row>
         </validation-observer>
       </tab-content>
-
+      
       <!-- address  -->
       <tab-content
-        title="Address"
         :before-change="validationFormAddress"
+        title="Address"
       >
         <validation-observer
           ref="addressRules"
@@ -244,12 +240,11 @@
         >
           <b-row>
             <b-col
-              cols="12"
               class="mb-2"
+              cols="12"
             >
               <h5 class="mb-0">
-                Address
-              </h5>
+                Address </h5>
               <small class="text-muted">Enter Your Address.</small>
             </b-col>
             <b-col md="6">
@@ -268,7 +263,7 @@
                     :state="errors.length > 0 ? false:null"
                     placeholder="98 Borough bridge Road, Birmingham"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -288,7 +283,7 @@
                     :state="errors.length > 0 ? false:null"
                     placeholder="Borough bridge"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -306,10 +301,10 @@
                     id="pincode"
                     v-model="pincode"
                     :state="errors.length > 0 ? false:null"
-                    type="number"
                     placeholder="658921"
+                    type="number"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -329,18 +324,18 @@
                     :state="errors.length > 0 ? false:null"
                     placeholder="Birmingham"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
           </b-row>
         </validation-observer>
       </tab-content>
-
+      
       <!-- social link -->
       <tab-content
-        title="Social Links"
         :before-change="validationFormSocial"
+        title="Social Links"
       >
         <validation-observer
           ref="socialRules"
@@ -348,12 +343,11 @@
         >
           <b-row>
             <b-col
-              cols="12"
               class="mb-2"
+              cols="12"
             >
               <h5 class="mb-0">
-                Social Links
-              </h5>
+                Social Links </h5>
               <small class="text-muted">Enter Your Social Links</small>
             </b-col>
             <b-col md="6">
@@ -372,7 +366,7 @@
                     :state="errors.length > 0 ? false:null"
                     placeholder="https://twitter.com/abc"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -392,7 +386,7 @@
                     :state="errors.length > 0 ? false:null"
                     placeholder="https://facebook.com/abc"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -412,7 +406,7 @@
                     :state="errors.length > 0 ? false:null"
                     placeholder="https://plus.google.com/abc"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -432,7 +426,7 @@
                     :state="errors.length > 0 ? false:null"
                     placeholder="https://linkedin.com/abc"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
             </b-col>
@@ -440,25 +434,20 @@
         </validation-observer>
       </tab-content>
     </form-wizard>
-
+  
   </div>
 </template>
 
 <script>
-import { FormWizard, TabContent } from 'vue-form-wizard'
-import vSelect from 'vue-select'
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
-import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
-import 'vue-form-wizard/dist/vue-form-wizard.min.css'
-import {
-  BRow,
-  BCol,
-  BFormGroup,
-  BFormInput,
-  BFormInvalidFeedback,
-} from 'bootstrap-vue'
-import { required, email } from '@validations'
-import { codeIcon } from './code'
+import { FormWizard, TabContent }                                   from "vue-form-wizard"
+import vSelect                                                      from "vue-select"
+import { ValidationProvider, ValidationObserver }                   from "vee-validate"
+import ToastificationContent                                        from "@core/components/toastification/ToastificationContent.vue"
+import "vue-form-wizard/dist/vue-form-wizard.min.css"
+import { BRow, BCol, BFormGroup, BFormInput, BFormInvalidFeedback } from "bootstrap-vue"
+import { required, email }                                          from "@validations"
+import { codeIcon }                                                 from "./code"
+
 
 export default {
   components: {
@@ -471,108 +460,163 @@ export default {
     BFormGroup,
     BFormInput,
     vSelect,
-    BFormInvalidFeedback,
-    // eslint-disable-next-line vue/no-unused-components
-    ToastificationContent,
+    BFormInvalidFeedback, // eslint-disable-next-line vue/no-unused-components
+    ToastificationContent
   },
-  data() {
+  data () {
     return {
-      selectedContry: '',
-      selectedLanguage: '',
-      name: '',
-      emailValue: '',
-      PasswordValue: '',
-      passwordCon: '',
-      first_name: '',
-      last_name: '',
-      address: '',
-      landMark: '',
-      pincode: '',
-      twitterUrl: '',
-      facebookUrl: '',
-      googleUrl: '',
-      linkedinUrl: '',
-      city: '',
+      selectedContry:   "",
+      selectedLanguage: "",
+      name:             "",
+      emailValue:       "",
+      PasswordValue:    "",
+      passwordCon:      "",
+      first_name:       "",
+      last_name:        "",
+      address:          "",
+      landMark:         "",
+      pincode:          "",
+      twitterUrl:       "",
+      facebookUrl:      "",
+      googleUrl:        "",
+      linkedinUrl:      "",
+      city:             "",
       required,
       email,
       codeIcon,
-      countryName: [
-        { value: 'select_value', text: 'Select Value' },
-        { value: 'Russia', text: 'Russia' },
-        { value: 'Canada', text: 'Canada' },
-        { value: 'China', text: 'China' },
-        { value: 'United States', text: 'United States' },
-        { value: 'Brazil', text: 'Brazil' },
-        { value: 'Australia', text: 'Australia' },
-        { value: 'India', text: 'India' },
+      countryName:      [
+        {
+          value: "select_value",
+          text:  "Select Value"
+        },
+        {
+          value: "Russia",
+          text:  "Russia"
+        },
+        {
+          value: "Canada",
+          text:  "Canada"
+        },
+        {
+          value: "China",
+          text:  "China"
+        },
+        {
+          value: "United States",
+          text:  "United States"
+        },
+        {
+          value: "Brazil",
+          text:  "Brazil"
+        },
+        {
+          value: "Australia",
+          text:  "Australia"
+        },
+        {
+          value: "India",
+          text:  "India"
+        }
       ],
-      languageName: [
-        { value: 'nothing_selected', text: 'Nothing Selected' },
-        { value: 'English', text: 'English' },
-        { value: 'Chinese', text: 'Mandarin Chinese' },
-        { value: 'Hindi', text: 'Hindi' },
-        { value: 'Spanish', text: 'Spanish' },
-        { value: 'Arabic', text: 'Arabic' },
-        { value: 'Malay', text: 'Malay' },
-        { value: 'Russian', text: 'Russian' },
-      ],
+      languageName:     [
+        {
+          value: "nothing_selected",
+          text:  "Nothing Selected"
+        },
+        {
+          value: "English",
+          text:  "English"
+        },
+        {
+          value: "Chinese",
+          text:  "Mandarin Chinese"
+        },
+        {
+          value: "Hindi",
+          text:  "Hindi"
+        },
+        {
+          value: "Spanish",
+          text:  "Spanish"
+        },
+        {
+          value: "Arabic",
+          text:  "Arabic"
+        },
+        {
+          value: "Malay",
+          text:  "Malay"
+        },
+        {
+          value: "Russian",
+          text:  "Russian"
+        }
+      ]
     }
   },
   methods: {
-    formSubmitted() {
-      this.$toast({
-        component: ToastificationContent,
-        props: {
-          title: 'Form Submitted',
-          icon: 'EditIcon',
-          variant: 'success',
-        },
-      })
+    formSubmitted () {
+      this.$toast( {
+                     component: ToastificationContent,
+                     props:     {
+                       title:   "Form Submitted",
+                       icon:    "EditIcon",
+                       variant: "success"
+                     }
+                   } )
     },
-    validationForm() {
-      return new Promise((resolve, reject) => {
-        this.$refs.accountRules.validate().then(success => {
-          if (success) {
-            resolve(true)
-          } else {
-            reject()
-          }
-        })
-      })
+    validationForm () {
+      return new Promise( ( resolve, reject ) => {
+        this.$refs.accountRules.validate()
+          .then( success => {
+            if ( success ) {
+              resolve( true )
+            }
+            else {
+              reject()
+            }
+          } )
+      } )
     },
-    validationFormInfo() {
-      return new Promise((resolve, reject) => {
-        this.$refs.infoRules.validate().then(success => {
-          if (success) {
-            resolve(true)
-          } else {
-            reject()
-          }
-        })
-      })
+    validationFormInfo () {
+      return new Promise( ( resolve, reject ) => {
+        this.$refs.infoRules.validate()
+          .then( success => {
+            if ( success ) {
+              resolve( true )
+            }
+            else {
+              reject()
+            }
+          } )
+      } )
     },
-    validationFormAddress() {
-      return new Promise((resolve, reject) => {
-        this.$refs.addressRules.validate().then(success => {
-          if (success) {
-            resolve(true)
-          } else {
-            reject()
-          }
-        })
-      })
+    validationFormAddress () {
+      return new Promise( ( resolve, reject ) => {
+        this.$refs.addressRules.validate()
+          .then( success => {
+            if ( success ) {
+              resolve( true )
+            }
+            else {
+              reject()
+            }
+          } )
+      } )
     },
-    validationFormSocial() {
-      return new Promise((resolve, reject) => {
-        this.$refs.socialRules.validate().then(success => {
-          if (success) {
-            resolve(true)
-          } else {
-            reject()
-          }
-        })
-      })
-    },
-  },
+    validationFormSocial () {
+      return new Promise( ( resolve, reject ) => {
+        this.$refs.socialRules.validate()
+          .then( success => {
+            if ( success ) {
+              resolve( true )
+            }
+            else {
+              reject()
+            }
+          } )
+      } )
+    }
+  }
 }
 </script>

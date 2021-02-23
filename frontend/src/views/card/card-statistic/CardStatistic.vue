@@ -3,44 +3,44 @@
     <!-- Miscellaneous Charts -->
     <b-row class="match-height">
       <b-col
-        lg="2"
         cols="6"
+        lg="2"
       >
         <card-statistic-order-chart />
       </b-col>
       <b-col
-        lg="2"
         cols="6"
+        lg="2"
       >
         <card-statistic-profit-chart />
       </b-col>
       <b-col
-        lg="8"
         cols="12"
+        lg="8"
       >
         <card-statistics-group />
       </b-col>
     </b-row>
     <!--/ Miscellaneous Charts -->
-
+    
     <!-- Stats Card Vertical -->
     <b-row class="match-height">
       <b-col
-        xl="2"
         md="4"
         sm="6"
+        xl="2"
       >
         <statistic-card-vertical
+          color="info"
           icon="EyeIcon"
           statistic="36.9k"
           statistic-title="Views"
-          color="info"
         />
       </b-col>
       <b-col
-        xl="2"
         md="4"
         sm="6"
+        xl="2"
       >
         <statistic-card-vertical
           color="warning"
@@ -50,9 +50,9 @@
         />
       </b-col>
       <b-col
-        xl="2"
         md="4"
         sm="6"
+        xl="2"
       >
         <statistic-card-vertical
           color="danger"
@@ -62,9 +62,9 @@
         />
       </b-col>
       <b-col
-        xl="2"
         md="4"
         sm="6"
+        xl="2"
       >
         <statistic-card-vertical
           color="primary"
@@ -74,9 +74,9 @@
         />
       </b-col>
       <b-col
-        xl="2"
         md="4"
         sm="6"
+        xl="2"
       >
         <statistic-card-vertical
           color="success"
@@ -86,20 +86,20 @@
         />
       </b-col>
       <b-col
-        xl="2"
         md="4"
         sm="6"
+        xl="2"
       >
         <statistic-card-vertical
-          hide-chart
           color="danger"
+          hide-chart
           icon="TruckIcon"
           statistic="2.1k"
           statistic-title="Returns"
         />
       </b-col>
     </b-row>
-
+    
     <!-- Stats Card Horizontal -->
     <b-row>
       <b-col
@@ -117,8 +117,8 @@
         sm="6"
       >
         <statistic-card-horizontal
-          icon="ServerIcon"
           color="success"
+          icon="ServerIcon"
           statistic="1.2gb"
           statistic-title="Memory Usage"
         />
@@ -128,8 +128,8 @@
         sm="6"
       >
         <statistic-card-horizontal
-          icon="ActivityIcon"
           color="danger"
+          icon="ActivityIcon"
           statistic="0.1%"
           statistic-title="Downtime Ratio"
         />
@@ -139,15 +139,15 @@
         sm="6"
       >
         <statistic-card-horizontal
-          icon="AlertOctagonIcon"
           color="warning"
-
+          icon="AlertOctagonIcon"
+        
           statistic="13"
           statistic-title="Issues Found"
         />
       </b-col>
     </b-row>
-
+    
     <!-- Stats Card w/ Area Chart -->
     <b-row>
       <b-col
@@ -156,10 +156,10 @@
       >
         <statistic-card-with-area-chart
           v-if="subscribersGained.analyticsData"
-          icon="UsersIcon"
-          :statistic="kFormatter(subscribersGained.analyticsData.subscribers)"
-          statistic-title="Subscribers Gained"
           :chart-data="subscribersGained.series"
+          :statistic="kFormatter(subscribersGained.analyticsData.subscribers)"
+          icon="UsersIcon"
+          statistic-title="Subscribers Gained"
         />
       </b-col>
       <b-col
@@ -168,11 +168,11 @@
       >
         <statistic-card-with-area-chart
           v-if="revenueGenerated.analyticsData"
-          icon="CreditCardIcon"
-          color="success"
-          :statistic="kFormatter(revenueGenerated.analyticsData.revenue)"
-          statistic-title="Revenue Generated"
           :chart-data="revenueGenerated.series"
+          :statistic="kFormatter(revenueGenerated.analyticsData.revenue)"
+          color="success"
+          icon="CreditCardIcon"
+          statistic-title="Revenue Generated"
         />
       </b-col>
       <b-col
@@ -181,11 +181,11 @@
       >
         <statistic-card-with-area-chart
           v-if="quarterlySales.analyticsData"
-          icon="ShoppingCartIcon"
-          color="danger"
-          :statistic="kFormatter(quarterlySales.analyticsData.sales)"
-          statistic-title="Quarterly Sales"
           :chart-data="quarterlySales.series"
+          :statistic="kFormatter(quarterlySales.analyticsData.sales)"
+          color="danger"
+          icon="ShoppingCartIcon"
+          statistic-title="Quarterly Sales"
         />
       </b-col>
       <b-col
@@ -194,15 +194,15 @@
       >
         <statistic-card-with-area-chart
           v-if="ordersRecevied.analyticsData"
-          icon="PackageIcon"
-          color="warning"
-          :statistic="kFormatter(ordersRecevied.analyticsData.orders)"
-          statistic-title="Orders Received"
           :chart-data="ordersRecevied.series"
+          :statistic="kFormatter(ordersRecevied.analyticsData.orders)"
+          color="warning"
+          icon="PackageIcon"
+          statistic-title="Orders Received"
         />
       </b-col>
     </b-row>
-
+    
     <!-- Stats Card w/ line chart -->
     <b-row>
       <b-col
@@ -210,10 +210,10 @@
         sm="6"
       >
         <statistic-card-with-line-chart
+          :chart-data="siteTraffic.series"
           icon="MonitorIcon"
           statistic="78.9k"
           statistic-title="Site Traffic"
-          :chart-data="siteTraffic.series"
         />
       </b-col>
       <b-col
@@ -221,11 +221,11 @@
         sm="6"
       >
         <statistic-card-with-line-chart
-          icon="UserCheckIcon"
+          :chart-data="activeUsers.series"
           color="success"
+          icon="UserCheckIcon"
           statistic="659.8k"
           statistic-title="Active Users"
-          :chart-data="activeUsers.series"
         />
       </b-col>
       <b-col
@@ -233,11 +233,11 @@
         sm="6"
       >
         <statistic-card-with-line-chart
-          icon="MailIcon"
+          :chart-data="newsletter.series"
           color="warning"
+          icon="MailIcon"
           statistic="28.7k"
           statistic-title="Newsletter"
-          :chart-data="newsletter.series"
         />
       </b-col>
     </b-row>
@@ -245,15 +245,16 @@
 </template>
 
 <script>
-import { BRow, BCol } from 'bootstrap-vue'
-import StatisticCardVertical from '@core/components/statistics-cards/StatisticCardVertical.vue'
-import StatisticCardHorizontal from '@core/components/statistics-cards/StatisticCardHorizontal.vue'
-import StatisticCardWithAreaChart from '@core/components/statistics-cards/StatisticCardWithAreaChart.vue'
-import StatisticCardWithLineChart from '@core/components/statistics-cards/StatisticCardWithLineChart.vue'
-import { kFormatter } from '@core/utils/filter'
-import CardStatisticOrderChart from './CardStatisticOrderChart.vue'
-import CardStatisticProfitChart from './CardStatisticProfitChart.vue'
-import CardStatisticsGroup from './CardStatisticsGroup.vue'
+import { BRow, BCol }             from "bootstrap-vue"
+import StatisticCardVertical      from "@core/components/statistics-cards/StatisticCardVertical.vue"
+import StatisticCardHorizontal    from "@core/components/statistics-cards/StatisticCardHorizontal.vue"
+import StatisticCardWithAreaChart from "@core/components/statistics-cards/StatisticCardWithAreaChart.vue"
+import StatisticCardWithLineChart from "@core/components/statistics-cards/StatisticCardWithLineChart.vue"
+import { kFormatter }             from "@core/../../../utils/filter"
+import CardStatisticOrderChart    from "./CardStatisticOrderChart.vue"
+import CardStatisticProfitChart   from "./CardStatisticProfitChart.vue"
+import CardStatisticsGroup        from "./CardStatisticsGroup.vue"
+
 
 export default {
   components: {
@@ -265,53 +266,53 @@ export default {
     StatisticCardWithLineChart,
     CardStatisticOrderChart,
     CardStatisticProfitChart,
-    CardStatisticsGroup,
+    CardStatisticsGroup
   },
-  data() {
+  data () {
     return {
       // Area charts
       subscribersGained: {},
-      revenueGenerated: {},
-      quarterlySales: {},
-      ordersRecevied: {},
-
+      revenueGenerated:  {},
+      quarterlySales:    {},
+      ordersRecevied:    {},
+      
       // Line Charts
       siteTraffic: {},
       activeUsers: {},
-      newsletter: {},
+      newsletter:  {}
     }
   },
-  created() {
+  created () {
     // Subscribers gained
-    this.$http.get('/card/card-statistics/subscribers')
-      .then(response => { this.subscribersGained = response.data })
-
+    this.$http.get( "/card/card-statistics/subscribers" )
+      .then( response => { this.subscribersGained = response.data } )
+    
     // Revenue Generated
-    this.$http.get('/card/card-statistics/revenue')
-      .then(response => { this.revenueGenerated = response.data })
-
+    this.$http.get( "/card/card-statistics/revenue" )
+      .then( response => { this.revenueGenerated = response.data } )
+    
     // Sales
-    this.$http.get('/card/card-statistics/sales')
-      .then(response => { this.quarterlySales = response.data })
-
+    this.$http.get( "/card/card-statistics/sales" )
+      .then( response => { this.quarterlySales = response.data } )
+    
     // Orders
-    this.$http.get('/card/card-statistics/orders')
-      .then(response => { this.ordersRecevied = response.data })
-
+    this.$http.get( "/card/card-statistics/orders" )
+      .then( response => { this.ordersRecevied = response.data } )
+    
     // Site Traffic gained
-    this.$http.get('/card/card-statistics/site-traffic')
-      .then(response => { this.siteTraffic = response.data })
-
+    this.$http.get( "/card/card-statistics/site-traffic" )
+      .then( response => { this.siteTraffic = response.data } )
+    
     // Active Users
-    this.$http.get('/card/card-statistics/active-users')
-      .then(response => { this.activeUsers = response.data })
-
+    this.$http.get( "/card/card-statistics/active-users" )
+      .then( response => { this.activeUsers = response.data } )
+    
     // Newsletter
-    this.$http.get('/card/card-statistics/newsletter')
-      .then(response => { this.newsletter = response.data })
+    this.$http.get( "/card/card-statistics/newsletter" )
+      .then( response => { this.newsletter = response.data } )
   },
   methods: {
-    kFormatter,
-  },
+    kFormatter
+  }
 }
 </script>

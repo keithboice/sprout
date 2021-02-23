@@ -1,11 +1,9 @@
 <template>
-  <b-card-code
-    title="3d Effect Coverflow Effect"
-  >
+  <b-card-code title="3d Effect Coverflow Effect">
     <swiper
-      class="swiper-coverflow"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
       :options="swiperOptions"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      class="swiper-coverflow"
     >
       <swiper-slide
         v-for="(data,index) in swiperData"
@@ -21,7 +19,7 @@
         class="swiper-pagination"
       />
     </swiper>
-
+    
     <template #code>
       {{ codeCoverflowEffect }}
     </template>
@@ -29,54 +27,54 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { BImg } from 'bootstrap-vue'
-import 'swiper/css/swiper.css'
-import { codeCoverflowEffect } from './code'
+import BCardCode               from "@core/components/b-card-code/BCardCode.vue"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import { BImg }                from "bootstrap-vue"
+import "swiper/css/swiper.css"
+import { codeCoverflowEffect } from "./code"
+
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
     BCardCode,
-    BImg,
+    BImg
   },
-  data() {
+  data () {
     return {
       codeCoverflowEffect,
-
+      
       /* eslint-disable global-require */
       swiperData: [
-        { img: require('@/assets/images/banner/banner-35.jpg') },
-        { img: require('@/assets/images/banner/banner-39.jpg') },
-        { img: require('@/assets/images/banner/banner-38.jpg') },
-        { img: require('@/assets/images/banner/banner-37.jpg') },
-        { img: require('@/assets/images/banner/banner-36.jpg') },
-        { img: require('@/assets/images/banner/banner-34.jpg') },
-        { img: require('@/assets/images/banner/banner-33.jpg') },
-        { img: require('@/assets/images/banner/banner-32.jpg') },
-        { img: require('@/assets/images/banner/banner-31.jpg') },
-      ],
-      /* eslint-disable global-require */
-
+        { img: require( "@/assets/images/banner/banner-35.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-39.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-38.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-37.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-36.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-34.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-33.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-32.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-31.jpg" ) }
+      ], /* eslint-disable global-require */
+      
       swiperOptions: {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
+        effect:          "coverflow",
+        grabCursor:      true,
+        centeredSlides:  true,
+        slidesPerView:   "auto",
         coverflowEffect: {
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
+          rotate:       50,
+          stretch:      0,
+          depth:        100,
+          modifier:     1,
+          slideShadows: true
         },
-        pagination: {
-          el: '.swiper-pagination',
-        },
-      },
+        pagination:      {
+          el: ".swiper-pagination"
+        }
+      }
     }
-  },
+  }
 }
 </script>

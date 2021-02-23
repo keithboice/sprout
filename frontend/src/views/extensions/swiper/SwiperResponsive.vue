@@ -1,9 +1,9 @@
 <template>
   <b-card-code title="Responsive Breakpoints">
     <swiper
-      class="swiper-responsive-breakpoints"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
       :options="swiperOptions"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      class="swiper-responsive-breakpoints"
     >
       <swiper-slide
         v-for="(data,index) in swiperData"
@@ -14,13 +14,13 @@
           fluid
         />
       </swiper-slide>
-
+      
       <div
         slot="pagination"
         class="swiper-pagination"
       />
     </swiper>
-
+    
     <template #code>
       {{ codeResponsive }}
     </template>
@@ -28,64 +28,64 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { BImg } from 'bootstrap-vue'
-import 'swiper/css/swiper.css'
-import { codeResponsive } from './code'
+import BCardCode               from "@core/components/b-card-code/BCardCode.vue"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import { BImg }                from "bootstrap-vue"
+import "swiper/css/swiper.css"
+import { codeResponsive }      from "./code"
+
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
     BCardCode,
-    BImg,
+    BImg
   },
-  data() {
+  data () {
     return {
       codeResponsive,
-
+      
       /* eslint-disable global-require */
       swiperData: [
-        { img: require('@/assets/images/banner/banner-30.jpg') },
-        { img: require('@/assets/images/banner/banner-31.jpg') },
-        { img: require('@/assets/images/banner/banner-32.jpg') },
-        { img: require('@/assets/images/banner/banner-33.jpg') },
-        { img: require('@/assets/images/banner/banner-34.jpg') },
-        { img: require('@/assets/images/banner/banner-35.jpg') },
-        { img: require('@/assets/images/banner/banner-36.jpg') },
-        { img: require('@/assets/images/banner/banner-37.jpg') },
-        { img: require('@/assets/images/banner/banner-38.jpg') },
-      ],
-      /* eslint-disable global-require */
-
+        { img: require( "@/assets/images/banner/banner-30.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-31.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-32.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-33.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-34.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-35.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-36.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-37.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-38.jpg" ) }
+      ], /* eslint-disable global-require */
+      
       swiperOptions: {
         slidesPerView: 5,
-        spaceBetween: 50,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
+        spaceBetween:  50,
+        pagination:    {
+          el:        ".swiper-pagination",
+          clickable: true
         },
-        breakpoints: {
+        breakpoints:   {
           1024: {
             slidesPerView: 4,
-            spaceBetween: 40,
+            spaceBetween:  40
           },
-          768: {
+          768:  {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween:  30
           },
-          640: {
+          640:  {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween:  20
           },
-          320: {
+          320:  {
             slidesPerView: 1,
-            spaceBetween: 10,
-          },
-        },
-      },
+            spaceBetween:  10
+          }
+        }
+      }
     }
-  },
+  }
 }
 </script>

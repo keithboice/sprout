@@ -10,31 +10,30 @@
         </b-card-text>
       </div>
       <feather-icon
+        class="text-muted cursor-pointer"
         icon="SettingsIcon"
         size="18"
-        class="text-muted cursor-pointer"
       />
     </b-card-header>
-
+    
     <b-card-body class="pb-0">
-
+      
       <!-- apex chart -->
       <vue-apex-charts
-        type="line"
-        height="240"
         :options="salesLine.chartOptions"
         :series="salesLine.series"
+        height="240"
+        type="line"
       />
     </b-card-body>
   </b-card>
 </template>
 
 <script>
-import {
-  BCard, BCardHeader, BCardTitle, BCardBody, BCardText,
-} from 'bootstrap-vue'
-import VueApexCharts from 'vue-apexcharts'
-import { $themeColors } from '@themeConfig'
+import { BCard, BCardHeader, BCardTitle, BCardBody, BCardText } from "bootstrap-vue"
+import VueApexCharts                                            from "vue-apexcharts"
+import { $themeColors }                                         from "@/conf/theme"
+
 
 export default {
   components: {
@@ -43,101 +42,103 @@ export default {
     BCardHeader,
     BCardText,
     BCardTitle,
-    BCardBody,
+    BCardBody
   },
-  data() {
+  data () {
     return {
       salesLine: {
-        series: [
+        series:       [
           {
-            name: 'Sales',
-            data: [140, 180, 150, 205, 160, 295, 125, 255, 205, 305, 240, 295],
-          },
+            name: "Sales",
+            data: [ 140, 180, 150, 205, 160, 295, 125, 255, 205, 305, 240, 295 ]
+          }
         ],
         chartOptions: {
-          chart: {
-            toolbar: { show: false },
-            zoom: { enabled: false },
-            type: 'line',
+          chart:   {
+            toolbar:    { show: false },
+            zoom:       { enabled: false },
+            type:       "line",
             dropShadow: {
               enabled: true,
-              top: 18,
-              left: 2,
-              blur: 5,
-              opacity: 0.2,
+              top:     18,
+              left:    2,
+              blur:    5,
+              opacity: 0.2
             },
-            offsetX: -10,
+            offsetX:    -10
           },
-          stroke: {
-            curve: 'smooth',
-            width: 4,
+          stroke:  {
+            curve: "smooth",
+            width: 4
           },
-          grid: {
-            borderColor: '#ebe9f1',
-            padding: {
-              top: -20,
+          grid:    {
+            borderColor: "#ebe9f1",
+            padding:     {
+              top:    -20,
               bottom: 5,
-              left: 20,
-            },
+              left:   20
+            }
           },
-          legend: {
-            show: false,
+          legend:  {
+            show: false
           },
-          colors: ['#df87f2'],
-          fill: {
-            type: 'gradient',
+          colors:  [ "#df87f2" ],
+          fill:    {
+            type:     "gradient",
             gradient: {
-              shade: 'dark',
-              inverseColors: false,
-              gradientToColors: [$themeColors.primary],
-              shadeIntensity: 1,
-              type: 'horizontal',
-              opacityFrom: 1,
-              opacityTo: 1,
-              stops: [0, 100, 100, 100],
-            },
+              shade:            "dark",
+              inverseColors:    false,
+              gradientToColors: [ $themeColors.primary ],
+              shadeIntensity:   1,
+              type:             "horizontal",
+              opacityFrom:      1,
+              opacityTo:        1,
+              stops:            [ 0, 100, 100, 100 ]
+            }
           },
           markers: {
-            size: 0,
+            size:  0,
             hover: {
-              size: 5,
-            },
+              size: 5
+            }
           },
-          xaxis: {
-            labels: {
+          xaxis:   {
+            labels:        {
               offsetY: 5,
-              style: {
-                colors: '#b9b9c3',
-                fontSize: '0.857rem',
-              },
+              style:   {
+                colors:   "#b9b9c3",
+                fontSize: "0.857rem"
+              }
             },
-            axisTicks: {
-              show: false,
+            axisTicks:     {
+              show: false
             },
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            axisBorder: {
-              show: false,
+            categories:    [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+            axisBorder:    {
+              show: false
             },
-            tickPlacement: 'on',
+            tickPlacement: "on"
           },
-          yaxis: {
+          yaxis:   {
             tickAmount: 5,
-            labels: {
+            labels:     {
               style: {
-                colors: '#b9b9c3',
-                fontSize: '0.857rem',
+                colors:   "#b9b9c3",
+                fontSize: "0.857rem"
               },
-              formatter(val) {
-                return val > 999 ? `${(val / 1000).toFixed(1)}k` : val
-              },
-            },
+              formatter ( val ) {
+                return val > 999 ? `${ (
+                  val / 1000
+                ).toFixed( 1 ) }k` : val
+              }
+            }
           },
           tooltip: {
-            x: { show: false },
-          },
-        },
-      },
+            x: { show: false }
+          }
+        }
+      }
     }
-  },
+  }
 }
 </script>

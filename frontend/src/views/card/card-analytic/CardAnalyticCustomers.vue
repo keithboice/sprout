@@ -3,13 +3,13 @@
     <b-card-header>
       <b-card-title>Customers</b-card-title>
       <b-dropdown
-        text="Last 7 Days"
-        variant="transparent"
         class="chart-dropdown "
-        right
         no-caret
-        toggle-class="p-0 mb-25"
+        right
         size="sm"
+        text="Last 7 Days"
+        toggle-class="p-0 mb-25"
+        variant="transparent"
       >
         <b-dropdown-item
           v-for="day in chartData.lastDays"
@@ -19,32 +19,32 @@
         </b-dropdown-item>
       </b-dropdown>
     </b-card-header>
-
+    
     <b-card-body>
-
+      
       <!-- apex chart -->
       <vue-apex-charts
-        type="pie"
-        height="325"
-        class="mt-2 mb-1"
         :options="customersPie.chartOptions"
         :series="customersPie.series"
+        class="mt-2 mb-1"
+        height="325"
+        type="pie"
       />
-
+      
       <!-- list group -->
       <div class="pt-25">
         <div
           v-for="(data,index) in chartData.listData"
           :key="index"
-          class="d-flex justify-content-between"
           :class="index === Object.keys(chartData.listData).length - 1 ? '':'mb-1'"
+          class="d-flex justify-content-between"
         >
           <div class="series-info">
             <feather-icon
-              :icon="data.icon"
-              size="16"
-              class="mr-50"
               :class="data.iconColor"
+              :icon="data.icon"
+              class="mr-50"
+              size="16"
             />
             <span class="font-weight-bolder">{{ data.text }}</span>
           </div>
@@ -56,11 +56,10 @@
 </template>
 
 <script>
-import {
-  BCard, BCardHeader, BCardTitle, BDropdown, BDropdownItem, BCardBody,
-} from 'bootstrap-vue'
-import VueApexCharts from 'vue-apexcharts'
-import { $themeColors } from '@themeConfig'
+import { BCard, BCardHeader, BCardTitle, BDropdown, BDropdownItem, BCardBody } from "bootstrap-vue"
+import VueApexCharts                                                           from "vue-apexcharts"
+import { $themeColors }                                                        from "@/conf/theme"
+
 
 export default {
   components: {
@@ -70,34 +69,35 @@ export default {
     BDropdown,
     BDropdownItem,
     BCardBody,
-    VueApexCharts,
+    VueApexCharts
   },
-  data() {
+  data () {
     return {
-      chartData: {},
+      chartData:    {},
       customersPie: {
-        series: [690, 258, 149],
+        series:       [ 690, 258, 149 ],
         chartOptions: {
-          chart: {
+          chart:      {
             toolbar: {
-              show: false,
-            },
+              show: false
+            }
           },
-          labels: ['New', 'Returning', 'Referrals'],
+          labels:     [ "New", "Returning", "Referrals" ],
           dataLabels: {
-            enabled: false,
+            enabled: false
           },
-          legend: { show: false },
-          stroke: {
-            width: 4,
+          legend:     { show: false },
+          stroke:     {
+            width: 4
           },
-          colors: [$themeColors.primary, $themeColors.warning, $themeColors.danger],
-        },
-      },
+          colors:     [ $themeColors.primary, $themeColors.warning, $themeColors.danger ]
+        }
+      }
     }
   },
-  created() {
-    this.$http.get('/card/card-analytics/customers').then(res => { this.chartData = res.data })
-  },
+  created () {
+    this.$http.get( "/card/card-analytics/customers" )
+      .then( res => { this.chartData = res.data } )
+  }
 }
 </script>

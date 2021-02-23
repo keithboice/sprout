@@ -1,30 +1,27 @@
 <template>
   <div>
     <form-wizard
-      color="#7367F0"
-      :title="null"
       :subtitle="null"
-      finish-button-text="Submit"
+      :title="null"
       back-button-text="Previous"
       class="steps-transparent mb-3"
+      color="#7367F0"
+      finish-button-text="Submit"
       @on-complete="formSubmitted"
     >
       <!-- account detail tab -->
       <tab-content
-        title="Account Details"
         icon="feather icon-file-text"
+        title="Account Details"
       >
         <b-row>
           <b-col
-            cols="12"
             class="mb-2"
+            cols="12"
           >
             <h5 class="mb-0">
-              Account Details
-            </h5>
-            <small class="text-muted">
-              Enter Your Account Details.
-            </small>
+              Account Details </h5>
+            <small class="text-muted"> Enter Your Account Details. </small>
           </b-col>
           <b-col md="6">
             <b-form-group
@@ -44,8 +41,8 @@
             >
               <b-form-input
                 id="i-email"
-                type="email"
                 placeholder="john.doe@email.com"
+                type="email"
               />
             </b-form-group>
           </b-col>
@@ -56,8 +53,8 @@
             >
               <b-form-input
                 id="i-password"
-                type="password"
                 placeholder="Password"
+                type="password"
               />
             </b-form-group>
           </b-col>
@@ -68,33 +65,32 @@
             >
               <b-form-input
                 id="i-c-password"
-                type="password"
                 placeholder="Re-type Password"
+                type="password"
               />
             </b-form-group>
           </b-col>
         </b-row>
       </tab-content>
-
+      
       <!-- personal details -->
       <tab-content
-        title="Personal Info"
         icon="feather icon-user"
+        title="Personal Info"
       >
         <b-row>
           <b-col
-            cols="12"
             class="mb-2"
+            cols="12"
           >
             <h5 class="mb-0">
-              Personal Info
-            </h5>
+              Personal Info </h5>
             <small class="text-muted">Enter Your Personal Info.</small>
           </b-col>
           <b-col md="6">
             <b-form-group
-              label-for="i-first-name"
               label="First Name"
+              label-for="i-first-name"
             >
               <b-form-input
                 id="i-first-name"
@@ -121,7 +117,7 @@
               <v-select
                 id="i-country"
                 v-model="selectedContry"
-                :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
                 :options="countryName"
                 :selectable="option => ! option.value.includes('select_value')"
                 label="text"
@@ -136,7 +132,7 @@
               <v-select
                 id="i-language"
                 v-model="selectedLanguage"
-                :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
                 :options="languageName"
                 :selectable="option => ! option.value.includes('select_value')"
                 label="text"
@@ -145,20 +141,19 @@
           </b-col>
         </b-row>
       </tab-content>
-
+      
       <!-- address -->
       <tab-content
-        title="Address"
         icon="feather icon-map-pin"
+        title="Address"
       >
         <b-row>
           <b-col
-            cols="12"
             class="mb-2"
+            cols="12"
           >
             <h5 class="mb-0">
-              Address
-            </h5>
+              Address </h5>
             <small class="text-muted">Enter Your Address.</small>
           </b-col>
           <b-col md="6">
@@ -196,8 +191,8 @@
           </b-col>
           <b-col md="6">
             <b-form-group
-              label-for="i-city"
               label="City"
+              label-for="i-city"
             >
               <b-form-input
                 id="i-city"
@@ -207,20 +202,19 @@
           </b-col>
         </b-row>
       </tab-content>
-
+      
       <!-- social link -->
       <tab-content
-        title="Social Links"
         icon="feather icon-link"
+        title="Social Links"
       >
         <b-row>
           <b-col
-            cols="12"
             class="mb-2"
+            cols="12"
           >
             <h5 class="mb-0">
-              Social Links
-            </h5>
+              Social Links </h5>
             <small class="text-muted">Enter Your Social Links</small>
           </b-col>
           <b-col md="6">
@@ -270,22 +264,18 @@
         </b-row>
       </tab-content>
     </form-wizard>
-
+  
   </div>
 </template>
 
 <script>
-import { FormWizard, TabContent } from 'vue-form-wizard'
-import vSelect from 'vue-select'
-import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
-import 'vue-form-wizard/dist/vue-form-wizard.min.css'
-import {
-  BRow,
-  BCol,
-  BFormGroup,
-  BFormInput,
-} from 'bootstrap-vue'
-import { codeIconInfo } from './code'
+import { FormWizard, TabContent }             from "vue-form-wizard"
+import vSelect                                from "vue-select"
+import ToastificationContent                  from "@core/components/toastification/ToastificationContent.vue"
+import "vue-form-wizard/dist/vue-form-wizard.min.css"
+import { BRow, BCol, BFormGroup, BFormInput } from "bootstrap-vue"
+import { codeIconInfo }                       from "./code"
+
 
 export default {
   components: {
@@ -295,48 +285,95 @@ export default {
     BCol,
     BFormGroup,
     BFormInput,
-    vSelect,
-    // eslint-disable-next-line vue/no-unused-components
-    ToastificationContent,
+    vSelect, // eslint-disable-next-line vue/no-unused-components
+    ToastificationContent
   },
-  data() {
+  data () {
     return {
-      selectedContry: 'select_value',
-      selectedLanguage: 'nothing_selected',
+      selectedContry:   "select_value",
+      selectedLanguage: "nothing_selected",
       codeIconInfo,
-      countryName: [
-        { value: 'select_value', text: 'Select Value' },
-        { value: 'Russia', text: 'Russia' },
-        { value: 'Canada', text: 'Canada' },
-        { value: 'China', text: 'China' },
-        { value: 'United States', text: 'United States' },
-        { value: 'Brazil', text: 'Brazil' },
-        { value: 'Australia', text: 'Australia' },
-        { value: 'India', text: 'India' },
+      countryName:      [
+        {
+          value: "select_value",
+          text:  "Select Value"
+        },
+        {
+          value: "Russia",
+          text:  "Russia"
+        },
+        {
+          value: "Canada",
+          text:  "Canada"
+        },
+        {
+          value: "China",
+          text:  "China"
+        },
+        {
+          value: "United States",
+          text:  "United States"
+        },
+        {
+          value: "Brazil",
+          text:  "Brazil"
+        },
+        {
+          value: "Australia",
+          text:  "Australia"
+        },
+        {
+          value: "India",
+          text:  "India"
+        }
       ],
-      languageName: [
-        { value: 'nothing_selected', text: 'Nothing Selected' },
-        { value: 'English', text: 'English' },
-        { value: 'Chinese', text: 'Mandarin Chinese' },
-        { value: 'Hindi', text: 'Hindi' },
-        { value: 'Spanish', text: 'Spanish' },
-        { value: 'Arabic', text: 'Arabic' },
-        { value: 'Malay', text: 'Malay' },
-        { value: 'Russian', text: 'Russian' },
-      ],
+      languageName:     [
+        {
+          value: "nothing_selected",
+          text:  "Nothing Selected"
+        },
+        {
+          value: "English",
+          text:  "English"
+        },
+        {
+          value: "Chinese",
+          text:  "Mandarin Chinese"
+        },
+        {
+          value: "Hindi",
+          text:  "Hindi"
+        },
+        {
+          value: "Spanish",
+          text:  "Spanish"
+        },
+        {
+          value: "Arabic",
+          text:  "Arabic"
+        },
+        {
+          value: "Malay",
+          text:  "Malay"
+        },
+        {
+          value: "Russian",
+          text:  "Russian"
+        }
+      ]
     }
   },
   methods: {
-    formSubmitted() {
-      this.$toast({
-        component: ToastificationContent,
-        props: {
-          title: 'Form Submitted',
-          icon: 'EditIcon',
-          variant: 'success',
-        },
-      })
-    },
-  },
+    formSubmitted () {
+      this.$toast( {
+                     component: ToastificationContent,
+                     props:     {
+                       title:   "Form Submitted",
+                       icon:    "EditIcon",
+                       variant: "success"
+                     }
+                   } )
+    }
+  }
 }
 </script>

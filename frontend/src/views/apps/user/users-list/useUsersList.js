@@ -1,6 +1,6 @@
 import { ref, watch, computed } from '@vue/composition-api'
-import store from '@/store'
-import { title } from '@core/utils/filter'
+import store     from '@/store'
+import { title } from '@core/../../../../utils/filter'
 
 // Notification
 import { useToast } from 'vue-toastification/composition'

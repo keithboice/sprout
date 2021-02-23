@@ -1,7 +1,7 @@
 <template>
   <b-card
-    no-body
     class="card-browser-states"
+    no-body
   >
     <b-card-header>
       <div>
@@ -10,18 +10,18 @@
           Counter August 2020
         </b-card-text>
       </div>
-
+      
       <b-dropdown
-        variant="link"
-        no-caret
         class="chart-dropdown"
+        no-caret
         toggle-class="p-0"
+        variant="link"
       >
         <template #button-content>
           <feather-icon
+            class="text-body cursor-pointer"
             icon="MoreVerticalIcon"
             size="18"
-            class="text-body cursor-pointer"
           />
         </template>
         <b-dropdown-item href="#">
@@ -35,10 +35,10 @@
         </b-dropdown-item>
       </b-dropdown>
     </b-card-header>
-
+    
     <!-- body -->
     <b-card-body>
-
+      
       <div
         v-for="(browser,index) in browserData"
         :key="browser.browserImg"
@@ -53,18 +53,17 @@
           </b-media-aside>
           <b-media-body>
             <h6 class="align-self-center my-auto">
-              {{ browser.name }}
-            </h6>
+              {{ browser.name }} </h6>
           </b-media-body>
         </b-media>
         <div class="d-flex align-items-center">
           <span class="font-weight-bold text-body-heading mr-1">{{ browser.usage }}</span>
           <vue-apex-charts
-            type="radialBar"
-            height="30"
-            width="30"
             :options="chartData[index].options"
             :series="chartData[index].series"
+            height="30"
+            type="radialBar"
+            width="30"
           />
         </div>
       </div>
@@ -74,13 +73,11 @@
 </template>
 
 <script>
-import {
-  BCard, BCardHeader, BCardTitle, BCardText, BCardBody, BMedia, BMediaAside, BMediaBody, BImg, BDropdown, BDropdownItem,
-} from 'bootstrap-vue'
-import VueApexCharts from 'vue-apexcharts'
-import { $themeColors } from '@themeConfig'
+import { BCard, BCardHeader, BCardTitle, BCardText, BCardBody, BMedia, BMediaAside, BMediaBody, BImg, BDropdown, BDropdownItem } from "bootstrap-vue"
+import VueApexCharts                                                                                                             from "vue-apexcharts"
+import { $themeColors }                                                                                                          from "@/conf/theme"
 /* eslint-disable global-require */
-const $trackBgColor = '#e9ecef'
+const $trackBgColor = "#e9ecef"
 export default {
   components: {
     BCard,
@@ -94,87 +91,83 @@ export default {
     BImg,
     BDropdown,
     BDropdownItem,
-    VueApexCharts,
+    VueApexCharts
   },
-  data() {
+  data () {
     return {
-      chartData: [],
-      chartClone: {},
-      chartColor: [$themeColors.primary, $themeColors.warning, $themeColors.secondary, $themeColors.info, $themeColors.danger],
-      chartSeries: [54.4, 6.1, 14.6, 4.2, 8],
+      chartData:   [],
+      chartClone:  {},
+      chartColor:  [ $themeColors.primary, $themeColors.warning, $themeColors.secondary, $themeColors.info, $themeColors.danger ],
+      chartSeries: [ 54.4, 6.1, 14.6, 4.2, 8 ],
       browserData: [
         {
-          browserImg: require('@/assets/images/icons/google-chrome.png'),
-          name: 'Google Chrome',
-          usage: '54.4%',
-        },
-        {
-          browserImg: require('@/assets/images/icons/mozila-firefox.png'),
-          name: 'Mozila Firefox',
-          usage: '6.1%',
-        },
-        {
-          browserImg: require('@/assets/images/icons/apple-safari.png'),
-          name: 'Apple Safari',
-          usage: '14.6%',
-        },
-        {
-          browserImg: require('@/assets/images/icons/internet-explorer.png'),
-          name: 'Internet Explorer',
-          usage: '4.2%',
-        },
-        {
-          browserImg: require('@/assets/images/icons/opera.png'),
-          name: 'Opera Mini',
-          usage: '8.%',
-        },
+          browserImg: require( "@/assets/images/icons/google-chrome.png" ),
+          name:       "Google Chrome",
+          usage:      "54.4%"
+        }, {
+          browserImg: require( "@/assets/images/icons/mozila-firefox.png" ),
+          name:       "Mozila Firefox",
+          usage:      "6.1%"
+        }, {
+          browserImg: require( "@/assets/images/icons/apple-safari.png" ),
+          name:       "Apple Safari",
+          usage:      "14.6%"
+        }, {
+          browserImg: require( "@/assets/images/icons/internet-explorer.png" ),
+          name:       "Internet Explorer",
+          usage:      "4.2%"
+        }, {
+          browserImg: require( "@/assets/images/icons/opera.png" ),
+          name:       "Opera Mini",
+          usage:      "8.%"
+        }
       ],
-      chart: {
-        series: [65],
+      chart:       {
+        series:  [ 65 ],
         options: {
-          grid: {
-            show: false,
+          grid:        {
+            show:    false,
             padding: {
-              left: -15,
-              right: -15,
-              top: -12,
-              bottom: -15,
-            },
+              left:   -15,
+              right:  -15,
+              top:    -12,
+              bottom: -15
+            }
           },
-          colors: [$themeColors.primary],
+          colors:      [ $themeColors.primary ],
           plotOptions: {
             radialBar: {
-              hollow: {
-                size: '22%',
+              hollow:     {
+                size: "22%"
               },
-              track: {
-                background: $trackBgColor,
+              track:      {
+                background: $trackBgColor
               },
               dataLabels: {
-                showOn: 'always',
-                name: {
-                  show: false,
+                showOn: "always",
+                name:   {
+                  show: false
                 },
-                value: {
-                  show: false,
-                },
-              },
-            },
+                value:  {
+                  show: false
+                }
+              }
+            }
           },
-          stroke: {
-            lineCap: 'round',
-          },
-        },
-      },
+          stroke:      {
+            lineCap: "round"
+          }
+        }
+      }
     }
   },
-  created() {
-    for (let i = 0; i < this.browserData.length; i += 1) {
-      const chartClone = JSON.parse(JSON.stringify(this.chart))
-      chartClone.options.colors[0] = this.chartColor[i]
-      chartClone.series[0] = this.chartSeries[i]
-      this.chartData.push(chartClone)
+  created () {
+    for ( let i = 0; i < this.browserData.length; i += 1 ) {
+      const chartClone = JSON.parse( JSON.stringify( this.chart ) )
+      chartClone.options.colors[ 0 ] = this.chartColor[ i ]
+      chartClone.series[ 0 ] = this.chartSeries[ i ]
+      this.chartData.push( chartClone )
     }
-  },
+  }
 }
 </script>

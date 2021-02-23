@@ -1,11 +1,9 @@
 <template>
-  <b-card-code
-    title="Autoplay"
-  >
+  <b-card-code title="Autoplay">
     <swiper
-      class="swiper-autoplay"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
       :options="swiperOptions"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      class="swiper-autoplay"
     >
       <swiper-slide
         v-for="data in swiperData"
@@ -29,7 +27,7 @@
         class="swiper-button-prev"
       />
     </swiper>
-
+    
     <template #code>
       {{ codeAutoplay }}
     </template>
@@ -37,51 +35,51 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { BImg } from 'bootstrap-vue'
-import 'swiper/css/swiper.css'
-import { codeAutoplay } from './code'
+import BCardCode               from "@core/components/b-card-code/BCardCode.vue"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import { BImg }                from "bootstrap-vue"
+import "swiper/css/swiper.css"
+import { codeAutoplay }        from "./code"
+
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
     BCardCode,
-    BImg,
+    BImg
   },
-  data() {
+  data () {
     return {
       codeAutoplay,
       swiperOptions: {
-        spaceBetween: 30,
+        spaceBetween:   30,
         centeredSlides: true,
-        autoplay: {
-          delay: 2500,
-          disableOnInteraction: false,
+        autoplay:       {
+          delay:                2500,
+          disableOnInteraction: false
         },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
+        pagination:     {
+          el:        ".swiper-pagination",
+          clickable: true
         },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
+        navigation:     {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        }
       },
-
+      
       /* eslint-disable global-require */
       swiperData: [
-        { img: require('@/assets/images/banner/banner-20.jpg') },
-        { img: require('@/assets/images/banner/banner-7.jpg') },
-        { img: require('@/assets/images/banner/banner-8.jpg') },
-        { img: require('@/assets/images/banner/banner-9.jpg') },
-        { img: require('@/assets/images/banner/banner-10.jpg') },
-        { img: require('@/assets/images/banner/banner-11.jpg') },
-      ],
-      /* eslint-disable global-require */
-
+        { img: require( "@/assets/images/banner/banner-20.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-7.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-8.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-9.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-10.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-11.jpg" ) }
+      ] /* eslint-disable global-require */
+      
     }
-  },
+  }
 }
 </script>

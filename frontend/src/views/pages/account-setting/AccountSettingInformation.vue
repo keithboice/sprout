@@ -12,18 +12,18 @@
             <b-form-textarea
               id="bio-area"
               v-model="localOptions.bio"
-              rows="4"
               placeholder="Your bio data here..."
+              rows="4"
             />
           </b-form-group>
         </b-col>
         <!--/ bio -->
-
+        
         <!-- birth date -->
         <b-col md="6">
           <b-form-group
-            label-for="example-datepicker"
             label="Birth date"
+            label-for="example-datepicker"
           >
             <flat-pickr
               v-model="localOptions.dob"
@@ -34,29 +34,29 @@
           </b-form-group>
         </b-col>
         <!--/ birth date -->
-
+        
         <!-- Country -->
         <b-col md="6">
           <b-form-group
-            label-for="countryList"
             label="Country"
+            label-for="countryList"
           >
             <v-select
               id="countryList"
               v-model="localOptions.country"
-              :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-              label="title"
+              :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
               :options="countryOption"
+              label="title"
             />
           </b-form-group>
         </b-col>
         <!--/ Country -->
-
+        
         <!-- website -->
         <b-col md="6">
           <b-form-group
-            label-for="website"
             label="Website"
+            label-for="website"
           >
             <b-form-input
               id="website"
@@ -66,37 +66,37 @@
           </b-form-group>
         </b-col>
         <!--/ website -->
-
+        
         <!-- phone -->
         <b-col md="6">
           <b-form-group
-            label-for="phone"
             label="Phone"
+            label-for="phone"
           >
             <cleave
               id="phone"
               v-model="localOptions.phone"
-              class="form-control"
-              :raw="false"
               :options="clevePhone"
+              :raw="false"
+              class="form-control"
               placeholder="Phone number"
             />
           </b-form-group>
         </b-col>
         <!-- phone -->
-
+        
         <b-col cols="12">
           <b-button
             v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-            variant="primary"
             class="mt-1 mr-1"
+            variant="primary"
           >
             Save changes
           </b-button>
           <b-button
             v-ripple.400="'rgba(186, 191, 199, 0.15)'"
-            type="reset"
             class="mt-1"
+            type="reset"
             variant="outline-secondary"
             @click.prevent="resetForm"
           >
@@ -109,16 +109,15 @@
 </template>
 
 <script>
-import {
-  BButton, BForm, BFormGroup, BFormInput, BRow, BCol, BCard, BFormTextarea,
-} from 'bootstrap-vue'
-import vSelect from 'vue-select'
-import flatPickr from 'vue-flatpickr-component'
-import Ripple from 'vue-ripple-directive'
-import Cleave from 'vue-cleave-component'
+import { BButton, BForm, BFormGroup, BFormInput, BRow, BCol, BCard, BFormTextarea } from "bootstrap-vue"
+import vSelect                                                                      from "vue-select"
+import flatPickr                                                                    from "vue-flatpickr-component"
+import Ripple                                                                       from "vue-ripple-directive"
+import Cleave                                                                       from "vue-cleave-component"
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import 'cleave.js/dist/addons/cleave-phone.us'
+import "cleave.js/dist/addons/cleave-phone.us"
+
 
 export default {
   components: {
@@ -132,32 +131,32 @@ export default {
     BFormTextarea,
     vSelect,
     flatPickr,
-    Cleave,
+    Cleave
   },
   directives: {
-    Ripple,
+    Ripple
   },
-  props: {
+  props:      {
     informationData: {
-      type: Object,
-      default: () => {},
-    },
+      type:    Object,
+      default: () => {}
+    }
   },
-  data() {
+  data () {
     return {
-      countryOption: ['USA', 'India', 'Canada'],
-      localOptions: JSON.parse(JSON.stringify(this.informationData)),
-      clevePhone: {
-        phone: true,
-        phoneRegionCode: 'US',
-      },
+      countryOption: [ "USA", "India", "Canada" ],
+      localOptions:  JSON.parse( JSON.stringify( this.informationData ) ),
+      clevePhone:    {
+        phone:           true,
+        phoneRegionCode: "US"
+      }
     }
   },
   methods: {
-    resetForm() {
-      this.localOptions = JSON.parse(JSON.stringify(this.informationData))
-    },
-  },
+    resetForm () {
+      this.localOptions = JSON.parse( JSON.stringify( this.informationData ) )
+    }
+  }
 }
 </script>
 

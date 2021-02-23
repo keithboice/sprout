@@ -14,12 +14,21 @@ module.exports = {
   configureWebpack:      {
     resolve: {
       alias: {
-        "@themeConfig": path.resolve( __dirname, "themeConfig.js" ),
-        "@core":        path.resolve( __dirname, "src/@core" ),
-        "@validations": path.resolve( __dirname, "src/@core/utils/validations/validations.js" ),
-        "@axios":       path.resolve( __dirname, "src/libs/axios" ),
         "@assets":      path.resolve( __dirname, "src/assets" ),
-        "@components":  path.resolve( __dirname, "src/components" )
+        "@axios":       path.resolve( __dirname, "src/libs/axios" ),
+        "@conf":        path.resolve( __dirname, "src/conf" ),
+        "@components":  path.resolve( __dirname, "src/components" ),
+        "@core":        path.resolve( __dirname, "src/core" ),
+        "@images":      path.resolve( __dirname, "src/assets/images" ),
+        "@layouts":     path.resolve( __dirname, "src/layouts" ),
+        "@libs":        path.resolve( __dirname, "src/libs" ),
+        "@navigation":  path.resolve( __dirname, "src/navigation" ),
+        "@router":      path.resolve( __dirname, "src/router" ),
+        "@scss":        path.resolve( __dirname, "src/assets/scss" ),
+        "@store":       path.resolve( __dirname, "src/store" ),
+        "@themeConfig": path.resolve( __dirname, "src/conf/theme.js" ),
+        "@utils":       path.resolve( __dirname, "src/utils" ),
+        "@validations": path.resolve( __dirname, "src/core/utils/validations/validations.js" )
       }
     }
   },

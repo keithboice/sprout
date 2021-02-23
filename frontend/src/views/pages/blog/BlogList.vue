@@ -1,6 +1,6 @@
 <template>
   <content-with-sidebar class="blog-wrapper">
-
+    
     <!-- blogs -->
     <b-row class="blog-list-wrapper">
       <b-col
@@ -9,13 +9,13 @@
         md="6"
       >
         <b-card
-          tag="article"
           no-body
+          tag="article"
         >
           <b-link :to="{ name: 'pages-blog-detail', params: { id: blog.id } }">
             <b-img
-              :src="blog.img"
               :alt="blog.img.slice(5)"
+              :src="blog.img"
               class="card-img-top"
             />
           </b-link>
@@ -30,22 +30,19 @@
             </b-card-title>
             <b-media no-body>
               <b-media-aside
-                vertical-align="center"
                 class="mr-50"
+                vertical-align="center"
               >
                 <b-avatar
+                  :src="blog.avatar"
                   href="javascript:void(0)"
                   size="24"
-                  :src="blog.avatar"
                 />
               </b-media-aside>
               <b-media-body>
-                <small class="text-muted mr-50">by</small>
-                <small>
+                <small class="text-muted mr-50">by</small> <small>
                   <b-link class="text-body">{{ blog.userFullName }}</b-link>
-                </small>
-                <span class="text-muted ml-75 mr-50">|</span>
-                <small class="text-muted">{{ blog.blogPosted }}</small>
+                </small> <span class="text-muted ml-75 mr-50">|</span> <small class="text-muted">{{ blog.blogPosted }}</small>
               </b-media-body>
             </b-media>
             <div class="my-1 py-25">
@@ -54,9 +51,9 @@
                 :key="index"
               >
                 <b-badge
-                  pill
-                  class="mr-75"
                   :variant="tagsColor(tag)"
+                  class="mr-75"
+                  pill
                 >
                   {{ tag }}
                 </b-badge>
@@ -70,10 +67,10 @@
               <b-link :to="{ path: `/pages/blog/${blog.id}#blogComment`}">
                 <div class="d-flex align-items-center text-body">
                   <feather-icon
-                    icon="MessageSquareIcon"
                     class="mr-50"
+                    icon="MessageSquareIcon"
                   />
-                  <span class="font-weight-bold">{{ kFormatter(blog.comment) }} Comments</span>
+                  <span class="font-weight-bold">{{ kFormatter( blog.comment ) }} Comments</span>
                 </div>
               </b-link>
               <b-link
@@ -91,12 +88,12 @@
         <div class="my-2">
           <b-pagination
             v-model="currentPage"
-            align="center"
             :total-rows="rows"
+            align="center"
             first-number
             last-number
-            prev-class="prev-item"
             next-class="next-item"
+            prev-class="prev-item"
           >
             <template #prev-text>
               <feather-icon
@@ -114,9 +111,9 @@
         </div>
       </b-col>
     </b-row>
-
+    
     <!--/ blogs -->
-
+    
     <!-- sidebar -->
     <div
       slot="sidebar"
@@ -134,33 +131,30 @@
             class="cursor-pointer"
             is-text
           >
-            <feather-icon
-              icon="SearchIcon"
-            />
+            <feather-icon icon="SearchIcon" />
           </b-input-group-append>
         </b-input-group>
       </b-form-group>
       <!--/ input search -->
-
+      
       <!-- recent posts -->
       <div class="blog-recent-posts mt-3">
         <h6 class="section-label mb-75">
-          Recent Posts
-        </h6>
+          Recent Posts </h6>
         <b-media
           v-for="(recentpost,index) in blogSidebar.recentPosts"
           :key="recentpost.img"
-          no-body
           :class="index? 'mt-2':''"
+          no-body
         >
           <b-media-aside class="mr-2">
             <b-link :to="{ name: 'pages-blog-detail', params:{ id :recentpost.id } }">
               <b-img
-                :src="recentpost.img"
                 :alt="recentpost.img.slice(6)"
-                width="100"
-                rounded
+                :src="recentpost.img"
                 height="70"
+                rounded
+                width="100"
               />
             </b-link>
           </b-media-aside>
@@ -180,13 +174,12 @@
         </b-media>
       </div>
       <!--/ recent posts -->
-
+      
       <!-- categories -->
       <div class="blog-categories mt-3">
         <h6 class="section-label mb-1">
-          Categories
-        </h6>
-
+          Categories </h6>
+        
         <div
           v-for="category in blogSidebar.categories"
           :key="category.icon"
@@ -194,10 +187,10 @@
         >
           <b-link>
             <b-avatar
-              rounded
-              size="32"
               :variant="tagsColor(category.category)"
               class="mr-75"
+              rounded
+              size="32"
             >
               <feather-icon
                 :icon="category.icon"
@@ -220,10 +213,12 @@
 
 <script>
 import {
-  BRow, BCol, BCard, BFormInput, BCardText, BCardTitle, BMedia, BAvatar, BMediaAside, BMediaBody, BImg, BCardBody, BLink, BBadge, BFormGroup, BInputGroup, BInputGroupAppend, BPagination,
-} from 'bootstrap-vue'
-import { kFormatter } from '@core/utils/filter'
-import ContentWithSidebar from '@core/layouts/components/content-with-sidebar/ContentWithSidebar.vue'
+  BRow, BCol, BCard, BFormInput, BCardText, BCardTitle, BMedia, BAvatar, BMediaAside, BMediaBody, BImg, BCardBody, BLink, BBadge, BFormGroup,
+  BInputGroup, BInputGroupAppend, BPagination
+}                         from "bootstrap-vue"
+import { kFormatter }     from "@core/../../../utils/filter"
+import ContentWithSidebar from "@/layouts/components/content-with-sidebar/ContentWithSidebar.vue"
+
 
 export default {
   components: {
@@ -245,33 +240,45 @@ export default {
     BInputGroupAppend,
     BImg,
     BPagination,
-    ContentWithSidebar,
+    ContentWithSidebar
   },
-  data() {
+  data () {
     return {
-      search_query: '',
-      blogList: [],
-      blogSidebar: {},
-      currentPage: 1,
-      perPage: 1,
-      rows: 140,
+      search_query: "",
+      blogList:     [],
+      blogSidebar:  {},
+      currentPage:  1,
+      perPage:      1,
+      rows:         140
     }
   },
-  created() {
-    this.$http.get('/blog/list/data').then(res => { this.blogList = res.data })
-    this.$http.get('/blog/list/data/sidebar').then(res => { this.blogSidebar = res.data })
+  created () {
+    this.$http.get( "/blog/list/data" )
+      .then( res => { this.blogList = res.data } )
+    this.$http.get( "/blog/list/data/sidebar" )
+      .then( res => { this.blogSidebar = res.data } )
   },
   methods: {
     kFormatter,
-    tagsColor(tag) {
-      if (tag === 'Quote') return 'light-info'
-      if (tag === 'Gaming') return 'light-danger'
-      if (tag === 'Fashion') return 'light-primary'
-      if (tag === 'Video') return 'light-warning'
-      if (tag === 'Food') return 'light-success'
-      return 'light-primary'
-    },
-  },
+    tagsColor ( tag ) {
+      if ( tag === "Quote" ) {
+        return "light-info"
+      }
+      if ( tag === "Gaming" ) {
+        return "light-danger"
+      }
+      if ( tag === "Fashion" ) {
+        return "light-primary"
+      }
+      if ( tag === "Video" ) {
+        return "light-warning"
+      }
+      if ( tag === "Food" ) {
+        return "light-success"
+      }
+      return "light-primary"
+    }
+  }
 }
 </script>
 

@@ -2,35 +2,34 @@
   <b-sidebar
     id="add-new-user-sidebar"
     :visible="isAddNewUserSidebarActive"
-    bg-variant="white"
-    sidebar-class="sidebar-lg"
-    shadow
     backdrop
+    bg-variant="white"
     no-header
     right
-    @hidden="resetForm"
+    shadow
+    sidebar-class="sidebar-lg"
     @change="(val) => $emit('update:is-add-new-user-sidebar-active', val)"
+    @hidden="resetForm"
   >
     <template #default="{ hide }">
       <!-- Header -->
       <div class="d-flex justify-content-between align-items-center content-sidebar-header px-2 py-1">
         <h5 class="mb-0">
-          Add New User
-        </h5>
-
+          Add New User </h5>
+        
         <feather-icon
           class="ml-1 cursor-pointer"
           icon="XIcon"
           size="16"
           @click="hide"
         />
-
+      
       </div>
-
+      
       <!-- BODY -->
       <validation-observer
-        #default="{ handleSubmit }"
         ref="refFormObserver"
+        #default="{ handleSubmit }"
       >
         <!-- Form -->
         <b-form
@@ -38,7 +37,7 @@
           @submit.prevent="handleSubmit(onSubmit)"
           @reset.prevent="resetForm"
         >
-
+          
           <!-- Full Name -->
           <validation-provider
             #default="validationContext"
@@ -52,18 +51,18 @@
               <b-form-input
                 id="full-name"
                 v-model="userData.fullName"
-                autofocus
                 :state="getValidationState(validationContext)"
-                trim
+                autofocus
                 placeholder="John Doe"
+                trim
               />
-
+              
               <b-form-invalid-feedback>
-                {{ validationContext.errors[0] }}
+                {{ validationContext.errors[ 0 ] }}
               </b-form-invalid-feedback>
             </b-form-group>
           </validation-provider>
-
+          
           <!-- Username -->
           <validation-provider
             #default="validationContext"
@@ -80,13 +79,13 @@
                 :state="getValidationState(validationContext)"
                 trim
               />
-
+              
               <b-form-invalid-feedback>
-                {{ validationContext.errors[0] }}
+                {{ validationContext.errors[ 0 ] }}
               </b-form-invalid-feedback>
             </b-form-group>
           </validation-provider>
-
+          
           <!-- Email -->
           <validation-provider
             #default="validationContext"
@@ -103,13 +102,13 @@
                 :state="getValidationState(validationContext)"
                 trim
               />
-
+              
               <b-form-invalid-feedback>
-                {{ validationContext.errors[0] }}
+                {{ validationContext.errors[ 0 ] }}
               </b-form-invalid-feedback>
             </b-form-group>
           </validation-provider>
-
+          
           <!-- Company -->
           <validation-provider
             #default="validationContext"
@@ -126,13 +125,13 @@
                 :state="getValidationState(validationContext)"
                 trim
               />
-
+              
               <b-form-invalid-feedback>
-                {{ validationContext.errors[0] }}
+                {{ validationContext.errors[ 0 ] }}
               </b-form-invalid-feedback>
             </b-form-group>
           </validation-provider>
-
+          
           <!-- Company -->
           <validation-provider
             #default="validationContext"
@@ -149,13 +148,13 @@
                 :state="getValidationState(validationContext)"
                 trim
               />
-
+              
               <b-form-invalid-feedback>
-                {{ validationContext.errors[0] }}
+                {{ validationContext.errors[ 0 ] }}
               </b-form-invalid-feedback>
             </b-form-group>
           </validation-provider>
-
+          
           <!-- Country -->
           <validation-provider
             #default="validationContext"
@@ -163,23 +162,23 @@
             rules="required"
           >
             <b-form-group
+              :state="getValidationState(validationContext)"
               label="Country"
               label-for="country"
-              :state="getValidationState(validationContext)"
             >
               <v-select
                 v-model="userData.country"
-                :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                :options="countries"
                 :clearable="false"
+                :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
+                :options="countries"
                 input-id="country"
               />
               <b-form-invalid-feedback :state="getValidationState(validationContext)">
-                {{ validationContext.errors[0] }}
+                {{ validationContext.errors[ 0 ] }}
               </b-form-invalid-feedback>
             </b-form-group>
           </validation-provider>
-
+          
           <!-- User Role -->
           <validation-provider
             #default="validationContext"
@@ -187,24 +186,24 @@
             rules="required"
           >
             <b-form-group
+              :state="getValidationState(validationContext)"
               label="User Role"
               label-for="user-role"
-              :state="getValidationState(validationContext)"
             >
               <v-select
                 v-model="userData.role"
-                :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                :clearable="false"
+                :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
                 :options="roleOptions"
                 :reduce="val => val.value"
-                :clearable="false"
                 input-id="user-role"
               />
               <b-form-invalid-feedback :state="getValidationState(validationContext)">
-                {{ validationContext.errors[0] }}
+                {{ validationContext.errors[ 0 ] }}
               </b-form-invalid-feedback>
             </b-form-group>
           </validation-provider>
-
+          
           <!-- Plan -->
           <validation-provider
             #default="validationContext"
@@ -212,31 +211,31 @@
             rules="required"
           >
             <b-form-group
+              :state="getValidationState(validationContext)"
               label="Plan"
               label-for="plan"
-              :state="getValidationState(validationContext)"
             >
               <v-select
                 v-model="userData.currentPlan"
-                :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                :clearable="false"
+                :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
                 :options="planOptions"
                 :reduce="val => val.value"
-                :clearable="false"
                 input-id="plan"
               />
               <b-form-invalid-feedback :state="getValidationState(validationContext)">
-                {{ validationContext.errors[0] }}
+                {{ validationContext.errors[ 0 ] }}
               </b-form-invalid-feedback>
             </b-form-group>
           </validation-provider>
-
+          
           <!-- Form Actions -->
           <div class="d-flex mt-2">
             <b-button
               v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-              variant="primary"
               class="mr-2"
               type="submit"
+              variant="primary"
             >
               Add
             </b-button>
@@ -249,7 +248,7 @@
               Cancel
             </b-button>
           </div>
-
+        
         </b-form>
       </validation-observer>
     </template>
@@ -257,17 +256,16 @@
 </template>
 
 <script>
-import {
-  BSidebar, BForm, BFormGroup, BFormInput, BFormInvalidFeedback, BButton,
-} from 'bootstrap-vue'
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
-import { ref } from '@vue/composition-api'
-import { required, alphaNum, email } from '@validations'
-import formValidation from '@core/comp-functions/forms/form-validation'
-import Ripple from 'vue-ripple-directive'
-import vSelect from 'vue-select'
-import countries from '@/@fake-db/data/other/countries'
-import store from '@/store'
+import { BSidebar, BForm, BFormGroup, BFormInput, BFormInvalidFeedback, BButton } from "bootstrap-vue"
+import { ValidationProvider, ValidationObserver }                                 from "vee-validate"
+import { ref }                                                                    from "@vue/composition-api"
+import { required, alphaNum, email }                                              from "@validations"
+import formValidation                                                             from "@/utils/comp-functions/forms/form-validation"
+import Ripple                                                                     from "vue-ripple-directive"
+import vSelect                                                                    from "vue-select"
+import countries                                                                  from "@/@fake-db/data/other/countries"
+import store                                                                      from "@/store"
+
 
 export default {
   components: {
@@ -278,85 +276,85 @@ export default {
     BFormInvalidFeedback,
     BButton,
     vSelect,
-
+    
     // Form Validation
     ValidationProvider,
-    ValidationObserver,
+    ValidationObserver
   },
   directives: {
-    Ripple,
+    Ripple
   },
-  model: {
-    prop: 'isAddNewUserSidebarActive',
-    event: 'update:is-add-new-user-sidebar-active',
+  model:      {
+    prop:  "isAddNewUserSidebarActive",
+    event: "update:is-add-new-user-sidebar-active"
   },
-  props: {
+  props:      {
     isAddNewUserSidebarActive: {
-      type: Boolean,
-      required: true,
+      type:     Boolean,
+      required: true
     },
-    roleOptions: {
-      type: Array,
-      required: true,
+    roleOptions:               {
+      type:     Array,
+      required: true
     },
-    planOptions: {
-      type: Array,
-      required: true,
-    },
+    planOptions:               {
+      type:     Array,
+      required: true
+    }
   },
-  data() {
+  data () {
     return {
       required,
       alphaNum,
       email,
-      countries,
+      countries
     }
   },
-  setup(props, { emit }) {
+  setup ( props, { emit } ) {
     const blankUserData = {
-      fullName: '',
-      username: '',
-      email: '',
-      role: null,
+      fullName:    "",
+      username:    "",
+      email:       "",
+      role:        null,
       currentPlan: null,
-      company: '',
-      country: '',
-      contact: '',
+      company:     "",
+      country:     "",
+      contact:     ""
     }
-
-    const userData = ref(JSON.parse(JSON.stringify(blankUserData)))
+    
+    const userData = ref( JSON.parse( JSON.stringify( blankUserData ) ) )
     const resetuserData = () => {
-      userData.value = JSON.parse(JSON.stringify(blankUserData))
+      userData.value = JSON.parse( JSON.stringify( blankUserData ) )
     }
-
+    
     const onSubmit = () => {
-      store.dispatch('app-user/addUser', userData.value)
-        .then(() => {
-          emit('refetch-data')
-          emit('update:is-add-new-user-sidebar-active', false)
-        })
+      store.dispatch( "app-user/addUser", userData.value )
+        .then( () => {
+          emit( "refetch-data" )
+          emit( "update:is-add-new-user-sidebar-active", false )
+        } )
     }
-
+    
     const {
-      refFormObserver,
-      getValidationState,
-      resetForm,
-    } = formValidation(resetuserData)
-
+            refFormObserver,
+            getValidationState,
+            resetForm
+          } = formValidation( resetuserData )
+    
     return {
       userData,
       onSubmit,
-
+      
       refFormObserver,
       getValidationState,
-      resetForm,
+      resetForm
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-@import '@core/scss/vue/libs/vue-select.scss';
+@import '~@/assets/scss/vue/libs/vue-select.scss';
 
 #add-new-user-sidebar {
   .vs__dropdown-menu {

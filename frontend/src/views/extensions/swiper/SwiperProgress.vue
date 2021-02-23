@@ -1,9 +1,9 @@
 <template>
   <b-card-code title="Progress">
     <swiper
-      class="swiper-progress"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
       :options="swiperOptions"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      class="swiper-progress"
     >
       <swiper-slide
         v-for="(data,index) in swiperData"
@@ -14,7 +14,7 @@
           fluid
         />
       </swiper-slide>
-
+      
       <!-- Add Arrows -->
       <div
         slot="button-next"
@@ -29,7 +29,7 @@
         class="swiper-pagination"
       />
     </swiper>
-
+    
     <template #code>
       {{ codeProgress }}
     </template>
@@ -37,44 +37,44 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import { BImg } from 'bootstrap-vue'
-import 'swiper/css/swiper.css'
-import { codeProgress } from './code'
+import BCardCode               from "@core/components/b-card-code/BCardCode.vue"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import { BImg }                from "bootstrap-vue"
+import "swiper/css/swiper.css"
+import { codeProgress }        from "./code"
+
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
     BCardCode,
-    BImg,
+    BImg
   },
-  data() {
+  data () {
     return {
       codeProgress,
-
+      
       /* eslint-disable global-require */
       swiperData: [
-        { img: require('@/assets/images/banner/banner-8.jpg') },
-        { img: require('@/assets/images/banner/banner-7.jpg') },
-        { img: require('@/assets/images/banner/banner-20.jpg') },
-        { img: require('@/assets/images/banner/banner-4.jpg') },
-        { img: require('@/assets/images/banner/banner-5.jpg') },
-      ],
-      /* eslint-disable global-require */
-
+        { img: require( "@/assets/images/banner/banner-8.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-7.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-20.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-4.jpg" ) },
+        { img: require( "@/assets/images/banner/banner-5.jpg" ) }
+      ], /* eslint-disable global-require */
+      
       swiperOptions: {
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
         },
         pagination: {
-          el: '.swiper-pagination',
-          type: 'progressbar',
-        },
-      },
+          el:   ".swiper-pagination",
+          type: "progressbar"
+        }
+      }
     }
-  },
+  }
 }
 </script>

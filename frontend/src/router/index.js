@@ -13,7 +13,7 @@ const routes = [
   {
     path:      "/apps/chat",
     name:      "apps-chat",
-    component: () => import("@/views/apps/chat/Chat.vue"),
+    component: () => import("@/views/chat/Chat.vue"),
     meta:      {
       contentRenderer: "sidebar-left",
       contentClass:    "chat-application",
@@ -22,7 +22,7 @@ const routes = [
   }, {
     path:      "/apps/chat/active",
     name:      "apps-chat-active",
-    component: () => import("@/views/apps/chat/Chat.vue"),
+    component: () => import("@/views/chat/Chat.vue"),
     meta:      {
       contentRenderer: "sidebar-left",
       contentClass:    "chat-application",
@@ -31,7 +31,7 @@ const routes = [
   }, {
     path:      "/apps/chat/new",
     name:      "apps-chat-new",
-    component: () => import("@/views/apps/chat/Chat.vue"),
+    component: () => import("@/views/chat/Chat.vue"),
     meta:      {
       contentRenderer: "open-chat",
       contactId:       "1",
@@ -41,7 +41,7 @@ const routes = [
   }, {
     path:      "/apps/chat/started",
     name:      "apps-chat-started",
-    component: () => import("@/views/apps/chat/Chat.vue"),
+    component: () => import("@/views/chat/Chat.vue"),
     meta:      {
       contentRenderer: "sidebar-left",
       contentClass:    "chat-application",
@@ -50,7 +50,7 @@ const routes = [
   }, {
     path:      "/apps/chat/closed",
     name:      "apps-chat-closed",
-    component: () => import("@/views/apps/chat/Chat.vue"),
+    component: () => import("@/views/chat/Chat.vue"),
     meta:      {
       contentRenderer: "sidebar-left",
       contentClass:    "chat-application",

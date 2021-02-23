@@ -1,53 +1,52 @@
 <template>
   <div class="auth-wrapper auth-v2">
     <b-row class="auth-inner m-0">
-
+      
       <!-- Brand logo-->
       <b-link class="brand-logo">
         <vuexy-logo />
-
+        
         <h2 class="brand-text text-primary ml-1">
-          Vuexy
-        </h2>
+          Sprout </h2>
       </b-link>
       <!-- /Brand logo-->
-
+      
       <!-- Left Text-->
       <b-col
-        lg="8"
         class="d-none d-lg-flex align-items-center p-5"
+        lg="8"
       >
         <div class="w-100 d-lg-flex align-items-center justify-content-center px-5">
           <b-img
-            fluid
             :src="imgUrl"
             alt="Forgot password V2"
+            fluid
           />
         </div>
       </b-col>
       <!-- /Left Text-->
-
+      
       <!-- Forgot password-->
       <b-col
-        lg="4"
         class="d-flex align-items-center auth-bg px-2 p-lg-5"
+        lg="4"
       >
         <b-col
-          sm="8"
-          md="6"
-          lg="12"
           class="px-xl-2 mx-auto"
+          lg="12"
+          md="6"
+          sm="8"
         >
           <b-card-title
-            title-tag="h2"
             class="font-weight-bold mb-1"
+            title-tag="h2"
           >
             Forgot Password? 🔒
           </b-card-title>
           <b-card-text class="mb-2">
             Enter your email and we'll send you instructions to reset your password
           </b-card-text>
-
+          
           <!-- form -->
           <validation-observer ref="simpleRules">
             <b-form
@@ -70,23 +69,24 @@
                     name="forgot-password-email"
                     placeholder="john@example.com"
                   />
-                  <small class="text-danger">{{ errors[0] }}</small>
+                  <small class="text-danger">{{ errors[ 0 ] }}</small>
                 </validation-provider>
               </b-form-group>
-
+              
               <b-button
+                block
                 type="submit"
                 variant="primary"
-                block
               >
                 Send reset link
               </b-button>
             </b-form>
           </validation-observer>
-
+          
           <p class="text-center mt-2">
             <b-link :to="{name:'auth-login-v2'}">
-              <feather-icon icon="ChevronLeftIcon" /> Back to login
+              <feather-icon icon="ChevronLeftIcon" />
+              Back to login
             </b-link>
           </p>
         </b-col>
@@ -98,18 +98,18 @@
 
 <script>
 /* eslint-disable global-require */
-import { ValidationProvider, ValidationObserver } from 'vee-validate'
-import VuexyLogo from '@core/layouts/components/Logo.vue'
-import {
-  BRow, BCol, BLink, BCardTitle, BCardText, BImg, BForm, BFormGroup, BFormInput, BButton,
-} from 'bootstrap-vue'
-import { required, email } from '@validations'
-import store from '@/store/index'
-import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
+import { ValidationProvider, ValidationObserver }                                                 from "vee-validate"
+import SproutLogo                                                                                 from "@/layouts/components/Logo.vue"
+import { BRow, BCol, BLink, BCardTitle, BCardText, BImg, BForm, BFormGroup, BFormInput, BButton } from "bootstrap-vue"
+import { required, email }                                                                        from "@validations"
+import store                                                                                      from "@/store/index"
+import ToastificationContent
+                                                                                                  from "@core/components/toastification/ToastificationContent.vue"
+
 
 export default {
   components: {
-    VuexyLogo,
+    SproutLogo,
     BRow,
     BCol,
     BLink,
@@ -121,43 +121,43 @@ export default {
     BCardTitle,
     BCardText,
     ValidationProvider,
-    ValidationObserver,
+    ValidationObserver
   },
-  data() {
+  data () {
     return {
-      userEmail: '',
-      sideImg: require('@/assets/images/pages/forgot-password-v2.svg'),
-      // validation
+      userEmail: "",
+      sideImg:   require( "@/assets/images/pages/forgot-password-v2.svg" ), // validation
       required,
-      email,
+      email
     }
   },
   computed: {
-    imgUrl() {
-      if (store.state.appConfig.layout.skin === 'dark') {
+    imgUrl () {
+      if ( store.state.chat.layout.skin === "dark" ) {
         // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-        this.sideImg = require('@/assets/images/pages/forgot-password-v2-dark.svg')
+        this.sideImg = require( "@/assets/images/pages/forgot-password-v2-dark.svg" )
         return this.sideImg
       }
       return this.sideImg
-    },
+    }
   },
-  methods: {
-    validationForm() {
-      this.$refs.simpleRules.validate().then(success => {
-        if (success) {
-          this.$toast({
-            component: ToastificationContent,
-            props: {
-              title: 'Form Submitted',
-              icon: 'EditIcon',
-              variant: 'success',
-            },
-          })
-        }
-      })
-    },
-  },
+  methods:  {
+    validationForm () {
+      this.$refs.simpleRules.validate()
+        .then( success => {
+          if ( success ) {
+            this.$toast( {
+                           component: ToastificationContent,
+                           props:     {
+                             title:   "Form Submitted",
+                             icon:    "EditIcon",
+                             variant: "success"
+                           }
+                         } )
+          }
+        } )
+    }
+  }
 }
 </script>
 

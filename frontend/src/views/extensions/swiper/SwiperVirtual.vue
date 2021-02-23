@@ -2,9 +2,9 @@
   <b-card-code title="Virtual Slides">
     <swiper
       ref="mySwiper15"
-      class="swiper-virtual"
+      :dir="$store.state.chat.isRTL ? 'rtl' : 'ltr'"
       :options="swiperOptions"
-      :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+      class="swiper-virtual"
     >
       <div
         slot="pagination"
@@ -19,51 +19,51 @@
         class="swiper-button-prev"
       />
     </swiper>
-
+    
     <!-- buttons -->
     <div class="demo-inline-spacing justify-content-center">
       <b-button
         v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-        variant="outline-primary"
         class="font-small-3"
+        variant="outline-primary"
         @click.prevent="prependSlides"
       >
         Prepend 2 Slides
       </b-button>
       <b-button
         v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-        variant="outline-primary"
         class="font-small-3"
+        variant="outline-primary"
         @click.prevent="toSlide(0)"
       >
         Slide 1
       </b-button>
       <b-button
         v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-        variant="outline-primary"
         class="font-small-3"
+        variant="outline-primary"
         @click.prevent="toSlide(250)"
       >
         Slide 250
       </b-button>
       <b-button
         v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-        variant="outline-primary"
         class="font-sm-3"
+        variant="outline-primary"
         @click.prevent="toSlide(500)"
       >
         Slide 500
       </b-button>
       <b-button
         v-ripple.400="'rgba(113, 102, 240, 0.15)'"
-        variant="outline-primary"
         class="font-small-3"
+        variant="outline-primary"
         @click.prevent="appendSlide"
       >
         Append Slide
       </b-button>
     </div>
-
+    
     <template #code>
       {{ codeVirtual }}
     </template>
@@ -71,61 +71,68 @@
 </template>
 
 <script>
-import BCardCode from '@core/components/b-card-code/BCardCode.vue'
-import { Swiper } from 'vue-awesome-swiper'
-import { BButton } from 'bootstrap-vue'
-import 'swiper/css/swiper.css'
-import Ripple from 'vue-ripple-directive'
-import { codeVirtual } from './code'
+import BCardCode       from "@core/components/b-card-code/BCardCode.vue"
+import { Swiper }      from "vue-awesome-swiper"
+import { BButton }     from "bootstrap-vue"
+import "swiper/css/swiper.css"
+import Ripple          from "vue-ripple-directive"
+import { codeVirtual } from "./code"
+
 
 export default {
   components: {
     Swiper,
     BCardCode,
-    BButton,
+    BButton
   },
   directives: {
-    Ripple,
+    Ripple
   },
-  data() {
+  data () {
     return {
       codeVirtual,
-      slides: [],
+      slides:        [],
       prependNumber: 1,
-      appendNumber: 600,
+      appendNumber:  600,
       swiperOptions: {
-        slidesPerView: 3,
+        slidesPerView:  3,
         centeredSlides: true,
-        spaceBetween: 30,
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'fraction',
+        spaceBetween:   30,
+        pagination:     {
+          el:   ".swiper-pagination",
+          type: "fraction"
         },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+        navigation:     {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
         },
-        virtual: {
-          slides: Array(600)
-            .fill('Slide')
-            .map((item, index) => `${item} ${index + 1}`),
-        },
-      },
+        virtual:        {
+          slides: Array( 600 )
+                    .fill( "Slide" )
+                    .map( ( item, index ) => `${ item } ${ index + 1 }` )
+        }
+      }
     }
   },
   methods: {
-    toSlide(index) {
-      this.$refs.mySwiper15.$swiper.slideTo(index, 1)
+    toSlide ( index ) {
+      this.$refs.mySwiper15.$swiper.slideTo( index, 1 )
     },
-    prependSlides() {
-      this.$refs.mySwiper15.$swiper.virtual.prependSlide([
-        `Slide ${(this.prependNumber -= 1)}`,
-        `Slide ${(this.prependNumber -= 1)}`,
-      ])
+    prependSlides () {
+      this.$refs.mySwiper15.$swiper.virtual.prependSlide( [
+                                                            `Slide ${ (
+                                                              this.prependNumber -= 1
+                                                            ) }`,
+                                                            `Slide ${ (
+                                                              this.prependNumber -= 1
+                                                            ) }`
+                                                          ] )
     },
-    appendSlide() {
-      this.$refs.mySwiper15.$swiper.virtual.appendSlide(`Slide ${(this.appendNumber += 1)}`)
-    },
-  },
+    appendSlide () {
+      this.$refs.mySwiper15.$swiper.virtual.appendSlide( `Slide ${ (
+        this.appendNumber += 1
+      ) }` )
+    }
+  }
 }
 </script>
