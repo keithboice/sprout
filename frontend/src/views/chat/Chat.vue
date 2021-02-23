@@ -178,12 +178,12 @@ import { ref, onUnmounted, nextTick }                                           
 import { BAvatar, BDropdown, BDropdownItem, BForm, BInputGroup, BFormInput, BButton } from "bootstrap-vue"
 import VuePerfectScrollbar                                                            from "vue-perfect-scrollbar"
 // import { formatDate } from '@core/utils/filter'
-import { useResponsiveAppLeftSidebarVisibility }                                      from "@utils/comp-functions/ui/app"
-import ChatLeftSidebar                                                                from "./ChatLeftSidebar.vue"
+import { useResponsiveAppLeftSidebarVisibility }                                      from "@/utils/comp-functions/ui/app"
+import ChatLeftSidebar                                                                from "@/views/chat/ChatLeftSidebar.vue"
 import chatStoreModule                                                                from "@/store/chat"
-import ChatActiveChatContentDetailsSidedbar                                           from "./ChatActiveChatContentDetailsSidedbar.vue"
-import ChatLog                                                                        from "./ChatLog.vue"
-import useChat                                                                        from "./useChat"
+import ChatActiveChatContentDetailsSidedbar                                           from "@/views/chat/ChatActiveChatContentDetailsSidedbar.vue"
+import ChatLog                                                                        from "@/views/chat/ChatLog.vue"
+import useChat                                                                        from "@/views/chat/useChat"
 
 
 export default {

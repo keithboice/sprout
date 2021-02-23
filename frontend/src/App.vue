@@ -7,19 +7,16 @@
     <component :is="layout">
       <router-view />
     </component>
-    
-    <!--    <scroll-to-top v-if="enableScrollToTop" />-->
+  
   </div>
 </template>
 
 <script>
-/*import ScrollToTop from "@/components/scroll-to-top/ScrollToTop.vue"*/
 
 // This will be populated in `beforeCreate` hook
 import { $themeColors, $themeBreakpoints, $themeConfig } from "@/conf/theme"
 import { provideToast }                                  from "vue-toastification/composition"
 import { watch }                                         from "@vue/composition-api"
-import useAppConfig                                      from "@/conf/app"
 
 import { useWindowSize, useCssVar } from "@vueuse/core"
 
@@ -38,17 +35,18 @@ export default {
     LayoutVertical,
     LayoutFull
     
-    /*ScrollToTop*/
-  }, // ! We can move this computed: layout & contentLayoutType once we get to use Vue 3
-  // Currently, router.currentRoute is not reactive and doesn't trigger any change
-  computed: {
+  },
+  computed:   {
     layout () {
       if ( this.$route.meta.layout === "full" ) {
         return "layout-full"
       }
+      console.log( `App.vue layout() returns: layout-${ this.contentLayoutType }` )
       return `layout-${ this.contentLayoutType }`
     },
     contentLayoutType () {
+      console.log( `App.vue contentLayoutType() returns: ${ this.$store.state.chat.layout.type }` )
+      
       return this.$store.state.chat.layout.type
     }
   },
@@ -78,20 +76,13 @@ export default {
     document.documentElement.setAttribute( "dir", isRTL ? "rtl" : "ltr" )
   },
   setup () {
-    const {
-            /*skin,*/
-            skinClasses
-          } = useAppConfig()
-    /*const { enableScrollToTop } = $themeConfig.layout*/
+    /*const {
+     /!*skin,*!/
+     skinClasses
+     } = useAppConfig()*/
     
-    // If skin is dark when initialized => Add class to body
-    /*if ( skin.value === "dark" ) {
-     document.body.classList.add( "dark-layout" )
-     }*/
+    const skinClasses = null
     
-    // Provide toast for Composition API usage
-    // This for those apps/components which uses composition API
-    // Demos will still use Options API for ease
     provideToast( {
                     hideProgressBar: true,
                     closeOnClick:    false,
@@ -109,8 +100,7 @@ export default {
     } )
     
     return {
-      skinClasses/*,
-       enableScrollToTop*/
+      skinClasses
     }
   }
 }
