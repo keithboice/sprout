@@ -1,11 +1,11 @@
 // For transition
 .alert {
-  transition: all 0.25s ease;
+	transition: all 0.25s ease;
 
-  // close button alignment
-  button {
-    &.close {
-      height: 100%;
-    }
-  }
+	// close button alignment
+	button {
+		&.close {
+			height: 100%;
+		}
+	}
 }

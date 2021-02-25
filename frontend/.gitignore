@@ -1,22 +1,21 @@
-.DS_Store
+# Builds
 node_modules
-/dist
 
+# Test Artifacts
 /tests/e2e/videos/
 /tests/e2e/screenshots/
 
-
-# local env files
+# ENV
 .env.local
 .env.*.local
 
-# Log files
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Editor directories and files
+# IDE
 .idea
 .vscode
 *.suo
@@ -24,3 +23,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+.archive
+*.bk
+.DS_Store

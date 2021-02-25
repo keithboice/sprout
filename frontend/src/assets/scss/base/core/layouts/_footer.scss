@@ -9,65 +9,65 @@
 
 // Stick footer to the bottom of the page
 footer {
-  &.footer {
-    padding: 0.8rem $content-padding;
-    min-height: $footer-height;
+	&.footer {
+		min-height: $footer-height;
+		padding: 0.8rem $content-padding;
 
-    // heart icon scss
-    span {
-      i,
-      svg {
-        height: 1.51rem;
-        width: 1.51rem;
-        font-size: 1.51rem;
-        margin-left: 0.5rem;
-        color: $danger;
-      }
-    }
+		// heart icon scss
+		span {
+			i,
+			svg {
+				color: $danger;
+				font-size: 1.51rem;
+				height: 1.51rem;
+				margin-left: 0.5rem;
+				width: 1.51rem;
+			}
+		}
 
-    .scroll-top {
-      padding: 0.81rem 0.83rem;
-    }
-  }
+		.scroll-top {
+			padding: 0.81rem 0.83rem;
+		}
+	}
 
-  //shadow & border options
-  &.footer-shadow {
-    box-shadow: $box-shadow;
-  }
+	//shadow & border options
+	&.footer-shadow {
+		box-shadow: $box-shadow;
+	}
 
-  &.footer-border {
-    border-top: 1px solid $border-color;
-  }
+	&.footer-border {
+		border-top: 1px solid $border-color;
+	}
 }
 
 // Fixed Footer
 .footer-fixed {
-  footer {
-    position: fixed !important;
-    z-index: 1030;
-    right: 0;
-    left: 0;
-    bottom: 0;
+	footer {
+		bottom: 0;
+		left: 0;
+		position: fixed !important;
+		right: 0;
+		z-index: 1030;
 
-    // Footer Light
-    &.footer-light {
-      background: $white;
-      box-shadow: $box-shadow;
-    }
+		// Footer Light
+		&.footer-light {
+			background: $white;
+			box-shadow: $box-shadow;
+		}
 
-    // Footer Dark
-    &.footer-dark {
-      background: $gray-600;
-      color: $white;
-    }
-  }
+		// Footer Dark
+		&.footer-dark {
+			background: $gray-600;
+			color: $white;
+		}
+	}
 }
 
 // scroll to Top Footer Button
 .scroll-top {
-  position: fixed;
-  bottom: 5%;
-  right: 30px;
-  display: none;
-  z-index: 99;
+	bottom: 5%;
+	display: none;
+	position: fixed;
+	right: 30px;
+	z-index: 99;
 }

@@ -1,145 +1,301 @@
-// Overrides user _variables-components
-@import '~/src/assets/scss/base/bootstrap-extended/_include.scss';
+/*
+ * Global style overrides.
+ */
 
-.chat-navbar .feather, .chat-navbar button, .chat-navbar button .text-body.feather, {
-  color: rgba(0, 0, 0, 0.1)
+
+
+@import '~@/assets/scss/base/bootstrap-extended/include';
+
+
+.content-area-wrapper {
+  margin-top: 20px;
+  min-width: calc(100vw - 350px);
+	max-width: 83vw;
+  min-height: calc(100vh - 270px) !important;
+  max-height: 80vh !important;
+}
+
+.sidebar-left .sidebar, .sidebar-content .card {
+  position: sticky !important;
+  left: 270px !important;
 }
 
 .bg-secondary .btn.btn-light {
-  color: rgba(114, 114, 114, 0.75);
-  background: rgb(239, 241, 243);
-  border: rgb(239, 241, 243);
-  height: 60px;
-  margin: 1px;
+	background: rgb(242,244,248);
+	border: rgb(242,244,248);
+	color: #727272;
+	height: 60px;
+	margin: 1px;
 }
 
 .bg-secondary .btn.btn-light:Hover {
-  color: rgba(114, 114, 114, 0.75);
-  background: rgba(0, 0, 0, .025);
-  border: rgba(0, 0, 0, .025);
+	background: rgba(114,114,114,0.05);
+	border: rgba(0, 0, 0, .025);
+	color: #727272;
 }
 
-.bg-secondary .btn.btn-light:Active, .bg-secondary .btn.btn-light.active {
-  color: rgba(94, 166, 140, 1.0);
-  background: rgba(0, 0, 0, .025);
-  border: rgba(0, 0, 0, .025);
+.bg-secondary .btn.btn-light:Active,
+.bg-secondary .btn.btn-light.active {
+	background: rgb(242,244,248);
+	border: rgba(0, 0, 0, .025);
+	color: rgba(94, 166, 140, 1);
 }
+
+.inbox-vert-nav {
+  width: 260px;
+  max-width: 260px;
+  overflow: hidden;
+  height: 100%;
+}
+
+html .navbar-hidden .inbox-app-content {
+  padding: 0;
+}
+
+// Main menu base
+//==============
+.main-menu {
+  display: table-cell;
+  height: 100%;
+  overflow: hidden;
+  /*position: absolute;*/
+  /*z-index: 1031;*/
+/*
+  &.menu-light {
+	@include menu-theme($body-color, $white);
+  }*/
+/*
+  &.menu-dark {
+	@include menu-theme($menu-dark-color, $menu-dark-bg-color);
+  }*/
+/*
+  &.menu-fixed {
+	position: fixed;
+  }*/
+/*
+  &.menu-static {
+	height: 100%;
+	padding-bottom: calc(100% - 20rem);
+
+	.main-menu-content {
+	  height: unset !important;
+	}
+  }*/
+
+  &.menu-shadow {
+	box-shadow: none;
+  }
+
+  &.menu-border {
+	border-right: 1px solid $border-color;
+  }
+
+  // menu scroll shadow
+  .shadow-bottom {
+	/*background: linear-gradient(#fff 41%, hsla(0, 0%, 100%, 0.11) 95%, hsla(0, 0%, 100%, 0));*/
+	display: none;
+	/*filter: blur(5px);*/
+	/*height: 50px;
+	margin-top: -0.7rem;
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	z-index: 2;*/
+
+	/*.bordered-layout & {
+	  background: linear-gradient($body-bg 41%, hsla(0, 0%, 100%, 0.11) 95%, hsla(0, 0%, 100%, 0));
+	}*/
+  }
+
+  // Native Scrollbar (.menu-native-scroll)
+  /*&.menu-native-scroll {
+	.main-menu-content {
+	  overflow-y: scroll !important;
+	}
+  }*/
+
+  .navbar-header {
+	/*height: 100%;
+	padding: 0.35rem 1rem 0.3rem 1.64rem;
+	position: relative;
+	transition: 300ms ease all, background 0s;
+	width: $menu-expanded-width;*/
+
+	/*.navbar-brand {
+	  align-items: center;
+	  display: flex;
+	  font-size: inherit;
+	  margin-top: 1.35rem;
+
+	  .brand-logo img {
+		max-width: 36px;
+	  }
+
+	  .brand-text {
+		animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadein;
+		color: $primary;
+		font-size: 1.45rem;
+		font-weight: 600;
+		letter-spacing: 0.01rem;
+		margin-bottom: 0;
+		padding-left: 1rem;
+	  }
+	}*/
+
+	/*.modern-nav-toggle {
+	  animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadein;
+	}*/
+  }
+
+  /*.main-menu-content {
+	position: relative;
+
+	.ps__rail-y {
+	  z-index: 3;
+	}
+  }*/
+
+  ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	&.navigation-main {
+	  overflow-x: hidden;
+	  padding-bottom: .75rem;
+
+	  > li:first-child {
+		margin-top: 0.5rem;
+	  }
+	}
+  }
+
+  a {
+	outline: none;
+
+	&:hover,
+	&:focus {
+	  text-decoration: none;
+	}
+  }
+}
+
 
 $black-color: (
-        'base': #212121
+	'base': #212121
 );
 $dark-color: (
-        'base': #373737,
-        'darken-1': #343434,
-        'darken-2': #1e1e1e,
-        'darken-3': #626262
+	'base': #373737,
+	'darken-1': #343434,
+	'darken-2': #1e1e1e,
+	'darken-3': #626262
 );
 $light-color: (
-        'base': #EFF1F3
+	'base': #F2F4F8
 );
 
 $primary-color: (
-        'lighten-5': lighten(#009688, 25%),
-        'lighten-4': lighten(#009688, 20%),
-        'lighten-3': lighten(#009688, 15%),
-        'lighten-2': lighten(#009688, 10%),
-        'lighten-1': lighten(#009688, 5%),
-        'base': #009688,
-        'darken-1': darken(#009688, 5%),
-        'darken-2': darken(#009688, 10%),
-        'darken-3': darken(#009688, 15%),
-        'darken-4': darken(#009688, 20%),
-        'accent-1': #e0f2f1,
-        'accent-2': #b2dfdb,
-        'accent-3': #80cbc4,
-        'accent-4': #4db6ac,
-        'accent-5': #26a69a
+	'lighten-5': lighten(#009688, 25%),
+	'lighten-4': lighten(#009688, 20%),
+	'lighten-3': lighten(#009688, 15%),
+	'lighten-2': lighten(#009688, 10%),
+	'lighten-1': lighten(#009688, 5%),
+	'base': #009688,
+	'darken-1': darken(#009688, 5%),
+	'darken-2': darken(#009688, 10%),
+	'darken-3': darken(#009688, 15%),
+	'darken-4': darken(#009688, 20%),
+	'accent-1': #e0f2f1,
+	'accent-2': #b2dfdb,
+	'accent-3': #80cbc4,
+	'accent-4': #4db6ac,
+	'accent-5': #26a69a
 );
 $secondary-color: (
-        'lighten-5': lighten(#bdbdbd, 25%),
-        'lighten-4': lighten(#bdbdbd, 20%),
-        'lighten-3': lighten(#bdbdbd, 15%),
-        'lighten-2': lighten(#bdbdbd, 10%),
-        'lighten-1': lighten(#bdbdbd, 5%),
-        'base': #bdbdbd,
-        'darken-1': darken(#bdbdbd, 5%),
-        'darken-2': darken(#bdbdbd, 10%),
-        'darken-3': darken(#bdbdbd, 15%),
-        'darken-4': darken(#bdbdbd, 20%)
+	'lighten-5': lighten(#bdbdbd, 25%),
+	'lighten-4': lighten(#bdbdbd, 20%),
+	'lighten-3': lighten(#bdbdbd, 15%),
+	'lighten-2': lighten(#bdbdbd, 10%),
+	'lighten-1': lighten(#bdbdbd, 5%),
+	'base': #bdbdbd,
+	'darken-1': darken(#bdbdbd, 5%),
+	'darken-2': darken(#bdbdbd, 10%),
+	'darken-3': darken(#bdbdbd, 15%),
+	'darken-4': darken(#bdbdbd, 20%)
 );
 $success-color: (
-        'lighten-5': lighten(#03a9f4, 25%),
-        'lighten-4': lighten(#03a9f4, 20%),
-        'lighten-3': lighten(#03a9f4, 15%),
-        'lighten-2': lighten(#03a9f4, 10%),
-        'lighten-1': lighten(#03a9f4, 5%),
-        'base': #03a9f4,
-        'darken-1': darken(#03a9f4, 5%),
-        'darken-2': darken(#03a9f4, 10%),
-        'darken-3': darken(#03a9f4, 15%),
-        'darken-4': darken(#03a9f4, 20%),
-        'accent-1': #e1f5fe,
-        'accent-2': #b3e5fc,
-        'accent-3': #81d4fa,
-        'accent-4': #4fc3f7
+	'lighten-5': lighten(#03a9f4, 25%),
+	'lighten-4': lighten(#03a9f4, 20%),
+	'lighten-3': lighten(#03a9f4, 15%),
+	'lighten-2': lighten(#03a9f4, 10%),
+	'lighten-1': lighten(#03a9f4, 5%),
+	'base': #03a9f4,
+	'darken-1': darken(#03a9f4, 5%),
+	'darken-2': darken(#03a9f4, 10%),
+	'darken-3': darken(#03a9f4, 15%),
+	'darken-4': darken(#03a9f4, 20%),
+	'accent-1': #e1f5fe,
+	'accent-2': #b3e5fc,
+	'accent-3': #81d4fa,
+	'accent-4': #4fc3f7
 );
 $info-color: (
-        'lighten-5': lighten(#5e35b1, 25%),
-        'lighten-4': lighten(#5e35b1, 20%),
-        'lighten-3': lighten(#5e35b1, 15%),
-        'lighten-2': lighten(#5e35b1, 10%),
-        'lighten-1': lighten(#5e35b1, 5%),
-        'base': #5e35b1,
-        'darken-1': darken(#5e35b1, 5%),
-        'darken-2': darken(#5e35b1, 10%),
-        'darken-3': darken(#5e35b1, 15%),
-        'darken-4': darken(#5e35b1, 20%),
-        'accent-1': #ede7f6,
-        'accent-2': #d1c4e9,
-        'accent-3': #d1c4e9,
-        'accent-4': #9575cd
+	'lighten-5': lighten(#5e35b1, 25%),
+	'lighten-4': lighten(#5e35b1, 20%),
+	'lighten-3': lighten(#5e35b1, 15%),
+	'lighten-2': lighten(#5e35b1, 10%),
+	'lighten-1': lighten(#5e35b1, 5%),
+	'base': #5e35b1,
+	'darken-1': darken(#5e35b1, 5%),
+	'darken-2': darken(#5e35b1, 10%),
+	'darken-3': darken(#5e35b1, 15%),
+	'darken-4': darken(#5e35b1, 20%),
+	'accent-1': #ede7f6,
+	'accent-2': #d1c4e9,
+	'accent-3': #d1c4e9,
+	'accent-4': #9575cd
 );
 $warning-color: (
-        'lighten-5': lighten(#ffc107, 25%),
-        'lighten-4': lighten(#ffc107, 20%),
-        'lighten-3': lighten(#ffc107, 15%),
-        'lighten-2': lighten(#ffc107, 10%),
-        'lighten-1': lighten(#ffc107, 5%),
-        'base': #ffc107,
-        'darken-1': darken(#ffc107, 5%),
-        'darken-2': darken(#ffc107, 10%),
-        'darken-3': darken(#ffc107, 15%),
-        'darken-4': darken(#ffc107, 20%),
-        'accent-1': #fff8e1,
-        'accent-2': #ffecb3,
-        'accent-3': #fff8e1,
-        'accent-4': #ffecb3
+	'lighten-5': lighten(#ffc107, 25%),
+	'lighten-4': lighten(#ffc107, 20%),
+	'lighten-3': lighten(#ffc107, 15%),
+	'lighten-2': lighten(#ffc107, 10%),
+	'lighten-1': lighten(#ffc107, 5%),
+	'base': #ffc107,
+	'darken-1': darken(#ffc107, 5%),
+	'darken-2': darken(#ffc107, 10%),
+	'darken-3': darken(#ffc107, 15%),
+	'darken-4': darken(#ffc107, 20%),
+	'accent-1': #fff8e1,
+	'accent-2': #ffecb3,
+	'accent-3': #fff8e1,
+	'accent-4': #ffecb3
 );
 $danger-color: (
-        'lighten-5': lighten(#ff5722, 25%),
-        'lighten-4': lighten(#ff5722, 20%),
-        'lighten-3': lighten(#ff5722, 15%),
-        'lighten-2': lighten(#ff5722, 10%),
-        'lighten-1': lighten(#ff5722, 5%),
-        'base': #ff5722,
-        'darken-1': darken(#ff5722, 5%),
-        'darken-2': darken(#ff5722, 10%),
-        'darken-3': darken(#ff5722, 15%),
-        'darken-4': darken(#ff5722, 20%),
-        'accent-1': #ffeef1,
-        'accent-2': #ffd6db,
-        'accent-3': #ffecee,
-        'accent-4': #ffd3d7
+	'lighten-5': lighten(#ff5722, 25%),
+	'lighten-4': lighten(#ff5722, 20%),
+	'lighten-3': lighten(#ff5722, 15%),
+	'lighten-2': lighten(#ff5722, 10%),
+	'lighten-1': lighten(#ff5722, 5%),
+	'base': #ff5722,
+	'darken-1': darken(#ff5722, 5%),
+	'darken-2': darken(#ff5722, 10%),
+	'darken-3': darken(#ff5722, 15%),
+	'darken-4': darken(#ff5722, 20%),
+	'accent-1': #ffeef1,
+	'accent-2': #ffd6db,
+	'accent-3': #ffecee,
+	'accent-4': #ffd3d7
 );
 
 $colors: (
-        'black': $black-color,
-        'dark': $dark-color,
-        'light': $light-color,
-        'primary': $primary-color,
-        'secondary': $secondary-color,
-        'success': $success-color,
-        'info': $info-color,
-        'warning': $warning-color,
-        'danger': $danger-color
+	'black': $black-color,
+	'dark': $dark-color,
+	'light': $light-color,
+	'primary': $primary-color,
+	'secondary': $secondary-color,
+	'success': $success-color,
+	'info': $info-color,
+	'warning': $warning-color,
+	'danger': $danger-color
 );

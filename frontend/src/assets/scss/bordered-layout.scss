@@ -1,0 +1,63 @@
+/*
+ * Styles for global bordered layout.
+ */
+
+@import '~@/assets/scss/base/bootstrap-extended/include';
+// Bootstrap includes
+@import '~@/assets/scss/base/components/include';
+
+.bordered-layout {
+	.header-navbar {
+		box-shadow: none;
+
+		&.floating-nav {
+			border: 1px solid $border-color;
+		}
+
+		&.fixed-top {
+			background: $body-bg;
+			border-bottom: 1px solid $border-color;
+		}
+	}
+
+	.main-menu {
+		border-right: 1px solid $border-color;
+		box-shadow: none;
+
+		&.menu-light .navigation > li {
+			&.open:not(.menu-item-closing),
+			&.sidebar-group-active {
+				> a {
+					background: darken($white, 7%);
+				}
+			}
+		}
+	}
+
+	.dropdown-menu {
+		border: 1px solid $border-color !important;
+		box-shadow: none;
+	}
+
+	.main-menu .navigation,
+	.main-menu {
+		background: $body-bg;
+	}
+
+	.card,
+	.bs-stepper:not(.wizard-modern):not(.checkout-tab-steps),
+	.bs-stepper.wizard-modern .bs-stepper-content {
+		border: 1px solid $border-color;
+		box-shadow: none;
+	}
+
+	.footer {
+		box-shadow: none !important;
+	}
+
+	.footer-fixed {
+		.footer {
+			border-top: 1px solid $border-color;
+		}
+	}
+}

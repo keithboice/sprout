@@ -3,295 +3,326 @@
 
 // Todo Application css starts
 .todo-application {
-  // Content area wrapper border
-  .content-area-wrapper {
-    border: 1px solid $border-color;
-    border-radius: $card-border-radius;
+	// Content area wrapper border
+	.content-area-wrapper {
+		border: 1px solid $border-color;
+		border-radius: $card-border-radius;
 
-    // Sidebar area starts
-    .sidebar {
-      .todo-sidebar {
-        width: $menu-expanded-width;
-        height: inherit;
-        display: flex;
-        background-color: $white;
-        border-top-left-radius: $card-border-radius;
-        border-bottom-left-radius: $card-border-radius;
-        transition: all 0.3s ease, background 0s;
+		// Sidebar area starts
+		.sidebar {
+			.todo-sidebar {
+				background-color: $white;
+				border-bottom-left-radius: $card-border-radius;
+				border-top-left-radius: $card-border-radius;
+				display: flex;
+				height: inherit;
+				transition: all 0.3s ease, background 0s;
+				width: $menu-expanded-width;
 
-        // Sidebar Menu
-        .todo-app-menu {
-          width: 100%;
-          z-index: 3;
-          .add-task {
-            padding: 1.5rem;
-          }
+				// Sidebar Menu
+				.todo-app-menu {
+					width: 100%;
+					z-index: 3;
 
-          // Sidebar menu list items
-          .sidebar-menu-list {
-            position: relative;
-            height: calc(100% - 80px);
-          }
-          .list-group .list-group-item {
-            padding: 0.58rem 1.5rem;
-            border: 0;
-            font-weight: $font-weight-bold;
-            letter-spacing: 0.4px;
-            border-left: 2px solid transparent;
-            border-radius: 0;
-            + .list-group-item.active {
-              margin-top: 0;
-            }
-            &:hover,
-            &:focus,
-            &.active {
-              background: transparent;
-              color: $primary;
-            }
-            &.active {
-              border-color: #7367f0;
-            }
-          }
-        }
-      }
-    }
-    // Sidebar area ends
+					.add-task {
+						padding: 1.5rem;
+					}
 
-    // Modal editor height
-    .ql-editor {
-      padding-bottom: 0;
-    }
+					// Sidebar menu list items
+					.sidebar-menu-list {
+						height: calc(100% - 80px);
+						position: relative;
+					}
 
-    // Right content area common css starts
-    .content-right {
-      width: calc(100% - #{$menu-expanded-width});
-      border-left: 1px solid $border-color;
-      .todo-app-list {
-        height: inherit;
-      }
-      // Todo Fixed search
-      .app-fixed-search {
-        padding: 0.35rem 0.5rem;
-        border-bottom: 1px solid $border-color;
-        background-color: $white;
-        border-top-right-radius: $border-radius;
-        .input-group:focus-within {
-          box-shadow: none;
-        }
-        input,
-        .input-group-text {
-          border: 0;
-          background-color: transparent;
-        }
-      }
+					.list-group .list-group-item {
+						border: 0;
+						border-left: 2px solid transparent;
+						border-radius: 0;
+						font-weight: $font-weight-bold;
+						letter-spacing: 0.4px;
+						padding: 0.58rem 1.5rem;
 
-      .todo-title {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-      }
-      .completed {
-        .todo-title {
-          color: $text-muted;
-        }
-      }
-      // ToDo task list area
-      .todo-task-list-wrapper {
-        position: relative;
-        height: calc(100% - 3.49rem); // ? search box height (3.49rem)
-        background-color: $white;
-        border-radius: 0;
-        .todo-task-list {
-          padding: 0;
-          margin: 0;
-          list-style: none;
-          li {
-            cursor: pointer;
-            transition: all 0.2s, border-color 0s;
-            position: relative;
-            padding: 0.893rem 2rem;
-            &:not(:first-child) {
-              border-top: 1px solid $border-color;
-            }
-            &:hover {
-              transform: translateY(-4px);
-              box-shadow: 0 3px 10px 0 $border-color;
-              transition: all 0.2s;
-            }
-            .todo-title-wrapper {
-              display: flex;
-              justify-content: space-between;
-            }
-            .todo-title-area,
-            .title-wrapper {
-              display: flex;
-              align-items: center;
-            }
-            // Todo Item Action
-            .todo-item-action {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              a {
-                cursor: pointer;
-                font-size: 1.2rem;
-                line-height: 1.5;
-              }
-            }
+						+ .list-group-item.active {
+							margin-top: 0;
+						}
 
-            .badge-wrapper {
-              display: flex;
-              .badge:not(:last-child) {
-                margin-right: 0.5rem;
-              }
-            }
-          }
-        }
-        // When we search, no-results
-        .no-results {
-          display: none;
-          padding: 1.5rem;
-          text-align: center;
-          &.show {
-            display: block;
-          }
-        }
-      }
-    }
-  }
-  // Slide In close btn
-  .todo-item-action {
-    .close {
-      background: transparent !important;
-      box-shadow: none !important;
-      position: unset !important;
-      transform: none !important;
-      transition: none !important;
-    }
-  }
+						&:hover,
+						&:focus,
+						&.active {
+							background: transparent;
+							color: $primary;
+						}
 
-  // Drag & Drop Icon
-  .todo-item {
-    .drag-icon {
-      visibility: hidden;
-      cursor: move;
-      position: absolute;
-      left: 0.2rem;
-      width: 1.75rem;
-      height: 4rem;
-      padding: 0 5px;
-    }
-    &:hover {
-      .drag-icon {
-        visibility: visible;
-      }
-    }
-  }
+						&.active {
+							border-color: #7367f0;
+						}
+					}
+				}
+			}
+		}
+		// Sidebar area ends
 
-  // validation text style
-  form .error:not(li):not(input) {
-    color: $danger;
-    font-size: 85%;
-    margin-top: 0.25rem;
-  }
+		// Modal editor height
+		.ql-editor {
+			padding-bottom: 0;
+		}
+
+		// Right content area common css starts
+		.content-right {
+			border-left: 1px solid $border-color;
+			width: calc(100% - #{$menu-expanded-width});
+
+			.todo-app-list {
+				height: inherit;
+			}
+			// Todo Fixed search
+			.app-fixed-search {
+				background-color: $white;
+				border-bottom: 1px solid $border-color;
+				border-top-right-radius: $border-radius;
+				padding: 0.35rem 0.5rem;
+
+				.input-group:focus-within {
+					box-shadow: none;
+				}
+
+				input,
+				.input-group-text {
+					background-color: transparent;
+					border: 0;
+				}
+			}
+
+			.todo-title {
+				margin-left: 0.5rem;
+				margin-right: 0.5rem;
+			}
+
+			.completed {
+				.todo-title {
+					color: $text-muted;
+				}
+			}
+			// ToDo task list area
+			.todo-task-list-wrapper {
+				background-color: $white;
+				border-radius: 0;
+				height: calc(100% - 3.49rem); // ? search box height (3.49rem)
+				position: relative;
+
+				.todo-task-list {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+
+					li {
+						cursor: pointer;
+						padding: 0.893rem 2rem;
+						position: relative;
+						transition: all 0.2s, border-color 0s;
+
+						&:not(:first-child) {
+							border-top: 1px solid $border-color;
+						}
+
+						&:hover {
+							box-shadow: 0 3px 10px 0 $border-color;
+							transform: translateY(-4px);
+							transition: all 0.2s;
+						}
+
+						.todo-title-wrapper {
+							display: flex;
+							justify-content: space-between;
+						}
+
+						.todo-title-area,
+						.title-wrapper {
+							align-items: center;
+							display: flex;
+						}
+						// Todo Item Action
+						.todo-item-action {
+							align-items: center;
+							display: flex;
+							justify-content: space-between;
+
+							a {
+								cursor: pointer;
+								font-size: 1.2rem;
+								line-height: 1.5;
+							}
+						}
+
+						.badge-wrapper {
+							display: flex;
+
+							.badge:not(:last-child) {
+								margin-right: 0.5rem;
+							}
+						}
+					}
+				}
+				// When we search, no-results
+				.no-results {
+					display: none;
+					padding: 1.5rem;
+					text-align: center;
+
+					&.show {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+	// Slide In close btn
+	.todo-item-action {
+		.close {
+			background: transparent !important;
+			box-shadow: none !important;
+			position: unset !important;
+			transform: none !important;
+			transition: none !important;
+		}
+	}
+
+	// Drag & Drop Icon
+	.todo-item {
+		.drag-icon {
+			cursor: move;
+			height: 4rem;
+			left: 0.2rem;
+			padding: 0 5px;
+			position: absolute;
+			visibility: hidden;
+			width: 1.75rem;
+		}
+
+		&:hover {
+			.drag-icon {
+				visibility: visible;
+			}
+		}
+	}
+
+	// validation text style
+	form .error:not(li):not(input) {
+		color: $danger;
+		font-size: 85%;
+		margin-top: 0.25rem;
+	}
 }
 
 // while dragging task
 .gu-mirror {
-  list-style-type: none;
-  list-style: none;
-  padding: 0.893rem 2rem;
-  background-color: $white;
-  border-top: 1px solid $border-color;
-  border-bottom: 1px solid $border-color;
-  box-shadow: 0 0 10px 0 rgba($black, 0.25);
-  .todo-title-wrapper {
-    display: flex;
-    justify-content: space-between;
-  }
-  .todo-title-area,
-  .title-wrapper {
-    display: flex;
-    align-items: center;
-  }
-  // Todo Item Action
-  .todo-item-action {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .todo-title {
-    padding-left: 1rem;
-  }
-  &.completed {
-    .todo-title {
-      color: $text-muted;
-    }
-  }
+	background-color: $white;
+	border-bottom: 1px solid $border-color;
+	border-top: 1px solid $border-color;
+	box-shadow: 0 0 10px 0 rgba($black, 0.25);
+	list-style: none;
+	list-style-type: none;
+	padding: 0.893rem 2rem;
+
+	.todo-title-wrapper {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.todo-title-area,
+	.title-wrapper {
+		align-items: center;
+		display: flex;
+	}
+	// Todo Item Action
+	.todo-item-action {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.todo-title {
+		padding-left: 1rem;
+	}
+
+	&.completed {
+		.todo-title {
+			color: $text-muted;
+		}
+	}
 }
 
 // Keyframe animation
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-    top: 100px;
-  }
-  75% {
-    opacity: 0.5;
-    top: 0px;
-  }
-  100% {
-    opacity: 1;
-  }
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		top: 100px;
+	}
+
+	75% {
+		opacity: 0.5;
+		top: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
 }
 
 @include media-breakpoint-down(md) {
-  .todo-application {
-    .content-area-wrapper {
-      .sidebar-left {
-        .todo-sidebar {
-          transform: translateX(-110%);
-          transition: all 0.3s ease-in-out;
-          left: 0;
-          position: absolute;
-          z-index: 5;
-          border-top-left-radius: $border-radius-sm;
-          border-bottom-left-radius: $border-radius-sm;
-        }
-        &.show {
-          .todo-sidebar {
-            transform: translateX(0%);
-            transition: all 0.3s ease;
-          }
-        }
-      }
-      .content-right {
-        width: 100%;
-        border-left: 0;
-        .app-fixed-search {
-          border-top-left-radius: $border-radius;
-        }
-      }
-      // ? Responsive Todo list in columns
-      .todo-title-wrapper {
-        flex-direction: column;
-        .title-wrapper {
-          margin-bottom: 0.5rem;
-        }
-        .todo-title {
-          display: -webkit-box;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .badge-wrapper {
-          margin-right: auto !important;
-        }
-      }
-    }
-  }
+	.todo-application {
+		.content-area-wrapper {
+			.sidebar-left {
+				.todo-sidebar {
+					border-bottom-left-radius: $border-radius-sm;
+					border-top-left-radius: $border-radius-sm;
+					left: 0;
+					position: absolute;
+					transform: translateX(-110%);
+					transition: all 0.3s ease-in-out;
+					z-index: 5;
+				}
+
+				&.show {
+					.todo-sidebar {
+						transform: translateX(0%);
+						transition: all 0.3s ease;
+					}
+				}
+			}
+
+			.content-right {
+				border-left: 0;
+				width: 100%;
+
+				.app-fixed-search {
+					border-top-left-radius: $border-radius;
+				}
+			}
+			// ? Responsive Todo list in columns
+			.todo-title-wrapper {
+				flex-direction: column;
+
+				.title-wrapper {
+					margin-bottom: 0.5rem;
+				}
+
+				.todo-title {
+					box-orient: vertical;
+					display: box;
+					-webkit-line-clamp: 1;
+					overflow: hidden;
+				}
+
+				.badge-wrapper {
+					margin-right: auto !important;
+				}
+			}
+		}
+	}
 }
 @media (max-width: 349.98px) {
-  .todo-application .content-area-wrapper .sidebar .todo-sidebar {
-    width: 230px;
-  }
+	.todo-application .content-area-wrapper .sidebar .todo-sidebar {
+		width: 230px;
+	}
 }

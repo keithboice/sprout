@@ -1,0 +1,4 @@
+# Userprofilesidebar
+
+## Usage
+    <UserProfileSidebar />

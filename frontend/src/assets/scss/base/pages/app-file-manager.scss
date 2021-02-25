@@ -15,453 +15,454 @@ $file-manager-logo-height: 7.5rem;
 
 // file manager app container
 .file-manager-application {
-  // file manager sidebar styles
-  .sidebar-file-manager {
-    width: $sidebar-width;
-    height: 100%;
-    background-color: $white;
-    border-top-left-radius: $border-radius-sm;
-    border-bottom-left-radius: $border-radius-sm;
-    transition: all 0.3s ease, background 0s;
+	// file manager sidebar styles
+	.sidebar-file-manager {
+		background-color: $white;
+		border-bottom-left-radius: $border-radius-sm;
+		border-top-left-radius: $border-radius-sm;
+		height: 100%;
+		transition: all 0.3s ease, background 0s;
+		width: $sidebar-width;
 
-    // styles for card-inner
-    .sidebar-inner {
-      height: inherit;
+		// styles for card-inner
+		.sidebar-inner {
+			height: inherit;
 
-      .dropdown-actions {
-        width: 100%;
-        padding: 1.5rem 1.5rem 1.8rem;
-      }
+			.dropdown-actions {
+				padding: 1.5rem 1.5rem 1.8rem;
+				width: 100%;
+			}
 
-      .sidebar-close-icon {
-        position: absolute;
-        top: 0.25rem;
-        right: 0.25rem;
-        font-size: $font-size-xl;
-        z-index: 5;
-        cursor: pointer;
-      }
+			.sidebar-close-icon {
+				cursor: pointer;
+				font-size: $font-size-xl;
+				position: absolute;
+				right: 0.25rem;
+				top: 0.25rem;
+				z-index: 5;
+			}
 
-      .add-file-btn {
-        & ~ .dropdown-menu {
-          width: 85%;
+			.add-file-btn {
+				& ~ .dropdown-menu {
+					width: 85%;
 
-          &:before {
-            display: none;
-          }
-        }
-      }
+					&::before {
+						display: none;
+					}
+				}
+			}
 
-      // styles for card inner list
-      .sidebar-list {
-        position: relative;
-        height: calc(100% - 85px); // search section height 85px
-        .my-drive {
-          padding: 0.58rem 0;
+			// styles for card inner list
+			.sidebar-list {
+				height: calc(100% - 85px); // search section height 85px
+				position: relative;
 
-          .jstree-node {
-            .jstree-icon {
-              background-position: 0.5rem;
-              background-size: 1.3rem;
-            }
+				.my-drive {
+					padding: 0.58rem 0;
 
-            .jstree-anchor > .jstree-themeicon {
-              margin-right: 0.5rem;
-            }
+					.jstree-node {
+						.jstree-icon {
+							background-position: 0.5rem;
+							background-size: 1.3rem;
+						}
 
-            &.jstree-closed {
-              > .jstree-icon {
-                background-image: url(str-replace(
-                                str-replace($chevron-right, 'currentColor', $headings-color),
-                                '#',
-                                '%23'
-                ));
-              }
-            }
+						.jstree-anchor > .jstree-themeicon {
+							margin-right: 0.5rem;
+						}
 
-            &.jstree-open {
-              > .jstree-icon {
-                background-image: url(str-replace(
-                                str-replace($chevron-down, 'currentColor', $headings-color),
-                                '#',
-                                '%23'
-                ));
-              }
-            }
-          }
-        }
+						&.jstree-closed {
+							> .jstree-icon {
+								background-image: url(str-replace(
+									str-replace($chevron-right, 'currentColor', $headings-color),
+									'#',
+									'%23'
+								));
+							}
+						}
 
-        .list-group-labels,
-        .storage-status {
-          margin-top: 2.2rem;
-        }
+						&.jstree-open {
+							> .jstree-icon {
+								background-image: url(str-replace(
+									str-replace($chevron-down, 'currentColor', $headings-color),
+									'#',
+									'%23'
+								));
+							}
+						}
+					}
+				}
 
-        .list-group-item {
-          padding: 0.58rem 1.9rem;
-          font-weight: 500;
-          border: 0;
-          border-radius: 0;
-          border-left: 2px solid transparent;
+				.list-group-labels,
+				.storage-status {
+					margin-top: 2.2rem;
+				}
 
-          &:hover {
-            z-index: 0 !important;
-          }
+				.list-group-item {
+					border: 0;
+					border-left: 2px solid transparent;
+					border-radius: 0;
+					font-weight: 500;
+					padding: 0.58rem 1.9rem;
 
-          + .list-group-item.active {
-            margin-top: 0;
-          }
-        }
+					&:hover {
+						z-index: 0 !important;
+					}
 
-        .active {
-          background-color: transparent;
-          border-color: $primary;
-          color: $primary;
-        }
-      }
-    }
+					+ .list-group-item.active {
+						margin-top: 0;
+					}
+				}
 
-    // show sidebar on click
-    &.show {
-      transition: all 0.25s ease, background 0s !important;
-      transform: translateX(0) !important;
-      z-index: 10;
-    }
-  }
+				.active {
+					background-color: transparent;
+					border-color: $primary;
+					color: $primary;
+				}
+			}
+		}
 
-  // styles for content area wrapper
-  .content-area-wrapper {
-    border: 1px solid $border-color;
-    border-radius: $border-radius-sm;
+		// show sidebar on click
+		&.show {
+			transform: translateX(0) !important;
+			transition: all 0.25s ease, background 0s !important;
+			z-index: 10;
+		}
+	}
 
-    .content-right {
-      .content-wrapper {
-        padding: 0;
-      }
-    }
+	// styles for content area wrapper
+	.content-area-wrapper {
+		border: 1px solid $border-color;
+		border-radius: $border-radius-sm;
 
-    // styles for file manger app area
-    .file-manager-main-content {
-      border-left: 1px solid $border-color;
-      height: inherit;
+		.content-right {
+			.inbox-content-wrapper {
+				padding: 0;
+			}
+		}
 
-      // styles for searchbar
-      .file-manager-content-header {
-        padding: 0.4rem 1rem;
-        border-bottom: 1px solid $border-color;
-        background-color: $white;
-        border-top-right-radius: $border-radius;
+		// styles for file manger app area
+		.file-manager-main-content {
+			border-left: 1px solid $border-color;
+			height: inherit;
 
-        .file-manager-toggler {
-          cursor: pointer;
-        }
+			// styles for searchbar
+			.file-manager-content-header {
+				background-color: $white;
+				border-bottom: 1px solid $border-color;
+				border-top-right-radius: $border-radius;
+				padding: 0.4rem 1rem;
 
-        input {
-          border-color: transparent;
-          box-shadow: none;
-        }
+				.file-manager-toggler {
+					cursor: pointer;
+				}
 
-        .file-actions:not(.show) {
-          display: none;
-        }
-      }
+				input {
+					border-color: transparent;
+					box-shadow: none;
+				}
 
-      // styles for main content
-      .file-manager-content-body {
-        position: relative;
-        padding: 1.5rem 1.5rem 0;
-        height: calc(100% - 50px); // search area height
-        background-color: $white;
+				.file-actions:not(.show) {
+					display: none;
+				}
+			}
 
-        .view-container {
-          display: flex;
-          flex-wrap: wrap;
+			// styles for main content
+			.file-manager-content-body {
+				background-color: $white;
+				height: calc(100% - 50px); // search area height
+				padding: 1.5rem 1.5rem 0;
+				position: relative;
 
-          .file-manager-item {
-            border: 1px solid $border-color;
-            margin-bottom: 1.6rem;
-            box-shadow: none;
-            margin-right: 1rem;
-            transition: none;
-            cursor: pointer;
+				.view-container {
+					display: flex;
+					flex-wrap: wrap;
 
-            .card-body {
-              padding: 1rem;
-              padding-bottom: 0.5rem;
-            }
+					.file-manager-item {
+						border: 1px solid $border-color;
+						box-shadow: none;
+						cursor: pointer;
+						margin-bottom: 1.6rem;
+						margin-right: 1rem;
+						transition: none;
 
-            .custom-control-input:not(:checked) ~ .custom-control-label:before {
-              background-color: transparent;
-            }
+						.card-body {
+							padding: 1rem;
+							padding-bottom: 0.5rem;
+						}
 
-            .file-logo-wrapper {
-              padding: 1rem;
-              height: $file-manager-logo-height;
-              background-color: $body-bg;
+						.custom-control-input:not(:checked) ~ .custom-control-label::before {
+							background-color: transparent;
+						}
 
-              .feather-folder {
-                stroke: $gray-100;
-              }
-            }
+						.file-logo-wrapper {
+							background-color: $body-bg;
+							height: $file-manager-logo-height;
+							padding: 1rem;
 
-            .dropdown-menu {
-              transform: none;
+							.feather-folder {
+								stroke: $gray-100;
+							}
+						}
 
-              &:before {
-                display: none;
-              }
-            }
+						.dropdown-menu {
+							transform: none;
 
-            .content-wrapper {
-              display: flex;
-              flex-direction: row;
-              justify-content: space-between;
-              align-items: center;
-              height: auto;
-            }
+							&::before {
+								display: none;
+							}
+						}
 
-            .file-date {
-              flex-grow: 1;
-              margin-bottom: 0;
-            }
+						.inbox-content-wrapper {
+							align-items: center;
+							display: flex;
+							flex-direction: row;
+							height: auto;
+							justify-content: space-between;
+						}
 
-            &.selected {
-              border-color: $primary;
-            }
-          }
+						.file-date {
+							flex-grow: 1;
+							margin-bottom: 0;
+						}
 
-          .file-name {
-            width: calc(100% - 26rem);
-            min-height: 1rem;
-            font-weight: 600;
-            flex-grow: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
+						&.selected {
+							border-color: $primary;
+						}
+					}
 
-          .files-section-title {
-            width: 100%;
-          }
+					.file-name {
+						flex-grow: 1;
+						font-weight: 600;
+						min-height: 1rem;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						width: calc(100% - 26rem);
+					}
 
-          &.list-view {
-            flex-direction: column;
+					.files-section-title {
+						width: 100%;
+					}
 
-            .files-section-title {
-              display: none;
-            }
+					&.list-view {
+						flex-direction: column;
 
-            .files-header {
-              display: flex;
-              justify-content: space-between;
-              margin-left: 7.2rem;
-              margin-bottom: 1rem;
+						.files-section-title {
+							display: none;
+						}
 
-              p {
-                font-weight: 600;
-              }
+						.files-header {
+							display: flex;
+							justify-content: space-between;
+							margin-bottom: 1rem;
+							margin-left: 7.2rem;
 
-              .file-last-modified,
-              .file-item-size {
-                margin-right: 3rem;
-              }
-            }
+							p {
+								font-weight: 600;
+							}
 
-            .file-manager-item {
-              flex-direction: row;
-              flex: 0 0 100%;
-              align-items: center;
-              max-width: 100%;
-              margin-bottom: 0.75rem;
-              margin-right: 0;
+							.file-last-modified,
+							.file-item-size {
+								margin-right: 3rem;
+							}
+						}
 
-              .file-logo-wrapper {
-                padding-right: 0;
-                width: auto;
-                height: auto;
-                background-color: transparent !important;
+						.file-manager-item {
+							align-items: center;
+							flex: 0 0 100%;
+							flex-direction: row;
+							margin-bottom: 0.75rem;
+							margin-right: 0;
+							max-width: 100%;
 
-                img {
-                  height: 1.5rem;
-                }
+							.file-logo-wrapper {
+								background-color: transparent !important;
+								height: auto;
+								padding-right: 0;
+								width: auto;
 
-                .feather-folder,
-                .feather-arrow-up {
-                  width: 19px;
-                  height: 18px;
-                }
+								img {
+									height: 1.5rem;
+								}
 
-                .dropdown {
-                  position: absolute;
-                  right: 1rem;
-                }
-              }
+								.feather-folder,
+								.feather-arrow-up {
+									height: 18px;
+									width: 19px;
+								}
 
-              .custom-checkbox {
-                margin: 0 0.4rem 0 1.75rem;
-              }
+								.dropdown {
+									position: absolute;
+									right: 1rem;
+								}
+							}
 
-              .file-accessed {
-                display: none;
-              }
+							.custom-checkbox {
+								margin: 0 0.4rem 0 1.75rem;
+							}
 
-              .file-size {
-                width: 5.71rem;
-                flex-grow: 1;
-                margin-bottom: 0;
-              }
-            }
+							.file-accessed {
+								display: none;
+							}
 
-            .folder {
-              &.level-up {
-                .file-logo-wrapper {
-                  margin-left: 3.5rem;
-                }
-              }
-            }
-          }
+							.file-size {
+								flex-grow: 1;
+								margin-bottom: 0;
+								width: 5.71rem;
+							}
+						}
 
-          &:not(.list-view) {
-            .files-header {
-              display: none;
-            }
+						.folder {
+							&.level-up {
+								.file-logo-wrapper {
+									margin-left: 3.5rem;
+								}
+							}
+						}
+					}
 
-            .file-manager-item {
-              .content-wrapper {
-                margin-bottom: 0rem;
-              }
+					&:not(.list-view) {
+						.files-header {
+							display: none;
+						}
 
-              .file-date {
-                display: none;
-              }
+						.file-manager-item {
+							.inbox-content-wrapper {
+								margin-bottom: 0;
+							}
 
-              .file-size {
-                color: $text-muted;
-                font-size: 85%;
-              }
+							.file-date {
+								display: none;
+							}
 
-              &:not(.selected):not(:hover) {
-                .custom-checkbox,
-                .toggle-dropdown {
-                  opacity: 0;
-                }
-              }
+							.file-size {
+								color: $text-muted;
+								font-size: 85%;
+							}
 
-              .feather-folder {
-                height: 32px;
-                width: 35px;
-              }
+							&:not(.selected):not(:hover) {
+								.custom-checkbox,
+								.toggle-dropdown {
+									opacity: 0;
+								}
+							}
 
-              &.folder.level-up {
-                display: none !important;
-              }
+							.feather-folder {
+								height: 32px;
+								width: 35px;
+							}
 
-              .custom-checkbox {
-                position: absolute;
-                top: 1rem;
-                left: 1rem;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+							&.folder.level-up {
+								display: none !important;
+							}
+
+							.custom-checkbox {
+								left: 1rem;
+								position: absolute;
+								top: 1rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 // media query for max-width of 1200px
 @media screen and (max-width: 1200px) {
-  .file-manager-application {
-    .content-right {
-      width: 100%;
-    }
+	.file-manager-application {
+		.content-right {
+			width: 100%;
+		}
 
-    .content-body {
-      margin-left: 0 !important;
-    }
+		.content-body {
+			margin-left: 0 !important;
+		}
 
-    .content-area-wrapper {
-      .file-manager-main-content {
-        border-left: 0;
-      }
-    }
+		.content-area-wrapper {
+			.file-manager-main-content {
+				border-left: 0;
+			}
+		}
 
-    .sidebar-left {
-      .sidebar {
-        z-index: 10;
+		.sidebar-left {
+			.sidebar {
+				z-index: 10;
 
-        .sidebar-file-manager {
-          transform: translateX(-112%);
-          transition: all 0.25s ease;
-          position: absolute;
-        }
-      }
-    }
-  }
+				.sidebar-file-manager {
+					position: absolute;
+					transform: translateX(-112%);
+					transition: all 0.25s ease;
+				}
+			}
+		}
+	}
 }
 
 @include media-breakpoint-down(sm) {
-  .file-manager-application {
-    .view-container {
-      .file-manager-item {
-        flex: 47%;
-      }
-    }
-  }
+	.file-manager-application {
+		.view-container {
+			.file-manager-item {
+				flex: 47%;
+			}
+		}
+	}
 }
 
 @include media-breakpoint-down(xs) {
-  .file-manager-application {
-    .content-area-wrapper {
-      .file-manager-main-content {
-        .file-manager-content-header {
-          padding-left: 0.5rem;
+	.file-manager-application {
+		.content-area-wrapper {
+			.file-manager-main-content {
+				.file-manager-content-header {
+					padding-left: 0.5rem;
 
-          .file-actions {
-            .dropdown {
-              padding-left: 0.5rem;
-              padding-right: 0.5rem;
-            }
-          }
-        }
-      }
+					.file-actions {
+						.dropdown {
+							padding-left: 0.5rem;
+							padding-right: 0.5rem;
+						}
+					}
+				}
+			}
 
-      .view-container {
-        .file-manager-item {
-          flex: 0 0 100%;
-          max-width: 100%;
-        }
+			.view-container {
+				.file-manager-item {
+					flex: 0 0 100%;
+					max-width: 100%;
+				}
 
-        &.list-view {
-          .file-date,
-          .file-last-modified,
-          .file-size,
-          .file-item-size {
-            display: none !important;
-          }
-        }
-      }
-    }
-  }
+				&.list-view {
+					.file-date,
+					.file-last-modified,
+					.file-size,
+					.file-item-size {
+						display: none !important;
+					}
+				}
+			}
+		}
+	}
 }
 
 @include media-breakpoint-up(xs) {
-  .file-manager-application {
-    .view-container {
-      .file-manager-item {
-        flex: 0 0 47%;
-        max-width: 50%;
-      }
-    }
-  }
+	.file-manager-application {
+		.view-container {
+			.file-manager-item {
+				flex: 0 0 47%;
+				max-width: 50%;
+			}
+		}
+	}
 }
 
 @include media-breakpoint-up(sm) {
-  .file-manager-application {
-    .view-container {
-      .file-manager-item {
-        flex: 0 0 23%;
-        max-width: 25%;
-      }
-    }
-  }
+	.file-manager-application {
+		.view-container {
+			.file-manager-item {
+				flex: 0 0 23%;
+				max-width: 25%;
+			}
+		}
+	}
 }

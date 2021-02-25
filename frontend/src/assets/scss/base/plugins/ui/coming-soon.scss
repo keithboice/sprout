@@ -2,7 +2,7 @@
 $debug: false;
 
 // declare breakpoints
-$usn-x-small: 0px;
+$usn-x-small: 0;
 $usn-small: 544px;
 $usn-medium: 768px;
 $usn-large: 992px;
@@ -15,50 +15,51 @@ $mq-sync: xs $usn-x-small, sm $usn-small, md $usn-medium, lg $usn-large, xl $usn
 
 // build each media query for js ingestion
 @each $mq in $mq-sync {
-  @media screen and (min-width: nth($mq, 2)) {
-    head {
-      font-family: '#{nth($mq, 1)} #{nth($mq, 2)}';
-    }
-    body:after {
-      content: '#{nth($mq, 1)} - min-width: #{nth($mq, 2)}';
-    }
-  }
+	@media screen and (min-width: nth($mq, 2)) {
+		head {
+			font-family: '#{nth($mq, 1)} #{nth($mq, 2)}';
+		}
+
+		body::after {
+			content: '#{nth($mq, 1)} - min-width: #{nth($mq, 2)}';
+		}
+	}
 }
 
 head {
-  // set clear on head to show Unison is set up correctly
-  clear: both;
-  // store hash of all breakpoints
-  title {
-    font-family: '#{$mq-sync}';
-  }
+	// set clear on head to show Unison is set up correctly
+	clear: both;
+	// store hash of all breakpoints
+	title {
+		font-family: '#{$mq-sync}';
+	}
 }
 
 // debug styles to see breakpoint info
-body:after {
-  display: none;
+body::after {
+	display: none;
 }
 
 @if $debug == true {
-  body:after {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #000;
-    background-color: rgba($black, 0.8);
-    text-align: center;
-    color: #fff;
-    padding: 10px;
-    z-index: 1000;
-    font-size: 12px;
-    font-family: sans-serif;
-  }
+	body::after {
+		background-color: #000;
+		background-color: rgba($black, 0.8);
+		color: #fff;
+		display: block;
+		font-family: sans-serif;
+		font-size: 12px;
+		left: 0;
+		padding: 10px;
+		position: fixed;
+		text-align: center;
+		top: 0;
+		width: 100%;
+		z-index: 1000;
+	}
 }
 
 // hide elements for conditional loading
 // only used for responsive comments plugin
 *[data-usn-if] {
-  display: none;
+	display: none;
 }

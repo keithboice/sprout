@@ -4,14 +4,14 @@
 // mixins to be imported first
 
 // Include variables and utilities first
-@import "variables";
-@import "utilities";
+@import 'variables';
+@import 'utilities';
 
 // General styling needed for special form controls
-@import "custom-controls";
+@import 'custom-controls';
 
 // Include custom SCSS for components
-@import "components/index";
+@import '~@/assets/scss/base/components';
 
 // Include custom SCSS for icons
-@import "icons/index";
+@import 'icons';

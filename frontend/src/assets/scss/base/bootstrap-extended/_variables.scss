@@ -29,7 +29,7 @@ $orange: #ffc107 !default; //$warning
 $red: #ff5722 !default; //$danger
 
 $primary: $purple !default;
-$secondary: #EFF1F3 !default;
+$secondary: #F2F4F8 !default;
 $info: $blue !default;
 $warning: $orange !default;
 $light: $gray-50 !default;
@@ -89,7 +89,7 @@ $spacers: map-merge(
 // Body
 //
 // Settings for the `<body>` element.
-$body-bg: #EFF1F3 !default;
+$body-bg: #F2F4F8 !default;
 $body-color: #727272 !default;
 
 // Links

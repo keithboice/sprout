@@ -13,4 +13,4 @@ module.exports = {
   //   // custom config goes here
   // },
   exampleMode: "expand"
-};
+}

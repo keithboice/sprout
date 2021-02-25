@@ -1,67 +1,70 @@
 // var for box shadow of gradient buttons
 // Buttons
 .btn {
-  box-shadow: none;
-  font-weight: 500;
+	box-shadow: none;
+	font-weight: 500;
 
-  // gradient button on hover transition
-  &[class*='bg-gradient-'] {
-    transition: all 0.2s ease;
-    &:hover {
-      transform: translateY(-2px);
-    }
-  }
+	// gradient button on hover transition
+	&[class*='bg-gradient-'] {
+		transition: all 0.2s ease;
 
-  // Icon button padding
-  &.btn-icon {
-    padding: 0.715rem 0.736rem;
-  }
-  &.btn-sm {
-    &.btn-icon {
-      padding: 0.5rem;
-      line-height: 0.5;
-    }
-  }
-  &.btn-lg {
-    &.btn-icon {
-      padding: 1rem;
-      line-height: 0.75;
-    }
-  }
+		&:hover {
+			transform: translateY(-2px);
+		}
+	}
 
-  &:focus,
-  &.focus,
-  &:active,
-  &.active {
-    outline: none;
-    box-shadow: none;
-  }
+	// Icon button padding
+	&.btn-icon {
+		padding: 0.715rem 0.736rem;
+	}
 
-  &:not(:disabled):not(.disabled):active:focus,
-  &:not(:disabled):not(.disabled).active:focus {
-    box-shadow: none !important;
-  }
+	&.btn-sm {
+		&.btn-icon {
+			line-height: 0.5;
+			padding: 0.5rem;
+		}
+	}
 
-  // feather icons inside btn
-  .feather {
-    vertical-align: bottom;
-  }
+	&.btn-lg {
+		&.btn-icon {
+			line-height: 0.75;
+			padding: 1rem;
+		}
+	}
+
+	&:focus,
+	&.focus,
+	&:active,
+	&.active {
+		box-shadow: none;
+		outline: none;
+	}
+
+	&:not(:disabled):not(.disabled):active:focus,
+	&:not(:disabled):not(.disabled).active:focus {
+		box-shadow: none !important;
+	}
+
+	// feather icons inside btn
+	.feather {
+		vertical-align: bottom;
+	}
 }
 
 // For Waves Input Padding
 .btn.waves-input-wrapper {
-  padding: 0;
+	padding: 0;
 }
 
 @include media-breakpoint-down(sm) {
-  .btn-sm-block {
-    display: block;
-    width: 100%;
-  }
+	.btn-sm-block {
+		display: block;
+		width: 100%;
+	}
 }
 
 // Remove cursor-pointer from button if button is disabled
 // * setting it to inherit will auto adept cursor
 .waves-effect {
-  cursor: inherit;
+	cursor: inherit;
 }

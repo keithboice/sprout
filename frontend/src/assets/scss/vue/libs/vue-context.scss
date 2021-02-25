@@ -1,39 +1,40 @@
 @import '~vue-context/src/sass/vue-context';
 
 // Core variables and mixins
-@import '~@core/scss/base/bootstrap-extended/include';
+@import '~@/assets/scss/base/bootstrap-extended/include';
 // Overrides user variable
 @import '~@core/scss/base/components/include';
 
 .v-context {
-  &,
-  & ul {
-    box-shadow: $dropdown-box-shadow;
-    border: none;
-    border-radius: $dropdown-border-radius;
-    padding: 0.5rem 0;
+	&,
+	& ul {
+		border: none;
+		border-radius: $dropdown-border-radius;
+		box-shadow: $dropdown-box-shadow;
+		padding: 0.5rem 0;
 
-    > li {
-      > a {
-        color: $dropdown-link-color;
-        padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+		> li {
+			> a {
+				color: $dropdown-link-color;
+				padding: $dropdown-item-padding-y $dropdown-item-padding-x;
 
-        &:hover,
-        &:focus {
-          color: $dropdown-link-hover-color;
-          background-color: $dropdown-link-hover-bg;
-        }
-      }
-    }
-  }
+				&:hover,
+				&:focus {
+					background-color: $dropdown-link-hover-bg;
+					color: $dropdown-link-hover-color;
+				}
+			}
+		}
+	}
 }
 
 // ---------- Dark Layout ----------//
 body.dark-layout {
-  .v-context {
-    background-color: $theme-dark-body-bg;
-    > li > a {
-      color: $theme-dark-body-color;
-    }
-  }
+	.v-context {
+		background-color: $theme-dark-body-bg;
+
+		> li > a {
+			color: $theme-dark-body-color;
+		}
+	}
 }

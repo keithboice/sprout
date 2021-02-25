@@ -1,4 +1,4 @@
-import * as main from "src/main"
+import * as main from "@/main"
 
 
 export default { main: main }

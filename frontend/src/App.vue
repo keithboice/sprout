@@ -13,41 +13,29 @@
 
 <script>
 
-// This will be populated in `beforeCreate` hook
-import { $themeColors, $themeBreakpoints, $themeConfig } from "@/conf/theme"
-import { provideToast }                                  from "vue-toastification/composition"
+
+import { $themeColors, $themeBreakpoints } from "@conf/theme"
+import { provideToast }                    from "vue-toastification/composition"
 import { watch }                                         from "@vue/composition-api"
 
 import { useWindowSize, useCssVar } from "@vueuse/core"
 
 import store from "@/store"
 
-
-const LayoutVertical = () => import("@/layouts/vertical/LayoutVertical.vue")
-const LayoutHorizontal = () => import("@/layouts/horizontal/LayoutHorizontal.vue")
-const LayoutFull = () => import("@/layouts/full/LayoutFull.vue")
+const LayoutDefault = () => import("@/components/ChatLayout/ChatLayout.vue")
 
 export default {
   components: {
     
-    // Layouts
-    LayoutHorizontal,
-    LayoutVertical,
-    LayoutFull
+    LayoutDefault
     
   },
   computed:   {
     layout () {
-      if ( this.$route.meta.layout === "full" ) {
-        return "layout-full"
-      }
-      console.log( `App.vue layout() returns: layout-${ this.contentLayoutType }` )
-      return `layout-${ this.contentLayoutType }`
+      return `layout-default`
     },
     contentLayoutType () {
-      console.log( `App.vue contentLayoutType() returns: ${ this.$store.state.chat.layout.type }` )
-      
-      return this.$store.state.chat.layout.type
+      return 'default'
     }
   },
   beforeCreate () {
@@ -72,15 +60,11 @@ export default {
     }
     
     // Set RTL
-    const { isRTL } = $themeConfig.layout
-    document.documentElement.setAttribute( "dir", isRTL ? "rtl" : "ltr" )
+    /*const { isRTL } = $themeConfig.layout
+    document.documentElement.setAttribute( "dir", isRTL ? "rtl" : "ltr" )*/
+    document.documentElement.setAttribute("dir", "ltr")
   },
   setup () {
-    /*const {
-     /!*skin,*!/
-     skinClasses
-     } = useAppConfig()*/
-    
     const skinClasses = null
     
     provideToast( {
@@ -105,3 +89,6 @@ export default {
   }
 }
 </script>
+
+<style>
+</style>

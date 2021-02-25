@@ -5,11 +5,12 @@
 			"@/*":        [
 				"src/*"
 			],
+			"@nodemods/*": [ "node_modules/*" ],
 			"@core/*":    [
-				"src/core/*"
+				"src/assets/*"
 			],
 			"@conf/*":    [
-				"src/conf/*"
+				"config/*"
 			],
 			"@layouts/*": [
 				"src/layouts/*"

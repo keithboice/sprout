@@ -1,7 +1,7 @@
-@import '~@core/scss/base/bootstrap-extended/include';
+@import '~@/assets/scss/base/bootstrap-extended/include';
 
 // Color palettes
-@import '~@core/scss/base/core/colors/palette-variables.scss';
+@import '~@/assets/scss/base/core/colors/palette-variables.scss';
 @import '~@core/scss/base/components/include';
 
 /* Set the theme color of the component */
@@ -12,51 +12,51 @@ $dotShadow: none;
 @import '~vue-slider-component/lib/theme/default.scss';
 
 .vue-slider-dot-handle {
-  border: 2px solid $primary;
+	border: 2px solid $primary;
 }
 
 .vue-slider-dot-tooltip-inner {
-  background-color: $primary;
-  border-color: $primary;
+	background-color: $primary;
+	border-color: $primary;
 }
 
 /* Generate:
 *  Border color according to event class
 */
 @each $color_name, $color in $colors {
-  @each $color_type, $color_value in $color {
-    @if $color_type== 'base' {
-      .vue-slider-#{$color_name} {
-        .vue-slider-dot-handle {
-          border: 2px solid $color_value;
+	@each $color_type, $color_value in $color {
+		@if $color_type== 'base' {
+			.vue-slider-#{$color_name} {
+				.vue-slider-dot-handle {
+					border: 2px solid $color_value;
 
-          &-focus {
-            box-shadow: 0px 0px 1px 2px rgba($color_value, 0.36);
-          }
-        }
+					&-focus {
+						box-shadow: 0 0 1px 2px rgba($color_value, 0.36);
+					}
+				}
 
-        .vue-slider-process {
-          background-color: $color_value;
-        }
+				.vue-slider-process {
+					background-color: $color_value;
+				}
 
-        .vue-slider-rail {
-          background-color: rgba($color_value, 0.12);
-        }
+				.vue-slider-rail {
+					background-color: rgba($color_value, 0.12);
+				}
 
-        .vue-slider-dot-tooltip-inner {
-          background-color: $color_value;
-          border-color: $color_value;
-        }
-      }
-    }
-  }
+				.vue-slider-dot-tooltip-inner {
+					background-color: $color_value;
+					border-color: $color_value;
+				}
+			}
+		}
+	}
 }
 
 // dark theme
 body {
-  &.dark-layout {
-    .vue-slider-dot-handle {
-      background-color: $theme-dark-body-bg;
-    }
-  }
+	&.dark-layout {
+		.vue-slider-dot-handle {
+			background-color: $theme-dark-body-bg;
+		}
+	}
 }

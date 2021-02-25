@@ -12,50 +12,50 @@
 
 html,
 body {
-  background: $white !important;
+	background: $white !important;
 }
 
 .invoice-print {
-  min-width: 768px !important;
-  font-size: 15px !important;
+	font-size: 15px !important;
+	min-width: 768px !important;
 
-  .invoice-date-wrapper {
-    display: flex;
-    align-items: center;
+	.invoice-date-wrapper {
+		align-items: center;
+		display: flex;
 
-    .invoice-date-title {
-      width: 8rem;
-    }
-  }
+		.invoice-date-title {
+			width: 8rem;
+		}
+	}
 
-  i,
-  svg {
-    fill: $body-color !important;
-  }
+	i,
+	svg {
+		fill: $body-color !important;
+	}
 
-  .invoice-total-wrapper {
-    width: 100%;
-    max-width: 12rem;
+	.invoice-total-wrapper {
+		max-width: 12rem;
+		width: 100%;
 
-    .invoice-total-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+		.invoice-total-item {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
 
-      .invoice-total-title {
-        // width: 92px;
-        margin-bottom: 0.35rem;
-      }
+			.invoice-total-title {
+				// width: 92px;
+				margin-bottom: 0.35rem;
+			}
 
-      .invoice-total-amount {
-        margin-bottom: 0.35rem;
-        font-weight: 600;
-      }
-    }
-  }
+			.invoice-total-amount {
+				font-weight: 600;
+				margin-bottom: 0.35rem;
+			}
+		}
+	}
 }
 
 .invoice-print * {
-  border-color: rgba($color: $black, $alpha: 0.5) !important;
-  color: $body-color !important;
+	border-color: rgba($color: $black, $alpha: 0.5) !important;
+	color: $body-color !important;
 }

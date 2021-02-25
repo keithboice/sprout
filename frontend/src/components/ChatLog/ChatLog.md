@@ -1,0 +1,4 @@
+# Chatlog
+
+## Usage
+    <ChatLog />

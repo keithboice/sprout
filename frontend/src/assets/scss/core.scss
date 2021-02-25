@@ -1,3 +1,12 @@
+/*
+ * Core styles.
+ */
+
+.inbox-root {
+  width: 100vw;
+  padding: 0;
+}
+
 // Base Styles
 @import 'base/bootstrap';
 @import 'base/bootstrap-extended';
@@ -5,18 +14,62 @@
 @import 'base/components';
 
 // Template Themes
-@import 'base/themes/dark-layout.scss';
-@import 'base/themes/semi-dark-layout.scss';
+@import 'base/themes/dark-layout';
+@import 'base/themes/semi-dark-layout';
 
 // BSV
-$b-table-sort-icon-bg-not-sorted: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='14px' height='26px' viewBox='0 0 14 26' version='1.1'%3E%3Ctitle%3Earrows%3C/title%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Artboard' transform='translate(-257.000000, -561.000000)' stroke='%23C6C4D0' stroke-width='2'%3E%3Cg id='arrows' transform='translate(258.000000, 562.000000)'%3E%3Cg id='chevron-down' transform='translate(0.000000, 18.000000)'%3E%3Cpolyline id='Path' points='0 0 6 6 12 0'/%3E%3C/g%3E%3Cg id='chevron-up'%3E%3Cpolyline id='Path' points='12 6 6 0 0 6'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-$b-table-sort-icon-bg-ascending: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='14px' height='26px' viewBox='0 0 14 26' version='1.1'%3E%3Ctitle%3Eactive-up%3C/title%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Artboard' transform='translate(-197.000000, -561.000000)' stroke-width='2'%3E%3Cg id='active-up' transform='translate(198.000000, 562.000000)'%3E%3Cg id='chevron-down' transform='translate(0.000000, 18.000000)' stroke='%23C6C4D0'%3E%3Cpolyline id='Path' points='0 0 6 6 12 0'/%3E%3C/g%3E%3Cg id='chevron-up' stroke='%235E5873'%3E%3Cpolyline id='Path' points='12 6 6 0 0 6'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-$b-table-sort-icon-bg-descending: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='14px' height='26px' viewBox='0 0 14 26' version='1.1'%3E%3Ctitle%3Eactive-down%3C/title%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Artboard' transform='translate(-227.000000, -561.000000)' stroke-width='2'%3E%3Cg id='active-down' transform='translate(228.000000, 562.000000)'%3E%3Cg id='chevron-down' transform='translate(0.000000, 18.000000)' stroke='%235E5873'%3E%3Cpolyline id='Path' points='0 0 6 6 12 0'/%3E%3C/g%3E%3Cg id='chevron-up' stroke='%23C6C4D0'%3E%3Cpolyline id='Path' points='12 6 6 0 0 6'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+$b-table-sort-icon-bg-not-sorted: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' width=\'14px\' height=\'26px\' viewBox=\'0 0 14 26\' version=\'1.1\'%3E%3Ctitle%3Earrows%3C/title%3E%3Cg id=\'Page-1\' stroke=\'none\' stroke-width=\'1\' fill=\'none\' fill-rule=\'evenodd\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cg id=\'Artboard\' transform=\'translate(-257.000000, -561.000000)\' stroke=\'%23C6C4D0\' stroke-width=\'2\'%3E%3Cg id=\'arrows\' transform=\'translate(258.000000, 562.000000)\'%3E%3Cg id=\'chevron-down\' transform=\'translate(0.000000, 18.000000)\'%3E%3Cpolyline id=\'Path\' points=\'0 0 6 6 12 0\'/%3E%3C/g%3E%3Cg id=\'chevron-up\'%3E%3Cpolyline id=\'Path\' points=\'12 6 6 0 0 6\'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+$b-table-sort-icon-bg-ascending: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' width=\'14px\' height=\'26px\' viewBox=\'0 0 14 26\' version=\'1.1\'%3E%3Ctitle%3Eactive-up%3C/title%3E%3Cg id=\'Page-1\' stroke=\'none\' stroke-width=\'1\' fill=\'none\' fill-rule=\'evenodd\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cg id=\'Artboard\' transform=\'translate(-197.000000, -561.000000)\' stroke-width=\'2\'%3E%3Cg id=\'active-up\' transform=\'translate(198.000000, 562.000000)\'%3E%3Cg id=\'chevron-down\' transform=\'translate(0.000000, 18.000000)\' stroke=\'%23C6C4D0\'%3E%3Cpolyline id=\'Path\' points=\'0 0 6 6 12 0\'/%3E%3C/g%3E%3Cg id=\'chevron-up\' stroke=\'%235E5873\'%3E%3Cpolyline id=\'Path\' points=\'12 6 6 0 0 6\'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+$b-table-sort-icon-bg-descending: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' width=\'14px\' height=\'26px\' viewBox=\'0 0 14 26\' version=\'1.1\'%3E%3Ctitle%3Eactive-down%3C/title%3E%3Cg id=\'Page-1\' stroke=\'none\' stroke-width=\'1\' fill=\'none\' fill-rule=\'evenodd\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cg id=\'Artboard\' transform=\'translate(-227.000000, -561.000000)\' stroke-width=\'2\'%3E%3Cg id=\'active-down\' transform=\'translate(228.000000, 562.000000)\'%3E%3Cg id=\'chevron-down\' transform=\'translate(0.000000, 18.000000)\' stroke=\'%235E5873\'%3E%3Cpolyline id=\'Path\' points=\'0 0 6 6 12 0\'/%3E%3C/g%3E%3Cg id=\'chevron-up\' stroke=\'%23C6C4D0\'%3E%3Cpolyline id=\'Path\' points=\'12 6 6 0 0 6\'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
 
-$b-table-sort-icon-bg-dark-not-sorted: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='14px' height='26px' viewBox='0 0 14 26' version='1.1'%3E%3Ctitle%3Earrow-dark%3C/title%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Artboard' transform='translate(-259.000000, -621.000000)' stroke='%23747A88' stroke-width='2'%3E%3Cg id='arrow-dark' transform='translate(260.000000, 622.000000)'%3E%3Cg id='chevron-down' transform='translate(0.000000, 18.000000)'%3E%3Cpolyline id='Path' points='0 0 6 6 12 0'/%3E%3C/g%3E%3Cg id='chevron-up'%3E%3Cpolyline id='Path' points='12 6 6 0 0 6'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-$b-table-sort-icon-bg-dark-ascending: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='14px' height='26px' viewBox='0 0 14 26' version='1.1'%3E%3Ctitle%3Eactive-up-dark%3C/title%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Artboard' transform='translate(-199.000000, -621.000000)' stroke-width='2'%3E%3Cg id='active-up-dark' transform='translate(200.000000, 622.000000)'%3E%3Cg id='chevron-down' transform='translate(0.000000, 18.000000)' stroke='%23747A88'%3E%3Cpolyline id='Path' points='0 0 6 6 12 0'/%3E%3C/g%3E%3Cg id='chevron-up' stroke='%23B4B7BC'%3E%3Cpolyline id='Path' points='12 6 6 0 0 6'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-$b-table-sort-icon-bg-dark-descending: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='14px' height='26px' viewBox='0 0 14 26' version='1.1'%3E%3Ctitle%3Eactive-dow-dark%3C/title%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='Artboard' transform='translate(-229.000000, -621.000000)' stroke-width='2'%3E%3Cg id='active-dow-dark' transform='translate(230.000000, 622.000000)'%3E%3Cg id='chevron-down' transform='translate(0.000000, 18.000000)' stroke='%23B4B7BC'%3E%3Cpolyline id='Path' points='0 0 6 6 12 0'/%3E%3C/g%3E%3Cg id='chevron-up' stroke='%23747A88'%3E%3Cpolyline id='Path' points='12 6 6 0 0 6'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-@import '~bootstrap-vue/src/index.scss';
+$b-table-sort-icon-bg-dark-not-sorted: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' width=\'14px\' height=\'26px\' viewBox=\'0 0 14 26\' version=\'1.1\'%3E%3Ctitle%3Earrow-dark%3C/title%3E%3Cg id=\'Page-1\' stroke=\'none\' stroke-width=\'1\' fill=\'none\' fill-rule=\'evenodd\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cg id=\'Artboard\' transform=\'translate(-259.000000, -621.000000)\' stroke=\'%23747A88\' stroke-width=\'2\'%3E%3Cg id=\'arrow-dark\' transform=\'translate(260.000000, 622.000000)\'%3E%3Cg id=\'chevron-down\' transform=\'translate(0.000000, 18.000000)\'%3E%3Cpolyline id=\'Path\' points=\'0 0 6 6 12 0\'/%3E%3C/g%3E%3Cg id=\'chevron-up\'%3E%3Cpolyline id=\'Path\' points=\'12 6 6 0 0 6\'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+$b-table-sort-icon-bg-dark-ascending: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' width=\'14px\' height=\'26px\' viewBox=\'0 0 14 26\' version=\'1.1\'%3E%3Ctitle%3Eactive-up-dark%3C/title%3E%3Cg id=\'Page-1\' stroke=\'none\' stroke-width=\'1\' fill=\'none\' fill-rule=\'evenodd\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cg id=\'Artboard\' transform=\'translate(-199.000000, -621.000000)\' stroke-width=\'2\'%3E%3Cg id=\'active-up-dark\' transform=\'translate(200.000000, 622.000000)\'%3E%3Cg id=\'chevron-down\' transform=\'translate(0.000000, 18.000000)\' stroke=\'%23747A88\'%3E%3Cpolyline id=\'Path\' points=\'0 0 6 6 12 0\'/%3E%3C/g%3E%3Cg id=\'chevron-up\' stroke=\'%23B4B7BC\'%3E%3Cpolyline id=\'Path\' points=\'12 6 6 0 0 6\'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+$b-table-sort-icon-bg-dark-descending: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\' width=\'14px\' height=\'26px\' viewBox=\'0 0 14 26\' version=\'1.1\'%3E%3Ctitle%3Eactive-dow-dark%3C/title%3E%3Cg id=\'Page-1\' stroke=\'none\' stroke-width=\'1\' fill=\'none\' fill-rule=\'evenodd\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cg id=\'Artboard\' transform=\'translate(-229.000000, -621.000000)\' stroke-width=\'2\'%3E%3Cg id=\'active-dow-dark\' transform=\'translate(230.000000, 622.000000)\'%3E%3Cg id=\'chevron-down\' transform=\'translate(0.000000, 18.000000)\' stroke=\'%23B4B7BC\'%3E%3Cpolyline id=\'Path\' points=\'0 0 6 6 12 0\'/%3E%3C/g%3E%3Cg id=\'chevron-up\' stroke=\'%23747A88\'%3E%3Cpolyline id=\'Path\' points=\'12 6 6 0 0 6\'/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+@import '~bootstrap-vue/src/index';
 
 // Vue Specific
 @import 'vue/index';
+
+
+.chat-users-list .b-avatar-img,
+.chat-users-list .b-avatar-img img,
+.sidebar-content .b-avatar-img img {
+	border-radius: 50% !important;
+	height: 42px;
+	max-height: 42px;
+	max-width: 42px;
+	width: 42px;
+}
+
+.chat-header .b-avatar .b-avatar-img img {
+	background: rgba(52, 52, 52, 0.05);
+	border: 1px solid rgba(52, 52, 52, 0.25);
+	border-radius: 50% !important;
+	height: 36px;
+	max-height: 36px;
+
+	max-width: 36px;
+
+	width: 36px;
+}
+
+.chat-header .b-avatar .b-avatar-badge {
+	background-color: rgba(52, 52, 52, 0.01);
+}
+
+.user-chats .chat-avatar {
+	/*width: 50px;
+height: 50px;
+max-width: 50px;
+max-height: 50px;
+border-radius: 50% !important;*/
+	display: none;
+	visibility: hidden;
+}
+
+/*
+
+[dir=ltr] .chat-app-window .chats .chat .chat-body {
+	!*margin: 10px 30px 0 0;*!
+	margin-right: 0;
+}*/

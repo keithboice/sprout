@@ -1,0 +1,53 @@
+/*
+ * Styles for chat users' avatars.
+ */
+
+// Color palettes
+@import '~@/assets/scss/base/core/colors/palette-variables.scss';
+
+.b-avatar {
+	//color: $white;
+	font-size: 0.857rem;
+	font-weight: 600;
+
+	// Avatar Badge Minimal [HTML Like Style]
+	&.badge-minimal {
+		.b-avatar-badge {
+			border: 1px solid #fff;
+			min-height: 11px;
+			min-width: 11px;
+		}
+	}
+
+	// Bordered Avatar
+	&.avatar-border-2 {
+		img {
+			border: 2px solid #fff;
+		}
+	}
+}
+
+// Disable img scaling on actionable avatar hover
+.b-avatar.btn,
+.b-avatar[href] {
+	&:not(:disabled):not(.disabled):hover .b-avatar-img img {
+		transform: scale(1);
+	}
+}
+
+// reason: add transition on avatar group
+.b-avatar-group {
+	.b-avatar-group-inner {
+		.b-avatar {
+			border-width: 0;
+			cursor: pointer;
+			transition: all 0.25s ease 0s;
+
+			&.pull-up:hover {
+				transform: translateY(-4px) scale(1.07);
+				transition: all 0.25s ease 0s;
+				z-index: 30;
+			}
+		}
+	}
+}

@@ -3,49 +3,52 @@
 
 // draggable cursor - grab
 .draggable {
-  cursor: grab;
-  .gu-unselectable & {
-    cursor: grabbing;
-  }
+	cursor: grab;
+
+	.gu-unselectable & {
+		cursor: grabbing;
+	}
 }
 
 // For Multi List
 #multiple-list-group-a,
 #multiple-list-group-b {
-  min-height: 5.714rem;
+	min-height: 5.714rem;
 }
 
 // For Handle
 #dd-with-handle {
-  .list-group {
-    min-height: 5.714rem;
-    .handle {
-      padding: 0 5px;
-      margin-right: 5px;
-      background-color: rgba($black, 0.1);
-      cursor: move;
-      font-size: 1.2rem;
-    }
-  }
+	.list-group {
+		min-height: 5.714rem;
+
+		.handle {
+			background-color: rgba($black, 0.1);
+			cursor: move;
+			font-size: 1.2rem;
+			margin-right: 5px;
+			padding: 0 5px;
+		}
+	}
 }
+
 .gu-mirror {
-  .handle {
-    padding: 0 5px;
-    margin-right: 5px;
-    background-color: rgba($black, 0.1);
-    cursor: move;
-    font-size: 1.2rem;
-  }
+	.handle {
+		background-color: rgba($black, 0.1);
+		cursor: move;
+		font-size: 1.2rem;
+		margin-right: 5px;
+		padding: 0 5px;
+	}
 }
 
 // Dak Layout
 .dark-layout {
-  // Drag & drop moving element
-  .gu-mirror {
-    &:not(.badge):not([class*='col-']) {
-      background-color: $theme-dark-card-bg;
-      border-color: $theme-dark-border-color;
-      box-shadow: $theme-dark-box-shadow;
-    }
-  }
+	// Drag & drop moving element
+	.gu-mirror {
+		&:not(.badge):not([class*='col-']) {
+			background-color: $theme-dark-card-bg;
+			border-color: $theme-dark-border-color;
+			box-shadow: $theme-dark-box-shadow;
+		}
+	}
 }

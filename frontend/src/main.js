@@ -8,7 +8,7 @@ import store  from "./store"
 import App    from "./App.vue"
 
 // Global Components
-import "@/conf/global-components"
+import "../config/globals"
 
 // 3rd party plugins
 import "@axios"
@@ -23,21 +23,21 @@ import "@/libs/tour"
 // Axios Mock Adapter
 import "@/@fake-db/db"
 
-// BSV Plugin Registration
+// Bootstrap Plugin Registration
 Vue.use( ToastPlugin )
 Vue.use( ModalPlugin )
 
 // Composition API
 Vue.use( VueCompositionAPI )
 
-// Feather font icon - For form-wizard
-// * Shall remove it if not using font-icons of feather-icons - For form-wizard
-/*require( "@/assets/fonts/feather/iconfont.css" )*/ // For form-wizard
+// Parent styles
+require( "@/assets/scss/reset.scss" )
 
-// import core styles
+
+// Core styles
 require( "@/assets/scss/core.scss" )
 
-// import assets styles
+// Assets styles
 require( "@/assets/scss/style.scss" )
 
 Vue.config.productionTip = false

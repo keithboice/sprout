@@ -1,0 +1,4 @@
+# Chatactivechatcontentdetailssidedbar
+
+## Usage
+    <ChatActiveChatContentDetailsSidedbar />

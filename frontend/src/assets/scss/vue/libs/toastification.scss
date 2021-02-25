@@ -1,5 +1,5 @@
 // Core variables and mixins
-@import '~@core/scss/base/bootstrap-extended/include';
+@import '~@/assets/scss/base/bootstrap-extended/include';
 // Overrides user variable
 @import '~@core/scss/base/components/include';
 
@@ -30,22 +30,22 @@ $vt-font-family: inherit;
 @import 'vue-toastification/src/scss/animations/fade';
 
 .#{$vt-namespace}__toast {
-  padding: 1rem;
-  box-shadow: $box-shadow;
-  border-radius: $card-border-radius;
+	border-radius: $card-border-radius;
+	box-shadow: $box-shadow;
+	padding: 1rem;
 }
 
 @media only screen and (max-width: 600px) {
-  .Vue-Toastification__container {
-    .Vue-Toastification__toast {
-      width: 90%;
-    }
-  }
+	.Vue-Toastification__container {
+		.Vue-Toastification__toast {
+			width: 90%;
+		}
+	}
 }
 
 // ------------Dark Layout -----------//
 .dark-layout {
-  .#{$vt-namespace}__toast {
-    background-color: $theme-dark-card-bg;
-  }
+	.#{$vt-namespace}__toast {
+		background-color: $theme-dark-card-bg;
+	}
 }
